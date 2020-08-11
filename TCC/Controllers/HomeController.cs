@@ -188,7 +188,7 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult tbproduto_pedido(Produto_pedido pedido,Mesa mesa,Comanda comanda)
         {
-            MySqlConnection conexao = new MySqlConnection("server = localhost; user id = root; password = 12345678; database = db_rest");
+            MySqlConnection conexao = new MySqlConnection("server = localhost; user id = root; password = 12345678; database = db_rest        ");
             conexao.Open();
             var query = "CALL sp_InsPedido (";
             query += string.Format("'{0}',",mesa.IdMesa);
