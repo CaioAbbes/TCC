@@ -166,6 +166,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -175,6 +176,7 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Comanda.cs" />
     <Compile Include="Models\Compra.cs" />
+    <Compile Include="Models\ConexaoDB.cs" />
     <Compile Include="Models\Cupom.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Fornecedor.cs" />
@@ -258,6 +260,7 @@
     <Content Include="Views\Home\tbclicupom.cshtml" />
     <Content Include="Views\Home\tbsaida_ingre.cshtml" />
     <Content Include="Views\Home\tbcompra.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
