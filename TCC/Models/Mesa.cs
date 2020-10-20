@@ -9,7 +9,6 @@ namespace TCC.Models
 {
     public class Mesa
     {
-
         [Required(ErrorMessage = "O campo Id da mesa é requerido.")]
         [Display(Name = "Id da mesa")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]

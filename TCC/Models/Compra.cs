@@ -25,7 +25,7 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdForn { get; set; }
 
-        [Required(ErrorMessage = "O campo Número da compra é requerido.")]
+        [Required(ErrorMessage = "O campo Quantidade da entratada dos ingredientes é requerido.")]
         [Display(Name = "Quantidade da entratada dos ingredientes ")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
