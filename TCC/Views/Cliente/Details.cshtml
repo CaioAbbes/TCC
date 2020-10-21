@@ -1,0 +1,154 @@
+﻿@model TCC.Models.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CelCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CelCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumEdif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumEdif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Senha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtdPontos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtdPontos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdCli  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace TCC.Models
         [Display(Name = "Id do cliente")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
+        [Key]
         public int IdCli { get; set; }
 
         [Required(ErrorMessage = "O campo CPF do cliente é requerido.")]
@@ -70,8 +72,8 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Celular do cliente é requerido.")]
         [Display(Name = "Celular do cliente")]
-        [RegularExpression(@"^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$", ErrorMessage = "Celular inválido")]
-        public int CelCli { get; set; }
+        //[RegularExpression(@"^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$", ErrorMessage = "Celular inválido")]
+        public long CelCli { get; set; }
 
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Digite somente letras.")]
         [Display(Name = "Complemento")]
@@ -98,7 +100,7 @@ namespace TCC.Models
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
-        [Range(0,float.MaxValue,ErrorMessage = "Deve ser positivo")]
+        [Range(0, float.MaxValue, ErrorMessage = "Deve ser positivo")]
         [Display(Name = "Quantidade de pontos")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         public float QtdPontos { get; set; }
@@ -106,18 +108,87 @@ namespace TCC.Models
 
 
 
-     //   public HttpPostedFileBase Imagecli { get; set; } //ou string
+        //   public HttpPostedFileBase Imagecli { get; set; } //ou string
 
 
 
         public void InsertCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}',{4},'{5}','{6}','{7}',{8},'{9}',{10},'{11}',{12},'{13}';",cliente.UsuarioText,cliente.Senha,cliente.UF,cliente.Cidade,cliente.CEP,cliente.Logra,cliente.Bairro,cliente.Comp,cliente.NumEdif,cliente.NomeCli,cliente.CPF,cliente.EmailCli,cliente.CelCli,cliente.Estado);
+            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}',{4},'{5}','{6}','{7}',{8},'{9}',{10},'{11}',{12},'{13}');", cliente.UsuarioText, cliente.Senha, cliente.UF, cliente.Cidade, cliente.CEP, cliente.Logra, cliente.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Estado);
 
             using (db = new ConexaoDB())
             {
                 db.ExecutaComando(strQuery);
             }
         }
+
+        public void UpdatetCliente(Cliente cliente)
+        {
+            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}',{10},'{11}',{12},'{13}');", cliente.CEP, cliente.Logra, cliente.Bairro, cliente.Cidade, cliente.Estado, cliente.UF, cliente.UsuarioText, cliente.Senha, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Comp);
+
+            using (db = new ConexaoDB())
+            {
+                db.ExecutaComando(strQuery);
+            }
+        }
+
+
+        public List<Cliente> SelecionaCliente()
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbcliente;");
+                MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
+                var clienteList = new List<Cliente>();
+                while (registros.Read())
+                {
+                    var ClienteTemporario = new Cliente
+                    {
+                        IdCli = int.Parse(registros["IdCli"].ToString()),
+                        NomeCli = registros["NomeCli"].ToString(),
+                        CPF = decimal.Parse(registros["CPF"].ToString()),
+                        EmailCli = registros["EmailCli"].ToString(),
+                        CEP = decimal.Parse(registros["CEP"].ToString()),
+                        CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
+                        Comp = registros["Comp"].ToString(),
+                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
+                        IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
+                        QtdPontos = float.Parse(registros["QtdPontos"].ToString())
+                    };
+                    clienteList.Add(ClienteTemporario);
+                }
+                return clienteList;
+            }
+        }
+
+        public Cliente SelecionaCarregado(Cliente cliente)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbcliente where CPF = '{0}';", cliente.CPF);
+                MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
+                Cliente clienteListando = null;
+                while (registros.Read())
+                {
+                    clienteListando = new Cliente
+                    {
+                        IdCli = int.Parse(registros["IdCli"].ToString()),
+                        NomeCli = registros["NomeCli"].ToString(),
+                        CPF = decimal.Parse(registros["CPF"].ToString()),
+                        EmailCli = registros["EmailCli"].ToString(),
+                        CEP = decimal.Parse(registros["CEP"].ToString()),
+                        CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
+                        Comp = registros["Comp"].ToString(),
+                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
+                        IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
+                        QtdPontos = float.Parse(registros["QtdPontos"].ToString())
+                    };
+                }
+
+                return clienteListando;
+            }
+
+        }
+
     }
 }

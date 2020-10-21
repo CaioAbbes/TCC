@@ -15,10 +15,27 @@ namespace TCC.Controllers
             return View();
         }
 
-        // GET: Cliente/Details/5
-        public ActionResult Details(int id)
+        public ActionResult List(Cliente cliente)
         {
-            return View();
+            var clienteList = cliente.SelecionaCliente();
+
+            if (ModelState.IsValid)
+            {
+                var objCli = new Cliente();
+                objCli.SelecionaCliente();
+            }
+            return View(clienteList);
+        }
+
+
+
+        // GET: Cliente/Details/5
+        public ActionResult Details(int IdCli)
+        {
+             var cliente = new Cliente() { IdCli = IdCli};
+            var objCliente = new Cliente();
+            cliente = objCliente.SelecionaCarregado(cliente);
+            return View(cliente);
         }
 
         // GET: Cliente/Create
@@ -43,47 +60,22 @@ namespace TCC.Controllers
         }
 
         // GET: Cliente/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
+            //var cat = new Categoria() { idCategoria = idCategoria };
+            //var objCat = new Categoria();
+            //cat = objCat.SelecionaCarregado(cat);
+            //return View(cat);
             return View();
         }
 
         // POST: Cliente/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Cliente cliente)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Cliente/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Cliente/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var objCli = new Cliente();
+            objCli.UpdatetCliente(cliente);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -261,6 +261,10 @@
     <Content Include="Views\Home\tbsaida_ingre.cshtml" />
     <Content Include="Views\Home\tbcompra.cshtml" />
     <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Cliente\List.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
