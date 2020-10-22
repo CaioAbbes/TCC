@@ -165,7 +165,7 @@ namespace TCC.Models
         {
             using (db = new ConexaoDB())
             {
-                string StrQuery = string.Format("select * from tbcliente where CPF = '{0}';", cliente.CPF);
+                string StrQuery = string.Format("select * from tbcliente where IdCli = '{0}';", cliente.IdCli);
                 MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
                 Cliente clienteListando = null;
                 while (registros.Read())

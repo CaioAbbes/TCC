@@ -19,20 +19,19 @@ namespace TCC.Controllers
         {
             var clienteList = cliente.SelecionaCliente();
 
-            if (ModelState.IsValid)
-            {
-                var objCli = new Cliente();
-                objCli.SelecionaCliente();
-            }
+
+            var objCli = new Cliente();
+            objCli.SelecionaCliente();
+
             return View(clienteList);
         }
 
 
 
         // GET: Cliente/Details/5
-        public ActionResult Details(int IdCli)
+        public ActionResult Details(int id)
         {
-             var cliente = new Cliente() { IdCli = IdCli};
+            var cliente = new Cliente() { IdCli = id };
             var objCliente = new Cliente();
             cliente = objCliente.SelecionaCarregado(cliente);
             return View(cliente);
@@ -56,17 +55,16 @@ namespace TCC.Controllers
                 return RedirectToAction("Index");
             }
             return View();
-            
+
         }
 
         // GET: Cliente/Edit/5
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            //var cat = new Categoria() { idCategoria = idCategoria };
-            //var objCat = new Categoria();
-            //cat = objCat.SelecionaCarregado(cat);
-            //return View(cat);
-            return View();
+            var cliente = new Cliente() { IdCli = id };
+            var objCliente = new Cliente();
+            cliente = objCliente.SelecionaCarregado(cliente);
+            return View(cliente);
         }
 
         // POST: Cliente/Edit/5
