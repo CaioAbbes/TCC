@@ -1,0 +1,147 @@
+﻿@model IEnumerable<TCC.Models.Funcionario>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CPFfunc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CEP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Logra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeFunc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatNascFunc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoFunc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SexoFunc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CelFunc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailFunc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RgFunc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumEdif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsuarioText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Senha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoAcesso)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPFfunc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CEP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Logra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bairro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeFunc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatNascFunc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CargoFunc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SexoFunc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CelFunc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailFunc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RgFunc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumEdif)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Senha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoAcesso)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdFunc }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdFunc }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdFunc })
+        </td>
+    </tr>
+}
+
+</table>

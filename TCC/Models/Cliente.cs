@@ -56,7 +56,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo UF é requerido.")]
         [Display(Name = "UF")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        public char UF { get; set; }
+        public string UF { get; set; }
 
         [Required(ErrorMessage = "O campo Nome do cliente é requerido.")]
         [Display(Name = "Nome do cliente")]
@@ -122,7 +122,7 @@ namespace TCC.Models
             }
         }
 
-        public void UpdatetCliente(Cliente cliente)
+        public void UpdateCliente(Cliente cliente)
         {
             string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}',{10},'{11}',{12},'{13}');", cliente.CEP, cliente.Logra, cliente.Bairro, cliente.Cidade, cliente.Estado, cliente.UF, cliente.UsuarioText, cliente.Senha, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Comp);
 

@@ -72,7 +72,7 @@ namespace TCC.Controllers
         public ActionResult Edit(Cliente cliente)
         {
             var objCli = new Cliente();
-            objCli.UpdatetCliente(cliente);
+            objCli.UpdateCliente(cliente);
             return RedirectToAction("Index");
         }
     }
