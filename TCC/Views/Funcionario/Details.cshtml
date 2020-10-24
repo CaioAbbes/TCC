@@ -1,0 +1,178 @@
+﻿@model TCC.Models.Funcionario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Funcionario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CPFfunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPFfunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeFunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeFunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatNascFunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatNascFunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CargoFunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CargoFunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SexoFunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SexoFunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CelFunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CelFunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailFunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailFunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RgFunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RgFunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumEdif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumEdif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Senha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoAcesso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoAcesso)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdFunc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

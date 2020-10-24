@@ -139,7 +139,13 @@ namespace TCC.Models
 
         public void UpdateFuncionario(Funcionario funcionario)
         {
+            string strQuery = string.Format("CALL sp_AtuaFunc('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}');",funcionario.CPFfunc,funcionario.CEP,funcionario.NomeFunc,funcionario.DatNascFunc.ToString("yyyy-MM-dd"),funcionario.CargoFunc,funcionario.SexoFunc,funcionario.CelFunc,funcionario.EmailFunc,funcionario.RgFunc,funcionario.Comp,funcionario.NumEdif,funcionario.Logra,funcionario.Bairro,funcionario.Cidade,funcionario.Estado,funcionario.UF,funcionario.UsuarioText,funcionario.Senha);
 
+
+            using (db = new ConexaoDB())
+            {
+                db.ExecutaComando(strQuery);
+            }
         }
 
 
@@ -157,7 +163,7 @@ namespace TCC.Models
                     {
                         IdFunc = int.Parse(registros["IdFunc"].ToString()),
                         CEP = decimal.Parse(registros["CEP"].ToString()),
-                        IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
+                        //IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
                         NomeFunc = registros["NomeFunc"].ToString(),
                         CPFfunc = decimal.Parse(registros["CPFfunc"].ToString()),
                         DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
@@ -175,31 +181,34 @@ namespace TCC.Models
             }
         }
 
-        public Cliente SelecionaCarregado(Cliente cliente)
+        public Funcionario SelecionaCarregado(Funcionario funcionario)
         {
             using (db = new ConexaoDB())
             {
-                string StrQuery = string.Format("select * from tbcliente where IdCli = '{0}';", cliente.IdCli);
+                string StrQuery = string.Format("select * from tbfuncionario where IdFunc = '{0}';", funcionario.IdFunc);
                 MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
-                Cliente clienteListando = null;
+                Funcionario FuncListando = null;
                 while (registros.Read())
                 {
-                    clienteListando = new Cliente
+                    FuncListando = new Funcionario
                     {
-                        IdCli = int.Parse(registros["IdCli"].ToString()),
-                        NomeCli = registros["NomeCli"].ToString(),
-                        CPF = decimal.Parse(registros["CPF"].ToString()),
-                        EmailCli = registros["EmailCli"].ToString(),
+                        IdFunc = int.Parse(registros["IdFunc"].ToString()),
                         CEP = decimal.Parse(registros["CEP"].ToString()),
-                        CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
+                        //IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
+                        NomeFunc = registros["NomeFunc"].ToString(),
+                        CPFfunc = decimal.Parse(registros["CPFfunc"].ToString()),
+                        DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
+                        CargoFunc = registros["CargoFunc"].ToString(),
+                        SexoFunc = registros["SexoFunc"].ToString(),
+                        CelFunc = Convert.ToInt64(registros["CelFunc"].ToString()),
+                        EmailFunc = registros["EmailFunc"].ToString(),
+                        RgFunc = registros["RgFunc"].ToString(),
                         Comp = registros["Comp"].ToString(),
-                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
-                        IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
-                        QtdPontos = float.Parse(registros["QtdPontos"].ToString())
+                        NumEdif = int.Parse(registros["NumEdif"].ToString())
                     };
                 }
 
-                return clienteListando;
+                return FuncListando;
             }
 
         }
