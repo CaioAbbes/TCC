@@ -29,7 +29,7 @@ namespace TCC.Models
             vComando.ExecuteNonQuery();
         }
 
-        public MySqlDataReader ExecutaRegistro(string StrQuery)
+        public MySqlDataReader RetornaRegistro(string StrQuery)
         {
             var vComando = new MySqlCommand
             {
