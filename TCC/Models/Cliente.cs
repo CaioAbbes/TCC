@@ -62,7 +62,7 @@ namespace TCC.Models
         public float QtdPontos { get; set; }
 
 
-
+        public string Imagem { get; set; }
 
         //   public HttpPostedFileBase Imagecli { get; set; } //ou string
 
@@ -70,7 +70,7 @@ namespace TCC.Models
 
         public void InsertCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}',{4},'{5}','{6}','{7}',{8},'{9}',{10},'{11}',{12},'{13}');", cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.UF, cliente.Endereco.Cidade, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Endereco.Estado);
+            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}');", cliente.Imagem, cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.UF, cliente.Endereco.Cidade, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Endereco.Estado);
 
             using (db = new ConexaoDB())
             {
