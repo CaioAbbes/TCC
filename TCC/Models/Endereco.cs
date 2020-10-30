@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,10 @@ namespace TCC.Models
 {
     public class Endereco
     {
+
+        private ConexaoDB db = new ConexaoDB();
+
+
         [Required(ErrorMessage = "O campo CEP é requerido.")]
         [Display(Name = "CEP")]
         [RegularExpression(@"^[0-9]{5}-[\d]{3}|(\d{8})$", ErrorMessage = "CEP invalido.")]
@@ -40,6 +45,33 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo UF é requerido.")]
         [Display(Name = "UF")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        public char UF { get; set; }
+        public string UF { get; set; }
+
+
+        public Endereco RetornaPorCEP(decimal CEP)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbendereco where CEP = '{0}';", CEP);
+                MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
+                Endereco EnderecoListando = null;
+                while (registros.Read())
+                {
+                    EnderecoListando = new Endereco
+                    {
+                        CEP = decimal.Parse(registros["CEP"].ToString()),
+                        Logra = registros["Logra"].ToString(),
+                        Bairro = registros["Bairro"].ToString(),
+                        Cidade = registros["Cidade"].ToString(),
+                        Estado = registros["Estado"].ToString(),
+                        UF = registros["UF"].ToString()
+                    };
+                }
+
+                return EnderecoListando;
+            }
+
+        }
+
     }
 }
