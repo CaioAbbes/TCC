@@ -54,12 +54,6 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int NumEdif { get; set; }
 
-        [Display(Name = "Id do usuário")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-        [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public int IdUsuario { get; set; }
-
-
         public Usuario User { get; set; }
 
         [Range(0, float.MaxValue, ErrorMessage = "Deve ser positivo")]

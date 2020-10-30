@@ -46,6 +46,7 @@ namespace TCC.Models
                 {
                     UserListando = new Usuario
                     {
+                        IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
                         UsuarioText = registros["Usuario"].ToString(),
                         Senha = registros["Senha"].ToString(),
                         TipoAcesso = decimal.Parse(registros["TipoAcesso"].ToString())
