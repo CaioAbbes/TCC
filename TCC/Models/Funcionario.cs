@@ -155,7 +155,7 @@ namespace TCC.Models
             using (db = new ConexaoDB())
             {
                 string StrQuery = string.Format("select * from tbfuncionario;");
-                MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 var funcionarioList = new List<Funcionario>();
                 while (registros.Read())
                 {
@@ -186,7 +186,7 @@ namespace TCC.Models
             using (db = new ConexaoDB())
             {
                 string StrQuery = string.Format("select * from tbfuncionario where IdFunc = '{0}';", funcionario.IdFunc);
-                MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 Funcionario FuncListando = null;
                 while (registros.Read())
                 {

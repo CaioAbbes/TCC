@@ -24,43 +24,7 @@ namespace TCC.Models
         [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
         public decimal CPF { get; set; }
 
-        //[Required(ErrorMessage = "O campo CEP é requerido.")]
-        //[Display(Name = "CEP")]
-        //[RegularExpression(@"^[0-9]{5}-[\d]{3}|(\d{8})$", ErrorMessage = "CEP invalido.")]
-        //public decimal CEP { get; set; }
-
-        //[Required(ErrorMessage = "O campo Logradouro é requerido.")]
-        //[Display(Name = "Logradouro")]
-        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        //[StringLength(200, ErrorMessage = "A quantidade de caracteres do Logradouro é invalido.")]
-        //public string Logra { get; set; }
-
-        //[Required(ErrorMessage = "O campo Bairro é requerido.")]
-        //[Display(Name = "Bairro")]
-        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        //[StringLength(200, ErrorMessage = "A quantidade de caracteres do Bairro é invalido.")]
-        //public string Bairro { get; set; }
-
-        //[Required(ErrorMessage = "O campo Cidade é requerido.")]
-        //[Display(Name = "Cidade")]
-        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        //[StringLength(100, ErrorMessage = "A quantidade de caracteres do Cidade é invalido.")]
-        //public string Cidade { get; set; }
-
-        //[Required(ErrorMessage = "O campo Estado é requerido.")]
-        //[Display(Name = "Estado")]
-        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        //[StringLength(100, ErrorMessage = "A quantidade de caracteres do Estado é invalido.")]
-        //public string Estado { get; set; }
-
-
-        public Endereco endereco { get; set; }
-
-        
-        //[Required(ErrorMessage = "O campo UF é requerido.")]
-        //[Display(Name = "UF")]
-        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        //public string UF { get; set; }
+        public Endereco Endereco { get; set; }
 
         [Required(ErrorMessage = "O campo Nome do cliente é requerido.")]
         [Display(Name = "Nome do cliente")]
@@ -95,14 +59,6 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdUsuario { get; set; }
 
-        //[Required(ErrorMessage = "O campo Usuário é requerido.")]
-        //[Display(Name = "Usuário")]
-        //public string UsuarioText { get; set; }
-
-        //[Required(ErrorMessage = "O campo Senha é requerido.")]
-        //[Display(Name = "Senha")]
-        //[DataType(DataType.Password)]
-        //public string Senha { get; set; }
 
         public Usuario User { get; set; }
 
@@ -120,7 +76,7 @@ namespace TCC.Models
 
         public void InsertCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}',{4},'{5}','{6}','{7}',{8},'{9}',{10},'{11}',{12},'{13}');", cliente.User.UsuarioText, cliente.User.Senha, cliente.endereco.UF, cliente.endereco.Cidade, cliente.endereco.CEP, cliente.endereco.Logra, cliente.endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.endereco.Estado);
+            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}',{4},'{5}','{6}','{7}',{8},'{9}',{10},'{11}',{12},'{13}');", cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.UF, cliente.Endereco.Cidade, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Endereco.Estado);
 
             using (db = new ConexaoDB())
             {
@@ -130,7 +86,7 @@ namespace TCC.Models
 
         public void UpdateCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}',{10},'{11}',{12},'{13}');", cliente.endereco.CEP, cliente.endereco.Logra, cliente.endereco.Bairro, cliente.endereco.Cidade, cliente.endereco.Estado, cliente.endereco.UF, cliente.User.UsuarioText, cliente.User.Senha, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Comp);
+            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}',{10},'{11}',{12},'{13}');", cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Endereco.Cidade, cliente.Endereco.Estado, cliente.Endereco.UF, cliente.User.UsuarioText, cliente.User.Senha, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Comp);
 
             using (db = new ConexaoDB())
             {
@@ -144,7 +100,7 @@ namespace TCC.Models
             using (db = new ConexaoDB())
             {
                 string StrQuery = string.Format("select * from tbcliente;");
-                MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 var clienteList = new List<Cliente>();
                 while (registros.Read())
                 {
@@ -154,29 +110,17 @@ namespace TCC.Models
                         NomeCli = registros["NomeCli"].ToString(),
                         CPF = decimal.Parse(registros["CPF"].ToString()),
                         EmailCli = registros["EmailCli"].ToString(),
-                        //CEP = decimal.Parse(registros["CEP"].ToString()),
-                        endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
+                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
                         CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
                         Comp = registros["Comp"].ToString(),
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
-                        //IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
                         QtdPontos = float.Parse(registros["QtdPontos"].ToString()),
                         User = new Usuario().RetornaPorUdUsuario(int.Parse(registros["IdUsuario"].ToString()))
                     };
 
-                    //var EndTemporario = new Endereco
-                    //{
-                    //    CEP = decimal.Parse(registros["CEP"].ToString()),
-                    //    Logra = registros["Logra"].ToString(),
-                    //    Bairro = registros["Bairro"].ToString(),
-                    //    Cidade = registros["Cidade"].ToString(),
-                    //    Estado = registros["Estado"].ToString(),
-                    //    UF = registros["UF"].ToString()
-                    //};
 
 
                     clienteList.Add(ClienteTemporario);
-                    //endList.Add(EndTemporario);
                 }
                 return clienteList ;
             }
@@ -187,7 +131,7 @@ namespace TCC.Models
             using (db = new ConexaoDB())
             {
                 string StrQuery = string.Format("select * from tbcliente where IdCli = '{0}';", cliente.IdCli);
-                MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 Cliente clienteListando = null;
                 while (registros.Read())
                 {
@@ -198,11 +142,11 @@ namespace TCC.Models
                         NomeCli = registros["NomeCli"].ToString(),
                         CPF = decimal.Parse(registros["CPF"].ToString()),
                         EmailCli = registros["EmailCli"].ToString(),
-                        endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
+                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
                         CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
                         Comp = registros["Comp"].ToString(),
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
-                        IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
+                        User = new Usuario().RetornaPorUdUsuario(int.Parse(registros["IdUsuario"].ToString())),
                         QtdPontos = float.Parse(registros["QtdPontos"].ToString())
                     };
                 }

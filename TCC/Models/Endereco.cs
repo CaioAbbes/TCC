@@ -53,7 +53,7 @@ namespace TCC.Models
             using (db = new ConexaoDB())
             {
                 string StrQuery = string.Format("select * from tbendereco where CEP = '{0}';", CEP);
-                MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 Endereco EnderecoListando = null;
                 while (registros.Read())
                 {

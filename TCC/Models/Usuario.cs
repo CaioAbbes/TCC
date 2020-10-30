@@ -40,7 +40,7 @@ namespace TCC.Models
             using (db = new ConexaoDB())
             {
                 string StrQuery = string.Format("select * from tbusuario where IdUsuario = '{0}';", idUsu);
-                MySqlDataReader registros = db.ExecutaRegistro(StrQuery);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 Usuario UserListando = null;
                 while (registros.Read())
                 {
