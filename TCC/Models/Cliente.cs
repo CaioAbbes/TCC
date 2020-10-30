@@ -120,11 +120,11 @@ namespace TCC.Models
             }
         }
 
-        public Cliente SelecionaCarregado(Cliente cliente)
+        public Cliente SelecionaCarregado(int IdCli)
         {
             using (db = new ConexaoDB())
             {
-                string StrQuery = string.Format("select * from tbcliente where IdCli = '{0}';", cliente.IdCli);
+                string StrQuery = string.Format("select * from tbcliente where IdCli = '{0}';", IdCli);
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 Cliente clienteListando = null;
                 while (registros.Read())
