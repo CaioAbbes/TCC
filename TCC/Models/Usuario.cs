@@ -19,6 +19,7 @@ namespace TCC.Models
         [Display(Name = "Id do usuário")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
+        [Key]
         public int IdUsuario { get; set; }
 
         [Required(ErrorMessage = "O campo Usuário é requerido.")]
