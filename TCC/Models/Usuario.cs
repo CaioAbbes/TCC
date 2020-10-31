@@ -36,7 +36,7 @@ namespace TCC.Models
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         public decimal TipoAcesso { get; set; }
 
-        public Usuario RetornaPorUdUsuario(int idUsu)
+        public Usuario RetornaPorIdUsuario(int idUsu)
         {
             using (db = new ConexaoDB())
             {

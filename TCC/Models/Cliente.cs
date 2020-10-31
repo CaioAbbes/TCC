@@ -109,7 +109,7 @@ namespace TCC.Models
                         Comp = registros["Comp"].ToString(),
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
                         QtdPontos = float.Parse(registros["QtdPontos"].ToString()),
-                        User = new Usuario().RetornaPorUdUsuario(int.Parse(registros["IdUsuario"].ToString()))
+                        User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString()))
                     };
 
 
@@ -140,7 +140,7 @@ namespace TCC.Models
                         CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
                         Comp = registros["Comp"].ToString(),
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
-                        User = new Usuario().RetornaPorUdUsuario(int.Parse(registros["IdUsuario"].ToString())),
+                        User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
                         QtdPontos = float.Parse(registros["QtdPontos"].ToString())
                     };
                 }

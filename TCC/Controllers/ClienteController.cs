@@ -31,9 +31,9 @@ namespace TCC.Controllers
         // GET: Cliente/Details/5
         public ActionResult Details(int id)
         {
-            var cliente = new Cliente() { IdCli = id };
+            var cliente = new Cliente();
             var objCliente = new Cliente();
-            cliente = objCliente.SelecionaCarregado(cliente);
+            cliente = objCliente.SelecionaCarregado(id);
             return View(cliente);
         }
 
@@ -61,9 +61,9 @@ namespace TCC.Controllers
         // GET: Cliente/Edit/5
         public ActionResult Edit(int id)
         {
-            var cliente = new Cliente() { IdCli = id };
+            var cliente = new Cliente() ;
             var objCliente = new Cliente();
-            cliente = objCliente.SelecionaCarregado(cliente);
+            cliente = objCliente.SelecionaCarregado(id);
             return View(cliente);
         }
 

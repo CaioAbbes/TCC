@@ -19,7 +19,6 @@ namespace TCC.Controllers
         {
             var funcionarioclienteList = funcionario.SelecionaFuncionario();
 
-
             var objFunc = new Funcionario();
             objFunc.SelecionaFuncionario();
 
@@ -30,9 +29,9 @@ namespace TCC.Controllers
         // GET: Funcionario/Details/5
         public ActionResult Details(int id)
         {
-            var funcionario = new Funcionario() { IdFunc = id };
+            var funcionario = new Funcionario();
             var objFunc = new Funcionario();
-            funcionario = objFunc.SelecionaCarregado(funcionario);
+            funcionario = objFunc.SelecionaCarregado(id);
             return View(funcionario);
         }
 
@@ -58,9 +57,9 @@ namespace TCC.Controllers
         // GET: Funcionario/Edit/5
         public ActionResult Edit(int id)
         {
-            var funcionario = new Funcionario() { IdFunc = id };
+            var funcionario = new Funcionario();
             var objFunc = new Funcionario();
-            funcionario = objFunc.SelecionaCarregado(funcionario);
+            funcionario = objFunc.SelecionaCarregado(id);
             return View(funcionario);
         }
 

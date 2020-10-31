@@ -25,39 +25,7 @@ namespace TCC.Models
         [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
         public decimal CPFfunc { get; set; }
 
-        [Required(ErrorMessage = "O campo CEP é requerido.")]
-        [Display(Name = "CEP")]
-        [RegularExpression(@"^[0-9]{5}-[\d]{3}|(\d{8})$", ErrorMessage = "CEP invalido.")]
-        public decimal CEP { get; set; }
-
-        [Required(ErrorMessage = "O campo Logradouro é requerido.")]
-        [Display(Name = "Logradouro")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        [StringLength(200, ErrorMessage = "A quantidade de caracteres do Logradouro é invalido.")]
-        public string Logra { get; set; }
-
-        [Required(ErrorMessage = "O campo Bairro é requerido.")]
-        [Display(Name = "Bairro")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        [StringLength(200, ErrorMessage = "A quantidade de caracteres do Bairro é invalido.")]
-        public string Bairro { get; set; }
-
-        [Required(ErrorMessage = "O campo Cidade é requerido.")]
-        [Display(Name = "Cidade")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        [StringLength(100, ErrorMessage = "A quantidade de caracteres do Cidade é invalido.")]
-        public string Cidade { get; set; }
-
-        [Required(ErrorMessage = "O campo Estado é requerido.")]
-        [Display(Name = "Estado")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        [StringLength(100, ErrorMessage = "A quantidade de caracteres do Estado é invalido.")]
-        public string Estado { get; set; }
-
-        [Required(ErrorMessage = "O campo UF é requerido.")]
-        [Display(Name = "UF")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        public string UF { get; set; }
+        public Endereco Endereco { get; set; }
 
         [Required(ErrorMessage = "O campo Nome do funcionário é requerido.")]
         [Display(Name = "Nome do funcionário")]
@@ -67,7 +35,6 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Data de nascimento do funcionário é requerido.")]
         [Display(Name = "Data de nascimento do funcionário")]
-        [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
         [DataType(DataType.Date)]
         public DateTime DatNascFunc { get; set; }
 
@@ -110,26 +77,15 @@ namespace TCC.Models
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         public int NumEdif { get; set; }
 
-        [Display(Name = "Id do usuário")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-        [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public int IdUsuario { get; set; }
 
-        [Required(ErrorMessage = "O campo Usuário é requerido.")]
-        [Display(Name = "Usuário")]
-        public string UsuarioText { get; set; }
-
-        [Required(ErrorMessage = "O campo Senha é requerido.")]
-        [Display(Name = "Senha")]
-        [DataType(DataType.Password)]
-        public string Senha { get; set; }
+        public Usuario User { get; set; }
 
         [Display(Name = "Tipo de acesso")]
         public decimal TipoAcesso { get; set; }
 
         public void InsertFuncionario(Funcionario funcionario)
         {
-            string strQuery = string.Format("CALL sp_InsFuncEndUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}');", funcionario.UsuarioText, funcionario.Senha, funcionario.UF, funcionario.Cidade, funcionario.CEP, funcionario.Logra, funcionario.Bairro, funcionario.Comp, funcionario.NumEdif, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc, funcionario.EmailFunc, funcionario.RgFunc, funcionario.CPFfunc, funcionario.Estado, funcionario.TipoAcesso);
+            string strQuery = string.Format("CALL sp_InsFuncEndUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}');", funcionario.User.UsuarioText, funcionario.User.Senha, funcionario.Endereco.UF, funcionario.Endereco.Cidade, funcionario.Endereco.CEP, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Comp, funcionario.NumEdif, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc, funcionario.EmailFunc, funcionario.RgFunc, funcionario.CPFfunc, funcionario.Endereco.Estado, funcionario.TipoAcesso);
 
             using (db = new ConexaoDB())
             {
@@ -139,7 +95,7 @@ namespace TCC.Models
 
         public void UpdateFuncionario(Funcionario funcionario)
         {
-            string strQuery = string.Format("CALL sp_AtuaFunc('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}');",funcionario.CPFfunc,funcionario.CEP,funcionario.NomeFunc,funcionario.DatNascFunc.ToString("yyyy-MM-dd"),funcionario.CargoFunc,funcionario.SexoFunc,funcionario.CelFunc,funcionario.EmailFunc,funcionario.RgFunc,funcionario.Comp,funcionario.NumEdif,funcionario.Logra,funcionario.Bairro,funcionario.Cidade,funcionario.Estado,funcionario.UF,funcionario.UsuarioText,funcionario.Senha);
+            string strQuery = string.Format("CALL sp_AtuaFunc('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}');",funcionario.CPFfunc,funcionario.Endereco.CEP, funcionario.NomeFunc,funcionario.DatNascFunc.ToString("yyyy-MM-dd"),funcionario.CargoFunc,funcionario.SexoFunc,funcionario.CelFunc,funcionario.EmailFunc,funcionario.RgFunc,funcionario.Comp,funcionario.NumEdif,funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Endereco.Cidade, funcionario.Endereco.Estado, funcionario.Endereco.UF, funcionario.User.UsuarioText, funcionario.User.Senha);
 
 
             using (db = new ConexaoDB())
@@ -162,8 +118,7 @@ namespace TCC.Models
                     var FuncionarioTemporario = new Funcionario
                     {
                         IdFunc = int.Parse(registros["IdFunc"].ToString()),
-                        CEP = decimal.Parse(registros["CEP"].ToString()),
-                        //IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
+                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
                         NomeFunc = registros["NomeFunc"].ToString(),
                         CPFfunc = decimal.Parse(registros["CPFfunc"].ToString()),
                         DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
@@ -173,7 +128,8 @@ namespace TCC.Models
                         EmailFunc = registros["EmailFunc"].ToString(),
                         RgFunc = registros["RgFunc"].ToString(),
                         Comp = registros["Comp"].ToString(),
-                        NumEdif = int.Parse(registros["NumEdif"].ToString())
+                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
+                        User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString()))
                     };
                     funcionarioList.Add(FuncionarioTemporario);
                 }
@@ -181,11 +137,11 @@ namespace TCC.Models
             }
         }
 
-        public Funcionario SelecionaCarregado(Funcionario funcionario)
+        public Funcionario SelecionaCarregado(int IdFunc)
         {
             using (db = new ConexaoDB())
             {
-                string StrQuery = string.Format("select * from tbfuncionario where IdFunc = '{0}';", funcionario.IdFunc);
+                string StrQuery = string.Format("select * from tbfuncionario where IdFunc = '{0}';", IdFunc);
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 Funcionario FuncListando = null;
                 while (registros.Read())
@@ -193,8 +149,8 @@ namespace TCC.Models
                     FuncListando = new Funcionario
                     {
                         IdFunc = int.Parse(registros["IdFunc"].ToString()),
-                        CEP = decimal.Parse(registros["CEP"].ToString()),
-                        //IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
+                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
+                        User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
                         NomeFunc = registros["NomeFunc"].ToString(),
                         CPFfunc = decimal.Parse(registros["CPFfunc"].ToString()),
                         DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
