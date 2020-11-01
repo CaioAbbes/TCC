@@ -18,7 +18,19 @@ namespace TCC.Controllers
         // GET: Fornecedor/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var fornecedor = new Fornecedor();
+            var objFornecedor = new Fornecedor();
+            fornecedor = objFornecedor.RetornaIdFornecedor(id);
+            return View(fornecedor);
+        }
+
+        public ActionResult List(Fornecedor fornecedor)
+        {
+            var fornecedorList = fornecedor.SelecionaFornecedor();
+            var objFornecedor = new Fornecedor();
+            objFornecedor.SelecionaFornecedor();
+
+            return View(fornecedorList);
         }
 
         // GET: Fornecedor/Create
@@ -35,7 +47,7 @@ namespace TCC.Controllers
             {
                 var objFornecedor = new Fornecedor();
                 objFornecedor.InsertFornecedor(fornecedor);
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             return View();
         }
@@ -43,45 +55,22 @@ namespace TCC.Controllers
         // GET: Fornecedor/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var fornecedor = new Fornecedor();
+            var objFornecedor = new Fornecedor();
+            fornecedor = objFornecedor.RetornaIdFornecedor(id);
+
+            return View(fornecedor);
         }
 
         // POST: Fornecedor/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Fornecedor fornecedor)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var objFornecedor = new Fornecedor();
+            objFornecedor.UpdateFornecedor(fornecedor);
+            return RedirectToAction("List");
         }
 
-        // GET: Fornecedor/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Fornecedor/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

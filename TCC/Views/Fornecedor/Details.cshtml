@@ -1,0 +1,89 @@
+﻿@model TCC.Models.Fornecedor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fornecedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdForn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdForn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RazaoSocial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RazaoSocial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeForn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeForn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailForn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailForn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumEdif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumEdif)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { IdForn = Model.IdForn  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

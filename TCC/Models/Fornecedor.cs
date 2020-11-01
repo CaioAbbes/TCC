@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 
@@ -77,7 +78,7 @@ namespace TCC.Models
 
         public void UpdateFornecedor(Fornecedor fornecedor)
         {
-            string strQuery = string.Format("");
+            string strQuery = string.Format("CALL sp_AtuaForn('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}');",fornecedor.IdForn,fornecedor.RazaoSocial,fornecedor.NomeForn,fornecedor.Cnpj,fornecedor.Endereco.CEP,fornecedor.Tel,fornecedor.EmailForn,fornecedor.Comp,fornecedor.NumEdif,fornecedor.Endereco.Logra,fornecedor.Endereco.Bairro,fornecedor.Endereco.Cidade,fornecedor.Endereco.Estado,fornecedor.Endereco.UF);
 
             using (db = new ConexaoDB())
             {
@@ -97,19 +98,15 @@ namespace TCC.Models
                 {
                     var FornecedorTemporario = new Fornecedor
                     {
-                        IdFunc = int.Parse(registros["IdFunc"].ToString()),
+                        IdForn = int.Parse(registros["IdForn"].ToString()),
+                        RazaoSocial = registros["RazaoSocial"].ToString(),
+                        NomeForn = registros["NomeForn"].ToString(),
+                        Cnpj = decimal.Parse(registros["Cnpj"].ToString()),
                         Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
-                        NomeFunc = registros["NomeFunc"].ToString(),
-                        CPFfunc = decimal.Parse(registros["CPFfunc"].ToString()),
-                        DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
-                        CargoFunc = registros["CargoFunc"].ToString(),
-                        SexoFunc = registros["SexoFunc"].ToString(),
-                        CelFunc = Convert.ToInt64(registros["CelFunc"].ToString()),
-                        EmailFunc = registros["EmailFunc"].ToString(),
-                        RgFunc = registros["RgFunc"].ToString(),
+                        Tel = int.Parse(registros["Tel"].ToString()),
+                        EmailForn = registros["EmailForn"].ToString(),
                         Comp = registros["Comp"].ToString(),
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
-                        User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString()))
                     };
                     FornecedorList.Add(FornecedorTemporario);
                 }
@@ -117,34 +114,30 @@ namespace TCC.Models
             }
         }
 
-        public Funcionario RetornaIdFornecedor(int IdFunc)
+        public Fornecedor RetornaIdFornecedor(int IdForn)
         {
             using (db = new ConexaoDB())
             {
-                string StrQuery = string.Format("select * from tbfuncionario where IdFunc = '{0}';", IdFunc);
+                string StrQuery = string.Format("select * from tbfornecedor where IdForn = '{0}';", IdForn);
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-                Funcionario FuncListando = null;
+                Fornecedor FornListando = null;
                 while (registros.Read())
                 {
-                    FuncListando = new Funcionario
+                    FornListando = new Fornecedor
                     {
-                        IdFunc = int.Parse(registros["IdFunc"].ToString()),
+                        IdForn = int.Parse(registros["IdForn"].ToString()),
+                        RazaoSocial = registros["RazaoSocial"].ToString(),
+                        NomeForn = registros["NomeForn"].ToString(),
+                        Cnpj = decimal.Parse(registros["Cnpj"].ToString()),
                         Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
-                        User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
-                        NomeFunc = registros["NomeFunc"].ToString(),
-                        CPFfunc = decimal.Parse(registros["CPFfunc"].ToString()),
-                        DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
-                        CargoFunc = registros["CargoFunc"].ToString(),
-                        SexoFunc = registros["SexoFunc"].ToString(),
-                        CelFunc = Convert.ToInt64(registros["CelFunc"].ToString()),
-                        EmailFunc = registros["EmailFunc"].ToString(),
-                        RgFunc = registros["RgFunc"].ToString(),
+                        Tel = int.Parse(registros["Tel"].ToString()),
+                        EmailForn = registros["EmailForn"].ToString(),
                         Comp = registros["Comp"].ToString(),
-                        NumEdif = int.Parse(registros["NumEdif"].ToString())
+                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
                     };
                 }
 
-                return FuncListando;
+                return FornListando;
             }
 
         }

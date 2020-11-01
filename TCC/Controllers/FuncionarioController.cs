@@ -17,12 +17,12 @@ namespace TCC.Controllers
 
         public ActionResult List(Funcionario funcionario)
         {
-            var funcionarioclienteList = funcionario.SelecionaFuncionario();
+            var funcionarioList = funcionario.SelecionaFuncionario();
 
             var objFunc = new Funcionario();
             objFunc.SelecionaFuncionario();
 
-            return View(funcionarioclienteList);
+            return View(funcionarioList);
         }
 
 
