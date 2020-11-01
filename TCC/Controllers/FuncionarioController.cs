@@ -49,7 +49,7 @@ namespace TCC.Controllers
             {
                 var objFunc = new Funcionario();
                 objFunc.InsertFuncionario(funcionario);
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             return View();
         }
@@ -69,7 +69,7 @@ namespace TCC.Controllers
         {
             var objFunc = new Funcionario();
             objFunc.UpdateFuncionario(funcionario);
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
     }
