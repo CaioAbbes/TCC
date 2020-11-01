@@ -1,9 +1,13 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Correios.Net;
+using MySql.Data.MySqlClient;
+using Renci.SshNet.Messages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
+using Ubiety.Dns.Core;
 
 namespace TCC.Models
 {
@@ -116,7 +120,7 @@ namespace TCC.Models
 
                     clienteList.Add(ClienteTemporario);
                 }
-                return clienteList ;
+                return clienteList;
             }
         }
 
@@ -131,7 +135,7 @@ namespace TCC.Models
                 {
                     clienteListando = new Cliente
                     {
-                        
+
                         IdCli = int.Parse(registros["IdCli"].ToString()),
                         NomeCli = registros["NomeCli"].ToString(),
                         CPF = decimal.Parse(registros["CPF"].ToString()),
@@ -150,5 +154,17 @@ namespace TCC.Models
 
         }
 
+        //public void LocalizarCEP(decimal? CEP, string Estado, string Cidade, string Bairro)
+        //{
+        //    Address endereco = SearchZip.GetAddress(CEP.ToString());
+        //    if (endereco.Zip != null)
+        //    {
+        //        Estado = endereco.State;
+        //        Cidade = endereco.City;
+        //        Bairro = endereco.District;
+        //    }
+
+        //}
     }
+
 }

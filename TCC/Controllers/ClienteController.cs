@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using TCC.Models;
 
 namespace TCC.Controllers
@@ -40,6 +41,7 @@ namespace TCC.Controllers
         // GET: Cliente/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
@@ -54,6 +56,7 @@ namespace TCC.Controllers
                 objCli.InsertCliente(cliente);
                 return RedirectToAction("Index");
             }
+
             return View();
 
         }
