@@ -71,9 +71,9 @@
         @Html.DisplayFor(modelItem => item.Endereco)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.IdForn }) |
-        @Html.ActionLink("Details", "Details", new { id = item.IdForn }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.IdForn })
+        @Html.ActionLink("Edit", "Edit", new { IdForn = item.IdForn }) |
+        @Html.ActionLink("Details", "Details", new { IdForn = item.IdForn }) |
+        @Html.ActionLink("Delete", "Delete", new { IdForn = item.IdForn })
     </td>
 </tr>
 }

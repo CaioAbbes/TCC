@@ -27,11 +27,11 @@ namespace TCC.Controllers
 
 
         // GET: Funcionario/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int IdFunc)
         {
             var funcionario = new Funcionario();
             var objFunc = new Funcionario();
-            funcionario = objFunc.SelecionaCarregado(id);
+            funcionario = objFunc.SelecionaCarregado(IdFunc);
             return View(funcionario);
         }
 
@@ -55,11 +55,11 @@ namespace TCC.Controllers
         }
 
         // GET: Funcionario/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int IdFunc)
         {
             var funcionario = new Funcionario();
             var objFunc = new Funcionario();
-            funcionario = objFunc.SelecionaCarregado(id);
+            funcionario = objFunc.SelecionaCarregado(IdFunc);
             return View(funcionario);
         }
 

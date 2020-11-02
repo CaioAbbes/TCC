@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Renci.SshNet.Messages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,11 +17,11 @@ namespace TCC.Controllers
         }
 
         // GET: Fornecedor/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int IdForn)
         {
             var fornecedor = new Fornecedor();
             var objFornecedor = new Fornecedor();
-            fornecedor = objFornecedor.RetornaIdFornecedor(id);
+            fornecedor = objFornecedor.RetornaIdFornecedor(IdForn);
             return View(fornecedor);
         }
 
@@ -43,6 +44,7 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Create(Fornecedor fornecedor)
         {
+            
             if (ModelState.IsValid)
             {
                 var objFornecedor = new Fornecedor();
@@ -53,11 +55,12 @@ namespace TCC.Controllers
         }
 
         // GET: Fornecedor/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int IdForn)
         {
             var fornecedor = new Fornecedor();
             var objFornecedor = new Fornecedor();
-            fornecedor = objFornecedor.RetornaIdFornecedor(id);
+            fornecedor = objFornecedor.RetornaIdFornecedor(IdForn);
+            int a  = objFornecedor.PegarIdForn(IdForn);
 
             return View(fornecedor);
         }
@@ -66,9 +69,18 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Edit(Fornecedor fornecedor)
         {
-            var objFornecedor = new Fornecedor();
-            objFornecedor.UpdateFornecedor(fornecedor);
-            return RedirectToAction("List");
+            try
+            {
+                var objFornecedor = new Fornecedor();
+                objFornecedor.UpdateFornecedor(fornecedor);
+                return RedirectToAction("List");
+            }
+            catch
+            {
+
+                Response.Write("<script>alert('Erro ao atualizar o Fornecedor!!!')</script>");
+            }
+            return View();
         }
 
         

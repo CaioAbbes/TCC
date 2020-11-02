@@ -95,9 +95,9 @@
             @Html.DisplayFor(modelItem => item.TipoAcesso)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdFunc }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdFunc }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdFunc })
+            @Html.ActionLink("Edit", "Edit", new { IdFunc = item.IdFunc }) |
+            @Html.ActionLink("Details", "Details", new { IdFunc = item.IdFunc }) |
+            @Html.ActionLink("Delete", "Delete", new { IdFunc = item.IdFunc })
         </td>
     </tr>
 }

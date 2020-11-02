@@ -30,11 +30,11 @@ namespace TCC.Controllers
 
 
         // GET: Cliente/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int IdCli)
         {
             var cliente = new Cliente();
             var objCliente = new Cliente();
-            cliente = objCliente.SelecionaCarregado(id);
+            cliente = objCliente.SelecionaCarregado(IdCli);
             return View(cliente);
         }
 
@@ -54,7 +54,7 @@ namespace TCC.Controllers
             {
                 var objCli = new Cliente();
                 objCli.InsertCliente(cliente);
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
 
             return View();
@@ -62,11 +62,11 @@ namespace TCC.Controllers
         }
 
         // GET: Cliente/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int IdCli)
         {
             var cliente = new Cliente() ;
             var objCliente = new Cliente();
-            cliente = objCliente.SelecionaCarregado(id);
+            cliente = objCliente.SelecionaCarregado(IdCli);
             return View(cliente);
         }
 
@@ -76,7 +76,7 @@ namespace TCC.Controllers
         {
             var objCli = new Cliente();
             objCli.UpdateCliente(cliente);
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
     }
 }

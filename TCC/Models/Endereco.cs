@@ -15,7 +15,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo CEP é requerido.")]
         [Display(Name = "CEP")]
-        [RegularExpression(@"^[0-9]{5}-[\d]{3}|(\d{8})$", ErrorMessage = "CEP invalido.")]
+        //[RegularExpression(@"^[0-9]{5}-[\d]{3}|(\d{8})$", ErrorMessage = "CEP invalido.")]
         public decimal CEP { get; set; }
 
         [Required(ErrorMessage = "O campo Logradouro é requerido.")]
