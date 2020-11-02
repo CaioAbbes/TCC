@@ -170,6 +170,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CupomController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -280,6 +281,9 @@
     <Content Include="Views\Fornecedor\List.cshtml" />
     <Content Include="Views\Fornecedor\Details.cshtml" />
     <Content Include="Views\Fornecedor\Edit.cshtml" />
+    <Content Include="Views\Cupom\Create.cshtml" />
+    <Content Include="Views\Cupom\List.cshtml" />
+    <Content Include="Views\Cupom\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

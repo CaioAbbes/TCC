@@ -34,7 +34,7 @@ namespace TCC.Controllers
         {
             var cliente = new Cliente();
             var objCliente = new Cliente();
-            cliente = objCliente.SelecionaCarregado(IdCli);
+            cliente = objCliente.SelecionaComIdCli(IdCli);
             return View(cliente);
         }
 
@@ -66,7 +66,7 @@ namespace TCC.Controllers
         {
             var cliente = new Cliente() ;
             var objCliente = new Cliente();
-            cliente = objCliente.SelecionaCarregado(IdCli);
+            cliente = objCliente.SelecionaComIdCli(IdCli);
             return View(cliente);
         }
 

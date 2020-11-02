@@ -30,7 +30,7 @@ namespace TCC.Controllers
         {
             var funcionario = new Funcionario();
             var objFunc = new Funcionario();
-            funcionario = objFunc.SelecionaCarregado(IdFunc);
+            funcionario = objFunc.SelecionaComIdFunc(IdFunc);
             return View(funcionario);
         }
 
@@ -58,7 +58,7 @@ namespace TCC.Controllers
         {
             var funcionario = new Funcionario();
             var objFunc = new Funcionario();
-            funcionario = objFunc.SelecionaCarregado(IdFunc);
+            funcionario = objFunc.SelecionaComIdFunc(IdFunc);
             return View(funcionario);
         }
 

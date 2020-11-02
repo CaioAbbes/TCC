@@ -114,7 +114,7 @@ namespace TCC.Models
             }
         }
 
-        public Fornecedor RetornaIdFornecedor(int IdForn)
+        public Fornecedor SelecionaComIdForn(int IdForn)
         {
             using (db = new ConexaoDB())
             {

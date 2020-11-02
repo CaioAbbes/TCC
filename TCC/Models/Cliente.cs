@@ -124,7 +124,7 @@ namespace TCC.Models
             }
         }
 
-        public Cliente SelecionaCarregado(int IdCli)
+        public Cliente SelecionaComIdCli(int IdCli)
         {
             using (db = new ConexaoDB())
             {

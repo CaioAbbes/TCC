@@ -79,7 +79,6 @@ namespace TCC.Models
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         public int NumEdif { get; set; }
 
-
         public Usuario User { get; set; }
 
         [Display(Name = "Tipo de acesso")]
@@ -144,7 +143,7 @@ namespace TCC.Models
         }
 
 
-        public Funcionario SelecionaCarregado(int IdFunc)
+        public Funcionario SelecionaComIdFunc(int IdFunc)
         {
             using (db = new ConexaoDB())
             {
