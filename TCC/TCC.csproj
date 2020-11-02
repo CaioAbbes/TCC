@@ -169,6 +169,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CliCupomController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CupomController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
@@ -284,6 +285,9 @@
     <Content Include="Views\Cupom\Create.cshtml" />
     <Content Include="Views\Cupom\List.cshtml" />
     <Content Include="Views\Cupom\Details.cshtml" />
+    <Content Include="Views\CliCupom\Details.cshtml" />
+    <Content Include="Views\CliCupom\List.cshtml" />
+    <Content Include="Views\CliCupom\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

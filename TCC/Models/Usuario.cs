@@ -38,6 +38,7 @@ namespace TCC.Models
 
         public Usuario RetornaPorIdUsuario(int idUsu)
         {
+            System.Diagnostics.Debug.WriteLine(idUsu);
             using (db = new ConexaoDB())
             {
                 string StrQuery = string.Format("select * from tbusuario where IdUsuario = '{0}';", idUsu);
@@ -45,14 +46,14 @@ namespace TCC.Models
                 Usuario UserListando = null;
                 while (registros.Read())
                 {
-                        UserListando = new Usuario
-                        {
-                            IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
-                            UsuarioText = registros["Usuario"].ToString(),
-                            Senha = registros["Senha"].ToString(),
-                            TipoAcesso = decimal.Parse(registros["TipoAcesso"].ToString())
-                        };
-                    
+                    UserListando = new Usuario
+                    {
+                        IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
+                        UsuarioText = registros["Usuario"].ToString(),
+                        Senha = registros["Senha"].ToString(),
+                        TipoAcesso = decimal.Parse(registros["TipoAcesso"].ToString())
+                    };
+
                 }
 
                 return UserListando;

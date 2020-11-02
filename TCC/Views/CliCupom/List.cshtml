@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TCC.Models.Clicupom>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodCupom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Liberado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CodCupom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Liberado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cliente)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { CodCupom = item.CodCupom }) |
+        @Html.ActionLink("Details", "Details", new { CodCupom = item.CodCupom }) |
+        @Html.ActionLink("Delete", "Delete", new { CodCupom = item.CodCupom })
+    </td>
+</tr>
+}
+
+</table>

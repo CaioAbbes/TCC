@@ -84,7 +84,7 @@ namespace TCC.Models
 
         public void UpdateCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}');",cliente.PegarIdCli(cliente.IdCli),cliente.CPF,cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Endereco.Cidade, cliente.Endereco.Estado, cliente.Endereco.UF, cliente.User.UsuarioText, cliente.User.Senha, cliente.NumEdif, cliente.NomeCli, cliente.EmailCli, cliente.CelCli, cliente.Comp);
+            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}');", cliente.PegarIdCli(cliente.IdCli), cliente.CPF, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Endereco.Cidade, cliente.Endereco.Estado, cliente.Endereco.UF, cliente.User.UsuarioText, cliente.User.Senha, cliente.NumEdif, cliente.NomeCli, cliente.EmailCli, cliente.CelCli, cliente.Comp);
 
             using (db = new ConexaoDB())
             {
@@ -170,6 +170,42 @@ namespace TCC.Models
 
         }
 
+        //public Cliente SelecionaIdCli(int IdCli)
+        //{
+        //    using (db = new ConexaoDB())
+        //    {
+        //        string StrQuery = string.Format("select IdCli from tbcliente where IdCli = '{0}';", IdCli);
+        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+        //        while (registros.Read())
+        //        {
+        //            IdCli = int.Parse(registros["IdCli"].ToString());
+        //        }
+
+        //        return IdCli;
+        //    }
+
+        //}
+
+        //public Cliente PegarListaIdCli(int IdCli)
+        //{
+        //    using (db = new ConexaoDB())
+        //    {
+        //        string StrQuery = string.Format("select IdCli from tbcliente where IdCli = '{0}';", IdCli);
+        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+        //        Cliente clienteListando = null;
+        //        while (registros.Read())
+        //        {
+        //            clienteListando = new Cliente
+        //            {
+        //                IdCli = int.Parse(registros["IdCli"].ToString())
+        //            };
+        //        }
+
+        //        return clienteListando;
+        //    }
+
+    }
+
         //public void LocalizarCEP(decimal? CEP, string Estado, string Cidade, string Bairro)
         //{
         //    Address endereco = SearchZip.GetAddress(CEP.ToString());
@@ -183,4 +219,4 @@ namespace TCC.Models
         //}
     }
 
-}
+

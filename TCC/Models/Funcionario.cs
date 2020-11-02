@@ -1,5 +1,6 @@
 ﻿using Microsoft.Ajax.Utilities;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -116,6 +117,12 @@ namespace TCC.Models
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 int a;
                 var funcionarioList = new List<Funcionario>();
+                var usuTemp = new Usuario
+                {
+                    IdUsuario = 0,
+                    UsuarioText = "",
+                    Senha = ""
+                };
                 while (registros.Read())
                 {
                     var FuncionarioTemporario = new Funcionario
@@ -132,7 +139,9 @@ namespace TCC.Models
                         RgFunc = registros["RgFunc"].ToString(),
                         Comp = registros["Comp"].ToString(),
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
-                        User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString()))
+                        //User = registros["IdUsuario"].ToString() != null ? new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())) : usuTemp
+                        User = new Usuario().RetornaPorIdUsuario(int.TryParse(registros["IdUsuario"].ToString(),out a))
+                        //User = usuTemp
                     };
 
                     funcionarioList.Add(FuncionarioTemporario);
