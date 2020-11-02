@@ -15,7 +15,7 @@ namespace TCC.Models
         private ConexaoDB db = new ConexaoDB();
 
 
-        [Required(ErrorMessage = "O campo Id do usuário é requerido.")]
+        //[Required(ErrorMessage = "O campo Id do usuário é requerido.")]
         [Display(Name = "Id do usuário")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
@@ -45,13 +45,14 @@ namespace TCC.Models
                 Usuario UserListando = null;
                 while (registros.Read())
                 {
-                    UserListando = new Usuario
-                    {
-                        IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
-                        UsuarioText = registros["Usuario"].ToString(),
-                        Senha = registros["Senha"].ToString(),
-                        TipoAcesso = decimal.Parse(registros["TipoAcesso"].ToString())
-                    };
+                        UserListando = new Usuario
+                        {
+                            IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
+                            UsuarioText = registros["Usuario"].ToString(),
+                            Senha = registros["Senha"].ToString(),
+                            TipoAcesso = decimal.Parse(registros["TipoAcesso"].ToString())
+                        };
+                    
                 }
 
                 return UserListando;

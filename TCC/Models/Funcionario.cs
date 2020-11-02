@@ -1,10 +1,12 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Ajax.Utilities;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Ubiety.Dns.Core;
 
 namespace TCC.Models
 {
@@ -95,7 +97,7 @@ namespace TCC.Models
 
         public void UpdateFuncionario(Funcionario funcionario)
         {
-            string strQuery = string.Format("CALL sp_AtuaFunc('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}');",funcionario.CPFfunc,funcionario.Endereco.CEP, funcionario.NomeFunc,funcionario.DatNascFunc.ToString("yyyy-MM-dd"),funcionario.CargoFunc,funcionario.SexoFunc,funcionario.CelFunc,funcionario.EmailFunc,funcionario.RgFunc,funcionario.Comp,funcionario.NumEdif,funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Endereco.Cidade, funcionario.Endereco.Estado, funcionario.Endereco.UF, funcionario.User.UsuarioText, funcionario.User.Senha);
+            string strQuery = string.Format("CALL sp_AtuaFunc('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}');", funcionario.PegarIdFunc(funcionario.IdFunc), funcionario.CPFfunc, funcionario.Endereco.CEP, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc, funcionario.EmailFunc, funcionario.RgFunc, funcionario.Comp, funcionario.NumEdif, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Endereco.Cidade, funcionario.Endereco.Estado, funcionario.Endereco.UF, funcionario.User.UsuarioText, funcionario.User.Senha);
 
 
             using (db = new ConexaoDB())
@@ -110,8 +112,10 @@ namespace TCC.Models
         {
             using (db = new ConexaoDB())
             {
+
                 string StrQuery = string.Format("select * from tbfuncionario;");
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                int a;
                 var funcionarioList = new List<Funcionario>();
                 while (registros.Read())
                 {
@@ -131,11 +135,14 @@ namespace TCC.Models
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
                         User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString()))
                     };
+
                     funcionarioList.Add(FuncionarioTemporario);
                 }
                 return funcionarioList;
             }
+
         }
+
 
         public Funcionario SelecionaCarregado(int IdFunc)
         {
@@ -165,6 +172,22 @@ namespace TCC.Models
                 }
 
                 return FuncListando;
+            }
+
+        }
+
+        public int PegarIdFunc(int IdFunc)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select IdFunc from tbfuncionario where IdFunc = '{0}';", IdFunc);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                while (registros.Read())
+                {
+                    IdFunc = int.Parse(registros["IdFunc"].ToString());
+                }
+
+                return IdFunc;
             }
 
         }
