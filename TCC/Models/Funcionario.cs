@@ -14,7 +14,7 @@ namespace TCC.Models
     public class Funcionario
     {
 
-        private ConexaoDB db = new ConexaoDB();
+        private ConexaoDB db;
 
         [Required(ErrorMessage = "O campo Id do funcionário é requerido.")]
         [Display(Name = "Id do funcionário")]
@@ -59,7 +59,7 @@ namespace TCC.Models
         public long CelFunc { get; set; }
 
         [Required(ErrorMessage = "O campo Email do funcionário é requerido.")]
-        [RegularExpression(@"^[-a-zA-Z0-9][-.a-zA-Z0-9]*@[-.a-zA-Z0-9]+(\.[-.a-zA-Z0-9]+)*\.(com|edu|info|gov|int|mil|net|org|biz|name|museum|coop|aero|pro|tv|[a-zA-Z]{2})$", ErrorMessage = "O Email do funcionário está incorreto.")]
+        [RegularExpression(@"^[-a-zA-Z0-9][-.a-zA-Z0-9]@[-.a-zA-Z0-9]+(\.[-.a-zA-Z0-9]+)\.(com|edu|info|gov|int|mil|net|org|biz|name|museum|coop|aero|pro|tv|[a-zA-Z]{2})$", ErrorMessage = "O Email do funcionário está incorreto.")]
         [Display(Name = "Email do funcionário")]
         [StringLength(60, ErrorMessage = "A quantidade de caracteres do Email do funcionário é invalido.")]
         public string EmailFunc { get; set; }
@@ -82,12 +82,10 @@ namespace TCC.Models
 
         public Usuario User { get; set; }
 
-        [Display(Name = "Tipo de acesso")]
-        public decimal TipoAcesso { get; set; }
 
         public void InsertFuncionario(Funcionario funcionario)
         {
-            string strQuery = string.Format("CALL sp_InsFuncEndUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}');", funcionario.User.UsuarioText, funcionario.User.Senha, funcionario.Endereco.UF, funcionario.Endereco.Cidade, funcionario.Endereco.CEP, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Comp, funcionario.NumEdif, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc, funcionario.EmailFunc, funcionario.RgFunc, funcionario.CPFfunc, funcionario.Endereco.Estado, funcionario.TipoAcesso);
+            string strQuery = string.Format("CALL sp_InsFuncEndUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}');", funcionario.User.UsuarioText, funcionario.User.Senha, funcionario.Endereco.UF, funcionario.Endereco.Cidade, funcionario.Endereco.CEP, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Comp, funcionario.NumEdif, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc, funcionario.EmailFunc, funcionario.RgFunc, funcionario.CPFfunc, funcionario.Endereco.Estado, funcionario.User.TipoAcesso);
 
             using (db = new ConexaoDB())
             {
@@ -125,6 +123,7 @@ namespace TCC.Models
                 };
                 while (registros.Read())
                 {
+                    string idUser = registros["IdUsuario"].ToString();
                     var FuncionarioTemporario = new Funcionario
                     {
                         IdFunc = int.Parse(registros["IdFunc"].ToString()),
@@ -139,13 +138,12 @@ namespace TCC.Models
                         RgFunc = registros["RgFunc"].ToString(),
                         Comp = registros["Comp"].ToString(),
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
-                        //User = registros["IdUsuario"].ToString() != null ? new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())) : usuTemp
-                        User = new Usuario().RetornaPorIdUsuario(int.TryParse(registros["IdUsuario"].ToString(),out a))
-                        //User = usuTemp
+                        User = idUser != "" ? new Usuario().RetornaPorIdUsuario(int.Parse(idUser)) : usuTemp
                     };
 
                     funcionarioList.Add(FuncionarioTemporario);
                 }
+                //db.Dispose();
                 return funcionarioList;
             }
 
@@ -202,4 +200,6 @@ namespace TCC.Models
 
 
     }
+
+
 }
