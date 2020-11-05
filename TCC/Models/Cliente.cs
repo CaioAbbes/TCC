@@ -13,7 +13,7 @@ namespace TCC.Models
 {
     public class Cliente
     {
-        private ConexaoDB db = new ConexaoDB();
+        private ConexaoDB db;
 
 
         [Required(ErrorMessage = "O campo Id do cliente é requerido.")]

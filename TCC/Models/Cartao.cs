@@ -8,11 +8,13 @@ namespace TCC.Models
 {
     public class Cartao
     {
+        private ConexaoDB db;
+
         [Required(ErrorMessage = "O campo Número do cartão é requerido.")]
         [Display(Name = "Número do cartão")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         //[CreditCard(ErrorMessage = "Cartão inválido")]
-        [StringLength(16,ErrorMessage = "A quantidade de caracteres do cartão é invalida.",MinimumLength = 16)]
+        //[StringLength(16,ErrorMessage = "A quantidade de caracteres do cartão é invalida.",MinimumLength = 16)]
         public decimal Numcartao { get; set; }
 
         [Required(ErrorMessage = "O campo Código de Verificação de Cartão é requerido.")]
@@ -28,13 +30,26 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Data de vencimento é requerido.")]
         [Display(Name = "Data de vencimento ")]
-        [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
+        //[DisplayFormat(DataFormatString = "mm/dd/yyyy")]
         [DataType(DataType.Date)]
         public DateTime Datavalid { get; set; }
 
-        [Display(Name = "Id do cliente")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-        [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public int IdCli { get; set; }
+        public Cliente Cliente { get; set; }
+
+        public void InsertCartao(Cartao cartao)
+        {
+            Cliente cliente = new Cliente();
+
+            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}');",Cliente.PegarIdCli(cliente.IdCli),cartao.Numcartao,cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-dd"));
+
+            using (db = new ConexaoDB())
+            {
+                db.ExecutaComando(strQuery);
+            }
+        }
+
+
+
+
     }
 }

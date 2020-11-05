@@ -169,6 +169,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartaoController.cs" />
     <Compile Include="Controllers\CliCupomController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CupomController.cs" />
@@ -288,6 +289,8 @@
     <Content Include="Views\CliCupom\Details.cshtml" />
     <Content Include="Views\CliCupom\List.cshtml" />
     <Content Include="Views\CliCupom\Edit.cshtml" />
+    <Content Include="Views\Cartao\Index.cshtml" />
+    <Content Include="Views\Cartao\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

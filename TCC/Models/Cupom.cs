@@ -9,7 +9,7 @@ namespace TCC.Models
 {
     public class Cupom
     {
-        ConexaoDB db = new ConexaoDB();
+        private ConexaoDB db;
 
         [StringLength(6,ErrorMessage = "o numero de caracteres do Código do cupom é invalido ")]
         [Required(ErrorMessage = "O campo Código do cupom é requerido")]

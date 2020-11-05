@@ -10,7 +10,7 @@ namespace TCC.Models
     public class Clicupom
     {
 
-        ConexaoDB db = new ConexaoDB();
+        private ConexaoDB db;
 
         [Required(ErrorMessage = "O campo Codigo cupom é requerido.")]
         [Display(Name = "Codigo cupom")]
@@ -46,7 +46,6 @@ namespace TCC.Models
 
                 string StrQuery = string.Format("select * from tbcupom;");
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-                int a;
                 var ClicupomList = new List<Clicupom>();
                 while (registros.Read())
                 {

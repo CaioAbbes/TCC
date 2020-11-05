@@ -12,7 +12,7 @@ namespace TCC.Models
     public class Fornecedor
     {
 
-        private ConexaoDB db = new ConexaoDB();
+        private ConexaoDB db;
 
         [Required(ErrorMessage = "O campo Id do fornecedor é requerido.")]
         [Display(Name = "Id do fornecedor")]
