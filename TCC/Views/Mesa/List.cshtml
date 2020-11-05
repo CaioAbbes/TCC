@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TCC.Models.Mesa>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdMesa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numlugares)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoLugar)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdMesa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numlugares)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disponi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoLugar)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { IdMesa = item.IdMesa }) |
+            @Html.ActionLink("Details", "Details", new { IdMesa = item.IdMesa }) |
+            @Html.ActionLink("Delete", "Delete", new { IdMesa = item.IdMesa })
+        </td>
+    </tr>
+}
+
+</table>

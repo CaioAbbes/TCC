@@ -176,6 +176,7 @@
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MesaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -293,6 +294,11 @@
     <Content Include="Views\Cartao\Create.cshtml" />
     <Content Include="Views\Cartao\Delete.cshtml" />
     <Content Include="Views\Cartao\List.cshtml" />
+    <Content Include="Views\Mesa\Create.cshtml" />
+    <Content Include="Views\Cartao\Details.cshtml" />
+    <Content Include="Views\Mesa\Edit.cshtml" />
+    <Content Include="Views\Mesa\Details.cshtml" />
+    <Content Include="Views\Mesa\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

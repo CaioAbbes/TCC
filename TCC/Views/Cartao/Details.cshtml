@@ -1,0 +1,58 @@
+﻿@model TCC.Models.Cartao
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cartao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Numcartao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numcartao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.IdCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numcartao.Cliente.IdCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cvc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cvc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datavalid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datavalid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

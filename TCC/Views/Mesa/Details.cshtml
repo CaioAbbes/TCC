@@ -1,0 +1,50 @@
+﻿@model TCC.Models.Mesa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mesa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdMesa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdMesa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numlugares)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numlugares)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoLugar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoLugar)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

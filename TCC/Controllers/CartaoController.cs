@@ -16,9 +16,12 @@ namespace TCC.Controllers
         }
 
         // GET: Cartao/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(decimal Numcartao)
         {
-            return View();
+            var cartao = new Cartao();
+            var objCartao = new Cartao();
+            cartao = objCartao.SelecionaComNumCartao(Numcartao);
+            return View(cartao);
         }
 
         public ActionResult List(Cartao cartao)
@@ -48,7 +51,7 @@ namespace TCC.Controllers
             {
                 var objCartao = new Cartao();
                 objCartao.InsertCartao(cartao);
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
 
             return View();
@@ -92,7 +95,7 @@ namespace TCC.Controllers
         {
             var objCartao = new Cartao();
             objCartao.DeleteCartao(cartao);
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
     }
 }
