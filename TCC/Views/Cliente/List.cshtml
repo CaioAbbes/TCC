@@ -77,8 +77,10 @@
             @Html.DisplayFor(modelItem => item.QtdPontos)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { IdCli = item.IdCli  }) |
-            @Html.ActionLink("Details", "Details", new { IdCli = item.IdCli  }) |
+            @Html.ActionLink("Edit", "Edit", new { IdCli = item.IdCli }) |
+            @Html.ActionLink("Details", "Details", new { IdCli = item.IdCli }) |
+            @Html.ActionLink("Cadastrar Cartao", "Create", "Cartao", new { idCli = item.IdCli }, null)
+
         </td>
     </tr>
 }

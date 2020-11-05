@@ -21,10 +21,23 @@ namespace TCC.Controllers
             return View();
         }
 
-        // GET: Cartao/Create
-        public ActionResult Create()
+        public ActionResult List(Cartao cartao)
         {
-            return View();
+            var cartaoList = cartao.SelecionaCartao();
+
+            var objCartao = new Cartao();
+            objCartao.SelecionaCartao();
+
+            return View(cartaoList);
+        }
+
+        // GET: Cartao/Create
+        public ActionResult Create(int idCli )
+        {
+            var cartao = new Cartao();
+            var objCartao = new Cartao();
+            cartao = objCartao.SelecionaComNumCartao(idCli);
+            return View(cartao);
         }
 
         // POST: Cartao/Create
@@ -65,25 +78,21 @@ namespace TCC.Controllers
         }
 
         // GET: Cartao/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(decimal Numcartao)
         {
-            return View();
+            var cartao = new Cartao();
+            var objCartao = new Cartao();
+            cartao = objCartao.SelecionaComNumCartao(Numcartao);
+            return View(cartao);
         }
 
         // POST: Cartao/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Cartao cartao)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var objCartao = new Cartao();
+            objCartao.DeleteCartao(cartao);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -170,41 +170,48 @@ namespace TCC.Models
 
         }
 
-        //public Cliente SelecionaIdCli(int IdCli)
-        //{
-        //    using (db = new ConexaoDB())
-        //    {
-        //        string StrQuery = string.Format("select IdCli from tbcliente where IdCli = '{0}';", IdCli);
-        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-        //        while (registros.Read())
-        //        {
-        //            IdCli = int.Parse(registros["IdCli"].ToString());
-        //        }
+        public Cliente SelecionaIdCli(int IdCli)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select IdCli from tbcliente where IdCli = '{0}';", IdCli);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Cliente clienteListando = null;
+                while (registros.Read())
+                {
+                    clienteListando = new Cliente
+                    {
+                        IdCli = int.Parse(registros["IdCli"].ToString())
 
-        //        return IdCli;
-        //    }
+                    };
+                }
 
-        //}
+                return clienteListando;
+            }
 
-        //public Cliente PegarListaIdCli(int IdCli)
-        //{
-        //    using (db = new ConexaoDB())
-        //    {
-        //        string StrQuery = string.Format("select IdCli from tbcliente where IdCli = '{0}';", IdCli);
-        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-        //        Cliente clienteListando = null;
-        //        while (registros.Read())
-        //        {
-        //            clienteListando = new Cliente
-        //            {
-        //                IdCli = int.Parse(registros["IdCli"].ToString())
-        //            };
-        //        }
-
-        //        return clienteListando;
-        //    }
+        }
 
     }
+
+    //public Cliente PegarListaIdCli(int IdCli)
+    //{
+    //    using (db = new ConexaoDB())
+    //    {
+    //        string StrQuery = string.Format("select IdCli from tbcliente where IdCli = '{0}';", IdCli);
+    //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+    //        Cliente clienteListando = null;
+    //        while (registros.Read())
+    //        {
+    //            clienteListando = new Cliente
+    //            {
+    //                IdCli = int.Parse(registros["IdCli"].ToString())
+    //            };
+    //        }
+
+    //        return clienteListando;
+    //    }
+
+}
 
         //public void LocalizarCEP(decimal? CEP, string Estado, string Cidade, string Bairro)
         //{
@@ -217,6 +224,6 @@ namespace TCC.Models
         //    }
 
         //}
-    }
+    //}
 
 

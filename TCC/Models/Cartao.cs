@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -34,13 +35,11 @@ namespace TCC.Models
         [DataType(DataType.Date)]
         public DateTime Datavalid { get; set; }
 
-        public Cliente Cliente { get; set; }
+        public  Cliente Cliente { get; set; }
 
         public void InsertCartao(Cartao cartao)
         {
-            Cliente cliente = new Cliente();
-
-            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}');",Cliente.PegarIdCli(cliente.IdCli),cartao.Numcartao,cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-dd"));
+            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}','{4}');",2,cartao.Numcartao,cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-dd"));
 
             using (db = new ConexaoDB())
             {
@@ -48,6 +47,62 @@ namespace TCC.Models
             }
         }
 
+        public void DeleteCartao(Cartao cartao)
+        {
+            string strQuery = string.Format("call sp_DelCartao('{0}','{1}');", 2,cartao.Numcartao);
+
+            using (db = new ConexaoDB())
+            {
+                db.ExecutaComando(strQuery);
+            }
+        }
+
+        public List<Cartao> SelecionaCartao()
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbcartao;");
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                var cartaoList = new List<Cartao>();
+                while (registros.Read())
+                {
+                    var CartaoTemporario = new Cartao
+                    {
+                        Numcartao = decimal.Parse(registros["Numcartao"].ToString()),
+                        Cvc = int.Parse(registros["cvc"].ToString()),
+                        Titular = registros["titular"].ToString(),
+                        Datavalid = DateTime.Parse(registros["datavalid"].ToString()),
+                        Cliente = new Cliente().SelecionaIdCli(int.Parse(registros["IdCli"].ToString()))
+                    };
+                    cartaoList.Add(CartaoTemporario);
+                }
+                return cartaoList;
+            }
+        }
+
+        public Cartao SelecionaComNumCartao(decimal Numcartao)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbcartao where Numcartao = '{0}';", Numcartao);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Cartao cartaoListando = null;
+                while (registros.Read())
+                {
+                    cartaoListando = new Cartao
+                    {
+                        Numcartao = decimal.Parse(registros["Numcartao"].ToString()),
+                        Cvc = int.Parse(registros["cvc"].ToString()),
+                        Titular = registros["titular"].ToString(),
+                        Datavalid = DateTime.Parse(registros["datavalid"].ToString()),
+                        Cliente = new Cliente().SelecionaIdCli(int.Parse(registros["IdCli"].ToString()))
+                    };
+                }
+
+                return cartaoListando;
+            }
+
+        }
 
 
 

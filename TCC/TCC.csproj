@@ -291,6 +291,8 @@
     <Content Include="Views\CliCupom\Edit.cshtml" />
     <Content Include="Views\Cartao\Index.cshtml" />
     <Content Include="Views\Cartao\Create.cshtml" />
+    <Content Include="Views\Cartao\Delete.cshtml" />
+    <Content Include="Views\Cartao\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
