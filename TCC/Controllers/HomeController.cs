@@ -185,25 +185,6 @@ namespace TCC.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult tbproduto_pedido(Produto_pedido pedido,Mesa mesa,Comanda comanda)
-        {
-            MySqlConnection conexao = new MySqlConnection("server = localhost; user id = root; password = 12345678; database = db_rest        ");
-            conexao.Open();
-            var query = "CALL sp_InsPedido (";
-            query += string.Format("'{0}',",mesa.IdMesa);
-            query += string.Format("'{0}'", comanda.Idcli);
-            query += string.Format(",'{0}'", pedido.NomeProd);
-            query += string.Format(",'{0}')",pedido.QtdProd);
-            MySqlCommand comando = new MySqlCommand(query,conexao);
-            int intReturn = int.Parse(comando.ExecuteNonQuery().ToString());
-            if (intReturn != -1)
-                Response.Write("Usuário cadastrado.");
-            else
-                Response.Write("Limite máximo de usuários atingido.");
-
-            return View();
-        }
 
         public ActionResult tbreserva()
         {

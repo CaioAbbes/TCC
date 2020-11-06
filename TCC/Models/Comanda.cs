@@ -8,6 +8,9 @@ namespace TCC.Models
 {
     public class Comanda
     {
+
+        private ConexaoDB db;
+
         [Required(ErrorMessage = "O campo Id da comanda é requerido.")]
         [Display(Name = "Id da comanda")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
@@ -17,12 +20,12 @@ namespace TCC.Models
         [Display(Name = "Id do cliente")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public int Idcli { get; set; }
+        public Cliente Cliente { get; set; }
 
         [Display(Name = "Id da mesa")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public int IdMesa { get; set; }
+        public Mesa Mesa { get; set; }
 
         [Required(ErrorMessage = "O campo Status da comanda é requerido")]
         [Display(Name = "Status da comanda")]

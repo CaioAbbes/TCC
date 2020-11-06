@@ -40,7 +40,6 @@ namespace TCC.Models
 
                 string StrQuery = string.Format("select * from tbcupom;");
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-                int a;
                 var cupomList = new List<Cupom>();
                 while (registros.Read())
                 {

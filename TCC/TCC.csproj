@@ -419,6 +419,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MesaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\Produto_PedidoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -545,6 +546,7 @@
     <Content Include="Views\Produto\List.cshtml" />
     <Content Include="Views\Produto\Create.cshtml" />
     <Content Include="Views\Produto\Edit.cshtml" />
+    <Content Include="Views\Produto_Pedido\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

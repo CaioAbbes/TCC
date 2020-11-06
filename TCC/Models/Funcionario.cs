@@ -113,7 +113,6 @@ namespace TCC.Models
 
                 string StrQuery = string.Format("select * from tbfuncionario;");
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-                int a;
                 var funcionarioList = new List<Funcionario>();
                 var usuTemp = new Usuario
                 {
