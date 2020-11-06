@@ -80,7 +80,7 @@ namespace TCC.Models
         {
             using (db = new ConexaoDB())
             {
-                string strQuery = string.Format("CALL sp_AtuaForn('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}');",fornecedor.PegarIdForn(fornecedor.IdForn), fornecedor.RazaoSocial,fornecedor.NomeForn,fornecedor.Cnpj,fornecedor.Endereco.CEP,fornecedor.Tel,fornecedor.EmailForn,fornecedor.Comp,fornecedor.NumEdif,fornecedor.Endereco.Logra,fornecedor.Endereco.Bairro,fornecedor.Endereco.Cidade,fornecedor.Endereco.Estado,fornecedor.Endereco.UF);
+                string strQuery = string.Format("CALL sp_AtuaForn('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}');",fornecedor.IdForn, fornecedor.RazaoSocial,fornecedor.NomeForn,fornecedor.Cnpj,fornecedor.Endereco.CEP,fornecedor.Tel,fornecedor.EmailForn,fornecedor.Comp,fornecedor.NumEdif,fornecedor.Endereco.Logra,fornecedor.Endereco.Bairro,fornecedor.Endereco.Cidade,fornecedor.Endereco.Estado,fornecedor.Endereco.UF);
 
                 db.ExecutaComando(strQuery);
             }
@@ -142,21 +142,21 @@ namespace TCC.Models
 
         }
 
-        public int PegarIdForn(int IdForn)
-        {
-            using (db = new ConexaoDB())
-            {
-                string StrQuery = string.Format("select IdForn from tbfornecedor where IdForn = '{0}';", IdForn);
-                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-                while (registros.Read())
-                {
-                    IdForn = int.Parse(registros["IdForn"].ToString());
-                }
+        //public int PegarIdForn(int IdForn)
+        //{
+        //    using (db = new ConexaoDB())
+        //    {
+        //        string StrQuery = string.Format("select IdForn from tbfornecedor where IdForn = '{0}';", IdForn);
+        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+        //        while (registros.Read())
+        //        {
+        //            IdForn = int.Parse(registros["IdForn"].ToString());
+        //        }
 
-                return IdForn;
-            }
+        //        return IdForn;
+        //    }
 
-        }
+        //}
 
 
 

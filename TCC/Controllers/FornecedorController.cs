@@ -60,7 +60,6 @@ namespace TCC.Controllers
             var fornecedor = new Fornecedor();
             var objFornecedor = new Fornecedor();
             fornecedor = objFornecedor.SelecionaComIdForn(IdForn);
-            int a  = objFornecedor.PegarIdForn(IdForn);
 
             return View(fornecedor);
         }

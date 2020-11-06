@@ -95,7 +95,7 @@ namespace TCC.Models
 
         public void UpdateFuncionario(Funcionario funcionario)
         {
-            string strQuery = string.Format("CALL sp_AtuaFunc('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}');", funcionario.PegarIdFunc(funcionario.IdFunc), funcionario.CPFfunc, funcionario.Endereco.CEP, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc, funcionario.EmailFunc, funcionario.RgFunc, funcionario.Comp, funcionario.NumEdif, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Endereco.Cidade, funcionario.Endereco.Estado, funcionario.Endereco.UF, funcionario.User.UsuarioText, funcionario.User.Senha);
+            string strQuery = string.Format("CALL sp_AtuaFunc('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}');", funcionario.IdFunc, funcionario.CPFfunc, funcionario.Endereco.CEP, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc, funcionario.EmailFunc, funcionario.RgFunc, funcionario.Comp, funcionario.NumEdif, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Endereco.Cidade, funcionario.Endereco.Estado, funcionario.Endereco.UF, funcionario.User.UsuarioText, funcionario.User.Senha);
 
 
             using (db = new ConexaoDB())
@@ -182,21 +182,21 @@ namespace TCC.Models
 
         }
 
-        public int PegarIdFunc(int IdFunc)
-        {
-            using (db = new ConexaoDB())
-            {
-                string StrQuery = string.Format("select IdFunc from tbfuncionario where IdFunc = '{0}';", IdFunc);
-                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-                while (registros.Read())
-                {
-                    IdFunc = int.Parse(registros["IdFunc"].ToString());
-                }
+        //public int PegarIdFunc(int IdFunc)
+        //{
+        //    using (db = new ConexaoDB())
+        //    {
+        //        string StrQuery = string.Format("select IdFunc from tbfuncionario where IdFunc = '{0}';", IdFunc);
+        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+        //        while (registros.Read())
+        //        {
+        //            IdFunc = int.Parse(registros["IdFunc"].ToString());
+        //        }
 
-                return IdFunc;
-            }
+        //        return IdFunc;
+        //    }
 
-        }
+        //}
 
 
     }

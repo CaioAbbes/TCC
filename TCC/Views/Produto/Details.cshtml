@@ -1,0 +1,74 @@
+﻿@model TCC.Models.Produto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoriaProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoriaProd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

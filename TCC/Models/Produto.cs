@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace TCC.Models
 {
     public class Produto
     {
+        private ConexaoDB db;
+
         [Required(ErrorMessage = "O campo Id do produto é requerido.")]
         [Display(Name = "Id do produto")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
@@ -22,7 +25,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Valor do produto é requerido.")]
         [Display(Name = "Valor do produto")]
-        [RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
+        //[RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
         public float ValorProd { get; set; }
 
         [Required(ErrorMessage = "O campo Descrição do produto é requerido.")]
@@ -36,6 +39,87 @@ namespace TCC.Models
         [StringLength(200, ErrorMessage = "A quantidade de caracteres da Observação do produto é invalido.")]
         public string Observacao { get; set; }
 
+        [Display(Name = "Tipo de produto")]
+        [StringLength(50, ErrorMessage = "A quantidade de caracteres do Tipo de produto é invalido.")]
+        public string TipoProd { get; set; }
 
-    }
+        [Display(Name = "Categoria do produto")]
+        [StringLength(50, ErrorMessage = "A quantidade de caracteres da Categoria do produto é invalido.")]
+        public string CategoriaProd { get; set; }
+
+        public void InsertProduto(Produto produto)
+        {
+            string strQuery = string.Format("CALL sp_InsProd('{0}','{1}','{2}','{3}','{4}','{5}');", produto.NomeProd, produto.DescProd, produto.Observacao, produto.ValorProd.ToString().Replace(",", "."), produto.TipoProd, produto.CategoriaProd);
+
+            using (db = new ConexaoDB())
+            {
+                db.ExecutaComando(strQuery);
+            }
+        }
+
+        public void UpdateProduto(Produto produto)
+        {
+            string strQuery = string.Format("CALL sp_AtuaProd('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", produto.IdProd, produto.NomeProd, produto.DescProd, produto.Observacao, produto.ValorProd.ToString().Replace(",", "."), produto.TipoProd, produto.CategoriaProd);
+
+            using (db = new ConexaoDB())
+            {
+                db.ExecutaComando(strQuery);
+            }
+        }
+
+        public List<Produto> SelecionaProduto()
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbproduto;");
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                var produtoList = new List<Produto>();
+                while (registros.Read())
+                {
+                    var ProdutoTemporaria = new Produto
+                    {
+                        IdProd = int.Parse(registros["IdProd"].ToString()),
+                        NomeProd = registros["NomeProd"].ToString(),
+                        DescProd = registros["DescProd"].ToString(),
+                        ValorProd = float.Parse(registros["ValorProd"].ToString()),
+                        Observacao = registros["Observacao"].ToString(),
+                        TipoProd = registros["TipoProd"].ToString(),
+                        CategoriaProd = registros["CategoriaProd"].ToString()
+                    };
+                    produtoList.Add(ProdutoTemporaria);
+                }
+                return produtoList;
+            }
+        }
+
+        public Produto SelecionaIdProd(int IdProd)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbproduto where IdProd = '{0}';", IdProd);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Produto ProdutoListando = null;
+                while (registros.Read())
+                {
+                    ProdutoListando = new Produto
+                    {
+                        IdProd = int.Parse(registros["IdProd"].ToString()),
+                        NomeProd = registros["NomeProd"].ToString(),
+                        DescProd = registros["DescProd"].ToString(),
+                        ValorProd = float.Parse(registros["ValorProd"].ToString()),
+                        Observacao = registros["Observacao"].ToString(),
+                        TipoProd = registros["TipoProd"].ToString(),
+                        CategoriaProd = registros["CategoriaProd"].ToString()
+                    };
+                }
+
+                return ProdutoListando;
+            }
+
+        }
+
+
+
+    
+}
 }
