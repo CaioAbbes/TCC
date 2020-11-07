@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -37,6 +38,27 @@ namespace TCC.Models
         [DisplayFormat(DataFormatString = "mm/DD/yyyy")]
         [DataType(DataType.DateTime)]
         public DateTime DataHComan { get; set; }
+
+
+        public Comanda SelecionaIdComanda(int IdComanda)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select IdComanda from tbcomanda where IdComanda = '{0}';", IdComanda);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Comanda comandaListando = null;
+                while (registros.Read())
+                {
+                    comandaListando = new Comanda
+                    {
+                        IdComanda = int.Parse(registros["IdComanda"].ToString())
+                    };
+                }
+
+                return comandaListando;
+            }
+
+        }
 
 
     }

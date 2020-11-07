@@ -547,6 +547,7 @@
     <Content Include="Views\Produto\Create.cshtml" />
     <Content Include="Views\Produto\Edit.cshtml" />
     <Content Include="Views\Produto_Pedido\Create.cshtml" />
+    <Content Include="Views\Produto_Pedido\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

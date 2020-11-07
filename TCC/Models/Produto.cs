@@ -118,8 +118,28 @@ namespace TCC.Models
 
         }
 
+        public Produto SelecionaComIdProd(int IdProd)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select IdProd from tbproduto where IdProd = '{0}';", IdProd);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Produto comandaListando = null;
+                while (registros.Read())
+                {
+                    comandaListando = new Produto
+                    {
+                        IdProd = int.Parse(registros["IdProd"].ToString()),
+                    };
+                }
+
+                return comandaListando;
+            }
+
+        }
 
 
-    
-}
+
+
+    }
 }

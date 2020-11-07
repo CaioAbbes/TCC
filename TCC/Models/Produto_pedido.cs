@@ -1,8 +1,10 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 
 namespace TCC.Models
 {
@@ -30,6 +32,7 @@ namespace TCC.Models
 
         public Cliente Cliente { get; set; }
 
+
         [Required(ErrorMessage = "O campo Nome do produto é requerido.")]
         [Display(Name = "Nome do produto")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
@@ -42,18 +45,18 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int QtdProd { get; set; }
 
-        [Required(ErrorMessage = "O campo Valor unitário é requerido.")]
+        //[Required(ErrorMessage = "O campo Valor unitário é requerido.")]
         [Display(Name = "Valor unitário")]
         //[RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")] 
         public float ValorUnitProd { get; set; }
 
-        [Required(ErrorMessage = "O campo Estágio do produto é requerido.")]
+        //[Required(ErrorMessage = "O campo Estágio do produto é requerido.")]
         [Display(Name = "Estágio do produto",Description = "Ex: Entregue, Em transporte, Cancelado")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(200, ErrorMessage = "A quantidade de caracteres do Nome do produto é invalido.")]
         public string StagioProd { get; set; }
 
-        [Required(ErrorMessage = "O campo Data e hora do produto pedido é requerido.")]
+        //[Required(ErrorMessage = "O campo Data e hora do produto pedido é requerido.")]
         [Display(Name = "Data e hora do produto pedido")]
         //[DisplayFormat(DataFormatString = "mm/dd/yyyy")]
         [DataType(DataType.DateTime)]
@@ -66,12 +69,83 @@ namespace TCC.Models
 
         public void InsertProdPed(Produto_pedido produtoPed)
         {
-            string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", produtoPed.Mesa.IdMesa,null,produtoPed.NomeProd,produtoPed.QtdProd, produtoPed.DescPedido);
+            string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", produtoPed.Mesa.IdMesa,0,produtoPed.NomeProd,produtoPed.QtdProd, produtoPed.DescPedido);
 
             using (db = new ConexaoDB())
             {
                 db.ExecutaComando(strQuery);
             }
+        }
+
+        //public void UpdateProdPed(Produto_pedido produtoPed)
+        //{
+        //    string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", produtoPed.Mesa.IdMesa, 0, produtoPed.NomeProd, produtoPed.QtdProd, produtoPed.DescPedido);
+
+        //    using (db = new ConexaoDB())
+        //    {
+        //        db.ExecutaComando(strQuery);
+        //    }
+        //}
+
+
+        public List<Produto_pedido> SelecionaProdPed()
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbproduto_pedido;");
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                var prodPedList = new List<Produto_pedido>();
+                while (registros.Read())
+                {
+                    var ProdPedTemporario = new Produto_pedido
+                    {
+                        IdProdPed = int.Parse(registros["IdProdPed"].ToString()),
+                        Produto = new Produto().SelecionaComIdProd(int.Parse(registros["IdProd"].ToString())),
+                        Comanda = new Comanda().SelecionaIdComanda(int.Parse(registros["IdComanda"].ToString())),
+                        NomeProd = registros["NomeProd"].ToString(),
+                        QtdProd = int.Parse(registros["QtdProd"].ToString()),
+                        ValorUnitProd = float.Parse(registros["ValorUnitProd"].ToString()),
+                        StagioProd = registros["StagioProd"].ToString(),
+                        DataHProdPed = DateTime.Parse(registros["DataHProdPed"].ToString()),
+                        DescPedido = registros["DescPedido"].ToString()
+                    };
+
+
+
+                    prodPedList.Add(ProdPedTemporario);
+                }
+                return prodPedList;
+            }
+        }
+
+        public Cliente SelecionaComIdCli(int IdCli)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbcliente where IdCli = '{0}';", IdCli);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Cliente clienteListando = null;
+                while (registros.Read())
+                {
+                    clienteListando = new Cliente
+                    {
+
+                        IdCli = int.Parse(registros["IdCli"].ToString()),
+                        NomeCli = registros["NomeCli"].ToString(),
+                        CPF = decimal.Parse(registros["CPF"].ToString()),
+                        EmailCli = registros["EmailCli"].ToString(),
+                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
+                        CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
+                        Comp = registros["Comp"].ToString(),
+                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
+                        User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
+                        QtdPontos = float.Parse(registros["QtdPontos"].ToString())
+                    };
+                }
+
+                return clienteListando;
+            }
+
         }
 
     }
