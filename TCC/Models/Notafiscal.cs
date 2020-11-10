@@ -34,5 +34,12 @@ namespace TCC.Models
         [Display(Name = " Valor total")]
         [RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
         public float ValorTotal { get; set; }
+
+
+
+
+
+
+
     }
 }
