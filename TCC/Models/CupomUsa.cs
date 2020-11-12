@@ -8,7 +8,7 @@ using System.Web;
 
 namespace TCC.Models
 {
-    public class Clicupom
+    public class CupomUsa
     {
 
         private ConexaoDB db;
@@ -19,18 +19,10 @@ namespace TCC.Models
         [StringLength(6, ErrorMessage = "A quantidade de caracteres do Codigo cupom é invalido.")]
         public string CodCupom { get; set; }
 
-        //[Required(ErrorMessage = "O campo CPF é requerido.")]
-        //[Display(Name = "CPF")]
-        //[RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
-        //public decimal CPF { get; set; }
-
         public Cliente Cliente { get; set; }
 
-        [Display(Name = "Liberado")]
-        public bool Liberado { get; set; }
 
-
-        public void UpdateClicupom(Clicupom Clicupom)
+        public void UpdateClicupom(CupomUsa Clicupom)
         {
             string strQuery = string.Format("call sp_RenoCupom('{0}');", Clicupom.CodCupom);
 
@@ -40,21 +32,20 @@ namespace TCC.Models
             }
         }
 
-        public List<Clicupom> SelecionaClicupom()
+        public List<CupomUsa> SelecionaClicupom()
         {
             using (db = new ConexaoDB())
             {
 
                 string StrQuery = string.Format("select * from tbcupom;");
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-                var ClicupomList = new List<Clicupom>();
+                var ClicupomList = new List<CupomUsa>();
                 while (registros.Read())
                 {
-                    var ClicupomTemporario = new Clicupom
+                    var ClicupomTemporario = new CupomUsa
                     {
                         CodCupom = registros["CodCupom"].ToString(),
                         Cliente = new Cliente().SelecionaComIdCli(int.Parse(registros["IdCli"].ToString())),
-                        Liberado = bool.Parse(registros["liberado"].ToString())
                     };
 
                     ClicupomList.Add(ClicupomTemporario);
@@ -65,20 +56,19 @@ namespace TCC.Models
         }
 
 
-        public Clicupom SelecionaComIdClicupom(string CodCupom)
+        public CupomUsa SelecionaComIdClicupom(string CodCupom)
         {
             using (db = new ConexaoDB())
             {
                 string StrQuery = string.Format("select * from tbclicupom where CodCupom = '{0}';", CodCupom);
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-                Clicupom ClicupomListando = null;
+                CupomUsa ClicupomListando = null;
                 while (registros.Read())
                 {
-                    ClicupomListando = new Clicupom
+                    ClicupomListando = new CupomUsa
                     {
                         CodCupom = registros["CodCupom"].ToString(),
                         Cliente = new Cliente().SelecionaComIdCli(int.Parse(registros["IdCli"].ToString())),
-                        Liberado = bool.Parse(registros["liberado"].ToString())
                     };
                 }
 

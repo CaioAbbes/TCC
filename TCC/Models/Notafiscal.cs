@@ -26,7 +26,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Data e hora do pagamento é requerido.")]
         [Display(Name = "Data e hora do pagamento")]
-        [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
+        //[DisplayFormat(DataFormatString = "mm/dd/yyyy")]
         [DataType(DataType.DateTime)]
         public DateTime DataHoraPag { get; set; }
 

@@ -411,7 +411,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartaoController.cs" />
-    <Compile Include="Controllers\CliCupomController.cs" />
+    <Compile Include="Controllers\CupomUsaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CupomController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
@@ -424,7 +424,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cartao.cs" />
-    <Compile Include="Models\Clicupom.cs" />
+    <Compile Include="Models\CupomUsa.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Comanda.cs" />
     <Compile Include="Models\Compra.cs" />
@@ -528,11 +528,9 @@
     <Content Include="Views\Fornecedor\Details.cshtml" />
     <Content Include="Views\Fornecedor\Edit.cshtml" />
     <Content Include="Views\Cupom\Create.cshtml" />
-    <Content Include="Views\Cupom\List.cshtml" />
-    <Content Include="Views\Cupom\Details.cshtml" />
-    <Content Include="Views\CliCupom\Details.cshtml" />
-    <Content Include="Views\CliCupom\List.cshtml" />
-    <Content Include="Views\CliCupom\Edit.cshtml" />
+    <Content Include="Views\CupomUsa\Details.cshtml" />
+    <Content Include="Views\CupomUsa\List.cshtml" />
+    <Content Include="Views\CupomUsa\Edit.cshtml" />
     <Content Include="Views\Cartao\Index.cshtml" />
     <Content Include="Views\Cartao\Create.cshtml" />
     <Content Include="Views\Cartao\Delete.cshtml" />
@@ -548,6 +546,8 @@
     <Content Include="Views\Produto\Edit.cshtml" />
     <Content Include="Views\Produto_Pedido\Create.cshtml" />
     <Content Include="Views\Produto_Pedido\List.cshtml" />
+    <Content Include="Views\Cupom\List.cshtml" />
+    <Content Include="Views\Cupom\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

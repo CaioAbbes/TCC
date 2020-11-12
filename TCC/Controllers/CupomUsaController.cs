@@ -7,7 +7,7 @@ using TCC.Models;
 
 namespace TCC.Controllers
 {
-    public class CliCupomController : Controller
+    public class CupomUsaController : Controller
     {
         // GET: CliCupom
         public ActionResult Index()
@@ -18,17 +18,17 @@ namespace TCC.Controllers
         // GET: CliCupom/Details/5
         public ActionResult Details(string CodCupom)
         {
-            var Clicupom = new Clicupom();
-            var objClicupom = new Clicupom();
+            var Clicupom = new CupomUsa();
+            var objClicupom = new CupomUsa();
             Clicupom = Clicupom.SelecionaComIdClicupom(CodCupom);
             return View(Clicupom);
         }
 
-        public ActionResult List(Clicupom clicupom)
+        public ActionResult List(CupomUsa cupomusa)
         {
-            var clicupomList = clicupom.SelecionaClicupom();
+            var clicupomList = cupomusa.SelecionaClicupom();
 
-            var objClicupom = new Clicupom();
+            var objClicupom = new CupomUsa();
             objClicupom.SelecionaClicupom();
             return View(clicupomList);
         }
@@ -42,10 +42,10 @@ namespace TCC.Controllers
 
         // POST: CliCupom/Edit/5
         [HttpPost]
-        public ActionResult Edit(Clicupom clicupom)
+        public ActionResult Edit(CupomUsa cupomusa)
         {
-            var objClicupom = new Clicupom();
-            objClicupom.UpdateClicupom(clicupom);
+            var objClicupom = new CupomUsa();
+            objClicupom.UpdateClicupom(cupomusa);
             return RedirectToAction("List");
         }     
     }

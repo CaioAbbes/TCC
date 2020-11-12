@@ -17,6 +17,21 @@
         <th>
             @Html.DisplayNameFor(model => model.Desconto)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalDispo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataTerm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorMin)
+        </th>
         <th></th>
     </tr>
 
@@ -29,7 +44,22 @@
             @Html.DisplayFor(modelItem => item.Desconto)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { CodCupom = item.CodCupom }) |
+            @Html.DisplayFor(modelItem => item.TotalDispo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataTerm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorMin)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { CodCupom = item.CodCupom  }) |
             @Html.ActionLink("Details", "Details", new { CodCupom = item.CodCupom }) |
             @Html.ActionLink("Delete", "Delete", new { CodCupom = item.CodCupom })
         </td>
