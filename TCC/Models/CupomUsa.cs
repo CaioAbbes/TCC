@@ -15,16 +15,16 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O Codigo cupom é requerido")]
         [Display(Name = "Codigo cupom")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
+        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(6, ErrorMessage = "A quantidade de caracteres do Codigo cupom é invalido.")]
         public string CodCupom { get; set; }
 
         public Cliente Cliente { get; set; }
 
 
-        public void UpdateClicupom(CupomUsa Clicupom)
+        public void UpdateClicupom(CupomUsa cupomUsa)
         {
-            string strQuery = string.Format("call sp_RenoCupom('{0}');", Clicupom.CodCupom);
+            string strQuery = string.Format("call sp_RenoCupom('{0}');", cupomUsa.CodCupom);
 
             using (db = new ConexaoDB())
             {
@@ -37,7 +37,7 @@ namespace TCC.Models
             using (db = new ConexaoDB())
             {
 
-                string StrQuery = string.Format("select * from tbcupom;");
+                string StrQuery = string.Format("select * from tbcupomusa;");
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 var ClicupomList = new List<CupomUsa>();
                 while (registros.Read())
@@ -60,7 +60,7 @@ namespace TCC.Models
         {
             using (db = new ConexaoDB())
             {
-                string StrQuery = string.Format("select * from tbclicupom where CodCupom = '{0}';", CodCupom);
+                string StrQuery = string.Format("select * from tbcupomusa where CodCupom = '{0}';", CodCupom);
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 CupomUsa ClicupomListando = null;
                 while (registros.Read())

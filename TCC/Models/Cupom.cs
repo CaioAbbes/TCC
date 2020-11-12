@@ -21,6 +21,10 @@ namespace TCC.Models
         [Display(Name = "Desconto")]
         public float Desconto { get; set; }
 
+        [Display(Name = "Total de cupons utilizados")]
+        [Required(ErrorMessage = "O campo Total de cupons utilizados é requerido")]
+        public int NumUtiliza { get; set; }
+
         [Display(Name = "Total de cupons disponiveis")]
         [Required(ErrorMessage = "O campo Total de cupons disponiveis é requerido")]
         public int TotalDispo { get; set; }
@@ -47,7 +51,7 @@ namespace TCC.Models
 
         public void InsertCupom(Cupom cupom)
         {
-            string strQuery = string.Format("call sp_InsCupom('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", cupom.CodCupom,cupom.Desconto.ToString().Replace(",","."),cupom.TotalDispo,cupom.DataInicio.ToString("yyyy-MM-dd"),cupom.DataTerm.ToString("yyyy-MM-dd"), cupom.Descri,cupom.ValorMin.ToString().Replace(",","."));
+            string strQuery = string.Format("call sp_InsCupom('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}');", cupom.CodCupom,cupom.Desconto.ToString().Replace(",","."),cupom.NumUtiliza,cupom.TotalDispo,cupom.DataInicio.ToString("yyyy-MM-dd HH:mm"),cupom.DataTerm.ToString("yyyy-MM-dd HH:mm"), cupom.Descri,cupom.ValorMin.ToString().Replace(",","."));
 
             using(db = new ConexaoDB())
             {
@@ -73,7 +77,8 @@ namespace TCC.Models
                         DataInicio = DateTime.Parse(registros["DataInicio"].ToString()),
                         DataTerm = DateTime.Parse(registros["DataTerm"].ToString()),
                         Descri = registros["Descri"].ToString(),
-                        ValorMin = float.Parse(registros["ValorMin"].ToString())
+                        ValorMin = float.Parse(registros["ValorMin"].ToString()),
+                        NumUtiliza = int.Parse(registros["numutiliza"].ToString())
                     };
 
                     cupomList.Add(CupomTemporario);
@@ -101,7 +106,8 @@ namespace TCC.Models
                         DataInicio = DateTime.Parse(registros["DataInicio"].ToString()),
                         DataTerm = DateTime.Parse(registros["DataTerm"].ToString()),
                         Descri = registros["Descri"].ToString(),
-                        ValorMin = float.Parse(registros["ValorMin"].ToString())
+                        ValorMin = float.Parse(registros["ValorMin"].ToString()),
+                        NumUtiliza = int.Parse(registros["numutiliza"].ToString())
                     };
                 }
 
