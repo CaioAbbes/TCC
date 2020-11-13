@@ -1,0 +1,50 @@
+﻿@model TCC.Models.Reserva
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reserva</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdReserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdReserva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mesa.IdMesa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mesa.IdMesa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.IdCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.IdCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataHoraReserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataHoraReserva)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
