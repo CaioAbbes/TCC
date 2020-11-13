@@ -24,13 +24,13 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Unidade de medida é requerido.")]
         [Display(Name = "Unidade de medida")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
+        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(200, ErrorMessage = "A quantidade de caracteres da Unidade de medida é invalido.")]
         public string UniMedi { get; set; }
 
         [Required(ErrorMessage = "O campo Preço unitário é requerido.")]
         [Display(Name = "Preço unitário")]
-        [RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
+        //[RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
         public float PrecoUnit { get; set; }
 
         [Required(ErrorMessage = "O campo Quantidade atual é requerido.")]
@@ -46,13 +46,25 @@ namespace TCC.Models
 
         [Display(Name = "Data de validade")]
         [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime DataValidade { get; set; }
 
         [Display(Name = "Marca")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(50, ErrorMessage = "A quantidade de caracteres da Marca é invalido.")]
         public string Marca { get; set; }
+
+
+        public void InsertIngrediente(Ingrediente ingrediente)
+        {
+            string strQuery = string.Format("call sp_InsEstoque('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}');",ingrediente.CodigoBarras,ingrediente.Nome,ingrediente.UniMedi,ingrediente.PrecoUnit.ToString().Replace(",", "."), ingrediente.QtdAtual,ingrediente.Marca,ingrediente.DataValidade.ToString("yyyy-MM-dd HH:mm"),ingrediente.TempDura);
+
+            using (db = new ConexaoDB())
+            {
+                db.ExecutaComando(strQuery);
+            }
+
+        }
 
 
         public decimal SelecionaCodigoBarras(decimal CodigoBarras)

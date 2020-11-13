@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,9 +9,10 @@ namespace TCC.Models
 {
     public class Pagamento
     {
+        private ConexaoDB db;
+
         [Required(ErrorMessage = "O campo Id da pagamento é requerido.")]
         [Display(Name = "Id da pagamento")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdPag { get; set; }
 
@@ -35,5 +37,27 @@ namespace TCC.Models
         [Display(Name = "Total")]
         [RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
         public float Total { get; set; }
+
+
+        public int SelecionaIdPag(int IdPag)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select IdPag from tbpagamento where IdPag = '{0}';", IdPag);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Pagamento pagamentoListando = null;
+                while (registros.Read())
+                {
+                    pagamentoListando = new Pagamento
+                    {
+                        IdPag = int.Parse(registros["IdPag"].ToString())
+
+                    };
+                }
+
+                return IdPag;
+            }
+
+        }
     }
 }

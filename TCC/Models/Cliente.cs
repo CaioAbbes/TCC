@@ -154,21 +154,6 @@ namespace TCC.Models
 
         }
 
-        //public int PegarIdCli(int IdCli)
-        //{
-        //    using (db = new ConexaoDB())
-        //    {
-        //        string StrQuery = string.Format("select IdCli from tbcliente where IdCli = '{0}';", IdCli);
-        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-        //        while (registros.Read())
-        //        {
-        //            IdCli = int.Parse(registros["IdCli"].ToString());
-        //        }
-
-        //        return IdCli;
-        //    }
-
-        //}
 
         public Cliente SelecionaIdCli(int IdCli)
         {
@@ -191,39 +176,28 @@ namespace TCC.Models
 
         }
 
+        public decimal SelecionaCPF(decimal CPF)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select CPF from tbcliente where CPF = '{0}';", CPF);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Cliente clienteListando = null;
+                while (registros.Read())
+                {
+                    clienteListando = new Cliente
+                    {
+                        CPF = decimal.Parse(registros["CPF"].ToString())
+
+                    };
+                }
+
+                return CPF;
+            }
+
+        }
+
     }
-
-    //public Cliente PegarListaIdCli(int IdCli)
-    //{
-    //    using (db = new ConexaoDB())
-    //    {
-    //        string StrQuery = string.Format("select IdCli from tbcliente where IdCli = '{0}';", IdCli);
-    //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-    //        Cliente clienteListando = null;
-    //        while (registros.Read())
-    //        {
-    //            clienteListando = new Cliente
-    //            {
-    //                IdCli = int.Parse(registros["IdCli"].ToString())
-    //            };
-    //        }
-
-    //        return clienteListando;
-    //    }
-
 }
-
-        //public void LocalizarCEP(decimal? CEP, string Estado, string Cidade, string Bairro)
-        //{
-        //    Address endereco = SearchZip.GetAddress(CEP.ToString());
-        //    if (endereco.Zip != null)
-        //    {
-        //        Estado = endereco.State;
-        //        Cidade = endereco.City;
-        //        Bairro = endereco.District;
-        //    }
-
-        //}
-    //}
 
 
