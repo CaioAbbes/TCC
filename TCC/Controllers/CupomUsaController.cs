@@ -20,33 +20,17 @@ namespace TCC.Controllers
         {
             var Clicupom = new CupomUsa();
             var objClicupom = new CupomUsa();
-            Clicupom = Clicupom.SelecionaComIdClicupom(CodCupom);
+            Clicupom = Clicupom.SelecionaComIdCupomUsa(CodCupom);
             return View(Clicupom);
         }
 
         public ActionResult List(CupomUsa cupomusa)
         {
-            var clicupomList = cupomusa.SelecionaClicupom();
-
+            var clicupomList = cupomusa.SelecionaCupomUsa();
             var objClicupom = new CupomUsa();
-            objClicupom.SelecionaClicupom();
+            objClicupom.SelecionaCupomUsa();
             return View(clicupomList);
         }
-
-
-        // GET: CliCupom/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: CliCupom/Edit/5
-        [HttpPost]
-        public ActionResult Edit(CupomUsa cupomusa)
-        {
-            var objClicupom = new CupomUsa();
-            objClicupom.UpdateClicupom(cupomusa);
-            return RedirectToAction("List");
-        }     
+    
     }
 }

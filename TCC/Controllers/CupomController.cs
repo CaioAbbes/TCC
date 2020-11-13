@@ -51,9 +51,23 @@ namespace TCC.Controllers
             return View();
         }
 
-        // GET: Cupom/Edit/5
+        public ActionResult Edit(string CodCupom)
+        {
+            var cupom = new Cupom();
+            var objCupom = new Cupom();
+            cupom = objCupom.SelecionaComIdCupom(CodCupom);
+            return View(cupom);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Cupom cupom)
+        {
+            var objCupom = new Cupom();
+            objCupom.UpdateCupom(cupom);
+            return RedirectToAction("List");
+        }
 
 
-    
-    }
+
+        }
 }

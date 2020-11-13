@@ -22,17 +22,7 @@ namespace TCC.Models
         public Cliente Cliente { get; set; }
 
 
-        public void UpdateClicupom(CupomUsa cupomUsa)
-        {
-            string strQuery = string.Format("call sp_RenoCupom('{0}');", cupomUsa.CodCupom);
-
-            using (db = new ConexaoDB())
-            {
-                db.ExecutaComando(strQuery);
-            }
-        }
-
-        public List<CupomUsa> SelecionaClicupom()
+        public List<CupomUsa> SelecionaCupomUsa()
         {
             using (db = new ConexaoDB())
             {
@@ -56,7 +46,7 @@ namespace TCC.Models
         }
 
 
-        public CupomUsa SelecionaComIdClicupom(string CodCupom)
+        public CupomUsa SelecionaComIdCupomUsa(string CodCupom)
         {
             using (db = new ConexaoDB())
             {

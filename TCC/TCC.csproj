@@ -530,7 +530,6 @@
     <Content Include="Views\Cupom\Create.cshtml" />
     <Content Include="Views\CupomUsa\Details.cshtml" />
     <Content Include="Views\CupomUsa\List.cshtml" />
-    <Content Include="Views\CupomUsa\Edit.cshtml" />
     <Content Include="Views\Cartao\Index.cshtml" />
     <Content Include="Views\Cartao\Create.cshtml" />
     <Content Include="Views\Cartao\Delete.cshtml" />
@@ -548,6 +547,7 @@
     <Content Include="Views\Produto_Pedido\List.cshtml" />
     <Content Include="Views\Cupom\List.cshtml" />
     <Content Include="Views\Cupom\Details.cshtml" />
+    <Content Include="Views\Cupom\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
