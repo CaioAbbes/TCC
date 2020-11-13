@@ -39,6 +39,10 @@ namespace TCC.Models
         public float Total { get; set; }
 
 
+
+
+
+
         public int SelecionaIdPag(int IdPag)
         {
             using (db = new ConexaoDB())
@@ -51,7 +55,6 @@ namespace TCC.Models
                     pagamentoListando = new Pagamento
                     {
                         IdPag = int.Parse(registros["IdPag"].ToString())
-
                     };
                 }
 

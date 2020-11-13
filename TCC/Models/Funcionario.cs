@@ -181,6 +181,26 @@ namespace TCC.Models
 
         }
 
+        public decimal SelecionaComCPFFunc(decimal CPFfunc)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select CPFfunc from tbfuncionario where CPFfunc = '{0}';", CPFfunc);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Funcionario FuncListando = null;
+                while (registros.Read())
+                {
+                    FuncListando = new Funcionario
+                    {
+                        CPFfunc = decimal.Parse(registros["CPFfunc"].ToString())
+                    };
+                }
+
+                return CPFfunc;
+            }
+
+        }
+
         //public int PegarIdFunc(int IdFunc)
         //{
         //    using (db = new ConexaoDB())

@@ -205,23 +205,6 @@ namespace TCC.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult tbsaida_ingre(Saida_ingre saida)
-        {
-            MySqlConnection conexao = new MySqlConnection("server = localhost; user id = root; password = 12345678; database = db_rest");
-            conexao.Open();
-            var query = "CALL sp_InsBaixaEstoque (";
-            query += string.Format("'{0}',",saida.CPFfunc);
-            query += string.Format("'{0}',", saida.Nome);
-            query += string.Format("'{0}',", saida.CodigoBarras);
-            query += string.Format("'{0}'",saida.QtdUsada);
-            query += string.Format(",'{0}')",saida.DataHoraSaida.ToString("yyyy-MM-dd H:mm"));
-            MySqlCommand comando = new MySqlCommand(query, conexao);
-            // comando.CommandType = System.Data.CommandType.StoredProcedure;
-            comando.ExecuteNonQuery();
-            return View();
-        }
-
         public ActionResult tbcompra()
         {
             ViewBag.Message = "Your contact page.";

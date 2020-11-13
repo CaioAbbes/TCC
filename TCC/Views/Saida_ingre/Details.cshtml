@@ -1,0 +1,66 @@
+﻿@model TCC.Models.Saida_ingre
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Saida_ingre</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdSaidaIngre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdSaidaIngre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoBarras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoBarras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPFfunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPFfunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtdUsada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtdUsada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataHoraSaida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataHoraSaida)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -423,6 +423,7 @@
     <Compile Include="Controllers\NotafiscalController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\Produto_PedidoController.cs" />
+    <Compile Include="Controllers\Saida_ingreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -557,6 +558,9 @@
     <Content Include="Views\Ingrediente\Create.cshtml" />
     <Content Include="Views\Notafiscal\List.cshtml" />
     <Content Include="Views\Notafiscal\Details.cshtml" />
+    <Content Include="Views\Saida_ingre\Create.cshtml" />
+    <Content Include="Views\Saida_ingre\List.cshtml" />
+    <Content Include="Views\Saida_ingre\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

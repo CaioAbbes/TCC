@@ -86,5 +86,25 @@ namespace TCC.Models
             }
 
         }
+
+        public string SelecionaNome(string Nome)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select Nome from tbingrediente where Nome = '{0}';", Nome);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Ingrediente ingredientesListando = null;
+                while (registros.Read())
+                {
+                    ingredientesListando = new Ingrediente
+                    {
+                        Nome = registros["Nome"].ToString()
+                    };
+                }
+
+                return Nome;
+            }
+
+        }
     }
 }
