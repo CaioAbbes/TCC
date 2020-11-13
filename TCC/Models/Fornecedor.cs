@@ -142,23 +142,25 @@ namespace TCC.Models
 
         }
 
-        //public int PegarIdForn(int IdForn)
-        //{
-        //    using (db = new ConexaoDB())
-        //    {
-        //        string StrQuery = string.Format("select IdForn from tbfornecedor where IdForn = '{0}';", IdForn);
-        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-        //        while (registros.Read())
-        //        {
-        //            IdForn = int.Parse(registros["IdForn"].ToString());
-        //        }
+        public string SelecionaComNomeForn(string NomeForn)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select NomeForn from tbfornecedor where NomeForn = '{0}';", NomeForn);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Fornecedor FornListando = null;
+                while (registros.Read())
+                {
+                    FornListando = new Fornecedor
+                    {
+                        NomeForn = registros["NomeForn"].ToString()
+                    };
+                }
 
-        //        return IdForn;
-        //    }
+                return NomeForn;
+            }
 
-        //}
-
-
+        }
 
     }
 }

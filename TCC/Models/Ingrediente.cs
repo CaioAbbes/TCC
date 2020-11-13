@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace TCC.Models
 {
     public class Ingrediente
     {
+        private ConexaoDB db;
+
         [Required(ErrorMessage = "O campo Codigo de barras é requerido.")]
         [Display(Name = "Codigo de barras")]
         [Range(0, double.MaxValue, ErrorMessage = "Deve ser positivo")]
@@ -50,5 +53,26 @@ namespace TCC.Models
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(50, ErrorMessage = "A quantidade de caracteres da Marca é invalido.")]
         public string Marca { get; set; }
+
+
+        public decimal SelecionaCodigoBarras(decimal CodigoBarras)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select CodigoBarras from tbingrediente where CodigoBarras = '{0}';", CodigoBarras);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Ingrediente ingredientesListando = null;
+                while (registros.Read())
+                {
+                    ingredientesListando = new Ingrediente
+                    {
+                        CodigoBarras = decimal.Parse(registros["CodigoBarras"].ToString())
+                    };
+                }
+
+                return CodigoBarras;
+            }
+
+        }
     }
 }

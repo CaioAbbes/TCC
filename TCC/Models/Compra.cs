@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -59,5 +60,56 @@ namespace TCC.Models
             }
 
         }
+
+
+
+        public List<Compra> SelecionaCompra()
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbcompra;");
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                var compraList = new List<Compra>();
+                while (registros.Read())
+                {
+                    var CompraTemporaria = new Compra
+                    {
+                        NumCompra = int.Parse(registros["NumCompra"].ToString()),
+                        CodigoBarras = new Ingrediente().SelecionaCodigoBarras(decimal.Parse(registros["CodigoBarras"].ToString())),
+                        NomeForn = new Fornecedor().SelecionaComNomeForn(registros["IdForn"].ToString()),
+                        QtdEntraIngre = int.Parse(registros["QtdEntraIngre"].ToString()),
+                        DataHoraChegada = DateTime.Parse(registros["DataHoraChegada"].ToString())
+                    };
+                    compraList.Add(CompraTemporaria);
+                }
+                return compraList;
+            }
+        }
+
+        public Compra SelecionaNumCompra(int NumCompra)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbcompra where NumCompra = '{0}';", NumCompra);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Compra compraListando = null;
+                while (registros.Read())
+                {
+                    compraListando = new Compra
+                    {
+                        NumCompra = int.Parse(registros["NumCompra"].ToString()),
+                        CodigoBarras = new Ingrediente().SelecionaCodigoBarras(decimal.Parse(registros["CodigoBarras"].ToString())),
+                        NomeForn = new Fornecedor().SelecionaComNomeForn(registros["IdForn"].ToString()),
+                        QtdEntraIngre = int.Parse(registros["QtdEntraIngre"].ToString()),
+                        DataHoraChegada = DateTime.Parse(registros["DataHoraChegada"].ToString())
+                    };
+                }
+
+                return compraListando;
+            }
+
+        }
+
+
     }
 }

@@ -16,10 +16,23 @@ namespace TCC.Controllers
         }
 
         // GET: Compra/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int NumCompra)
         {
-            return View();
+            var compra = new Compra();
+            var objCompra = new Compra();
+            compra = objCompra.SelecionaNumCompra(NumCompra);
+            return View(compra);
         }
+
+        public ActionResult List(Compra compra)
+        {
+            var compraList = compra.SelecionaCompra();
+
+            var objCompra = new Compra();
+            objCompra.SelecionaCompra();
+            return View(compraList);
+        }
+
 
         // GET: Compra/Create
         public ActionResult Create()
