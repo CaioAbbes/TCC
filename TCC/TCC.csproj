@@ -556,6 +556,7 @@
     <Content Include="Views\Compra\Details.cshtml" />
     <Content Include="Views\Ingrediente\Create.cshtml" />
     <Content Include="Views\Notafiscal\List.cshtml" />
+    <Content Include="Views\Notafiscal\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

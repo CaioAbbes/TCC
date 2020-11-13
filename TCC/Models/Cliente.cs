@@ -176,7 +176,7 @@ namespace TCC.Models
 
         }
 
-        public decimal SelecionaCPF(decimal CPF)
+        public Cliente SelecionaCPF(string CPF)
         {
             using (db = new ConexaoDB())
             {
@@ -192,7 +192,7 @@ namespace TCC.Models
                     };
                 }
 
-                return CPF;
+                return clienteListando;
             }
 
         }

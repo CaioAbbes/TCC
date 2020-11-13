@@ -16,9 +16,12 @@ namespace TCC.Controllers
         }
 
         // GET: Notafiscal/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int IdNF)
         {
-            return View();
+            var notafiscal = new Notafiscal();
+            var objNotafiscal = new Notafiscal();
+            notafiscal = objNotafiscal.SelecionaIdNF(IdNF);
+            return View(notafiscal);
         }
 
         public ActionResult List(Notafiscal notafiscal)

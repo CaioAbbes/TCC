@@ -19,9 +19,11 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdNF { get; set; }
 
-        [Required(ErrorMessage = "O campo CPF é requerido.")]
-        [Display(Name = "CPF")]
-        public decimal CPF { get; set; }
+        //[Required(ErrorMessage = "O campo CPF é requerido.")]
+        //[Display(Name = "CPF")]
+        //public decimal CPF { get; set; }
+
+        public Cliente Cliente { get; set; }
 
         [Display(Name = "Id do pagamento")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
@@ -51,14 +53,14 @@ namespace TCC.Models
                 {
                     CPF = 0
                 };
-                decimal cpf = decimal.Parse(registros["CPF"].ToString());
+
                 while (registros.Read())
                 {
+                    string CPF = registros["CPF"].ToString();
                     var NotafiscalTemporaria = new Notafiscal
                     {
                         IdNF = int.Parse(registros["IdNF"].ToString()),
-                       // CPF = new Cliente().SelecionaCPF(decimal.Parse(registros["CPF"].ToString())),
-                       //CPF = cpf != 0 ? new Cliente().SelecionaCPF(cpf) : cpfTemp,
+                        Cliente = CPF != "" ? new Cliente().SelecionaCPF(CPF) : cpfTemp,
                         IdPag = new Pagamento().SelecionaIdPag(int.Parse(registros["IdPag"].ToString())),
                         DataHoraPag = DateTime.Parse(registros["DataHoraPag"].ToString()),
                         ValorTotal = float.Parse(registros["ValorTotal"].ToString())
@@ -69,25 +71,31 @@ namespace TCC.Models
             }
         }
 
-        public Mesa SelecionaIdMesa(int IdMesa)
+        public Notafiscal SelecionaIdNF(int IdNF)
         {
             using (db = new ConexaoDB())
             {
-                string StrQuery = string.Format("select * from tbmesa where IdMesa = '{0}';", IdMesa);
+                string StrQuery = string.Format("select * from tbnotafiscal where IdNF = '{0}';", IdNF);
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-                Mesa mesaListando = null;
+                Notafiscal notafiscalListando = null;
+                var cpfTemp = new Cliente
+                {
+                    CPF = 0
+                };
                 while (registros.Read())
                 {
-                    mesaListando = new Mesa
+                    string CPF = registros["CPF"].ToString();
+                    notafiscalListando = new Notafiscal
                     {
-                        IdMesa = int.Parse(registros["IdMesa"].ToString()),
-                        Numlugares = int.Parse(registros["Numlugares"].ToString()),
-                        Disponi = bool.Parse(registros["Disponi"].ToString()),
-                        TipoLugar = registros["TipoLugar"].ToString()
+                        IdNF = int.Parse(registros["IdNF"].ToString()),
+                        Cliente = CPF != "" ? new Cliente().SelecionaCPF(CPF) : cpfTemp,
+                        IdPag = new Pagamento().SelecionaIdPag(int.Parse(registros["IdPag"].ToString())),
+                        DataHoraPag = DateTime.Parse(registros["DataHoraPag"].ToString()),
+                        ValorTotal = float.Parse(registros["ValorTotal"].ToString())
                     };
                 }
 
-                return mesaListando;
+                return notafiscalListando;
             }
 
         }

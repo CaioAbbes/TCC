@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.IdNF)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CPF)
+            @Html.DisplayNameFor(model => model.Cliente.CPF)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IdPag)
@@ -30,28 +30,28 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdNF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CPF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdPag)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataHoraPag)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorTotal)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdNF)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cliente.CPF)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdPag)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DataHoraPag)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ValorTotal)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { IdNF = item.IdNF }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
 }
 
 </table>
