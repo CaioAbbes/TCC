@@ -10,9 +10,7 @@ namespace TCC.Models
     {
         [Required(ErrorMessage = "O campo Codigo de barras é requerido.")]
         [Display(Name = "Codigo de barras")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, double.MaxValue, ErrorMessage = "Deve ser positivo")]
-        [StringLength(13,ErrorMessage = "A quantidade de caracteres do Codigo de barras é invalido.",MinimumLength = 13)]
         public decimal CodigoBarras { get; set; }
 
         [Required(ErrorMessage = "O campo Nome é requerido.")]

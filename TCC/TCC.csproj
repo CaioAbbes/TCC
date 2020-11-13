@@ -411,6 +411,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartaoController.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\CupomUsaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CupomController.cs" />
@@ -548,6 +549,7 @@
     <Content Include="Views\Cupom\List.cshtml" />
     <Content Include="Views\Cupom\Details.cshtml" />
     <Content Include="Views\Cupom\Edit.cshtml" />
+    <Content Include="Views\Compra\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,8 +24,6 @@ namespace TCC.Controllers
         public ActionResult List(Produto_pedido ProdPed)
         {
             var prodPedList = ProdPed.SelecionaProdPed();
-
-
             var objProdPed = new Produto_pedido();
             objProdPed.SelecionaProdPed();
 
@@ -49,50 +47,6 @@ namespace TCC.Controllers
                 return RedirectToAction("List");
             }
             return View();
-        }
-
-        // GET: Produto_Pedido/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Produto_Pedido/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Produto_Pedido/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Produto_Pedido/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

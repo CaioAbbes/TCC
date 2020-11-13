@@ -39,7 +39,7 @@ namespace TCC.Models
 
         public void InsertCartao(Cartao cartao)
         {
-            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}','{4}');",2,cartao.Numcartao,cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-dd"));
+            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}','{4}');",2,cartao.Numcartao,cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-dd HH:mm"));
 
             using (db = new ConexaoDB())
             {
