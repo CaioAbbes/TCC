@@ -421,6 +421,7 @@
     <Compile Include="Controllers\IngredienteController.cs" />
     <Compile Include="Controllers\MesaController.cs" />
     <Compile Include="Controllers\NotafiscalController.cs" />
+    <Compile Include="Controllers\PagamentoController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\Produto_PedidoController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
@@ -565,6 +566,7 @@
     <Content Include="Views\Reserva\Create.cshtml" />
     <Content Include="Views\Reserva\List.cshtml" />
     <Content Include="Views\Reserva\Details.cshtml" />
+    <Content Include="Views\Pagamento\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

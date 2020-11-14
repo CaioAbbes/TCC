@@ -16,14 +16,20 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdPag { get; set; }
 
-        [Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
-        [Display(Name = "CPF do funcionário.")]
-        [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
+        public Mesa Mesa { get; set; }
 
-        public decimal CPFfunc { get; set; }
+        public Cliente Cliente { get; set; }
+
+        public Funcionario Funcionario { get; set; }
+
+        public Cupom Cupom { get; set; }
+
+        //[Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
+        //[Display(Name = "CPF do funcionário.")]
+        //public decimal CPFfunc { get; set; }
+
 
         [Display(Name = "Id da comanda")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdComanda { get; set; }
 
@@ -35,11 +41,29 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Total é requerido.")]
         [Display(Name = "Total")]
-        [RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
         public float Total { get; set; }
 
 
+        public int IdMesa { get; set; }
 
+        public int IdCli { get; set; }
+
+        public decimal CPFfunc { get; set; }
+
+        public string CodCupom { get; set; }
+
+        public float QtdPontos { get; set; }
+        public decimal CPF { get; set; }
+
+        public void InsertPagamento(int IdMesa, int IdCli, decimal CPFfunc, string FormPag, string CodCupom, float QtdPontos, decimal CPF)
+        {
+            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", IdMesa, 0, CPFfunc, FormPag, CodCupom, QtdPontos, CPF);
+
+            using (db = new ConexaoDB())
+            {
+                db.ExecutaComando(strQuery);
+            }
+        }
 
 
 
