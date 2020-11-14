@@ -14,24 +14,24 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo Id da reserva é requerido.")]
         [Display(Name = "Id da reserva")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private int IdReserva { get; set; }
+        public int IdReserva { get; set; }
 
         //[Display(Name = "Id da mesa")]
         //[Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         //public int IdMesa { get; set; }
 
-        private Mesa Mesa { get; set; }
+        public Mesa Mesa { get; set; }
 
         //[Required(ErrorMessage = "O campo Id do Cliente é requerido.")]
         //[Display(Name = "Id do Cliente")]
         //public decimal IdCli { get; set; }
 
-        private Cliente Cliente { get; set; }
+        public Cliente Cliente { get; set; }
 
         [Required(ErrorMessage = "O campo Data e hora da reserva é requerido.")]
         [Display(Name = "Data e hora da reserva")]
         [DataType(DataType.DateTime)]
-        private DateTime DataHoraReserva { get; set; }
+        public DateTime DataHoraReserva { get; set; }
 
         //[Required(ErrorMessage = "O campo Data e hora que quero come é requerido.")]
         //[Display(Name = "Data e hora que quero comer")]

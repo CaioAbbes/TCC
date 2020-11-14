@@ -16,21 +16,21 @@ namespace TCC.Models
         [Display(Name = "Id do produto pedido")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private int IdProdPed { get; set; }
+        public int IdProdPed { get; set; }
 
         //[Display(Name = "Id do produto")]
         // [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         // [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private Produto Produto { get; set; }
+        public Produto Produto { get; set; }
 
         //[Display(Name = "Id da comanda")]
         //[RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         //[Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private Comanda Comanda { get; set; }
+        public Comanda Comanda { get; set; }
 
-        private Mesa Mesa { get; set; }
+        public Mesa Mesa { get; set; }
 
-        private Cliente Cliente { get; set; }
+        public Cliente Cliente { get; set; }
 
 
         [Required(ErrorMessage = "O campo Nome do produto é requerido.")]

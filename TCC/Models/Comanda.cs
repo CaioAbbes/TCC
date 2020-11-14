@@ -16,30 +16,30 @@ namespace TCC.Models
         [Display(Name = "Id da comanda")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private int IdComanda { get; set; }
+        public int IdComanda { get; set; }
 
         [Display(Name = "Id do cliente")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private Cliente Cliente { get; set; }
+        public Cliente Cliente { get; set; }
 
         [Display(Name = "Id da mesa")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private Mesa Mesa { get; set; }
+        public Mesa Mesa { get; set; }
 
         [Required(ErrorMessage = "O campo Status da comanda é requerido")]
         [Display(Name = "Status da comanda")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        private string StatsComan { get; set; }
+        public string StatsComan { get; set; }
 
         [Required(ErrorMessage = "O campo Data e hora da comanda é requerido")]
         [Display(Name = "Data e hora da comanda")]
         [DisplayFormat(DataFormatString = "mm/DD/yyyy")]
         [DataType(DataType.DateTime)]
-        private DateTime DataHComan { get; set; }
+        public DateTime DataHComan { get; set; }
 
-                public Comanda SelecionaIdComanda(int IdComanda)
+        public Comanda SelecionaIdComanda(int IdComanda)
         {
             using (db = new ConexaoDB())
             {

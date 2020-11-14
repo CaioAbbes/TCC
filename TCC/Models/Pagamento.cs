@@ -14,15 +14,15 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo Id da pagamento é requerido.")]
         [Display(Name = "Id da pagamento")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private int IdPag { get; set; }
+        public int IdPag { get; set; }
 
-        private Mesa Mesa { get; set; }
+        public Mesa Mesa { get; set; }
 
-        private Cliente Cliente { get; set; }
+        public Cliente Cliente { get; set; }
 
-        private Funcionario Funcionario { get; set; }
+        public Funcionario Funcionario { get; set; }
 
-        private Cupom Cupom { get; set; }
+        public Cupom Cupom { get; set; }
 
         //[Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
         //[Display(Name = "CPF do funcionário.")]
@@ -31,29 +31,29 @@ namespace TCC.Models
 
         [Display(Name = "Id da comanda")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private int IdComanda { get; set; }
+        public int IdComanda { get; set; }
 
         [Required(ErrorMessage = "O campo Forma de pagamentoo é requerido.")]
         [Display(Name = "Forma de pagamento")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(17, ErrorMessage = "A quantidade de caracteres do Forma de pagamento é invalido.")]
-        private string FormPag { get; set; }
+        public string FormPag { get; set; }
 
         [Required(ErrorMessage = "O campo Total é requerido.")]
         [Display(Name = "Total")]
-        private float Total { get; set; }
+        public float Total { get; set; }
 
 
-        private int IdMesa { get; set; }
+        public int IdMesa { get; set; }
 
-        private int IdCli { get; set; }
+        public int IdCli { get; set; }
 
-        private decimal CPFfunc { get; set; }
+        public decimal CPFfunc { get; set; }
 
-        private string CodCupom { get; set; }
+        public string CodCupom { get; set; }
 
-        private float QtdPontos { get; set; }
-        private decimal CPF { get; set; }
+        public float QtdPontos { get; set; }
+        public decimal CPF { get; set; }
 
         public void InsertPagamento(int IdMesa, int IdCli, decimal CPFfunc, string FormPag, string CodCupom, float QtdPontos, decimal CPF)
         {

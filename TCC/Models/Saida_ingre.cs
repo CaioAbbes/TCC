@@ -15,33 +15,33 @@ namespace TCC.Models
         [Display(Name = "Id saida ingrediente")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private int IdSaidaIngre { get; set; }
+        public int IdSaidaIngre { get; set; }
 
         [Required(ErrorMessage = "O campo Codigo de barras é requerido.")]
         [Display(Name = "Codigo de barras")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         // [StringLength(13,ErrorMessage = "A quantidade de caracteres do Codigo de barras é invalido.",MinimumLength = 13)]
-        private decimal CodigoBarras { get; set; }
+        public decimal CodigoBarras { get; set; }
 
         [Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
         [Display(Name = "CPF do funcionário.")]
         [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
-        private decimal CPFfunc { get; set; }
+        public decimal CPFfunc { get; set; }
 
         [Required(ErrorMessage = "O campo Nome é requerido.")]
         [Display(Name = "Nome ")]
         [StringLength(50, ErrorMessage = "A quantidade de caracteres do Nome é invalido.")]
-        private string Nome { get; set; }
+        public string Nome { get; set; }
 
         [Required(ErrorMessage = "O campo Quantidade usada é requerido.")]
         [Display(Name = "Quantidade usada")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private int QtdUsada { get; set; }
+        public int QtdUsada { get; set; }
 
         [Required(ErrorMessage = "O campoData e hora da saida é requerido.")]
         [Display(Name = "Data e hora da saida")]
         [DataType(DataType.DateTime)]
-        private DateTime DataHoraSaida { get; set; }
+        public DateTime DataHoraSaida { get; set; }
 
         public Saida_ingre(int idSaidaIngre, decimal cPFfunc, string nome, int qtdUsada, DateTime dataHoraSaida)
         {

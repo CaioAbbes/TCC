@@ -12,7 +12,7 @@ namespace TCC.Models
     public class Usuario
     {
 
-        private ConexaoDB db = new ConexaoDB();
+        private ConexaoDB db;
 
 
         //[Required(ErrorMessage = "O campo Id do usuário é requerido.")]

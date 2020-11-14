@@ -15,7 +15,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo Número da compra é requerido.")]
         [Display(Name = "Número da compra")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private int NumCompra { get; set; }
+        public int NumCompra { get; set; }
 
         //[Required(ErrorMessage = "O campo Codigo de barras é requerido.")]
         //[Display(Name = "Codigo de barras")]
@@ -25,19 +25,19 @@ namespace TCC.Models
         // public Ingrediente Ingrediente { get; set; }
 
         //public Fornecedor Fornecedor { get; set; }
-        private decimal CodigoBarras { get; set; }
+        public decimal CodigoBarras { get; set; }
 
-        private string NomeForn { get; set; }
+        public string NomeForn { get; set; }
 
         [Required(ErrorMessage = "O campo Quantidade da entratada dos ingredientes é requerido.")]
         [Display(Name = "Quantidade da entratada dos ingredientes ")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        private int QtdEntraIngre { get; set; }
+        public int QtdEntraIngre { get; set; }
 
         [Required(ErrorMessage = "O campo Data de nascimento do funcionário é requerido.")]
         [Display(Name = "Data de nascimento do funcionário")]
         [DataType(DataType.DateTime)]
-        private DateTime DataHoraChegada { get; set; }
+        public DateTime DataHoraChegada { get; set; }
 
         public Compra(int numCompra, decimal codigoBarras, string nomeForn, int qtdEntraIngre, DateTime dataHoraChegada)
         {
