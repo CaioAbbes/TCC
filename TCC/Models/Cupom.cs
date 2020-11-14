@@ -15,38 +15,38 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo Código do cupom é requerido")]
         [Display(Name = "Código do cupom")]
         //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente números")]
-        public string CodCupom { get; set; }
+        private string CodCupom { get; set; }
 
         [Required(ErrorMessage = "O campo Desconto é requerido")]
         [Display(Name = "Desconto")]
-        public float Desconto { get; set; }
+        private float Desconto { get; set; }
 
         [Display(Name = "Total de cupons utilizados")]
         [Required(ErrorMessage = "O campo Total de cupons utilizados é requerido")]
-        public int NumUtiliza { get; set; }
+        private int NumUtiliza { get; set; }
 
         [Display(Name = "Total de cupons disponiveis")]
         [Required(ErrorMessage = "O campo Total de cupons disponiveis é requerido")]
-        public int TotalDispo { get; set; }
+        private int TotalDispo { get; set; }
 
         [Display(Name = "Data e hora inicio do funcionamento do cupom")]
         [Required(ErrorMessage = "O campo Data e hora inicio do funcionamento do cupom é requerido")]
         [DataType(DataType.DateTime)]
-        public DateTime DataInicio { get; set; }
+        private DateTime DataInicio { get; set; }
         
         [Display(Name = "Data e hora termino do funcionamento do cupom")]
         [Required(ErrorMessage = "O campo Data e hora termino do funcionamento do cupom é requerido")]
         [DataType(DataType.DateTime)]
-        public DateTime DataTerm { get; set; }
+        private DateTime DataTerm { get; set; }
 
         [Display(Name = "Descrição do cupom")]
         [Required(ErrorMessage = "O campo Descrição do cupom é requerido")]
         [StringLength(500, ErrorMessage = "O numero de caracteres do Descrição do cupom é invalido ")]
-        public string Descri { get; set; }
+        private string Descri { get; set; }
 
         [Display(Name = "Valor minimo")]
         [Required(ErrorMessage = "O campo Valor minimo é requerido")]
-        public float ValorMin { get; set; }
+        private float ValorMin { get; set; }
 
 
         public void InsertCupom(Cupom cupom)

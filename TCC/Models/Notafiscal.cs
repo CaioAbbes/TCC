@@ -17,29 +17,29 @@ namespace TCC.Models
         [Display(Name = "Id da nota fiscal")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public int IdNF { get; set; }
+        private int IdNF { get; set; }
 
         //[Required(ErrorMessage = "O campo CPF é requerido.")]
         //[Display(Name = "CPF")]
         //public decimal CPF { get; set; }
 
-        public Cliente Cliente { get; set; }
+        private Cliente Cliente { get; set; }
 
         [Display(Name = "Id do pagamento")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public int IdPag { get; set; }
+        private int IdPag { get; set; }
 
         [Required(ErrorMessage = "O campo Data e hora do pagamento é requerido.")]
         [Display(Name = "Data e hora do pagamento")]
         //[DisplayFormat(DataFormatString = "mm/dd/yyyy")]
         [DataType(DataType.DateTime)]
-        public DateTime DataHoraPag { get; set; }
+        private DateTime DataHoraPag { get; set; }
 
         [Required(ErrorMessage = "O campo Valor total é requerido.")]
         [Display(Name = " Valor total")]
         [RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
-        public float ValorTotal { get; set; }
+        private float ValorTotal { get; set; }
 
 
         public List<Notafiscal> SelecionaNotafiscal()

@@ -38,13 +38,6 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult tbcupom(Cupom cupom)
         {
-            MySqlConnection conexao = new MySqlConnection("server = localhost; user id = root; password = 12345678; database = db_rest");
-            conexao.Open();
-            var query = "CALL sp_InsCupom (";
-            query += string.Format("'{0}'", cupom.CodCupom);
-            query += string.Format(",'{0}')", cupom.Desconto);
-            MySqlCommand comando = new MySqlCommand(query, conexao);
-            comando.ExecuteNonQuery();
             return View();
         }
 

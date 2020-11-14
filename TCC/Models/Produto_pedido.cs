@@ -16,21 +16,21 @@ namespace TCC.Models
         [Display(Name = "Id do produto pedido")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public int IdProdPed { get; set; }
+        private int IdProdPed { get; set; }
 
         //[Display(Name = "Id do produto")]
-       // [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-       // [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public Produto Produto { get; set; }
+        // [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
+        // [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
+        private Produto Produto { get; set; }
 
         //[Display(Name = "Id da comanda")]
         //[RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         //[Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public Comanda Comanda { get; set; }
+        private Comanda Comanda { get; set; }
 
-        public Mesa Mesa { get; set; }
+        private Mesa Mesa { get; set; }
 
-        public Cliente Cliente { get; set; }
+        private Cliente Cliente { get; set; }
 
 
         [Required(ErrorMessage = "O campo Nome do produto é requerido.")]
@@ -118,32 +118,30 @@ namespace TCC.Models
             }
         }
 
-        public Cliente SelecionaComIdCli(int IdCli)
+        public Produto_pedido SelecionaComIdProdPed(int IdProdPed)
         {
             using (db = new ConexaoDB())
             {
-                string StrQuery = string.Format("select * from tbcliente where IdCli = '{0}';", IdCli);
+                string StrQuery = string.Format("select * from tbproduto_pedido where IdProdPed = '{0}';", IdProdPed);
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-                Cliente clienteListando = null;
+                Produto_pedido prodPedListando = null;
                 while (registros.Read())
                 {
-                    clienteListando = new Cliente
+                    prodPedListando = new Produto_pedido
                     {
-
-                        IdCli = int.Parse(registros["IdCli"].ToString()),
-                        NomeCli = registros["NomeCli"].ToString(),
-                        CPF = decimal.Parse(registros["CPF"].ToString()),
-                        EmailCli = registros["EmailCli"].ToString(),
-                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
-                        CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
-                        Comp = registros["Comp"].ToString(),
-                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
-                        User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
-                        QtdPontos = float.Parse(registros["QtdPontos"].ToString())
+                        IdProdPed = int.Parse(registros["IdProdPed"].ToString()),
+                        Produto = new Produto().SelecionaComIdProd(int.Parse(registros["IdProd"].ToString())),
+                        Comanda = new Comanda().SelecionaIdComanda(int.Parse(registros["IdComanda"].ToString())),
+                        NomeProd = registros["NomeProd"].ToString(),
+                        QtdProd = int.Parse(registros["QtdProd"].ToString()),
+                        ValorUnitProd = float.Parse(registros["ValorUnitProd"].ToString()),
+                        StagioProd = registros["StagioProd"].ToString(),
+                        DataHProdPed = DateTime.Parse(registros["DataHProdPed"].ToString()),
+                        DescPedido = registros["DescPedido"].ToString()
                     };
                 }
 
-                return clienteListando;
+                return prodPedListando;
             }
 
         }

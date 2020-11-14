@@ -16,9 +16,12 @@ namespace TCC.Controllers
         }
 
         // GET: Produto_Pedido/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int IdProdPed)
         {
-            return View();
+            var produtoPed = new Produto_pedido ();
+            var objProdutoPed = new Produto_pedido();
+            produtoPed = objProdutoPed.SelecionaComIdProdPed(IdProdPed);
+            return View(produtoPed);
         }
 
         public ActionResult List(Produto_pedido ProdPed)

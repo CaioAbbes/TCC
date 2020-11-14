@@ -26,7 +26,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Disponivel é requerido.")]
         [Display(Name = "Disponivel")]
-        public bool Disponi { get; set; }
+        private bool Disponi { get; set; }
 
         //[Required(ErrorMessage = "O campo Tipo de lugar é requerido.")]
         [Display(Name = "Tipo de lugar")]

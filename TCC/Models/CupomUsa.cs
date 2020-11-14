@@ -17,9 +17,9 @@ namespace TCC.Models
         [Display(Name = "Codigo cupom")]
         //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(6, ErrorMessage = "A quantidade de caracteres do Codigo cupom é invalido.")]
-        public string CodCupom { get; set; }
+        private string CodCupom { get; set; }
 
-        public Cliente Cliente { get; set; }
+        private Cliente Cliente { get; set; }
 
 
         public List<CupomUsa> SelecionaCupomUsa()
