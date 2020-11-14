@@ -34,7 +34,7 @@ namespace TCC.Controllers
             if (ModelState.IsValid)
             {
                 var objPagamento = new Pagamento();
-                objPagamento.InsertPagamento(IdMesa, 0, CPFfunc, FormPag, CodCupom, QtdPontos, CPF);
+                objPagamento.InsertPagamento(IdMesa, 0, CPFfunc, FormPag, null, QtdPontos, CPF);
                 return RedirectToAction("List");
             }
 

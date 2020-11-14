@@ -16,13 +16,13 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdPag { get; set; }
 
-        public Mesa Mesa { get; set; }
+        public virtual Mesa Mesa { get; set; }
 
-        public Cliente Cliente { get; set; }
+        public virtual Cliente Cliente { get; set; }
 
-        public Funcionario Funcionario { get; set; }
+        public virtual Funcionario Funcionario { get; set; }
 
-        public Cupom Cupom { get; set; }
+        public virtual Cupom Cupom { get; set; }
 
         //[Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
         //[Display(Name = "CPF do funcionário.")]
@@ -41,6 +41,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Total é requerido.")]
         [Display(Name = "Total")]
+        [DisplayFormat(DataFormatString = "{0:C2}",ApplyFormatInEditMode = true)]
         public float Total { get; set; }
 
 
@@ -53,17 +54,20 @@ namespace TCC.Models
         public string CodCupom { get; set; }
 
         public float QtdPontos { get; set; }
+
         public decimal CPF { get; set; }
 
         public void InsertPagamento(int IdMesa, int IdCli, decimal CPFfunc, string FormPag, string CodCupom, float QtdPontos, decimal CPF)
         {
-            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", IdMesa, 0, CPFfunc, FormPag, CodCupom, QtdPontos, CPF);
+            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", IdMesa, 0, CPFfunc, FormPag, null, QtdPontos, CPF);
 
             using (db = new ConexaoDB())
             {
                 db.ExecutaComando(strQuery);
             }
         }
+
+
 
 
 
