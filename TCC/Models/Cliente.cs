@@ -28,7 +28,7 @@ namespace TCC.Models
         [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
         public decimal CPF { get; set; }
 
-        public Endereco Endereco { get; set; }
+        public virtual Endereco Endereco { get; set; }
 
         [Required(ErrorMessage = "O campo Nome do cliente é requerido.")]
         [Display(Name = "Nome do cliente")]
@@ -58,7 +58,7 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int NumEdif { get; set; }
         
-        public Usuario User { get; set; }
+        public virtual Usuario User { get; set; }
 
         [Range(0, float.MaxValue, ErrorMessage = "Deve ser positivo")]
         [Display(Name = "Quantidade de pontos")]

@@ -2,31 +2,33 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace TCC.Models
 {
     public class Endereco
     {
 
-        private ConexaoDB db = new ConexaoDB();
+        private ConexaoDB db;
 
 
         [Required(ErrorMessage = "O campo CEP é requerido.")]
         [Display(Name = "CEP")]
-        //[RegularExpression(@"^[0-9]{5}-[\d]{3}|(\d{8})$", ErrorMessage = "CEP invalido.")]
+        [Remote("BuscaCEP", "Cliente",ErrorMessage = "CEP não encontrado")]
         public decimal CEP { get; set; }
 
         [Required(ErrorMessage = "O campo Logradouro é requerido.")]
         [Display(Name = "Logradouro")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(200,ErrorMessage = "A quantidade de caracteres do Logradouro é invalido.")]
         public string Logra { get; set; }
 
         [Required(ErrorMessage = "O campo Bairro é requerido.")]
         [Display(Name = "Bairro")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(200, ErrorMessage = "A quantidade de caracteres do Bairro é invalido.")]
         public string Bairro { get; set; }
 
@@ -46,6 +48,53 @@ namespace TCC.Models
         [Display(Name = "UF")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         public string UF { get; set; }
+
+
+        public List<Endereco> BuscaCEP(decimal cep)
+        {
+            var CepObj = new Endereco();
+            var CepList = new List<Endereco>();
+            var url = "https://ws.apicep.com/busca-cep/api/cep.json?code=" + cep;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+            string json = string.Empty;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                json = reader.ReadToEnd();
+            }
+
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            JsonCepObject cepJson = javaScriptSerializer.Deserialize<JsonCepObject>(json);
+
+
+            CepObj.CEP = decimal.Parse(cepJson.code.Replace("-",string.Empty));
+            CepObj.Logra = cepJson.address;
+            CepObj.Bairro = cepJson.district;
+            CepObj.Cidade = cepJson.city;
+            CepObj.Estado = cepJson.state;
+
+            CEP = decimal.Parse(cepJson.code.Replace("-", string.Empty));
+            Logra = cepJson.address;
+            Bairro = cepJson.district;
+            Cidade = cepJson.city;
+            Estado = cepJson.state;
+
+            CepList.Add(CepObj);
+
+            return CepList;
+        }
+
+        public class JsonCepObject
+        {
+            public string code { get; set; }
+            public string state { get; set; }
+            public string city { get; set; }
+            public string district { get; set; }
+            public string address { get; set; }
+
+        }
 
 
         public Endereco RetornaPorCEP(decimal CEP)
@@ -72,6 +121,9 @@ namespace TCC.Models
             }
 
         }
+
+
+
 
     }
 }

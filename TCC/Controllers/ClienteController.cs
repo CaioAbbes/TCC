@@ -20,11 +20,6 @@ namespace TCC.Controllers
         public ActionResult List(Cliente cliente)
         {
             var clienteList = cliente.SelecionaCliente();
-
-
-            var objCli = new Cliente();
-            objCli.SelecionaCliente();
-
             return View(clienteList);
         }
 
@@ -42,7 +37,6 @@ namespace TCC.Controllers
         // GET: Cliente/Create
         public ActionResult Create()
         {
-
             return View();
         }
 
@@ -66,7 +60,7 @@ namespace TCC.Controllers
         // GET: Cliente/Edit/5
         public ActionResult Edit(int IdCli)
         {
-            var cliente = new Cliente() ;
+            var cliente = new Cliente();
             var objCliente = new Cliente();
             cliente = objCliente.SelecionaComIdCli(IdCli);
             return View(cliente);
@@ -79,6 +73,31 @@ namespace TCC.Controllers
             var objCli = new Cliente();
             objCli.UpdateCliente(cliente);
             return RedirectToAction("List");
+        }
+
+        public ActionResult BuscaCEP(Endereco endereco)
+        {
+            bool CepExists = false;
+
+            var endList = endereco.BuscaCEP(endereco.CEP);
+            return View(endList);
+
+            //var endList = end.BuscaCEP(endereco.CEP);
+
+            //if (end.CEP != 0)
+            //{
+            //    CepExists = true;
+            //}
+
+            //else
+            //{
+            //    CepExists = false;
+            //}
+
+            //return View(end);
+
+            //return Json(end, JsonRequestBehavior.AllowGet);
+
         }
     }
 }
