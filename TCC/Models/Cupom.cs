@@ -19,6 +19,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Desconto é requerido")]
         [Display(Name = "Desconto")]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         public float Desconto { get; set; }
 
         [Display(Name = "Total de cupons utilizados")]
@@ -46,6 +47,7 @@ namespace TCC.Models
 
         [Display(Name = "Valor minimo")]
         [Required(ErrorMessage = "O campo Valor minimo é requerido")]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         public float ValorMin { get; set; }
 
 

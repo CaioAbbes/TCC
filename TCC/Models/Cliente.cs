@@ -62,7 +62,7 @@ namespace TCC.Models
 
         [Range(0, float.MaxValue, ErrorMessage = "Deve ser positivo")]
         [Display(Name = "Quantidade de pontos")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         public float QtdPontos { get; set; }
 
 

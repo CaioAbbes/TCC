@@ -38,7 +38,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Valor total é requerido.")]
         [Display(Name = " Valor total")]
-        [RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         public float ValorTotal { get; set; }
 
 

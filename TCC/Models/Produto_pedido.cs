@@ -47,6 +47,7 @@ namespace TCC.Models
 
         //[Required(ErrorMessage = "O campo Valor unitário é requerido.")]
         [Display(Name = "Valor unitário")]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         //[RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")] 
         public float ValorUnitProd { get; set; }
 

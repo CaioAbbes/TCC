@@ -25,6 +25,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Valor do produto é requerido.")]
         [Display(Name = "Valor do produto")]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         //[RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
         public float ValorProd { get; set; }
 

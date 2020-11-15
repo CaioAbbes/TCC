@@ -30,6 +30,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Preço unitário é requerido.")]
         [Display(Name = "Preço unitário")]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         //[RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
         public float PrecoUnit { get; set; }
 
