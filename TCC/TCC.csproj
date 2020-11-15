@@ -568,6 +568,8 @@
     <Content Include="Views\Reserva\Details.cshtml" />
     <Content Include="Views\Pagamento\Create.cshtml" />
     <Content Include="Views\Produto_Pedido\Details.cshtml" />
+    <Content Include="Views\Pagamento\List.cshtml" />
+    <Content Include="Views\Pagamento\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

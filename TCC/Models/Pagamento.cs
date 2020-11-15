@@ -24,6 +24,8 @@ namespace TCC.Models
 
         public virtual Cupom Cupom { get; set; }
 
+        public virtual Comanda Comanda { get; set; }
+
         //[Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
         //[Display(Name = "CPF do funcionário.")]
         //public decimal CPFfunc { get; set; }
@@ -41,7 +43,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Total é requerido.")]
         [Display(Name = "Total")]
-        [DisplayFormat(DataFormatString = "{0:C2}",ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         public float Total { get; set; }
 
 
@@ -57,9 +59,25 @@ namespace TCC.Models
 
         public decimal CPF { get; set; }
 
+        public Pagamento(int idPag, int idComanda, string formPag, float total, int idMesa, int idCli, decimal cPFfunc, string codCupom, float qtdPontos, decimal cPF)
+        {
+            IdPag = idPag;
+            IdComanda = idComanda;
+            FormPag = formPag;
+            Total = total;
+            IdMesa = idMesa;
+            IdCli = idCli;
+            CPFfunc = cPFfunc;
+            CodCupom = codCupom;
+            QtdPontos = qtdPontos;
+            CPF = cPF;
+        }
+
+        public Pagamento() { }
+
         public void InsertPagamento(int IdMesa, int IdCli, decimal CPFfunc, string FormPag, string CodCupom, float QtdPontos, decimal CPF)
         {
-            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", IdMesa, 0, CPFfunc, FormPag, null, QtdPontos, CPF);
+            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", IdMesa, 0, CPFfunc, FormPag, null, 0, CPF);
 
             using (db = new ConexaoDB())
             {
@@ -67,7 +85,56 @@ namespace TCC.Models
             }
         }
 
+        public List<Pagamento> SelecionaPagamento()
+        {
+            using (db = new ConexaoDB())
+            {
 
+                string StrQuery = string.Format("select * from tbpagamento;");
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                var PagamentoList = new List<Pagamento>();
+                while (registros.Read())
+                {
+                    var PagamentoTemporario = new Pagamento
+                    {
+                        IdPag = int.Parse(registros["IdPag"].ToString()),
+                        CPFfunc = new Funcionario().SelecionaComCPFFunc(decimal.Parse(registros["CPFfunc"].ToString())),
+                        Comanda = new Comanda().SelecionaIdComanda(int.Parse(registros["IdComanda"].ToString())),
+                        FormPag = registros["FormPag"].ToString(),
+                        Total = float.Parse(registros["Total"].ToString())
+                    };
+
+                    PagamentoList.Add(PagamentoTemporario);
+                }
+                return PagamentoList;
+            }
+
+        }
+
+
+        public Pagamento SelecionaComIdPag(int IdPag)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbpagamento where IdPag = '{0}';", IdPag);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Pagamento PagamentoListando = null;
+                while (registros.Read())
+                {
+                    PagamentoListando = new Pagamento
+                    {
+                        IdPag = int.Parse(registros["IdPag"].ToString()),
+                        CPFfunc = new Funcionario().SelecionaComCPFFunc(decimal.Parse(registros["CPFfunc"].ToString())),
+                        Comanda = new Comanda().SelecionaIdComanda(int.Parse(registros["IdComanda"].ToString())),
+                        FormPag = registros["FormPag"].ToString(),
+                        Total = float.Parse(registros["Total"].ToString())
+                    };
+                }
+
+                return PagamentoListando;
+            }
+
+        }
 
 
 

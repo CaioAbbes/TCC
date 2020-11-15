@@ -28,6 +28,8 @@ namespace TCC.Models
         [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
         public decimal CPFfunc { get; set; }
 
+        
+
         [Required(ErrorMessage = "O campo Nome é requerido.")]
         [Display(Name = "Nome ")]
         [StringLength(50, ErrorMessage = "A quantidade de caracteres do Nome é invalido.")]

@@ -1,0 +1,58 @@
+﻿@model TCC.Models.Pagamento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pagamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdPag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comanda.IdComanda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comanda.IdComanda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FormPag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FormPag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPFfunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPFfunc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

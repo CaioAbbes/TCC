@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TCC.Models.Pagamento>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comanda.IdComanda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormPag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPFfunc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdPag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comanda.IdComanda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FormPag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPFfunc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { IdPag = item.IdPag }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

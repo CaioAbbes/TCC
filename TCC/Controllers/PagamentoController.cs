@@ -16,9 +16,21 @@ namespace TCC.Controllers
         }
 
         // GET: Pagamento/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int IdPag)
         {
-            return View();
+            var pagamento = new Pagamento();
+            var objPagamento = new Pagamento();
+            pagamento = pagamento.SelecionaComIdPag(IdPag);
+            return View(pagamento);
+        }
+
+        public ActionResult List(Pagamento pagamento)
+        {
+            var pagamentoList = pagamento.SelecionaPagamento();
+
+            var objPagamento = new Pagamento();
+            objPagamento.SelecionaPagamento();
+            return View(pagamentoList);
         }
 
         // GET: Pagamento/Create
@@ -34,7 +46,7 @@ namespace TCC.Controllers
             if (ModelState.IsValid)
             {
                 var objPagamento = new Pagamento();
-                objPagamento.InsertPagamento(IdMesa, 0, CPFfunc, FormPag, null, QtdPontos, CPF);
+                objPagamento.InsertPagamento(IdMesa, 0, CPFfunc, FormPag, null, 0, CPF);
                 return RedirectToAction("List");
             }
 
