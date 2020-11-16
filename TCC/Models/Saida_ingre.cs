@@ -19,13 +19,12 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Codigo de barras é requerido.")]
         [Display(Name = "Codigo de barras")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-        // [StringLength(13,ErrorMessage = "A quantidade de caracteres do Codigo de barras é invalido.",MinimumLength = 13)]
+        [StringLength(13,ErrorMessage = "A quantidade de caracteres do Codigo de barras é invalido.",MinimumLength = 13)]
         public string CodigoBarras { get; set; }
 
         [Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
         [Display(Name = "CPF do funcionário.")]
-        [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
+        [StringLength(11, ErrorMessage = "A quantidade de caracteres do CPF do funcionário é invalido.", MinimumLength = 11)]
         public string CPFfunc { get; set; }
 
         [Required(ErrorMessage = "O campo Nome é requerido.")]

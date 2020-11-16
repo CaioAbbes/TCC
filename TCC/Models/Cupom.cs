@@ -11,7 +11,7 @@ namespace TCC.Models
     {
         private ConexaoDB db;
 
-        [StringLength(6,ErrorMessage = "O numero de caracteres do Código do cupom é invalido ")]
+        [StringLength(6,ErrorMessage = "O numero de caracteres do Código do cupom é invalido ",MinimumLength = 6)]
         [Required(ErrorMessage = "O campo Código do cupom é requerido")]
         [Display(Name = "Código do cupom")]
         //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente números")]

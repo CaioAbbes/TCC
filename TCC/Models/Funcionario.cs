@@ -24,8 +24,8 @@ namespace TCC.Models
         public int IdFunc { get; set; }
 
         [Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
-        [Display(Name = "CPF do funcionário.")]
-        [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
+        [Display(Name = "CPF do funcionário")]
+        [StringLength(11,ErrorMessage = "A quantidade de caracteres do CPF do funcionário é invalido.",MinimumLength = 11)]
         public string CPFfunc { get; set; }
 
         public Endereco Endereco { get; set; }

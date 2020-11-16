@@ -34,8 +34,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo CNPJ é requerido.")]
         [Display(Name = "CNPJ")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-        //  [StringLength(14,ErrorMessage = "A quantidade de caracteres do CNPJ é invalido.")]
+        [StringLength(14,ErrorMessage = "A quantidade de caracteres do CNPJ é invalido.")]
         public string Cnpj { get; set; }
 
         //[Required(ErrorMessage = "O campo CEP é requerido.")]

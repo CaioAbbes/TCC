@@ -25,7 +25,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo CPF do cliente é requerido.")]
         [Display(Name = "CPF do cliente.")]
-        [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
+        [StringLength(11, ErrorMessage = "A quantidade de caracteres CPF é invalido.",MinimumLength = 11)]
         public string CPF { get; set; }
 
         public virtual Endereco Endereco { get; set; }
@@ -44,7 +44,6 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Celular do cliente é requerido.")]
         [Display(Name = "Celular do cliente")]
-        //[RegularExpression(@"^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$", ErrorMessage = "Celular inválido")]
         public long CelCli { get; set; }
 
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Digite somente letras.")]
@@ -62,7 +61,6 @@ namespace TCC.Models
 
         [Range(0, float.MaxValue, ErrorMessage = "Deve ser positivo")]
         [Display(Name = "Quantidade de pontos")]
-        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         public float QtdPontos { get; set; }
 
 

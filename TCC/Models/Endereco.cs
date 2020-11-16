@@ -20,6 +20,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo CEP é requerido.")]
         [Display(Name = "CEP")]
         [Remote("BuscaCEP", "Cliente",ErrorMessage = "CEP não encontrado")]
+        [StringLength(8,ErrorMessage = "A quantidade de caracteres do CEP é invalido.",MinimumLength = 8)]
         public string CEP { get; set; }
 
         [Required(ErrorMessage = "O campo Logradouro é requerido.")]

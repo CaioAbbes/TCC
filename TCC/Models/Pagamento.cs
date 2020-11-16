@@ -26,11 +26,6 @@ namespace TCC.Models
 
         public virtual Comanda Comanda { get; set; }
 
-        //[Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
-        //[Display(Name = "CPF do funcionário.")]
-        //public decimal CPFfunc { get; set; }
-
-
         [Display(Name = "Id da comanda")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdComanda { get; set; }
@@ -46,17 +41,29 @@ namespace TCC.Models
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         public float Total { get; set; }
 
-
+        [Display(Name = "Id da Mesa")]
         public int IdMesa { get; set; }
 
+
+        [Display(Name = "Id do Cliente")]
         public int IdCli { get; set; }
 
+
+        [Display(Name = "CPF do Funcionário")]
+        [StringLength(11, ErrorMessage = "A quantidade de caracteres do CPF do funcionário é invalido.", MinimumLength = 11)]
         public string CPFfunc { get; set; }
 
+
+        [StringLength(6, ErrorMessage = "O numero de caracteres do Código do cupom é invalido ", MinimumLength = 6)]
+        [Display(Name = "Código do cupom")]
         public string CodCupom { get; set; }
 
+        [Range(0, float.MaxValue, ErrorMessage = "Deve ser positivo")]
+        [Display(Name = "Quantidade de pontos")]
         public float QtdPontos { get; set; }
 
+        [Display(Name = "CPF do cliente.")]
+        [StringLength(11, ErrorMessage = "A quantidade de caracteres CPF é invalido.", MinimumLength = 11)]
         public string CPF { get; set; }
 
         public Pagamento(int idPag, int idComanda, string formPag, float total, int idMesa, int idCli, string cPFfunc, string codCupom, float qtdPontos, string cPF)
