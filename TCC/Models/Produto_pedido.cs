@@ -26,11 +26,11 @@ namespace TCC.Models
         //[Display(Name = "Id da comanda")]
         //[RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         //[Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public Comanda Comanda { get; set; }
+        public virtual Comanda Comanda { get; set; }
 
-        public Mesa Mesa { get; set; }
+        public virtual Mesa Mesa { get; set; }
 
-        public Cliente Cliente { get; set; }
+        public virtual Cliente Cliente { get; set; }
 
 
         [Required(ErrorMessage = "O campo Nome do produto é requerido.")]

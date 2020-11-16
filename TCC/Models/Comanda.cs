@@ -23,9 +23,7 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public Cliente Cliente { get; set; }
 
-        [Display(Name = "Id da mesa")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-        [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
+
         public Mesa Mesa { get; set; }
 
         [Required(ErrorMessage = "O campo Status da comanda é requerido")]
