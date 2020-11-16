@@ -36,7 +36,7 @@ namespace TCC.Models
         [Display(Name = "CNPJ")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         //  [StringLength(14,ErrorMessage = "A quantidade de caracteres do CNPJ é invalido.")]
-        public decimal Cnpj { get; set; }
+        public string Cnpj { get; set; }
 
         //[Required(ErrorMessage = "O campo CEP é requerido.")]
         //[Display(Name = "CEP")]
@@ -101,7 +101,7 @@ namespace TCC.Models
                         IdForn = int.Parse(registros["IdForn"].ToString()),
                         RazaoSocial = registros["RazaoSocial"].ToString(),
                         NomeForn = registros["NomeForn"].ToString(),
-                        Cnpj = decimal.Parse(registros["Cnpj"].ToString()),
+                        Cnpj = registros["Cnpj"].ToString(),
                         Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
                         Tel = int.Parse(registros["Tel"].ToString()),
                         EmailForn = registros["EmailForn"].ToString(),
@@ -128,7 +128,7 @@ namespace TCC.Models
                         IdForn = int.Parse(registros["IdForn"].ToString()),
                         RazaoSocial = registros["RazaoSocial"].ToString(),
                         NomeForn = registros["NomeForn"].ToString(),
-                        Cnpj = decimal.Parse(registros["Cnpj"].ToString()),
+                        Cnpj = registros["Cnpj"].ToString(),
                         Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
                         Tel = int.Parse(registros["Tel"].ToString()),
                         EmailForn = registros["EmailForn"].ToString(),

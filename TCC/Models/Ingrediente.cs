@@ -68,7 +68,7 @@ namespace TCC.Models
         }
 
 
-        public decimal SelecionaCodigoBarras(decimal CodigoBarras)
+        public string SelecionaCodigoBarras(string CodigoBarras)
         {
             using (db = new ConexaoDB())
             {

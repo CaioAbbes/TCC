@@ -34,7 +34,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo Tipo de acesso é requerido.")]
         [Display(Name = "Tipo de acesso")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-        public decimal TipoAcesso { get; set; }
+        public int TipoAcesso { get; set; }
 
         public Usuario RetornaPorIdUsuario(int idUsu)
         {
@@ -51,7 +51,7 @@ namespace TCC.Models
                         IdUsuario = int.Parse(registros["IdUsuario"].ToString()),
                         UsuarioText = registros["Usuario"].ToString(),
                         Senha = registros["Senha"].ToString(),
-                        TipoAcesso = decimal.Parse(registros["TipoAcesso"].ToString())
+                        TipoAcesso = int.Parse(registros["TipoAcesso"].ToString())
                     };
 
                 }

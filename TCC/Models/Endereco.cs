@@ -20,7 +20,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo CEP é requerido.")]
         [Display(Name = "CEP")]
         [Remote("BuscaCEP", "Cliente",ErrorMessage = "CEP não encontrado")]
-        public decimal CEP { get; set; }
+        public string CEP { get; set; }
 
         [Required(ErrorMessage = "O campo Logradouro é requerido.")]
         [Display(Name = "Logradouro")]
@@ -50,7 +50,7 @@ namespace TCC.Models
         public string UF { get; set; }
 
 
-        public List<Endereco> BuscaCEP(decimal cep)
+        public List<Endereco> BuscaCEP(string cep)
         {
             var CepObj = new Endereco();
             var CepList = new List<Endereco>();
@@ -69,17 +69,17 @@ namespace TCC.Models
             JsonCepObject cepJson = javaScriptSerializer.Deserialize<JsonCepObject>(json);
 
 
-            CepObj.CEP = decimal.Parse(cepJson.code.Replace("-",string.Empty));
+            CepObj.CEP = cepJson.code.Replace("-",string.Empty);
             CepObj.Logra = cepJson.address;
             CepObj.Bairro = cepJson.district;
             CepObj.Cidade = cepJson.city;
             CepObj.Estado = cepJson.state;
 
-            CEP = decimal.Parse(cepJson.code.Replace("-", string.Empty));
-            Logra = cepJson.address;
-            Bairro = cepJson.district;
-            Cidade = cepJson.city;
-            Estado = cepJson.state;
+            //CEP = decimal.Parse(cepJson.code.Replace("-", string.Empty));
+            //Logra = cepJson.address;
+            //Bairro = cepJson.district;
+            //Cidade = cepJson.city;
+            //Estado = cepJson.state;
 
             CepList.Add(CepObj);
 
@@ -108,7 +108,7 @@ namespace TCC.Models
                 {
                     EnderecoListando = new Endereco
                     {
-                        CEP = decimal.Parse(registros["CEP"].ToString()),
+                        CEP = registros["CEP"].ToString(),
                         Logra = registros["Logra"].ToString(),
                         Bairro = registros["Bairro"].ToString(),
                         Cidade = registros["Cidade"].ToString(),

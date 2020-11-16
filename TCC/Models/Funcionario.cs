@@ -26,7 +26,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
         [Display(Name = "CPF do funcionário.")]
         [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
-        public decimal CPFfunc { get; set; }
+        public string CPFfunc { get; set; }
 
         public Endereco Endereco { get; set; }
 
@@ -128,7 +128,7 @@ namespace TCC.Models
                         IdFunc = int.Parse(registros["IdFunc"].ToString()),
                         Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
                         NomeFunc = registros["NomeFunc"].ToString(),
-                        CPFfunc = decimal.Parse(registros["CPFfunc"].ToString()),
+                        CPFfunc = registros["CPFfunc"].ToString(),
                         DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
                         CargoFunc = registros["CargoFunc"].ToString(),
                         SexoFunc = registros["SexoFunc"].ToString(),
@@ -164,7 +164,7 @@ namespace TCC.Models
                         Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
                         User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
                         NomeFunc = registros["NomeFunc"].ToString(),
-                        CPFfunc = decimal.Parse(registros["CPFfunc"].ToString()),
+                        CPFfunc = registros["CPFfunc"].ToString(),
                         DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
                         CargoFunc = registros["CargoFunc"].ToString(),
                         SexoFunc = registros["SexoFunc"].ToString(),
@@ -181,7 +181,7 @@ namespace TCC.Models
 
         }
 
-        public decimal SelecionaComCPFFunc(decimal CPFfunc)
+        public string SelecionaComCPFFunc(string CPFfunc)
         {
             using (db = new ConexaoDB())
             {
@@ -192,7 +192,7 @@ namespace TCC.Models
                 {
                     FuncListando = new Funcionario
                     {
-                        CPFfunc = decimal.Parse(registros["CPFfunc"].ToString())
+                        CPFfunc = registros["CPFfunc"].ToString()
                     };
                 }
 

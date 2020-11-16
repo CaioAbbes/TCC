@@ -40,7 +40,7 @@ namespace TCC.Controllers
 
         // POST: Saida_ingre/Create
         [HttpPost]
-        public ActionResult Create(decimal cPFfunc, string nome, int qtdUsada, DateTime dataHoraSaida)
+        public ActionResult Create(string cPFfunc, string nome, int qtdUsada, DateTime dataHoraSaida)
         {
             if (ModelState.IsValid)
             {

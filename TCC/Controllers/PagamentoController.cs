@@ -41,7 +41,7 @@ namespace TCC.Controllers
 
         // POST: Pagamento/Create
         [HttpPost]
-        public ActionResult Create(int IdMesa, decimal CPFfunc, string FormPag, string CodCupom, float QtdPontos, decimal CPF)
+        public ActionResult Create(int IdMesa, string CPFfunc, string FormPag, string CodCupom, float QtdPontos, string CPF)
         {
             if (ModelState.IsValid)
             {

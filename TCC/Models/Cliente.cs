@@ -26,7 +26,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo CPF do cliente é requerido.")]
         [Display(Name = "CPF do cliente.")]
         [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
-        public decimal CPF { get; set; }
+        public string CPF { get; set; }
 
         public virtual Endereco Endereco { get; set; }
 
@@ -106,7 +106,7 @@ namespace TCC.Models
                     {
                         IdCli = int.Parse(registros["IdCli"].ToString()),
                         NomeCli = registros["NomeCli"].ToString(),
-                        CPF = decimal.Parse(registros["CPF"].ToString()),
+                        CPF = registros["CPF"].ToString(),
                         EmailCli = registros["EmailCli"].ToString(),
                         Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
                         CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
@@ -139,7 +139,7 @@ namespace TCC.Models
 
                         IdCli = int.Parse(registros["IdCli"].ToString()),
                         NomeCli = registros["NomeCli"].ToString(),
-                        CPF = decimal.Parse(registros["CPF"].ToString()),
+                        CPF = registros["CPF"].ToString(),
                         EmailCli = registros["EmailCli"].ToString(),
                         Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
                         CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
@@ -188,7 +188,7 @@ namespace TCC.Models
                 {
                     clienteListando = new Cliente
                     {
-                        CPF = decimal.Parse(registros["CPF"].ToString())
+                        CPF = registros["CPF"].ToString()
 
                     };
                 }

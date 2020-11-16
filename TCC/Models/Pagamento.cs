@@ -51,15 +51,15 @@ namespace TCC.Models
 
         public int IdCli { get; set; }
 
-        public decimal CPFfunc { get; set; }
+        public string CPFfunc { get; set; }
 
         public string CodCupom { get; set; }
 
         public float QtdPontos { get; set; }
 
-        public decimal CPF { get; set; }
+        public string CPF { get; set; }
 
-        public Pagamento(int idPag, int idComanda, string formPag, float total, int idMesa, int idCli, decimal cPFfunc, string codCupom, float qtdPontos, decimal cPF)
+        public Pagamento(int idPag, int idComanda, string formPag, float total, int idMesa, int idCli, string cPFfunc, string codCupom, float qtdPontos, string cPF)
         {
             IdPag = idPag;
             IdComanda = idComanda;
@@ -75,7 +75,7 @@ namespace TCC.Models
 
         public Pagamento() { }
 
-        public void InsertPagamento(int IdMesa, int IdCli, decimal CPFfunc, string FormPag, string CodCupom, float QtdPontos, decimal CPF)
+        public void InsertPagamento(int IdMesa, int IdCli, string CPFfunc, string FormPag, string CodCupom, float QtdPontos, string CPF)
         {
             string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", IdMesa, 0, CPFfunc, FormPag, null, 0, CPF);
 
@@ -98,7 +98,7 @@ namespace TCC.Models
                     var PagamentoTemporario = new Pagamento
                     {
                         IdPag = int.Parse(registros["IdPag"].ToString()),
-                        CPFfunc = new Funcionario().SelecionaComCPFFunc(decimal.Parse(registros["CPFfunc"].ToString())),
+                        CPFfunc = new Funcionario().SelecionaComCPFFunc(registros["CPFfunc"].ToString()),
                         Comanda = new Comanda().SelecionaIdComanda(int.Parse(registros["IdComanda"].ToString())),
                         FormPag = registros["FormPag"].ToString(),
                         Total = float.Parse(registros["Total"].ToString())
@@ -124,7 +124,7 @@ namespace TCC.Models
                     PagamentoListando = new Pagamento
                     {
                         IdPag = int.Parse(registros["IdPag"].ToString()),
-                        CPFfunc = new Funcionario().SelecionaComCPFFunc(decimal.Parse(registros["CPFfunc"].ToString())),
+                        CPFfunc = new Funcionario().SelecionaComCPFFunc(registros["CPFfunc"].ToString()),
                         Comanda = new Comanda().SelecionaIdComanda(int.Parse(registros["IdComanda"].ToString())),
                         FormPag = registros["FormPag"].ToString(),
                         Total = float.Parse(registros["Total"].ToString())

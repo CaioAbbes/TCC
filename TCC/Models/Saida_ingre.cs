@@ -21,14 +21,12 @@ namespace TCC.Models
         [Display(Name = "Codigo de barras")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         // [StringLength(13,ErrorMessage = "A quantidade de caracteres do Codigo de barras é invalido.",MinimumLength = 13)]
-        public decimal CodigoBarras { get; set; }
+        public string CodigoBarras { get; set; }
 
         [Required(ErrorMessage = "O campo CPF do funcionário é requerido.")]
         [Display(Name = "CPF do funcionário.")]
         [RegularExpression(@"^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$", ErrorMessage = "CPF invalido.")]
-        public decimal CPFfunc { get; set; }
-
-        
+        public string CPFfunc { get; set; }
 
         [Required(ErrorMessage = "O campo Nome é requerido.")]
         [Display(Name = "Nome ")]
@@ -45,7 +43,7 @@ namespace TCC.Models
         [DataType(DataType.DateTime)]
         public DateTime DataHoraSaida { get; set; }
 
-        public Saida_ingre(int idSaidaIngre, decimal cPFfunc, string nome, int qtdUsada, DateTime dataHoraSaida)
+        public Saida_ingre(int idSaidaIngre, string cPFfunc, string nome, int qtdUsada, DateTime dataHoraSaida)
         {
             IdSaidaIngre = idSaidaIngre;
             CPFfunc = cPFfunc;
@@ -56,7 +54,7 @@ namespace TCC.Models
 
         public Saida_ingre() { }
 
-        public void InsertSaidaIngre(decimal cPFfunc, string nome, int qtdUsada, DateTime dataHoraSaida)
+        public void InsertSaidaIngre(string cPFfunc, string nome, int qtdUsada, DateTime dataHoraSaida)
         {
             string strQuery = string.Format("CALL sp_InsBaixaEstoque ('{0}','{1}','{2}','{3}');", cPFfunc, nome, qtdUsada, dataHoraSaida.ToString("yyyy-MM-dd HH:mm"));
 
@@ -80,8 +78,8 @@ namespace TCC.Models
                     var SaidaTemporaria = new Saida_ingre
                     {
                         IdSaidaIngre = int.Parse(registros["IdSaidaIngre"].ToString()),
-                        CodigoBarras = new Ingrediente().SelecionaCodigoBarras(decimal.Parse(registros["CodigoBarras"].ToString())),
-                        CPFfunc = new Funcionario().SelecionaComCPFFunc(decimal.Parse(registros["CPFfunc"].ToString())),
+                        CodigoBarras = new Ingrediente().SelecionaCodigoBarras(registros["CodigoBarras"].ToString()),
+                        CPFfunc = new Funcionario().SelecionaComCPFFunc(registros["CPFfunc"].ToString()),
                         Nome = new Ingrediente().SelecionaNome(registros["Nome"].ToString()),
                         QtdUsada = int.Parse(registros["QtdUsada"].ToString()),
                         DataHoraSaida = DateTime.Parse(registros["DataHoraSaida"].ToString())
@@ -104,8 +102,8 @@ namespace TCC.Models
                     saidaListando = new Saida_ingre
                     {
                         IdSaidaIngre = int.Parse(registros["IdSaidaIngre"].ToString()),
-                        CodigoBarras = new Ingrediente().SelecionaCodigoBarras(decimal.Parse(registros["CodigoBarras"].ToString())),
-                        CPFfunc = new Funcionario().SelecionaComCPFFunc(decimal.Parse(registros["CPFfunc"].ToString())),
+                        CodigoBarras = new Ingrediente().SelecionaCodigoBarras(registros["CodigoBarras"].ToString()),
+                        CPFfunc = new Funcionario().SelecionaComCPFFunc(registros["CPFfunc"].ToString()),
                         Nome = new Ingrediente().SelecionaNome(registros["Nome"].ToString()),
                         QtdUsada = int.Parse(registros["QtdUsada"].ToString()),
                         DataHoraSaida = DateTime.Parse(registros["DataHoraSaida"].ToString())

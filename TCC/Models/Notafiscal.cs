@@ -51,7 +51,7 @@ namespace TCC.Models
                 var notafiscalList = new List<Notafiscal>();
                 var cpfTemp = new Cliente
                 {
-                    CPF = 0
+                    CPF = null
                 };
 
                 while (registros.Read())
@@ -80,7 +80,7 @@ namespace TCC.Models
                 Notafiscal notafiscalListando = null;
                 var cpfTemp = new Cliente
                 {
-                    CPF = 0
+                    CPF = null
                 };
                 while (registros.Read())
                 {

@@ -25,7 +25,7 @@ namespace TCC.Models
         // public Ingrediente Ingrediente { get; set; }
 
         //public Fornecedor Fornecedor { get; set; }
-        public decimal CodigoBarras { get; set; }
+        public string CodigoBarras { get; set; }
 
         public string NomeForn { get; set; }
 
@@ -39,7 +39,7 @@ namespace TCC.Models
         [DataType(DataType.DateTime)]
         public DateTime DataHoraChegada { get; set; }
 
-        public Compra(int numCompra, decimal codigoBarras, string nomeForn, int qtdEntraIngre, DateTime dataHoraChegada)
+        public Compra(int numCompra, string codigoBarras, string nomeForn, int qtdEntraIngre, DateTime dataHoraChegada)
         {
             NumCompra = numCompra;
             CodigoBarras = codigoBarras;
@@ -50,7 +50,7 @@ namespace TCC.Models
 
         public Compra() { }
 
-        public void InsertCompra(decimal CodigoBarras, string NomeForn, int QtdEntraIngre, DateTime DataHoraChegada)
+        public void InsertCompra(string CodigoBarras, string NomeForn, int QtdEntraIngre, DateTime DataHoraChegada)
         {
             //string strQuery = string.Format("call sp_InsCompraEstoque('{0}','{1}','{2}','{3}');", Ingrediente.CodigoBarras,Fornecedor.NomeForn,compra.QtdEntraIngre,compra.DataHoraChegada.ToString("yyyy-MM-dd HH:mm"));
             string strQuery = string.Format("call sp_InsCompraEstoque('{0}','{1}','{2}','{3}');", CodigoBarras, NomeForn, QtdEntraIngre, DataHoraChegada.ToString("yyyy-MM-dd HH:mm"));
@@ -75,7 +75,7 @@ namespace TCC.Models
                     var CompraTemporaria = new Compra
                     {
                         NumCompra = int.Parse(registros["NumCompra"].ToString()),
-                        CodigoBarras = new Ingrediente().SelecionaCodigoBarras(decimal.Parse(registros["CodigoBarras"].ToString())),
+                        CodigoBarras = new Ingrediente().SelecionaCodigoBarras(registros["CodigoBarras"].ToString()),
                         NomeForn = new Fornecedor().SelecionaComNomeForn(registros["IdForn"].ToString()),
                         QtdEntraIngre = int.Parse(registros["QtdEntraIngre"].ToString()),
                         DataHoraChegada = DateTime.Parse(registros["DataHoraChegada"].ToString())
@@ -98,7 +98,7 @@ namespace TCC.Models
                     compraListando = new Compra
                     {
                         NumCompra = int.Parse(registros["NumCompra"].ToString()),
-                        CodigoBarras = new Ingrediente().SelecionaCodigoBarras(decimal.Parse(registros["CodigoBarras"].ToString())),
+                        CodigoBarras = new Ingrediente().SelecionaCodigoBarras(registros["CodigoBarras"].ToString()),
                         NomeForn = new Fornecedor().SelecionaComNomeForn(registros["IdForn"].ToString()),
                         QtdEntraIngre = int.Parse(registros["QtdEntraIngre"].ToString()),
                         DataHoraChegada = DateTime.Parse(registros["DataHoraChegada"].ToString())

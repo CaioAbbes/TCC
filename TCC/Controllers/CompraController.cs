@@ -42,7 +42,7 @@ namespace TCC.Controllers
 
         // POST: Compra/Create
         [HttpPost]
-        public ActionResult Create(decimal CodigoBarras, string NomeForn, int QtdEntraIngre, DateTime DataHoraChegada)
+        public ActionResult Create(string CodigoBarras, string NomeForn, int QtdEntraIngre, DateTime DataHoraChegada)
         {
             if (ModelState.IsValid)
             {
