@@ -27,9 +27,6 @@ namespace TCC.Controllers
         public ActionResult List(Compra compra)
         {
             var compraList = compra.SelecionaCompra();
-
-            var objCompra = new Compra();
-            objCompra.SelecionaCompra();
             return View(compraList);
         }
 

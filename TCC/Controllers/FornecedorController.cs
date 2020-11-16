@@ -28,9 +28,6 @@ namespace TCC.Controllers
         public ActionResult List(Fornecedor fornecedor)
         {
             var fornecedorList = fornecedor.SelecionaFornecedor();
-            var objFornecedor = new Fornecedor();
-            objFornecedor.SelecionaFornecedor();
-
             return View(fornecedorList);
         }
 

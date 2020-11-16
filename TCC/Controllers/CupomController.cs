@@ -27,8 +27,6 @@ namespace TCC.Controllers
         public ActionResult List(Cupom cupom)
         {
             var cupomList = cupom.SelecionaCupom();
-            var objCupom = new Cupom();
-            objCupom.SelecionaCupom();
             return View(cupomList);
         }
 

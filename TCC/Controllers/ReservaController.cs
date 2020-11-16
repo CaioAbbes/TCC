@@ -27,10 +27,6 @@ namespace TCC.Controllers
         public ActionResult List(Reserva reserva)
         {
             var reservaList = reserva.SelecionaReserva();
-
-            var objReserva = new Reserva();
-            objReserva.SelecionaReserva();
-
             return View(reservaList);
         }
 

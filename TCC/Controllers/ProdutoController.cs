@@ -28,10 +28,6 @@ namespace TCC.Controllers
         public ActionResult List(Produto produto)
         {
             var produtoList = produto.SelecionaProduto();
-
-            var objProduto = new Produto();
-            objProduto.SelecionaProduto();
-
             return View(produtoList);
         }
 

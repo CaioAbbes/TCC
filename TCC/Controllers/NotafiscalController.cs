@@ -27,9 +27,6 @@ namespace TCC.Controllers
         public ActionResult List(Notafiscal notafiscal)
         {
             var notafiscalList = notafiscal.SelecionaNotafiscal();
-
-            var objNotafiscal = new Notafiscal();
-            objNotafiscal.SelecionaNotafiscal();
             return View(notafiscalList);
         }
 

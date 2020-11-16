@@ -18,8 +18,6 @@ namespace TCC.Controllers
         public ActionResult List(Funcionario funcionario)
         {
             var funcionarioList = funcionario.SelecionaFuncionario();
-            var objFunc = new Funcionario();
-            objFunc.SelecionaFuncionario();
             return View(funcionarioList);
 
         }

@@ -27,9 +27,6 @@ namespace TCC.Controllers
         public ActionResult List(Mesa mesa)
         {
             var mesaList = mesa.SelecionaMesa();
-
-            var objMesa = new Mesa();
-            objMesa.SelecionaMesa();
             return View(mesaList);
         }
 

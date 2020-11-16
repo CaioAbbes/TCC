@@ -27,9 +27,6 @@ namespace TCC.Controllers
         public ActionResult List(Produto_pedido ProdPed)
         {
             var prodPedList = ProdPed.SelecionaProdPed();
-            var objProdPed = new Produto_pedido();
-            objProdPed.SelecionaProdPed();
-
             return View(prodPedList);
         }
 

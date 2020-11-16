@@ -27,9 +27,6 @@ namespace TCC.Controllers
         public ActionResult List(Pagamento pagamento)
         {
             var pagamentoList = pagamento.SelecionaPagamento();
-
-            var objPagamento = new Pagamento();
-            objPagamento.SelecionaPagamento();
             return View(pagamentoList);
         }
 

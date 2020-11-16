@@ -27,8 +27,6 @@ namespace TCC.Controllers
         public ActionResult List(Saida_ingre saida)
         {
             var saidaList = saida.SelecionaSaida();
-            var objSaida = new Saida_ingre();
-            objSaida.SelecionaSaida();
             return View(saidaList);
         }
 

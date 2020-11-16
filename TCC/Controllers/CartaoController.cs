@@ -27,10 +27,6 @@ namespace TCC.Controllers
         public ActionResult List(Cartao cartao)
         {
             var cartaoList = cartao.SelecionaCartao();
-
-            var objCartao = new Cartao();
-            objCartao.SelecionaCartao();
-
             return View(cartaoList);
         }
 
