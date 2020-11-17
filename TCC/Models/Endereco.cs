@@ -19,13 +19,13 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo CEP é requerido.")]
         [Display(Name = "CEP")]
-        [Remote("BuscaCEP", "Cliente",ErrorMessage = "CEP não encontrado")]
-        [StringLength(8,ErrorMessage = "A quantidade de caracteres do CEP é invalido.",MinimumLength = 8)]
+        [Remote("BuscaCEP", "Cliente", ErrorMessage = "CEP não encontrado")]
+        [StringLength(8, ErrorMessage = "A quantidade de caracteres do CEP é invalido.", MinimumLength = 8)]
         public string CEP { get; set; }
 
         [Required(ErrorMessage = "O campo Logradouro é requerido.")]
         [Display(Name = "Logradouro")]
-        [StringLength(200,ErrorMessage = "A quantidade de caracteres do Logradouro é invalido.")]
+        [StringLength(200, ErrorMessage = "A quantidade de caracteres do Logradouro é invalido.")]
         public string Logra { get; set; }
 
         [Required(ErrorMessage = "O campo Bairro é requerido.")]
@@ -51,11 +51,12 @@ namespace TCC.Models
         public string UF { get; set; }
 
 
-        public List<Endereco> BuscaCEP(string cep)
+        public static List<Endereco> BuscaCEP(string cep)
         {
             var CepObj = new Endereco();
             var CepList = new List<Endereco>();
-            var url = "https://ws.apicep.com/busca-cep/api/cep.json?code=" + cep;
+            // var url = "https://ws.apicep.com/busca-cep/api/cep.json?code=" + cep;
+            var url = string.Format("https://viacep.com.br/ws/{0}/json/", cep);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
             string json = string.Empty;
@@ -70,11 +71,11 @@ namespace TCC.Models
             JsonCepObject cepJson = javaScriptSerializer.Deserialize<JsonCepObject>(json);
 
 
-            CepObj.CEP = cepJson.code.Replace("-",string.Empty);
-            CepObj.Logra = cepJson.address;
-            CepObj.Bairro = cepJson.district;
-            CepObj.Cidade = cepJson.city;
-            CepObj.Estado = cepJson.state;
+            CepObj.CEP = cepJson.cep.Replace("-", string.Empty);
+            CepObj.Logra = cepJson.logradouro;
+            CepObj.Bairro = cepJson.bairro;
+            CepObj.Cidade = cepJson.localidade;
+            CepObj.UF = cepJson.uf;
 
             //CEP = decimal.Parse(cepJson.code.Replace("-", string.Empty));
             //Logra = cepJson.address;
@@ -89,11 +90,18 @@ namespace TCC.Models
 
         public class JsonCepObject
         {
-            public string code { get; set; }
-            public string state { get; set; }
-            public string city { get; set; }
-            public string district { get; set; }
-            public string address { get; set; }
+            //public string code { get; set; }
+            //public string state { get; set; }
+            //public string city { get; set; }
+            //public string district { get; set; }
+            //public string address { get; set; }
+
+            public string cep { get; set; }
+            public string logradouro { get; set; }
+            public string bairro { get; set; }
+            public string localidade { get; set; }
+            public string uf { get; set; }
+
 
         }
 

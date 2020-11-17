@@ -35,7 +35,8 @@ namespace TCC.Models
         public DateTime Datavalid { get; set; }
         
        
-        public virtual Cliente Cliente { get; set; }
+        public virtual Cliente Cliente { get; set; } //nesse ele chumba com o id Do usuario cadastrado
+
 
         public void InsertCartao(Cartao cartao)
         {

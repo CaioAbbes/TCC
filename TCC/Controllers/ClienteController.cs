@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using TCC.Models;
 
@@ -77,10 +78,33 @@ namespace TCC.Controllers
 
         public ActionResult BuscaCEP(Endereco endereco)
         {
-            bool CepExists = false;
 
-            var endList = endereco.BuscaCEP(endereco.CEP);
-            return View(endList);
+            var endList = Endereco.BuscaCEP(endereco.CEP);
+            //var end = endList.Select(t => new { t.CEP, t.Logra, t.Bairro, t.Cidade, t.UF}).Where(p => p.CEP == endereco.CEP);
+            ViewBag.End = endList;
+
+
+
+            //var end = Endereco.BuscaCEP(endereco.CEP).Select(t => new { t.CEP, t.Logra, t.Bairro, t.Cidade, t.UF}).Where(p => p.CEP == cliente.Endereco.CEP);
+            //return Json(end, JsonRequestBehavior.AllowGet);
+
+            return Json(endList, JsonRequestBehavior.AllowGet);
+
+            //Endereco end = new Endereco()
+            //{
+            //    CEP = cliente.Endereco.CEP,
+            //    Logra = cliente.Endereco.Logra,
+            //    Bairro = cliente.Endereco.Bairro,
+            //    Cidade = cliente.Endereco.Cidade,
+            //    UF = cliente.Endereco.UF
+
+            //};
+            //var endList = end.BuscaCEP(end.CEP);
+
+
+            //return Json(endList.All(a => a.CEP == endereco.CEP), JsonRequestBehavior.AllowGet);
+
+
 
             //var endList = end.BuscaCEP(endereco.CEP);
 

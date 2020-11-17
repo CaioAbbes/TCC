@@ -23,7 +23,6 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public Cliente Cliente { get; set; }
 
-
         public Mesa Mesa { get; set; }
 
         [Required(ErrorMessage = "O campo Status da comanda é requerido")]
