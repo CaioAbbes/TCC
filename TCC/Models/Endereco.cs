@@ -51,59 +51,44 @@ namespace TCC.Models
         public string UF { get; set; }
 
 
-        public static List<Endereco> BuscaCEP(string cep)
-        {
-            var CepObj = new Endereco();
-            var CepList = new List<Endereco>();
-            // var url = "https://ws.apicep.com/busca-cep/api/cep.json?code=" + cep;
-            var url = string.Format("https://viacep.com.br/ws/{0}/json/", cep);
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+        //public List<Endereco> BuscaCEP(string cep)
+        //{
+        //    var CepObj = new Endereco();
+        //    var CepList = new List<Endereco>();
+        //    // var url = "https://ws.apicep.com/busca-cep/api/cep.json?code=" + cep;
+        //    var url = string.Format("https://viacep.com.br/ws/{0}/json/", cep);
+        //    //var url = string.Format("https://viacep.com.br/ws/{0}/json/?callback=?",cep);
+        //    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
-            string json = string.Empty;
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                json = reader.ReadToEnd();
-            }
+        //    string json = string.Empty;
+        //    using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+        //    using (Stream stream = response.GetResponseStream())
+        //    using (StreamReader reader = new StreamReader(stream))
+        //    {
+        //        json = reader.ReadToEnd();
+        //    }
 
-            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
-            JsonCepObject cepJson = javaScriptSerializer.Deserialize<JsonCepObject>(json);
+        //    JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+        //    JsonCepObject cepJson = javaScriptSerializer.Deserialize<JsonCepObject>(json);
 
+        //    CepObj.CEP = cepJson.cep.Replace("-", string.Empty);
+        //    CepObj.Logra = cepJson.logradouro;
+        //    CepObj.Bairro = cepJson.bairro;
+        //    CepObj.Cidade = cepJson.localidade;
+        //    CepObj.UF = cepJson.uf;
 
-            CepObj.CEP = cepJson.cep.Replace("-", string.Empty);
-            CepObj.Logra = cepJson.logradouro;
-            CepObj.Bairro = cepJson.bairro;
-            CepObj.Cidade = cepJson.localidade;
-            CepObj.UF = cepJson.uf;
+        //    CepList.Add(CepObj);
+        //    return CepList;
+        //}
 
-            //CEP = decimal.Parse(cepJson.code.Replace("-", string.Empty));
-            //Logra = cepJson.address;
-            //Bairro = cepJson.district;
-            //Cidade = cepJson.city;
-            //Estado = cepJson.state;
-
-            CepList.Add(CepObj);
-
-            return CepList;
-        }
-
-        public class JsonCepObject
-        {
-            //public string code { get; set; }
-            //public string state { get; set; }
-            //public string city { get; set; }
-            //public string district { get; set; }
-            //public string address { get; set; }
-
-            public string cep { get; set; }
-            public string logradouro { get; set; }
-            public string bairro { get; set; }
-            public string localidade { get; set; }
-            public string uf { get; set; }
-
-
-        }
+        //public class JsonCepObject
+        //{
+        //    public string cep { get; set; }
+        //    public string logradouro { get; set; }
+        //    public string bairro { get; set; }
+        //    public string localidade { get; set; }
+        //    public string uf { get; set; }
+        //}
 
 
         public Endereco RetornaPorCEP(decimal CEP)

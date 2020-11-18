@@ -5,7 +5,6 @@
 }
 
 <h2>Create</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -43,69 +42,94 @@
         </div>*@
 
     @*<label>
+            Cep:
+            <input name="cep" type="text" id="Cep" value="" size="10" maxlength="9" />
+        </label><br />
+        <label>
+            Rua:
+            <input name="rua" type="text" id="Logra" size="60" />
+        </label><br />
+        <label>
+            Bairro:
+            <input name="bairro" type="text" id="Bairro" size="40" />
+        </label><br />
+        <label>
+            Cidade:
+            <input name="cidade" type="text" id="Cidade" size="40" />
+        </label><br />
+        <label>
+            Estado:
+            <input name="uf" type="text" id="Uf" size="2" />
+        </label><br />*@
+
+    <label>
         Cep:
-        <input name="cep" type="text" id="Cep" value="" size="10" maxlength="9" />
+        <input type="text" id="Cep" name="Cep" />
     </label><br />
     <label>
         Rua:
-        <input name="rua" type="text" id="Logra" size="60" />
+        <input type="text" id="Logra" name="Logra" />
     </label><br />
     <label>
         Bairro:
-        <input name="bairro" type="text" id="Bairro" size="40" />
+
+        <input type="text" id="Bairro" name="Bairro" />
     </label><br />
     <label>
         Cidade:
-        <input name="cidade" type="text" id="Cidade" size="40" />
+        <input type="text" id="Cidade" name="Cidade" />
     </label><br />
     <label>
-        Estado:
-        <input name="uf" type="text" id="Uf" size="2" />
-    </label><br />*@
+        UF:
+        <input type="text" id="UF" name="UF" />
+    </label><br />
+
+
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.Endereco.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Endereco.CEP, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Endereco.CEP, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
-            @Html.LabelFor(model => model.Endereco.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco.CEP, new { htmlAttributes = new { @class = "form-control", @value = ViewBag.End } })
-                @Html.ValidationMessageFor(model => model.Endereco.CEP, "", new { @class = "text-danger" })
-            </div>
+        @Html.LabelFor(model => model.Endereco.Logra, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Endereco.Logra, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Endereco.Logra, "", new { @class = "text-danger" })
         </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Endereco.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Endereco.Bairro, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Endereco.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Endereco.Cidade, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Endereco.Logra, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco.Logra, new { htmlAttributes = new { @class = "form-control"} })
-                @Html.ValidationMessageFor(model => model.Endereco.Logra, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Endereco.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control"} })
-                @Html.ValidationMessageFor(model => model.Endereco.Bairro, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Endereco.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Endereco.Cidade, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
+    <div class="form-group">
             @Html.LabelFor(model => model.Endereco.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Endereco.Estado, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Endereco.Estado, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Endereco.UF, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco.UF, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Endereco.UF, "", new { @class = "text-danger" })
-            </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Endereco.UF, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Endereco.UF, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Endereco.UF, "", new { @class = "text-danger" })
         </div>
+    </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.NomeCli, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -197,66 +221,67 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-<script>
-    $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-        function limpa_formulário_cep() {
-            // Limpa valores do formulário de cep.
-            $("#Logra").val("");
-            $("#Bairro").val("");
-            $("#Cidade").val("");
-            $("#Uf").val("");
-        }
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#Logra").val("");
+                $("#Bairro").val("");
+                $("#Cidade").val("");
+                $("#Uf").val("");
+            }
 
-        //Quando o campo cep perde o foco.
-        $("#Cep").blur(function () {
+            //Quando o campo cep perde o foco.
+            $("#Cep").blur(function () {
 
-            //Nova variável "cep" somente com dígitos.
-            var cep = $(this).val().replace(/\D/g, '');
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
 
-            //Verifica se campo cep possui valor informado.
-            if (cep != "") {
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
 
-                //Expressão regular para validar o CEP.
-                var validacep = /^[0-9]{8}$/;
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
 
-                //Valida o formato do CEP.
-                if (validacep.test(cep)) {
+                    //Valida o formato do CEP.
+                    if (validacep.test(cep)) {
 
-                    //Preenche os campos com "..." enquanto consulta webservice.
-                    $("#Logra").val("...");
-                    $("#Bairro").val("...");
-                    $("#Cidade").val("...");
-                    $("#Uf").val("...");
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#Logra").val("...");
+                        $("#Bairro").val("...");
+                        $("#Cidade").val("...");
+                        $("#Uf").val("...");
 
-                    //Consulta o webservice viacep.com.br/
-                    $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
 
-                        if (!("erro" in dados)) {
-                            //Atualiza os campos com os valores da consulta.
-                            $("#Logra").val(dados.logradouro);
-                            $("#Bairro").val(dados.bairro);
-                            $("#Cidade").val(dados.localidade);
-                            $("#Uf").val(dados.uf);
-                        } //end if.
-                        else {
-                            //CEP pesquisado não foi encontrado.
-                            limpa_formulário_cep();
-                            alert("CEP não encontrado.");
-                        }
-                    });
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#Logra").val(dados.logradouro);
+                                $("#Bairro").val(dados.bairro);
+                                $("#Cidade").val(dados.localidade);
+                                $("#UF").val(dados.uf);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
                 } //end if.
                 else {
-                    //cep é inválido.
+                    //cep sem valor, limpa formulário.
                     limpa_formulário_cep();
-                    alert("Formato de CEP inválido.");
                 }
-            } //end if.
-            else {
-                //cep sem valor, limpa formulário.
-                limpa_formulário_cep();
-            }
+            });
         });
-    });
+
     </script>
 }
