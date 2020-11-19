@@ -19,7 +19,6 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo CEP é requerido.")]
         [Display(Name = "CEP")]
-        [Remote("BuscaCEP", "Cliente", ErrorMessage = "CEP não encontrado")]
         [StringLength(8, ErrorMessage = "A quantidade de caracteres do CEP é invalido.", MinimumLength = 8)]
         public string CEP { get; set; }
 
@@ -39,7 +38,7 @@ namespace TCC.Models
         [StringLength(100, ErrorMessage = "A quantidade de caracteres do Cidade é invalido.")]
         public string Cidade { get; set; }
 
-        [Required(ErrorMessage = "O campo Estado é requerido.")]
+        //[Required(ErrorMessage = "O campo Estado é requerido.")]
         [Display(Name = "Estado")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(100, ErrorMessage = "A quantidade de caracteres do Estado é invalido.")]
