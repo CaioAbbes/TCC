@@ -4,6 +4,7 @@ using Renci.SshNet.Messages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -25,7 +26,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo CPF do cliente é requerido.")]
         [Display(Name = "CPF do cliente.")]
-        [StringLength(11, ErrorMessage = "A quantidade de caracteres CPF é invalido.",MinimumLength = 11)]
+        [StringLength(11, ErrorMessage = "A quantidade de caracteres CPF é invalido.", MinimumLength = 11)]
         public string CPF { get; set; }
 
         public virtual Endereco Endereco { get; set; }
@@ -56,17 +57,16 @@ namespace TCC.Models
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int NumEdif { get; set; }
-        
+
         public virtual Usuario User { get; set; }
 
         [Range(0, float.MaxValue, ErrorMessage = "Deve ser positivo")]
         [Display(Name = "Quantidade de pontos")]
         public float QtdPontos { get; set; }
 
-
         public string Imagem { get; set; }
 
-        //   public HttpPostedFileBase Imagecli { get; set; } //ou string
+        //public HttpPostedFileBase Imagecli { get; set; } //ou string
 
 
 
@@ -98,6 +98,7 @@ namespace TCC.Models
                 string StrQuery = string.Format("select * from tbcliente;");
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 var clienteList = new List<Cliente>();
+
                 while (registros.Read())
                 {
                     var ClienteTemporario = new Cliente
@@ -112,7 +113,7 @@ namespace TCC.Models
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
                         QtdPontos = float.Parse(registros["QtdPontos"].ToString()),
                         User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
-                       Imagem = registros["imagecli"].ToString()
+                        Imagem = registros["imagecli"].ToString()
                     };
 
 
@@ -195,6 +196,26 @@ namespace TCC.Models
             }
 
         }
+
+        //public static string UparImagem(HttpPostedFile file)
+        //{
+        //    string path = string.Empty;
+        //    string pic = string.Empty;
+
+        //    if(file != null)
+        //    {
+        //        pic = Path.GetFileName(file.FileName);
+        //        path = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Photos"), pic);
+        //        file.SaveAs(path);
+        //        using(MemoryStream ms = new MemoryStream())
+        //        {
+        //            file.InputStream.CopyTo(ms);
+        //            byte[] array = ms.GetBuffer();
+        //        }
+        //    }
+
+        //    return pic;
+        //}
 
 
 
