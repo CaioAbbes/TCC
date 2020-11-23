@@ -79,8 +79,15 @@
     <td>
         @Html.DisplayFor(modelItem => item.QtdPontos)
     </td>
-    <td>
+    @*<td>
         @Html.DisplayFor(modelItem => item.Imagem)
+    </td>*@
+
+    <td>
+        @if (!string.IsNullOrEmpty(item.Imagem))
+        {
+            <img src="@Url.Content(item.Imagem)" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />
+        }
     </td>
 
     @*@if (item.Imagem != null)

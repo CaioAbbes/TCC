@@ -23,10 +23,42 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Endereco, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Endereco.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Endereco.CEP, new { htmlAttributes = new { @class = "form-control", id = "Cep", name = "Cep" } })
+                @Html.ValidationMessageFor(model => model.Endereco.CEP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Endereco.Logra, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Endereco.Logra, new { htmlAttributes = new { @class = "form-control", id = "Logra", name = "Logra" } })
+                @Html.ValidationMessageFor(model => model.Endereco.Logra, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Endereco.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control", id = "Bairro", name = "Bairro" } })
+                @Html.ValidationMessageFor(model => model.Endereco.Bairro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Endereco.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control", id = "Cidade", name = "Cidade" } })
+                @Html.ValidationMessageFor(model => model.Endereco.Cidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Endereco.UF, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Endereco.UF, new { htmlAttributes = new { @class = "form-control", id = "UF", name = "UF" } })
+                @Html.ValidationMessageFor(model => model.Endereco.UF, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -118,10 +150,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TipoAcesso, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.User.TipoAcesso, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TipoAcesso, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TipoAcesso, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.User.TipoAcesso, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.User.TipoAcesso, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -136,3 +168,72 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#Logra").val("");
+                $("#Bairro").val("");
+                $("#Cidade").val("");
+                $("#Uf").val("");
+            }
+
+            //Quando o campo cep perde o foco.
+            $("#Cep").blur(function () {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if (validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#Logra").val("...");
+                        $("#Bairro").val("...");
+                        $("#Cidade").val("...");
+                        $("#Uf").val("...");
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#Logra").val(dados.logradouro);
+                                $("#Bairro").val(dados.bairro);
+                                $("#Cidade").val(dados.localidade);
+                                $("#UF").val(dados.uf);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });
+
+    </script>
+}
