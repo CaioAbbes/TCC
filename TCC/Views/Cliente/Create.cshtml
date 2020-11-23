@@ -21,69 +21,6 @@
         </div>
     </div>
 
-    @*<form action="">
-        CEP:<br />
-        <input type="text" class="form-control" value="@viewDataVariavel.CEP" />
-        Logra:<br />
-        <input type="text" class="form-control" value="@viewDataVariavel.Logra" />
-        Bairro <br />
-        <input type="text" class="form-control" value="@viewDataVariavel.Bairro" />
-        Cidade<br>
-        <input type="text" class="form-control" value="@viewDataVariavel.Cidade" />
-        <input type="text" class="form-control" value="@viewDataVariavel.UF" />
-        </form>*@
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Endereco, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    @*<label>
-            Cep:
-            <input name="cep" type="text" id="Cep" value="" size="10" maxlength="9" />
-        </label><br />
-        <label>
-            Rua:
-            <input name="rua" type="text" id="Logra" size="60" />
-        </label><br />
-        <label>
-            Bairro:
-            <input name="bairro" type="text" id="Bairro" size="40" />
-        </label><br />
-        <label>
-            Cidade:
-            <input name="cidade" type="text" id="Cidade" size="40" />
-        </label><br />
-        <label>
-            Estado:
-            <input name="uf" type="text" id="Uf" size="2" />
-        </label><br />*@
-
-    @*<label>
-            Cep:
-            <input type="text" id="Cep" name="Cep" />
-        </label><br />
-        <label>
-            Rua:
-            <input type="text" id="Logra" name="Logra" />
-        </label><br />
-        <label>
-            Bairro:
-
-            <input type="text" id="Bairro" name="Bairro" />
-        </label><br />
-        <label>
-            Cidade:
-            <input type="text" id="Cidade" name="Cidade" />
-        </label><br />
-        <label>
-            UF:
-            <input type="text" id="UF" name="UF" />
-        </label><br />*@
-
 
     <div class="form-group">
         @Html.LabelFor(model => model.Endereco.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -115,13 +52,6 @@
         </div>
     </div>
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Endereco.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco.Estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Endereco.Estado, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Endereco.UF, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -285,3 +215,4 @@
 
     </script>
 }
+
