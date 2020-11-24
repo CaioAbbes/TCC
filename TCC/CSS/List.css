@@ -44,3 +44,7 @@
 .second {
     background-color: var(--second-color);
 }
+
+.row {
+    text-align: center;
+}
