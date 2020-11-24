@@ -65,7 +65,7 @@ namespace TCC.Models
         [Display(Name = "Quantidade de pontos")]
         public float QtdPontos { get; set; }
 
-        public byte[] Imagem { get; set; }
+        public string Imagem { get; set; }
 
         //public HttpPostedFileBase Imagecli { get; set; } //ou string
 
@@ -114,7 +114,7 @@ namespace TCC.Models
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
                         QtdPontos = float.Parse(registros["QtdPontos"].ToString()),
                         User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
-                        Imagem = Convert.FromBase64String(registros["imagecli"].ToString())
+                        Imagem = registros["imagecli"].ToString()
                 };
 
 

@@ -1,0 +1,46 @@
+﻿:root {
+    --first-color: #D9D9D9;
+    --second-color: #F8F7F7;
+}
+
+
+.contentTable {
+    /background: lightgrey;
+    / background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: auto;
+    position: relative;
+    top: 5%;
+    margin: 5%;
+    box-shadow: 1px 1px 6px 1px #343a40;
+}
+
+.tableTitle {
+    text-align: center;
+    padding-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.colorTable {
+    background: #006847;
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.table td, .table th {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.icon {
+    font-family: 'Work Sans', sans-serif;
+    padding: 15px;
+}
+
+.first {
+    background-color: var(--first-color);
+}
+
+.second {
+    background-color: var(--second-color);
+}

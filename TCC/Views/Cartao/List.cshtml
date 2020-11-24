@@ -3,55 +3,107 @@
 @{
     ViewBag.Title = "List";
 }
-
 <h2>List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Numcartao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cvc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datavalid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.IdCli)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Numcartao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cvc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Titular)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Datavalid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente.IdCli)
-        </th>
-        <th></th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numcartao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cvc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datavalid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.IdCli)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { Numcartao = item.Numcartao })
+        </td>
     </tr>
+    }
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Numcartao)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Cvc)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Titular)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Datavalid)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Cliente.IdCli)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Delete", "Delete", new { Numcartao = item.Numcartao })
-    </td>
-</tr>
-}
+    </table>*@
 
-</table>
+<section class="contentTable">
+    <h2 class="tableTitle">Lista de Produtos Cadastrados</h2>
+    <div class="table-responsive-sm">
+        <table class="table table-hover">
+            <tr class="colorTable">
+                <th>
+                    @Html.DisplayNameFor(model => model.Numcartao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cvc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titular)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Datavalid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cliente.IdCli)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Numcartao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cvc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titular)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datavalid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cliente.IdCli)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { Numcartao = item.Numcartao }) |
+                        @Html.ActionLink("Delete", "Delete", new { Numcartao = item.Numcartao })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>
