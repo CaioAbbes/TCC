@@ -467,10 +467,15 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="CSS\Login.css" />
+    <Content Include="CSS\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagens\logo_writer.png" />
+    <Content Include="Imagens\logo_writer_black.png" />
+    <Content Include="Imagens\logo_writer_black_bone.png" />
+    <Content Include="Imagens\logo_writer_bone.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\Settings.settings">

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using Ubiety.Dns.Core;
@@ -64,7 +65,7 @@ namespace TCC.Models
         [Display(Name = "Quantidade de pontos")]
         public float QtdPontos { get; set; }
 
-        public string Imagem { get; set; }
+        public byte[] Imagem { get; set; }
 
         //public HttpPostedFileBase Imagecli { get; set; } //ou string
 
@@ -98,9 +99,9 @@ namespace TCC.Models
                 string StrQuery = string.Format("select * from tbcliente;");
                 MySqlDataReader registros = db.RetornaRegistro(StrQuery);
                 var clienteList = new List<Cliente>();
-
                 while (registros.Read())
                 {
+
                     var ClienteTemporario = new Cliente
                     {
                         IdCli = int.Parse(registros["IdCli"].ToString()),
@@ -113,8 +114,8 @@ namespace TCC.Models
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
                         QtdPontos = float.Parse(registros["QtdPontos"].ToString()),
                         User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
-                        Imagem = registros["imagecli"].ToString()
-                    };
+                        Imagem = Convert.FromBase64String(registros["imagecli"].ToString())
+                };
 
 
 

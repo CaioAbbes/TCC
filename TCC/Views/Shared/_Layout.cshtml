@@ -1,41 +1,174 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="~/CSS/style.css">
+    <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
+    <title>Tacos & Natchos</title>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nome do aplicativo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Sobre", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
-        </footer>
-    </div>
+    <header>
+        <div class="menu">
+            <section class="logoWriter">
+                <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer">
+            </section>
 
+            <nav class="menu-itens">
+                <li><a href="parallax.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Favoritos</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-search"></i></a></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-user"></i></a></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="navigation background">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-users"></i></span>
+                        <span class="title">Cliente</span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-id-card"></i></span>
+                        <span class="title">Funcionário</span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a class="toggle_SubMenu" onclick="toggleSubMenu()">
+                        <span class="icon"><i class="fas fa-pepper-hot"></i></span>
+                        <span class="title">Produtos</span>
+                        <!--"fas fa-sort-down" -->
+                    </a>
+                </li>
+                <section class="collapseSubeMenu hide">
+                    <li class="sube_Menu">
+                        <a href="">
+                            <span class="icon"><i class="fas fa-plus-circle"></i></span>
+                            <span class="title">Cadastrar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="">
+                            <span class="icon"><i class="fas fa-sync"></i></span>
+                            <span class="title">Atualizar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="">
+                            <span class="icon"><i class="fas fa-minus"></i></span>
+                            <span class="title">Deletar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="list.html">
+                            <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                            <span class="title">Listar</span>
+                        </a>
+                    </li>
+                </section>
+
+            </ul>
+            <ul>
+                <li>
+                    <a class="toggle_SubMenu" onclick="toggleSubMenu()">
+                        <span class="icon"><i class="fas fa-drumstick-bite"></i></span>
+                        <span class="title">Ingredientes</span>
+                    </a>
+                </li>
+                <section class="collapseSubeMenu hide">
+                    <li class="sube_Menu">
+                        <a href="">
+                            <span class="icon"><i class="fas fa-plus-circle"></i></span>
+                            <span class="title">Cadastrar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="">
+                            <span class="icon"><i class="fas fa-sync"></i></span>
+                            <span class="title">Atualizar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="">
+                            <span class="icon"><i class="fas fa-minus"></i></span>
+                            <span class="title">Deletar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="">
+                            <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                            <span class="title">Listar</span>
+                        </a>
+                    </li>
+                </section>
+            </ul>
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                        <span class="title">Cupons</span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-map"></i></span>
+                        <span class="title">Cardápio</span> <!-- span é um line container, so usado quando não há nada mais semantido encaixar -->
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                        <span class="title">Reserva</span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-truck"></i></span>
+                        <span class="title">Delivery</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="toggle" onclick="toggleMenu()"></div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+        </div>
+
+    </main>
+
+    <footer></footer>
+    <script>function toggleMenu() {
+            let navigation = document.querySelector(".navigation");
+            let toggle = document.querySelector(".toggle");
+            navigation.classList.toggle("active");
+            toggle.classList.toggle("active");
+        }
+
+        function toggleSubMenu() {
+            let navigation = document.querySelector(".collapseSubeMenu");
+            let arrowOpen = document.querySelector(".toggle_SubMenu");
+            navigation.classList.toggle("hide");
+            arrowOpen.classList.toggle("arrowOpen");
+        }</script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
