@@ -1,69 +1,127 @@
-﻿@model IEnumerable<TCC.Models.Produto>
+﻿@*@model IEnumerable<TCC.Models.Produto>
+
+    @{
+        ViewBag.Title = "List";
+    }
+
+    <h2>List</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeProd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorProd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescProd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoProd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoriaProd)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoriaProd)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { IdProd = item.IdProd }) |
+                @Html.ActionLink("Details", "Details", new { IdProd = item.IdProd }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+@model IEnumerable<TCC.Models.Produto>
 
 @{
     ViewBag.Title = "List";
 }
+<link rel="stylesheet" type="text/css" href="~/CSS/card.css">
 
 <h2>List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Observacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoriaProd)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoriaProd)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { IdProd = item.IdProd }) |
-            @Html.ActionLink("Details", "Details", new { IdProd = item.IdProd }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+
+@foreach (var item in Model)
+{
+    <div class="cards">
+        <section class="card">
+            <article>
+                <img src="https://picsum.photos/536/354" alt="FOTO">
+                <section class="contentCard">
+                    <h3 class="cardTitle">@Html.DisplayFor(modelItem => item.NomeProd)</h3>
+                    <p class="nomeProduct"> @Html.DisplayFor(modelItem => item.DescProd)</p>
+                    <button class="searchProduct">Detales</button>
+                </section>
+            </article>
+        </section>
+    </div>
+    @*@<tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoriaProd)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { IdProd = item.IdProd }) |
+                @Html.ActionLink("Details", "Details", new { IdProd = item.IdProd }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id = item.PrimaryKey */ })
+            </td>
+        </tr>*@
 }
-
-</table>

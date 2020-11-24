@@ -2,8 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="~/CSS/style.css">
-    <link rel="stylesheet" type="text/css" href="~/CSS/List.css">
+    <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
+
     <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
     <title>Tacos & Natchos</title>
 </head>
@@ -15,7 +15,7 @@
             </section>
 
             <nav class="menu-itens">
-                <li><a href="parallax.html">Home</a></li>
+                <li><a href="~/Home/About.cshtml">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Favoritos</a></li>
                 <li><a href="login.html">Login</a></li>
@@ -87,6 +87,7 @@
                         <span class="title">Ingredientes</span>
                     </a>
                 </li>
+                
                 <section class="collapseSubeMenu hide">
                     <li class="sube_Menu">
                         <a href="">
@@ -149,15 +150,16 @@
 
         </div>
         <div class="toggle" onclick="toggleMenu()"></div>
-        <div class="container body-content">
+
+        <div class="content">
             @RenderBody()
-            <hr />
         </div>
 
     </main>
 
     <footer></footer>
-    <script>function toggleMenu() {
+    <script>
+        function toggleMenu() {
             let navigation = document.querySelector(".navigation");
             let toggle = document.querySelector(".toggle");
             navigation.classList.toggle("active");
@@ -169,9 +171,10 @@
             let arrowOpen = document.querySelector(".toggle_SubMenu");
             navigation.classList.toggle("hide");
             arrowOpen.classList.toggle("arrowOpen");
-        }</script>
+        }
+    </script>
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>

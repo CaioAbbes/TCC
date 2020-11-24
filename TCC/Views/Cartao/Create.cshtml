@@ -1,60 +1,63 @@
 ﻿@model TCC.Models.Cartao
 
-@{
-    ViewBag.Title = "Create";
-}
+@{ ViewBag.Title = "Create"; }
+<link rel="stylesheet" type="text/css" href="~/CSS/form.css">
+<section class="bodyForm">
+    <section class="mainForm">
+        <h1 class="formTitle">Cartao</h1>
+        @using (Html.BeginForm())
+        {
+@Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <section class="itens">
+                                    <section class="inputBox">
+                                        @Html.EditorFor(model => model.Numcartao)
+                                        <section class="label black">
+                                            @Html.LabelFor(model => model.Numcartao, htmlAttributes: new { @class = "content-nome" })
+                                        </section>
+                                    </section>
+                                    @Html.ValidationMessageFor(model => model.Numcartao, "", new { @class = "text-danger" })
+                                </section>
 
-<h2>Create</h2>
+                                                <section class="itens">
+                                                    <section class="inputBox">
+                                                        @Html.EditorFor(model => model.Cvc)
+                                                        <section class="label black">
+                                                            @Html.LabelFor(model => model.Cvc, htmlAttributes: new { @class = "content-nome" })
+                                                        </section>
+                                                        @Html.ValidationMessageFor(model => model.Cvc, "", new { @class = "text-danger" })
+                                                    </section>
+                                                </section>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Cartao</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Numcartao, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Numcartao, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Numcartao, "", new { @class = "text-danger" })
+                                                                <section class="itens">
+                                                                    <section class="inputBox">
+                                                                        <input @Html.DisplayTextFor(model => model.Titular)>
+                                                                        <section class="label black">
+                                                                            @Html.LabelFor(model => model.Titular, htmlAttributes: new { @class = "content-nome" })
+                                                                        </section>
+                                                                    </section>
+                                                                    @Html.ValidationMessageFor(model => model.Titular, "", new { @class = "text-danger" })
+                                                                </section>
+
+                                                                                <section class="itens">
+                                                                                    <section class="inputBox">
+                                                                                        <input @Html.DisplayTextFor(model => model.Datavalid)>
+                                                                                        <section class="label black">
+                                                                                            @Html.LabelFor(model => model.Datavalid, htmlAttributes: new { @class = "content-nome" })
+                                                                                        </section>
+                                                                                    </section>
+                                                                                    @Html.ValidationMessageFor(model => model.Datavalid, "", new { @class = "text-danger" })
+                                                                                </section>
+
+                                                                                                <div class="bottomForm">
+                                                                                                    <div>
+                                                                                                        <input type="submit" value="Create" class="btn btn-default" />
+                                                                                                    </div>
+                                                                                                </div>}
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cvc, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Cvc, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Cvc, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Titular, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Titular, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Titular, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Datavalid, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Datavalid, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Datavalid, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    </section>
+</section>

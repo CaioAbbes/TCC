@@ -466,6 +466,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="CSS\card.css" />
+    <Content Include="CSS\form.css" />
     <Content Include="CSS\List.css" />
     <Content Include="CSS\Login.css" />
     <Content Include="CSS\Style.css" />
@@ -473,6 +475,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagens\logo.jpeg" />
     <Content Include="Imagens\logo_writer.png" />
     <Content Include="Imagens\logo_writer_black.png" />
     <Content Include="Imagens\logo_writer_black_bone.png" />
