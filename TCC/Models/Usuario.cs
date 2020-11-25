@@ -38,7 +38,6 @@ namespace TCC.Models
 
         public Usuario RetornaPorIdUsuario(int idUsu)
         {
-            System.Diagnostics.Debug.WriteLine(idUsu);
             using (db = new ConexaoDB())
             {
                 string StrQuery = string.Format("select * from tbusuario where IdUsuario = '{0}';", idUsu);
@@ -57,6 +56,31 @@ namespace TCC.Models
                 }
 
                 return UserListando;
+            }
+
+        }
+
+        public bool ValidaLogin()
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbusuario where Usuario = '{0}' and Senha = '{1}';", UsuarioText, Senha);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                if (registros.HasRows)
+                {
+                    while (registros.Read())
+                    {
+                        UsuarioText = registros["Usuario"].ToString();
+                        Senha = registros["Senha"].ToString();
+
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
 
         }

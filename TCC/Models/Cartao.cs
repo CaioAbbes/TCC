@@ -18,7 +18,7 @@ namespace TCC.Models
         public decimal Numcartao { get; set; }
 
         [Required(ErrorMessage = "O campo Código de Verificação de Cartão é requerido.")]
-        [Display(Name = "Código de Verificação de Cartão")]
+        [Display(Name = "Código de Verificação de Cartão (CVC)")]
         [RegularExpression(@"^[0-9]{3,4}$", ErrorMessage = "CVV invalido")]
         public int Cvc { get; set; }
 

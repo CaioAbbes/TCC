@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using TCC.Models;
+using System.Configuration;
 
 namespace TCC.Controllers
 {
@@ -15,9 +16,17 @@ namespace TCC.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
+
+            if (Session["usuarioLogadoID"] == null)
+            {
+                Session["nomeUsuarioLogado"] = "visitante";
+            }
+
             return View();
         }
 
+
+        [Authorize( )]
         public ActionResult List(Cliente cliente)
         {
             var clienteList = cliente.SelecionaCliente();
@@ -75,6 +84,10 @@ namespace TCC.Controllers
             objCli.UpdateCliente(cliente);
             return RedirectToAction("List");
         }
+
+
+
+
 
         //public ActionResult BuscaCEP(Endereco endereco)
         //{
