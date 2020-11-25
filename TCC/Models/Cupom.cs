@@ -17,6 +17,7 @@ namespace TCC.Models
         //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente números")]
         public string CodCupom { get; set; }
 
+
         [Required(ErrorMessage = "O campo Desconto é requerido")]
         [Display(Name = "Desconto")]
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]

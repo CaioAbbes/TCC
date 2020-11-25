@@ -31,7 +31,7 @@
 
                                                                 <section class="itens">
                                                                     <section class="inputBox">
-                                                                        <input @Html.DisplayTextFor(model => model.Titular)>
+                                                                         @Html.EditorFor(model => model.Titular)
                                                                         <section class="label black">
                                                                             @Html.LabelFor(model => model.Titular, htmlAttributes: new { @class = "content-nome" })
                                                                         </section>
@@ -41,7 +41,7 @@
 
                                                                                 <section class="itens">
                                                                                     <section class="inputBox">
-                                                                                        <input @Html.DisplayTextFor(model => model.Datavalid)>
+                                                                                        @Html.EditorFor(model => model.Datavalid)
                                                                                         <section class="label black">
                                                                                             @Html.LabelFor(model => model.Datavalid, htmlAttributes: new { @class = "content-nome" })
                                                                                         </section>

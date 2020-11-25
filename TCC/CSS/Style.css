@@ -13,9 +13,6 @@ body {
     background: #f8f8f8;
 }
 
-    body::-webkit-scrollbar {
-        display: none;
-    }
 
 .menu {
     position: fixed;
@@ -95,7 +92,6 @@ a {
 .navigation {
     position: fixed;
     top: 10%;
-    z-index: 10;
     width: 60px;
     height: 90vh;
     background: #006847;
@@ -119,8 +115,16 @@ a {
     .navigation:hover,
     .navigation.active {
         width: 250px;
+        z-index: 1;
     }
-
+    /*
+.navigation ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+*/
     /*subMenu*/
     .navigation .sube_Menu {
         padding-left: 15px;
@@ -181,12 +185,11 @@ a {
             line-height: 60px;
             text-align: center;
             /*margin-top: 5%;*/
-            padding: 0 10px;
         }
 
             .navigation ul li a .icon .fas, .navigation ul li a .icon .fab {
                 font-size: 20px;
-                /*  line-height: 60px;*/
+                line-height: 60px;
             }
 
         .navigation ul li a .title {
@@ -238,13 +241,11 @@ a {
 /*Content*/
 
 .content {
-    z-index: -10;
     width: 90%;
     margin-top: 10%;
     margin-left: 9%;
     overflow: hidden;
 }
-
 
 @media (max-width: 760px) {
     .navigation {

@@ -18,7 +18,7 @@ namespace TCC.Models
         public string Numcartao { get; set; }
 
         [Required(ErrorMessage = "O campo Código de Verificação de Cartão é requerido.")]
-        [Display(Name = "Código de Verificação de Cartão (CVC)")]
+        [Display(Name = "CVC")]
         [RegularExpression(@"^[0-9]{3,4}$", ErrorMessage = "CVV invalido")]
         public int Cvc { get; set; }
 
@@ -30,8 +30,9 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Data de vencimento é requerido.")]
         [Display(Name = "Data de vencimento ")]
-        //[DisplayFormat(DataFormatString = "mm/dd/yyyy")]
-        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/yyyy}", ApplyFormatInEditMode = true)]
+
+        // [DataType(DataType.Date)]
         public DateTime Datavalid { get; set; }
         
        
@@ -40,7 +41,7 @@ namespace TCC.Models
 
         public void InsertCartao(Cartao cartao)
         {
-            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}','{4}');",2,cartao.Numcartao,cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-dd HH:mm"));
+            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}','{4}');",2,cartao.Numcartao,cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-01"));
 
             using (db = new ConexaoDB())
             {

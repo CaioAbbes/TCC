@@ -43,20 +43,26 @@ namespace TCC.Controllers
         }
 
         // GET: Cliente/Create
+        [NivelAcesso]
         public ActionResult Create()
         {
             return View();
         }
 
+
         // POST: Cliente/Create
         [HttpPost]
+
         public ActionResult Create(Cliente cliente)
         {
 
             if (ModelState.IsValid)
             {
                 var objCli = new Cliente();
-                objCli.InsertCliente(cliente);
+
+                // var img = cliente.Imagem.Split(',')[1];
+                var img = cliente.Imagem.ToString().Split(',')[1];
+                objCli.InsertCliente(cliente,img);
                 return RedirectToAction("List");
 
             }

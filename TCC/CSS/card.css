@@ -9,25 +9,44 @@
     .card article {
         border: 1px solid #ccc;
         box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-        border-radius: 3px;
+        border-radius: 20px;
         text-align: center;
+        transition: ease-in-out;
     }
 
+        /*        .card article:hover {
+            border-radius: 20px;
+            transition: ease-in-out;
+
+        }*/
         .card article:hover {
+            background-color: #ccc;
+            transition: ease-in-out;
             transition: transform .1s ease-in-out;
             transform: rotateY(500px);
         }
 
         .card article img {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
             width: 100%;
+            transition: ease-in-out;
         }
 
 .contentCard {
     padding: 0 20px 20px;
+    max-height: 200px;
 }
 
     .contentCard .cardTitle {
+        margin-top: 5px;
         text-transform: uppercase;
+    }
+
+    .contentCard .nomeProduct {
+        margin-top: 5px;
+        text-align: justify;
+        min-height: 6em;
     }
 
     .contentCard .searchProduct {

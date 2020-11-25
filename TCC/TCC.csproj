@@ -494,6 +494,7 @@
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Ingrediente.cs" />
     <Compile Include="Models\Mesa.cs" />
+    <Compile Include="Models\NivelAcesso.cs" />
     <Compile Include="Models\Notafiscal.cs" />
     <Compile Include="Models\Pagamento.cs" />
     <Compile Include="Models\Produto.cs" />

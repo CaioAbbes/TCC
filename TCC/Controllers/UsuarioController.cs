@@ -15,21 +15,29 @@ namespace TCC.Controllers
             return View();
         }
 
-
         public ActionResult Login()
         {
-            return View();
+            if (Session["nomeUsuarioLogado"] != null)
+            {
+                //return RedirectToAction("List", "Cliente", new { username = Session["nomeUsuarioLogado"].ToString() });
+                return RedirectToAction("List", "Cliente");
+            }
+            else
+            {
+                return View();
+            }
         }
+
 
         [HttpPost]
         public ActionResult Login(Usuario usuario)
         {
             bool logado = usuario.ValidaLogin();
 
-            if (logado) //quando tem um if ele ja vai ser true
+            if (logado)
             {
-                Session["usuarioLogadoID"] = usuario.IdUsuario;
                 Session["nomeUsuarioLogado"] = usuario.UsuarioText;
+                //return RedirectToAction("List", "Cliente", new { username = usuario.UsuarioText});
                 return RedirectToAction("List", "Cliente");
             }
             else
