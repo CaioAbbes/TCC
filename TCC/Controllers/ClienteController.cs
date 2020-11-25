@@ -25,8 +25,6 @@ namespace TCC.Controllers
             return View();
         }
 
-
-        [Authorize( )]
         public ActionResult List(Cliente cliente)
         {
             var clienteList = cliente.SelecionaCliente();
