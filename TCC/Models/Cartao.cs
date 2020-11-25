@@ -15,7 +15,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo Número do cartão é requerido.")]
         [Display(Name = "Número do cartão")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-        public decimal Numcartao { get; set; }
+        public string Numcartao { get; set; }
 
         [Required(ErrorMessage = "O campo Código de Verificação de Cartão é requerido.")]
         [Display(Name = "Código de Verificação de Cartão (CVC)")]
@@ -69,7 +69,7 @@ namespace TCC.Models
                 {
                     var CartaoTemporario = new Cartao
                     {
-                        Numcartao = decimal.Parse(registros["Numcartao"].ToString()),
+                        Numcartao = registros["Numcartao"].ToString(),
                         Cvc = int.Parse(registros["cvc"].ToString()),
                         Titular = registros["titular"].ToString(),
                         Datavalid = DateTime.Parse(registros["datavalid"].ToString()),
@@ -92,7 +92,7 @@ namespace TCC.Models
                 {
                     cartaoListando = new Cartao
                     {
-                        Numcartao = decimal.Parse(registros["Numcartao"].ToString()),
+                        Numcartao = registros["Numcartao"].ToString(),
                         Cvc = int.Parse(registros["cvc"].ToString()),
                         Titular = registros["titular"].ToString(),
                         Datavalid = DateTime.Parse(registros["datavalid"].ToString()),

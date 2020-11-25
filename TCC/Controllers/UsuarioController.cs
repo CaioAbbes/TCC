@@ -21,7 +21,7 @@ namespace TCC.Controllers
             return View();
         }
 
-            [HttpPost]
+        [HttpPost]
         public ActionResult Login(Usuario usuario)
         {
             bool logado = usuario.ValidaLogin();
