@@ -66,14 +66,14 @@ namespace TCC.Models
         [Display(Name = "Quantidade de pontos")]
         public float QtdPontos { get; set; }
 
-        public byte[] Imagem { get; set; }
+        public string Imagem { get; set; }
         //public HttpPostedFileBase Imagecli { get; set; } //ou string
 
 
 
-        public void InsertCliente(Cliente cliente, string Imagem)
+        public void InsertCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}');", Imagem, cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.UF, cliente.Endereco.Cidade, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Endereco.Estado);
+            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}');", cliente.Imagem, cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.UF, cliente.Endereco.Cidade, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Endereco.Estado);
 
             using (db = new ConexaoDB())
             {
@@ -114,7 +114,7 @@ namespace TCC.Models
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
                         QtdPontos = float.Parse(registros["QtdPontos"].ToString()),
                         User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
-                        Imagem = (byte[])registros["imagecli"]
+                        Imagem = registros["imagecli"].ToString()
                 };
 
 

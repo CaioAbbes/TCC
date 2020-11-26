@@ -61,8 +61,8 @@ namespace TCC.Controllers
                 var objCli = new Cliente();
 
                 // var img = cliente.Imagem.Split(',')[1];
-                var img = cliente.Imagem.ToString().Split(',')[1];
-                objCli.InsertCliente(cliente,img);
+              //  var img = cliente.Imagem.ToString().Split(',')[1];
+                objCli.InsertCliente(cliente);
                 return RedirectToAction("List");
 
             }

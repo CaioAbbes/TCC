@@ -88,6 +88,22 @@ a {
     margin-top: 10px;
 }
 
+/*Cart*/
+.cartBar {
+    position: fixed;
+    top: 10%;
+    right: 0;
+    width: 300px;
+    height: 90vh;
+    background: #ccc;
+    transition: 0.5s;
+    cursor: pointer;
+    transition: 1s;
+    overflow: hidden;
+    overflow-y: auto;
+    display: block;
+}
+
 /*Sidebar*/
 .navigation {
     position: fixed;
@@ -117,24 +133,17 @@ a {
         width: 250px;
         z-index: 1;
     }
-    /*
-.navigation ul{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-*/
+
     /*subMenu*/
     .navigation .sube_Menu {
         padding-left: 15px;
         transition: 1s;
     }
 
-    .navigation .hide {
-        display: none;
-        transition: 2s;
-    }
+.hide {
+    display: none;
+    transition: 2s;
+}
 
 .toggle_SubMenu::after {
     content: '\f0d9';
@@ -208,17 +217,17 @@ a {
     right: 1%;
     width: 50px;
     height: 50px;
-    background: #ff6961;
+    background: #006847;
     cursor: pointer;
     border-radius: 100%;
-    box-shadow: -0.05px -0.05px 5px 0.20px #ff6961;
+    box-shadow: -0.05px -0.05px 5px 0.20px #006847;
     display: none;
 }
 
 
     .toggle.active {
-        background: #f35f58;
-        box-shadow: -0.05px -0.05px 5px 0.20px #f35f58;
+        background: #006847;
+        box-shadow: -0.05px -0.05px 5px 0.20px #006847;
     }
 
     .toggle:before {

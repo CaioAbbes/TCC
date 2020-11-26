@@ -637,6 +637,7 @@
     <Content Include="Views\Pagamento\Details.cshtml" />
     <Content Include="Views\Cliente\Create.cshtml" />
     <Content Include="Views\Usuario\Login.cshtml" />
+    <Content Include="Views\Usuario\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

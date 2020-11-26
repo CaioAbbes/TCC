@@ -2,8 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
-
+    <link rel="stylesheet" type="text/css" href="~/CSS/style.css">
     <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
     <title>Tacos & Natchos</title>
 </head>
@@ -18,10 +17,11 @@
                 <li><a href="~/Home/About.cshtml">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Favoritos</a></li>
-                <li><a href="/Usuario/Login/">Login</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="~/Usuario/Logout">Logout</a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-search"></i></a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-user"></i></a></li>
-                <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
             </nav>
         </div>
     </header>
@@ -87,7 +87,6 @@
                         <span class="title">Ingredientes</span>
                     </a>
                 </li>
-
                 <section class="collapseSubeMenu hide">
                     <li class="sube_Menu">
                         <a href="">
@@ -127,7 +126,7 @@
                 <li>
                     <a href="#">
                         <span class="icon"><i class="fas fa-map"></i></span>
-                        <span class="title">Cardápio</span>
+                        <span class="title">Cardápio</span> <!-- span é um line container, so usado quando não há nada mais semantido encaixar -->
                     </a>
                 </li>
             </ul>
@@ -149,10 +148,12 @@
             </ul>
 
         </div>
+        <div class="cartBar hide"></div>
         <div class="toggle" onclick="toggleMenu()"></div>
 
         <div class="content">
             @RenderBody()
+
         </div>
 
     </main>
@@ -172,6 +173,14 @@
             navigation.classList.toggle("hide");
             arrowOpen.classList.toggle("arrowOpen");
         }
+
+        function toggleCart() {
+            let Cart = document.querySelector(".cart");
+            let showCart = document.querySelector(".cartBar");
+            showCart.classList.toggle("hide");
+
+        }
+
     </script>
     @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")

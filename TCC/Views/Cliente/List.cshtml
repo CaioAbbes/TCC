@@ -47,71 +47,72 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.IdCli)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CPF)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Endereco)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NomeCli)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.EmailCli)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CelCli)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Comp)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NumEdif)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.User)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.QtdPontos)
-    </td>
-    @*<td>
-            @Html.DisplayFor(modelItem => item.Imagem)
-        </td>*@
-
-    @*<td>
-        @if (!string.IsNullOrEmpty(item.Imagem))
-        {
-            @*<img src="~/Imagens/logo.jpeg"   alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
-    @*<img src=@string.Format($"/Imagens/{item.Imagem}") alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
-    @*<img src="@Url.Action(item.Imagem,"Imagens")" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />
-
-            }
-        </td>*@
-
-
-    @if (item.Imagem != null)
+    @foreach (var item in Model)
     {
-        <td>
-            @{
-                string value = System.Text.Encoding.UTF8.GetString(item.Imagem);
-                var imgSrc = String.Format("data:image/png;base64,{0}", value);
-            }
-            <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
-        </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CelCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumEdif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdPontos)
+            </td>
+            @* <td>
+                    @Html.DisplayFor(modelItem => item.Imagem)
+                </td>*@
+
+            <td>
+                @if (!string.IsNullOrEmpty(item.Imagem))
+                {
+                    @*<img src="~/Imagens/logo.jpeg"   alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+                    @*<img src=@string.Format($"/Imagens/{item.Imagem}") alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+                    <img src="@Url.Action(item.Imagem,"Imagens")" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />
+
+                }
+            </td>
+
+
+            @*  @if (item.Imagem != null)
+                {
+                    <td>
+                        @{
+                            string value = System.Text.Encoding.UTF8.GetString(item.Imagem);
+                            var imgSrc = String.Format("data:image/png;base64,{0}", value);
+                        }
+                        <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                    </td>
+                } *@
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { IdCli = item.IdCli }) |
+                @Html.ActionLink("Details", "Details", new { IdCli = item.IdCli }) |
+                @Html.ActionLink("Cadastrar Cartao", "Create", "Cartao", new { idCli = item.IdCli }, null)
+
+            </td>
+        </tr>
     }
-
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { IdCli = item.IdCli }) |
-        @Html.ActionLink("Details", "Details", new { IdCli = item.IdCli }) |
-        @Html.ActionLink("Cadastrar Cartao", "Create", "Cartao", new { idCli = item.IdCli }, null)
-
-    </td>
-</tr>
-}
 
 </table>
