@@ -51,7 +51,7 @@ namespace TCC.Controllers
         {
             Session.Abandon();
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("Index","Home");
 
         }
 

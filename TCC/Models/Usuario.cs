@@ -31,6 +31,12 @@ namespace TCC.Models
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
+        [Required(ErrorMessage = "O campo Confirmar Senha é requerido.")]
+        [Display(Name = "Confirmar Senha")]
+        [DataType(DataType.Password)]
+        [System.ComponentModel.DataAnnotations.Compare("Senha", ErrorMessage = "As senhas não conferem")]
+        public string ConfirmaSenha { get; set; }
+
         [Required(ErrorMessage = "O campo Tipo de acesso é requerido.")]
         [Display(Name = "Tipo de acesso")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
