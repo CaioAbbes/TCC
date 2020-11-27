@@ -93,16 +93,109 @@ a {
     position: fixed;
     top: 10%;
     right: 0;
-    width: 300px;
+    width: 32%;
     height: 90vh;
     background: #ccc;
     transition: 0.5s;
-    cursor: pointer;
     transition: 1s;
     overflow: hidden;
     overflow-y: auto;
     display: block;
+    z-index: 5;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+
+    .cartBar::-webkit-scrollbar {
+        width: 5px;
+        background: none;
+    }
+
+    .cartBar::-webkit-scrollbar-thumb {
+        background: #838383;
+        border-radius: 15px;
+    }
+
+
+.cartTitle h1 {
+    margin-top: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.contetCart {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 20px;
+}
+
+.itenCart {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.imgProd {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+    .imgProd img {
+        width: 200px;
+        height: 100px;
+    }
+
+.infoProd {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 150px;
+    height: 40px;
+    background: blueviolet;
+}
+
+    .infoProd .nameProd {
+        text-align: justify;
+        overflow: hidden;
+        display: -moz-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+
+.cartFooter {
+    position: relative;
+    bottom: 7%;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 70px;
+    display: flex;
+    background-color: #ccc;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+    .cartFooter p {
+    }
+
+    .cartFooter button {
+        text-align: center;
+        background: linear-gradient(90deg, rgba(255,66,66,1) 4%, rgba(193,0,0,1) 56%, rgba(145,0,0,1) 98%);
+        border-radius: 5px;
+        padding: 10px;
+        outline: 0;
+        border: none;
+    }
 
 /*Sidebar*/
 .navigation {

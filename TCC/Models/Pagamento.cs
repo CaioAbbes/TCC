@@ -23,7 +23,6 @@ namespace TCC.Models
         public virtual Funcionario Funcionario { get; set; }
 
         public virtual Cupom Cupom { get; set; }
-
         public virtual Comanda Comanda { get; set; }
 
         [Display(Name = "Id da comanda")]

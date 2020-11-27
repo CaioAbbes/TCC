@@ -91,6 +91,22 @@ namespace TCC.Models
 
         }
 
+        public int RetornaTipoAcesso()
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select TipoAcesso from tbusuario where Usuario = '{0}';", UsuarioText);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                while (registros.Read())
+                {
+                    TipoAcesso = int.Parse(registros["TipoAcesso"].ToString());
+
+                }
+                return TipoAcesso;
+            }
+
+        }
+
 
     }
 }

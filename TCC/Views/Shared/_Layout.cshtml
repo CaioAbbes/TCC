@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="~/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
     <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
     <title>Tacos & Natchos</title>
 </head>
@@ -18,7 +18,7 @@
                 <li><a href="#">About</a></li>
                 <li><a href="#">Favoritos</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li><a href="~/Usuario/Logout">Logout</a></li>
+                <li><a href="login.html">Logout</a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-search"></i></a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-user"></i></a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
@@ -44,15 +44,15 @@
                     </a>
                 </li>
             </ul>
-            <ul>
+            <ul class="collapse">
                 <li>
-                    <a class="toggle_SubMenu" onclick="toggleSubMenu()">
+                    <a class="toggle_SubMenu">
                         <span class="icon"><i class="fas fa-pepper-hot"></i></span>
                         <span class="title">Produtos</span>
                         <!--"fas fa-sort-down" -->
                     </a>
                 </li>
-                <section class="collapseSubeMenu hide">
+                <section class="collapseSubMenu hide">
                     <li class="sube_Menu">
                         <a href="">
                             <span class="icon"><i class="fas fa-plus-circle"></i></span>
@@ -80,14 +80,14 @@
                 </section>
 
             </ul>
-            <ul>
+            <ul class="collapse">
                 <li>
-                    <a class="toggle_SubMenu" onclick="toggleSubMenu()">
+                    <a class="toggle_SubMenu">
                         <span class="icon"><i class="fas fa-drumstick-bite"></i></span>
                         <span class="title">Ingredientes</span>
                     </a>
                 </li>
-                <section class="collapseSubeMenu hide">
+                <section class="collapseSubMenu hide">
                     <li class="sube_Menu">
                         <a href="">
                             <span class="icon"><i class="fas fa-plus-circle"></i></span>
@@ -148,7 +148,24 @@
             </ul>
 
         </div>
-        <div class="cartBar hide"></div>
+        <div class="cartBar hide">
+            <section class="cartTitle"><h1>Meus Pedidos</h1></section>
+            <div class="contetCart">
+                <section class="itenCart">
+                    <secton class="imgProd">
+                        <img src="https://picsum.photos/536/354" alt="FOTO">
+                    </secton>
+                    <secton class="infoProd">
+                        <p class="nameProd">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure quasi ducimus aliquid optio ipsa sint molestiae debitis doloribus. Saepe molestiae veritatis ad? Earum doloremque aperiam saepe laboriosam aliquam hic corrupti.</p>
+                        <p>R$:</p>
+                    </secton>
+                </section>
+            </div>
+            <section class="cartFooter">
+                <p>Saldo: </p>
+                <button>Pagar</button>
+            </section>
+        </div>
         <div class="toggle" onclick="toggleMenu()"></div>
 
         <div class="content">
@@ -167,12 +184,24 @@
             toggle.classList.toggle("active");
         }
 
-        function toggleSubMenu() {
-            let navigation = document.querySelector(".collapseSubeMenu");
-            let arrowOpen = document.querySelector(".toggle_SubMenu");
-            navigation.classList.toggle("hide");
-            arrowOpen.classList.toggle("arrowOpen");
-        }
+        let subeMenu = document.querySelectorAll(".collapse");
+        subeMenu.forEach(subeMenur => {
+            console.log(subeMenur);
+            let collapse = subeMenur.querySelector(".collapseSubMenu");
+            console.log(collapse);
+            subeMenur.addEventListener("click", () => {
+
+                collapse.classList.toggle("hide");
+
+            });
+        });
+
+        //function toggleSubMenu() {
+        //    let navigation = document.querySelector(".collapseSubeMenu");
+        //    let arrowOpen = document.querySelector(".toggle_SubMenu");
+        //    navigation.classList.toggle("hide");
+        //    arrowOpen.classList.toggle("arrowOpen");
+        //}
 
         function toggleCart() {
             let Cart = document.querySelector(".cart");
@@ -184,6 +213,6 @@
     </script>
     @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>

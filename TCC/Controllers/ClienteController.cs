@@ -7,7 +7,9 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using TCC.Models;
+using TCC.Autorizacoes;
 using System.Configuration;
+
 
 namespace TCC.Controllers
 {
@@ -43,33 +45,59 @@ namespace TCC.Controllers
         }
 
         // GET: Cliente/Create
-        [NivelAcesso]
+        //  [NivelAcesso]
         public ActionResult Create()
         {
+
             return View();
         }
 
 
         // POST: Cliente/Create
         [HttpPost]
-
+        //[AuthCliente]
         public ActionResult Create(Cliente cliente)
         {
 
             if (ModelState.IsValid)
             {
                 var objCli = new Cliente();
+                //var img = cliente.Imagem.Split(',')[1];
+                //var img = cliente.Imagem.ToString().Split(',')[1];
 
-                // var img = cliente.Imagem.Split(',')[1];
-              //  var img = cliente.Imagem.ToString().Split(',')[1];
-                objCli.InsertCliente(cliente);
-                return RedirectToAction("List");
+                //HttpFileCollectionBase hfc = Request.Files;
+                //for (int i = 0; i < hfc.Count; i++)
+                //{
+                //    HttpPostedFileBase hpf = hfc[i];
+                //    if (hpf.ContentLength > 0)
+                //    {
+                //        //Pega o nome do arquivo
+                //        string nome = System.IO.Path.GetFileName(hpf.FileName);
+                //        //Pega a extensão do arquivo
+                //        string extensao = Path.GetExtension(hpf.FileName);
+                //        //Gera nome novo do Arquivo numericamente
+                //        string filename = string.Format("{0:00000000000000}", GerarID());
+                //        //Caminho a onde será salvo
+                //        hpf.SaveAs(Server.MapPath("~/Imagens/") + filename + i
+                //        + extensao);
 
-            }
+                //        //pega o arquivo já carregado
+                //        string pth = Server.MapPath("~/Imagens/")
+                //        + filename + i + extensao;
+
+                        objCli.InsertCliente(cliente);
+                        return RedirectToAction("List");
+                    }
+
+
 
             return View();
 
         }
+
+
+
+        
 
         // GET: Cliente/Edit/5
         public ActionResult Edit(int IdCli)
@@ -89,6 +117,22 @@ namespace TCC.Controllers
             return RedirectToAction("List");
         }
 
+
+        public Int64 GerarID()
+        {
+            try
+            {
+                DateTime data = new DateTime();
+                data = DateTime.Now;
+                string s = data.ToString().Replace("/", "").Replace(":", "").Replace(" ", "");
+                return Convert.ToInt64(s);
+            }
+            catch (Exception erro)
+            {
+
+                throw;
+            }
+        }
 
 
 

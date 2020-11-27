@@ -1,0 +1,322 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;1,200&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://wallpaperaccess.com/full/1412206.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+/*
+https://cdn.cheapism.com/images/Budget_Friendly_Mexican_Dishes.2e16d0ba.fill-1440x605.jpg
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.scripps.org%2Fnews_items%2F5393-how-to-choose-healthier-mexican-food&psig=AOvVaw1MSlsmtRCM-V-4AbIWMzfD&ust=1602432220735000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLi1x_KzquwCFQAAAAAdAAAAABAD*/
+
+/*MENU*/
+
+.menu {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    z-index: 10;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    transition: 1s;
+    /*background:#3b8595;*/
+}
+
+    .menu.sticky {
+        transition: 0.5s;
+        padding: 5px 100px;
+        background: #fff;
+    }
+
+nav {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    font-family: tahoma;
+    font-size: 15;
+    color: #fff;
+}
+
+.menu nav {
+    display: flex;
+}
+
+    .menu nav li {
+        margin: 0 20px;
+        padding: 15px;
+    }
+
+        .menu nav li:first-child {
+            margin-left: 0;
+        }
+
+        .menu nav li:last-child {
+            margin-right: 0;
+        }
+
+.menu .imagelogo {
+    text-transform: uppercase;
+    font-family: tahoma;
+    color: #fff;
+}
+
+.menu .logoWriter .writer {
+    width: 230px;
+    height: 100px;
+    margin-top: 10px;
+}
+
+.menu.sticky .imagelogo,
+.menu.sticky a {
+    transition: 1s;
+    color: #000;
+}
+
+/*PARALLAX*/
+#parallax h1 {
+    font-size: 50px;
+    font-weight: 400;
+    font-family: tahoma;
+    text-transform: uppercase;
+    color: rgb(244, 241, 247);
+}
+
+/*#parallax h2{
+    font-family: tahoma;
+    font-size: 70px;
+    letter-spacing: 10px;
+    text-align: center;
+    color: lawngreen;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 10;
+    opacity: 0.9;
+}*/
+
+#parallax h3 {
+    font-family: tahoma;
+    font-size: 50px;
+    line-height: 0;
+    font-weight: 400;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: black;
+}
+
+#parallax p {
+    font-family: tahoma;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.tableTitle {
+    position: relative;
+    top: 10%;
+    text-align: center;
+    padding-bottom: 5px;
+    color: white;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contentParallax {
+    /*background: lightgrey;*/
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: auto;
+    position: relative;
+    top: 20%;
+    margin: 5%;
+}
+
+.Frist_letter {
+    font-weight: 400;
+    float: left;
+    font-size: 84px;
+    line-height: 64px;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-left: 3px;
+    font-family: tahoma;
+}
+
+#parallax .title {
+    padding: 60px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#parralax .title h1 {
+    font-size: 35px;
+    letter-spacing: 8px;
+}
+
+#parallax .block {
+    background: white;
+    padding: 60px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.parallax {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.one {
+    background-color: #def6da;
+}
+
+.two {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(https://images.pexels.com/photos/5696558/pexels-photo-5696558.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200);
+}
+
+.Three {
+    background-color: #ffcfc8;
+}
+
+/*FOOTER*/
+footer {
+    background-color: #006847;
+    height: 480px;
+    width: 100%;
+    position: relative;
+}
+
+    footer .footer-conte {
+        width: 100%;
+        height: 350px;
+        display: flex;
+        justify-content: space-between;
+        flex-flow: wrap;
+    }
+
+        footer .footer-conte .itensfooter {
+            flex: 1;
+            margin: 5% 20px;
+            padding: 15px;
+        }
+
+.footer-conte .about .footer-text {
+    color: white;
+    font-size: 1.2em;
+    font-family: 'Poppins', sans-serif;
+}
+
+footer .footer-conte h1, footer .footer-conte h2 {
+    columns: #000000;
+    text-transform: uppercase;
+}
+
+footer .footer-conte .about .contact span {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+footer .footer-conte .about .social a .fab {
+    border: 1px solid white;
+    width: 45px;
+    height: 35px;
+    padding: 5px;
+    margin-right: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.3em;
+    border-radius: 5px;
+    transition: 1s;
+}
+
+footer .footer-conte .about .social, footer .footer-conte .about .contact {
+    padding-top: 15px;
+}
+
+    footer .footer-conte .about .social a .fa-instagram:hover {
+        background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+        transition: 0.5s;
+    }
+
+    footer .footer-conte .about .social a .fa-facebook-f:hover {
+        background: #3b5998;
+        transition: 0.5s;
+    }
+
+    footer .footer-conte .about .social a .fa-whatsapp:hover {
+        background: #34af23;
+        transition: 0.5s;
+    }
+
+footer .footer-conte ul {
+    list-style: none;
+    text-decoration: none;
+}
+
+footer .footer-conte .product ul a,
+footer .footer-conte .adress ul a {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: 1s;
+}
+
+    footer .footer-conte .product ul a:hover,
+    footer .footer-conte .adress ul a:hover {
+        margin-left: 15px;
+        transition: 0.5s;
+    }
+
+footer .footer-conte .product .box,
+footer .footer-conte .adress .box,
+footer .footer-conte .about .footer-text {
+    padding-top: 15px;
+}
+
+footer .footer-bottom {
+    background: #005339;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    padding-top: 20px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}

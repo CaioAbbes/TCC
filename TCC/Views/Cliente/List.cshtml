@@ -84,15 +84,16 @@
                     @Html.DisplayFor(modelItem => item.Imagem)
                 </td>*@
 
-            <td>
-                @if (!string.IsNullOrEmpty(item.Imagem))
-                {
-                    @*<img src="~/Imagens/logo.jpeg"   alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
-                    @*<img src=@string.Format($"/Imagens/{item.Imagem}") alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
-                    <img src="@Url.Action(item.Imagem,"Imagens")" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />
+        <td>
+            @if (!string.IsNullOrEmpty(item.Imagem))
+            {
+                @*<img src="~/Imagens/logo.jpeg"   alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+                @*<img src=@string.Format($"/Imagens/{item.Imagem}") alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+                @*<img src="@Url.Action(item.Imagem,"Imagens")" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+                <img src="@Url.Content(item.Imagem)" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />
 
-                }
-            </td>
+            }
+        </td>
 
 
             @*  @if (item.Imagem != null)

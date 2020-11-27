@@ -1,0 +1,123 @@
+﻿
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="Stylesheet" type="text/css" href="~/CSS/parallax.css" />
+    <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
+    <title>Prallax</title>
+</head>
+<body>
+    <div id="parallax">
+        <header>
+            <div class="menu">
+                <section class="logoWriter">
+                    <img src="/imagens/logo_writer_black_bone.png" alt="Tachos Y Natchos" class="writer">
+                </section>
+                <nav class="menu-itens">
+                    <li><a href="/Produto/List">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#"><i class="fas fa-user"></i></a></li>
+                    <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                </nav>
+            </div>
+            <section>
+                <div class="title">
+                    <h1 class="titulo" data-rellax-speed="6">Tacos</h1>
+                    <br />
+                    <h3 class="titulo" data-rellax-speed="4">&</h3>
+                    <br />
+                    <h1 class="titulo" data-rellax-speed="1">Nachos</h1>
+                </div>
+            </section>
+        </header>
+
+        <section>
+            <div class="parallax one">
+                <h2 class="tableTitle">About</h2>
+                <section class="contentParallax">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, quis provident quidem suscipit officia, non itaque magnam impedit tempore nam sit exercitationem molestias blanditiis maiores at ducimus esse enim modi.
+                    </p>
+                </section>
+            </div>
+        </section>
+        <section>
+            <div class="parallax two">
+                <h2 class="tableTitle">Serviços</h2>
+                <section class="contentParallax">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, quis provident quidem suscipit officia, non itaque magnam impedit tempore nam sit exercitationem molestias blanditiis maiores at ducimus esse enim modi.
+                    </p>
+                </section>
+            </div>
+        </section>
+        <section>
+            <div class="parallax Three">
+                <h2 class="tableTitle">Favoritos</h2>
+                <section class="contentParallax">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, quis provident quidem suscipit officia, non itaque magnam impedit tempore nam sit exercitationem molestias blanditiis maiores at ducimus esse enim modi.
+                    </p>
+                </section>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-conte">
+            <section class="itensfooter about">
+                <h1 class="logo-footer">Tacos & Natchos</h1>
+                <p class="footer-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem voluptatum amet unde necessitatibus assumenda quas.</p>
+                <section class="contact">
+                    <span<i class="fas fa-phone-alt"></i> &nbsp; 123-456-789</span>
+                    <span><i class="fas fa-envelope"></i> &nbsp; tacosynatchos@tacosynatchos.com.br</span>
+                </section>
+                <section class="social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </section>
+            </section>
+            <section class="itensfooter product">
+                <h2>Serviços</h2>
+                <ul class="box">
+                    <li><a href="#">Cardapio</a></li>
+                    <li><a href="#">Reserva</a></li>
+                    <li><a href="#">Delivery</a></li>
+                </ul>
+            </section>
+            <section class="itensfooter adress">
+                <h2>Endereço</h2>
+                <ul class="box">
+                    <li><a href="#">Rua das Dores, 123</a></li>
+                    <li><a href="#">Vila formosa</a></li>
+                    <li><a href="#">São Paulo</a></li>
+                    <li><a href="#">Brasil</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="footer-bottom">
+            <p>All Right reserved dy Tacos & Natchos</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
+    <script>
+        var rellax = new Rellax(".titulo"); // objeto de Rellax
+
+        window.addEventListener("scroll", function () {
+            let menu = document.querySelector(".menu");
+            menu.classList.toggle("sticky", window.scrollY > 0);
+        });
+    </script>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+

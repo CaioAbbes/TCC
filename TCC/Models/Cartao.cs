@@ -19,7 +19,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Código de Verificação de Cartão é requerido.")]
         [Display(Name = "CVC")]
-        [RegularExpression(@"^[0-9]{3,4}$", ErrorMessage = "CVV invalido")]
+        [RegularExpression(@"^[0-9]{3,4}$", ErrorMessage = "CVC invalido")]
         public int Cvc { get; set; }
 
         [Required(ErrorMessage = "O campo Nome do titular é requerido.")]

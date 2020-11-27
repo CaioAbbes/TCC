@@ -463,6 +463,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Autorizacoes\AuthCliente.cs" />
+    <Compile Include="Autorizacoes\NivelAcesso.cs" />
     <Compile Include="Controllers\CartaoController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\CupomUsaController.cs" />
@@ -495,7 +497,6 @@
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Ingrediente.cs" />
     <Compile Include="Models\Mesa.cs" />
-    <Compile Include="Models\NivelAcesso.cs" />
     <Compile Include="Models\Notafiscal.cs" />
     <Compile Include="Models\Pagamento.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -524,6 +525,7 @@
     <Content Include="CSS\form.css" />
     <Content Include="CSS\List.css" />
     <Content Include="CSS\Login.css" />
+    <Content Include="CSS\parallax.css" />
     <Content Include="CSS\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -639,6 +641,7 @@
     <Content Include="Views\Cliente\Create.cshtml" />
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Usuario\Logout.cshtml" />
+    <Content Include="Views\Shared\_Parallax.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

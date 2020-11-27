@@ -21,8 +21,9 @@ namespace TCC.Controllers
             if (Session["nomeUsuarioLogado"] != null)
             {
                 //return RedirectToAction("List", "Cliente", new { username = Session["nomeUsuarioLogado"].ToString() });
-                return RedirectToAction("List", "Cliente");
+               return RedirectToAction("Index", "Home");
             }
+
             else
             {
                 return View();
@@ -38,13 +39,17 @@ namespace TCC.Controllers
             if (logado)
             {
                 Session["nomeUsuarioLogado"] = usuario.UsuarioText;
-                //return RedirectToAction("List", "Cliente", new { username = usuario.UsuarioText});
-                return RedirectToAction("List", "Cliente");
+                Session["NivelAcesso"] = usuario.RetornaTipoAcesso();
+                return RedirectToAction("Index", "Home");
             }
+
             else
             {
-                return RedirectToAction("Create", "Cliente");
+                TempData["ErroLogin"] = "Senha ou Usuario inválido";
+                ModelState.AddModelError(string.Empty, TempData["ErroLogin"].ToString());
+                return View();
             }
+
         }
 
         public ActionResult Logout()
@@ -54,6 +59,11 @@ namespace TCC.Controllers
             return RedirectToAction("Index","Home");
 
         }
+
+        //public ActionResult VoltarPag()
+        //{
+        //    return Redirect(Request.UrlReferrer.ToString());
+        //}
 
 
     }

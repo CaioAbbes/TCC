@@ -1,7 +1,11 @@
-﻿.card {
+﻿:root {
+    --lh: 1.4rem;
+}
+
+.card {
     margin: 80px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     grid-gap: 30px;
     align-items: center;
 }
@@ -14,11 +18,11 @@
         transition: ease-in-out;
     }
 
-        /*        .card article:hover {
+        .card article:hover {
             border-radius: 20px;
             transition: ease-in-out;
+        }
 
-        }*/
         .card article:hover {
             background-color: #ccc;
             transition: ease-in-out;
@@ -36,18 +40,26 @@
 .contentCard {
     padding: 0 20px 20px;
     max-height: 200px;
+    line-height: Var(--lh);
 }
 
     .contentCard .cardTitle {
         margin-top: 5px;
         text-transform: uppercase;
+        overflow: hidden;
+        --max-lines: 1;
+        max-height: calc(var(--lh) * var(--max-lines));
     }
 
     .contentCard .nomeProduct {
+        --max-lines: 3;
+        max-height: calc(var(--lh) * var(--max-lines));
+        overflow: hidden;
         margin-top: 5px;
         text-align: justify;
         min-height: 6em;
     }
+
 
     .contentCard .searchProduct {
         background: linear-gradient(90deg, rgba(255,66,66,1) 4%, rgba(193,0,0,1) 56%, rgba(145,0,0,1) 98%);
