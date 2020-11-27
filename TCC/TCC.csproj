@@ -464,7 +464,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Autorizacoes\AuthCliente.cs" />
-    <Compile Include="Autorizacoes\NivelAcesso.cs" />
+    <Compile Include="Autorizacoes\Autenticacao.cs" />
     <Compile Include="Controllers\CartaoController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\CupomUsaController.cs" />
@@ -642,6 +642,7 @@
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Usuario\Logout.cshtml" />
     <Content Include="Views\Shared\_Parallax.cshtml" />
+    <Content Include="Views\Usuario\Teste.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

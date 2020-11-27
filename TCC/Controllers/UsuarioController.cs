@@ -60,6 +60,12 @@ namespace TCC.Controllers
 
         }
 
+        public ActionResult Teste()
+        {
+            return View();
+        }
+
+
         //public ActionResult VoltarPag()
         //{
         //    return Redirect(Request.UrlReferrer.ToString());

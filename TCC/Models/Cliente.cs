@@ -73,7 +73,7 @@ namespace TCC.Models
 
         public void InsertCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}');", Imagem, cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.UF, cliente.Endereco.Cidade, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli, cliente.Endereco.Estado);
+            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');", cliente.Imagem, cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.Cidade, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli);
 
             using (db = new ConexaoDB())
             {
@@ -83,7 +83,7 @@ namespace TCC.Models
 
         public void UpdateCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}');", cliente.IdCli, cliente.CPF, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Endereco.Cidade, cliente.Endereco.Estado, cliente.Endereco.UF, cliente.User.UsuarioText, cliente.User.Senha, cliente.NumEdif, cliente.NomeCli, cliente.EmailCli, cliente.CelCli, cliente.Comp);
+            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');", cliente.IdCli, cliente.CPF, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Endereco.Cidade, cliente.User.UsuarioText, cliente.User.Senha, cliente.NumEdif, cliente.NomeCli, cliente.EmailCli, cliente.CelCli, cliente.Comp);
 
             using (db = new ConexaoDB())
             {

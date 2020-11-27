@@ -28,9 +28,9 @@ namespace TCC.Models
         [StringLength(50,ErrorMessage = "A quantidade de caracteres do Nome do titular é invalida.")]
         public string Titular { get; set; }
 
-        [Required(ErrorMessage = "O campo Data de vencimento é requerido.")]
-        [Display(Name = "Data de vencimento ")]
-        [DisplayFormat(DataFormatString = "{0:MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "O campo Vencimento é requerido.")]
+        [Display(Name = "Vencimento")]
+        [DisplayFormat(DataFormatString = "{0:MM/yy}", ApplyFormatInEditMode = true)]
 
         // [DataType(DataType.Date)]
         public DateTime Datavalid { get; set; }

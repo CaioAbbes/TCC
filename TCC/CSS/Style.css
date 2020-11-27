@@ -197,6 +197,18 @@ a {
         border: none;
     }
 
+
+/*Settings*/
+.settings {
+    background: red;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    top: 15%;
+    left: 90%;
+    z-index-: 100;
+}
+
 /*Sidebar*/
 .navigation {
     position: fixed;
@@ -209,6 +221,7 @@ a {
     transition: 1s;
     overflow: hidden;
     overflow-y: auto;
+    z-index: 3;
 }
 
     .navigation::-webkit-scrollbar, .navigation::-webkit-scrollbar-thumb {
@@ -341,11 +354,11 @@ a {
     }
 
 /*Content*/
-
 .content {
     width: 90%;
     margin-top: 10%;
     margin-left: 9%;
+    z-index: 1;
     overflow: hidden;
 }
 

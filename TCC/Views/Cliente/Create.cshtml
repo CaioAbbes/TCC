@@ -52,15 +52,6 @@
         </div>
     </div>
 
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Endereco.UF, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Endereco.UF, new { htmlAttributes = new { @class = "form-control", id = "UF", name = "UF" } })
-            @Html.ValidationMessageFor(model => model.Endereco.UF, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
     <div class="form-group">
         @Html.LabelFor(model => model.NomeCli, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -133,22 +124,33 @@
             @Html.ValidationMessageFor(model => model.QtdPontos, "", new { @class = "text-danger" })
         </div>
     </div>
-
-    <div class="form-group">
+    @*<div class="form-group">
+            <input type="file" title="search image" id="file" name="file" onchange="show(this)" />
+        </div>*@
+    @*<div class="form-group">
             @Html.LabelFor(m => m.Imagem, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Imagem, new { type = "file", @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Imagem, "", new { @class = "text-danger" })
+                <input type="file" title="search image" id="file" name="file" onchange="show(this)" >
             </div>
+        </div>*@
+    <div class="form-group">
+        @Html.LabelFor(m => m.Imagem, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Imagem, new { type = "file", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Imagem, "", new { @class = "text-danger" })
         </div>
+    </div>
 
     @*<div class="form-group">
-        @Html.LabelFor(m => m.Imagecli, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Imagecli, new { htmlAttributes = new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Imagecli, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
+            @Html.LabelFor(m => m.Imagecli, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Imagecli, new { htmlAttributes = new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Imagecli, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    @*<div class="form-group">
+            <input type="file" name="file" />
+        </div>*@
 
 
     <div class="form-group">
@@ -157,127 +159,127 @@
         </div>
     </div>
 </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-
-    <script>
-
-        const input = document.getElementById('Imagem')
-        input.addEventListener('change', () => {
-            let binaryData = "";
-            function readBlob() {
-                var files = input.files;
-                if (!files.length) {
-                    alert('Please select a file!');
-                    return;
-                }
-                var file = files[0];
-                var reader = new FileReader();
-                var blob = file.slice(0, file.size);
-                reader.readAsDataURL(blob);
-                reader.onloadend = function (evt) {
-                    if (evt.target.readyState == FileReader.DONE) {
-                        binaryData = evt.target.result;
-                        console.log(binaryData);
-                    }
-                };
-            }
-
-        });
-
-        async function requestSender(method, url, data, info) {
-            await activeLoader(info.Loader);
-            const request = await new Promise((resolve, reject) => {
-                const xhr = new XMLHttpRequest();
-                xhr.open(method, url, true);
-                xhr.responseType = "json";
-                if (data) if (info & !info.formRequest) {
-                    if (typeof (data) === "object") data = JSON.stringify(data);
-                    xhr.setRequestHeader("Content-Type", "application/json");
-                }
-                xhr.onload = () => {
-                    if (xhr.status > 400) {
-                        desactiveLoader(info.Loader);
-                        reject({ failure: "Alguma coisa deu errado!" });
-                    }
-                    resolve(xhr.response)
-                };
-                xhr.onerror = () => { desactiveLoader(info.Loader); reject({ failure: "Tente Novamente!" }); };
-                xhr.send(data);
-            });
-            await desactiveLoader(info.Loader);
-            return request;
         }
 
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
 
-        $(document).ready(function () {
 
-            function limpa_formulário_cep() {
-                // Limpa valores do formulário de cep.
-                $("#Logra").val("");
-                $("#Bairro").val("");
-                $("#Cidade").val("");
-                $("#Uf").val("");
-            }
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
 
-            //Quando o campo cep perde o foco.
-            $("#Cep").blur(function () {
+            <script>
 
-                //Nova variável "cep" somente com dígitos.
-                var cep = $(this).val().replace(/\D/g, '');
+                const input = document.getElementById('Imagem')
+                input.addEventListener('change', () => {
+                    let binaryData = "";
+                    function readBlob() {
+                        var files = input.files;
+                        if (!files.length) {
+                            alert('Please select a file!');
+                            return;
+                        }
+                        var file = files[0];
+                        var reader = new FileReader();
+                        var blob = file.slice(0, file.size);
+                        reader.readAsDataURL(blob);
+                        reader.onloadend = function (evt) {
+                            if (evt.target.readyState == FileReader.DONE) {
+                                binaryData = evt.target.result;
+                                console.log(binaryData);
+                            }
+                        };
+                    }
 
-                //Verifica se campo cep possui valor informado.
-                if (cep != "") {
+                });
 
-                    //Expressão regular para validar o CEP.
-                    var validacep = /^[0-9]{8}$/;
+                async function requestSender(method, url, data, info) {
+                    await activeLoader(info.Loader);
+                    const request = await new Promise((resolve, reject) => {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open(method, url, true);
+                        xhr.responseType = "json";
+                        if (data) if (info & !info.formRequest) {
+                            if (typeof (data) === "object") data = JSON.stringify(data);
+                            xhr.setRequestHeader("Content-Type", "application/json");
+                        }
+                        xhr.onload = () => {
+                            if (xhr.status > 400) {
+                                desactiveLoader(info.Loader);
+                                reject({ failure: "Alguma coisa deu errado!" });
+                            }
+                            resolve(xhr.response)
+                        };
+                        xhr.onerror = () => { desactiveLoader(info.Loader); reject({ failure: "Tente Novamente!" }); };
+                        xhr.send(data);
+                    });
+                    await desactiveLoader(info.Loader);
+                    return request;
+                }
 
-                    //Valida o formato do CEP.
-                    if (validacep.test(cep)) {
 
-                        //Preenche os campos com "..." enquanto consulta webservice.
-                        $("#Logra").val("...");
-                        $("#Bairro").val("...");
-                        $("#Cidade").val("...");
-                        $("#Uf").val("...");
+                $(document).ready(function () {
 
-                        //Consulta o webservice viacep.com.br/
-                        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+                    function limpa_formulário_cep() {
+                        // Limpa valores do formulário de cep.
+                        $("#Logra").val("");
+                        $("#Bairro").val("");
+                        $("#Cidade").val("");
+                        //$("#Uf").val("");
+                    }
 
-                            if (!("erro" in dados)) {
-                                //Atualiza os campos com os valores da consulta.
-                                $("#Logra").val(dados.logradouro);
-                                $("#Bairro").val(dados.bairro);
-                                $("#Cidade").val(dados.localidade);
-                                $("#UF").val(dados.uf);
+                    //Quando o campo cep perde o foco.
+                    $("#Cep").blur(function () {
+
+                        //Nova variável "cep" somente com dígitos.
+                        var cep = $(this).val().replace(/\D/g, '');
+
+                        //Verifica se campo cep possui valor informado.
+                        if (cep != "") {
+
+                            //Expressão regular para validar o CEP.
+                            var validacep = /^[0-9]{8}$/;
+
+                            //Valida o formato do CEP.
+                            if (validacep.test(cep)) {
+
+                                //Preenche os campos com "..." enquanto consulta webservice.
+                                $("#Logra").val("...");
+                                $("#Bairro").val("...");
+                                $("#Cidade").val("...");
+                                //$("#Uf").val("...");
+
+                                //Consulta o webservice viacep.com.br/
+                                $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+
+                                    if (!("erro" in dados)) {
+                                        //Atualiza os campos com os valores da consulta.
+                                        $("#Logra").val(dados.logradouro);
+                                        $("#Bairro").val(dados.bairro);
+                                        $("#Cidade").val(dados.localidade);
+                                        //$("#UF").val(dados.uf);
+                                    } //end if.
+                                    else {
+                                        //CEP pesquisado não foi encontrado.
+                                        limpa_formulário_cep();
+                                        alert("CEP não encontrado.");
+                                    }
+                                });
                             } //end if.
                             else {
-                                //CEP pesquisado não foi encontrado.
+                                //cep é inválido.
                                 limpa_formulário_cep();
-                                alert("CEP não encontrado.");
+                                alert("Formato de CEP inválido.");
                             }
-                        });
-                    } //end if.
-                    else {
-                        //cep é inválido.
-                        limpa_formulário_cep();
-                        alert("Formato de CEP inválido.");
-                    }
-                } //end if.
-                else {
-                    //cep sem valor, limpa formulário.
-                    limpa_formulário_cep();
-                }
-            });
-        });
+                        } //end if.
+                        else {
+                            //cep sem valor, limpa formulário.
+                            limpa_formulário_cep();
+                        }
+                    });
+                });
 
-    </script>
-}
+            </script>
+        }
 

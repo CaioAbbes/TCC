@@ -10,7 +10,6 @@ using TCC.Models;
 using TCC.Autorizacoes;
 using System.Configuration;
 
-
 namespace TCC.Controllers
 {
     public class ClienteController : Controller
@@ -45,7 +44,7 @@ namespace TCC.Controllers
         }
 
         // GET: Cliente/Create
-        //  [NivelAcesso]
+        //[Autenticacao]
         public ActionResult Create()
         {
 
@@ -58,7 +57,6 @@ namespace TCC.Controllers
         //[AuthCliente]
         public ActionResult Create(Cliente cliente)
         {
-
             if (ModelState.IsValid)
             {
                 var objCli = new Cliente();
@@ -85,21 +83,31 @@ namespace TCC.Controllers
                 //        string pth = Server.MapPath("~/Imagens/")
                 //        + filename + i + extensao;
 
-                        objCli.InsertCliente(cliente);
-                        return RedirectToAction("List");
-                    }
+                //string imgName = Path.GetFileName(cliente.Imagem);
+                //string imgTxt = Path.GetExtension(imgName);
+                //if (imgTxt == ".jpg" || imgTxt == ".png" || imgTxt == ".jpeg")
+                //{
+                //    string imgPath = Path.Combine(Server.MapPath("Imagens"), imgName);
+                //    cliente.Imagecli.SaveAs(imgPath);
+                //}
 
-
-
+                //var allowedExtensions = new[] { ".Jpg", ".png", ".jpg", "jpeg" };
+                //var fileName = Path.GetFileName(cliente.Imagem);
+                //var ext = Path.GetExtension(cliente.Imagem);
+                //if (allowedExtensions.Contains(ext))
+                //{
+                //    string name = Path.GetFileNameWithoutExtension(fileName);
+                //    var path = Path.Combine(Server.MapPath("~/Imagens"), cliente.Imagem);
+                objCli.InsertCliente(cliente);
+                return RedirectToAction("List");
+            }
             return View();
 
         }
 
 
-
-        
-
         // GET: Cliente/Edit/5
+        //[AuthCliente]
         public ActionResult Edit(int IdCli)
         {
             var cliente = new Cliente();
@@ -117,22 +125,6 @@ namespace TCC.Controllers
             return RedirectToAction("List");
         }
 
-
-        public Int64 GerarID()
-        {
-            try
-            {
-                DateTime data = new DateTime();
-                data = DateTime.Now;
-                string s = data.ToString().Replace("/", "").Replace(":", "").Replace(" ", "");
-                return Convert.ToInt64(s);
-            }
-            catch (Exception erro)
-            {
-
-                throw;
-            }
-        }
 
 
 

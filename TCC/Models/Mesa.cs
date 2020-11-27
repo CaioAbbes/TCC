@@ -12,8 +12,8 @@ namespace TCC.Models
     {
         private ConexaoDB db;
 
-        [Required(ErrorMessage = "O campo Id da mesa é requerido.")]
-        [Display(Name = "Id da mesa")]
+        [Required(ErrorMessage = "O campo Número da mesa é requerido.")]
+        [Display(Name = "Número da mesa")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdMesa { get; set; }

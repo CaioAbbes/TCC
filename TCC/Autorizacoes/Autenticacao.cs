@@ -6,8 +6,8 @@ using System.Web.Mvc;
 
 
 namespace TCC.Autorizacoes
-{        
-    public class NivelAcesso : AuthorizeAttribute, IAuthorizationFilter
+{
+    public class Autenticacao : AuthorizeAttribute, IAuthorizationFilter
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
@@ -17,12 +17,11 @@ namespace TCC.Autorizacoes
                 return;
             }
 
-            // Check for authorization
             if (HttpContext.Current.Session["nomeUsuarioLogado"] == null)
             {
                 filterContext.Result = new RedirectResult("~/Usuario/Login");
-            }
 
+            }
         }
     }
 }

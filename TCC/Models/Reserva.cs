@@ -11,8 +11,8 @@ namespace TCC.Models
     {
         private ConexaoDB db;
 
-        [Required(ErrorMessage = "O campo Id da reserva é requerido.")]
-        [Display(Name = "Id da reserva")]
+        [Required(ErrorMessage = "O campo Número da reserva é requerido.")]
+        [Display(Name = "Número da reserva")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdReserva { get; set; }
 

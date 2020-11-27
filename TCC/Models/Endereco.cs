@@ -38,16 +38,16 @@ namespace TCC.Models
         [StringLength(100, ErrorMessage = "A quantidade de caracteres do Cidade é invalido.")]
         public string Cidade { get; set; }
 
-        //[Required(ErrorMessage = "O campo Estado é requerido.")]
-        [Display(Name = "Estado")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        [StringLength(100, ErrorMessage = "A quantidade de caracteres do Estado é invalido.")]
-        public string Estado { get; set; }
+        ////[Required(ErrorMessage = "O campo Estado é requerido.")]
+        //[Display(Name = "Estado")]
+        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
+        //[StringLength(100, ErrorMessage = "A quantidade de caracteres do Estado é invalido.")]
+        //public string Estado { get; set; }
 
-        [Required(ErrorMessage = "O campo UF é requerido.")]
-        [Display(Name = "UF")]
-        [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
-        public string UF { get; set; }
+        ////[Required(ErrorMessage = "O campo UF é requerido.")]
+        //[Display(Name = "UF")]
+        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
+        //public string UF { get; set; }
 
 
         //public List<Endereco> BuscaCEP(string cep)
@@ -105,8 +105,6 @@ namespace TCC.Models
                         Logra = registros["Logra"].ToString(),
                         Bairro = registros["Bairro"].ToString(),
                         Cidade = registros["Cidade"].ToString(),
-                        Estado = registros["Estado"].ToString(),
-                        UF = registros["UF"].ToString()
                     };
                 }
 
