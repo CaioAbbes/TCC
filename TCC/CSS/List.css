@@ -9,11 +9,20 @@
     padding: 20px;
     border-radius: 10px;
     width: auto;
-    position: relative;
-    top: 5%;
-    margin: 5%;
+    overflow: hidden;
+    overflow-x: scroll;
+    margin: 10px;
     box-shadow: 1px 1px 6px 1px #343a40;
 }
+
+    .contenteTable::-webkit-scrollbar {
+        width: 2px;
+    }
+
+    .contenteTable::-webkit-scrollbar-thumb {
+        background: grey;
+        border-radius: 10px;
+    }
 
 .tableTitle {
     text-align: center;
@@ -50,4 +59,3 @@
 }
 
 */
-

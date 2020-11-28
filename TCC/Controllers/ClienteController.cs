@@ -57,47 +57,43 @@ namespace TCC.Controllers
         //[AuthCliente]
         public ActionResult Create(Cliente cliente)
         {
+
+            var imageTypes = new string[]{
+                    "image/gif",
+                    "image/jpeg",
+                    "image/pjpeg",
+                    "image/png"
+                };
+            //if (cliente.ImageUpload == null || cliente.ImageUpload.ContentLength == 0)
+            //{
+            //    ModelState.AddModelError("ImageUpload", "Este campo é obrigatório");
+            //}
+            //else if (!imageTypes.Contains(cliente.ImageUpload.ContentType))
+            //{
+            //    ModelState.AddModelError("ImageUpload", "Escolha uma iamgem GIF, JPG ou PNG.");
+            //}
+
+            //if (cliente.Imagecli != null && cliente.Imagecli.ContentLength > 0)
+            //{
+            //    string caminho = Path.Combine(Server.MapPath("~/Imagens/"), cliente.Imagecli.FileName);
+            //    cliente.Imagecli.SaveAs(caminho);
+            //    cliente.Imagem = cliente.Imagecli.FileName;
+            //}
+            //if (cliente.Imagecli != null && cliente.Imagecli.ContentLength > 0)
+            //{
+            //    using (var binaryReader = new BinaryReader(cliente.Imagecli.InputStream))
+            //    {
+            //        cliente.ConteudoFoto = binaryReader.ReadBytes(cliente.Imagecli.ContentLength);
+            //    }
+            //}
             if (ModelState.IsValid)
             {
+
+
                 var objCli = new Cliente();
-                //var img = cliente.Imagem.Split(',')[1];
-                //var img = cliente.Imagem.ToString().Split(',')[1];
+                //using (var binaryReader = new BinaryReader(cliente.ImageUpload.InputStream))
+                //    cliente.Imagem = binaryReader.ReadBytes(cliente.ImageUpload.ContentLength);
 
-                //HttpFileCollectionBase hfc = Request.Files;
-                //for (int i = 0; i < hfc.Count; i++)
-                //{
-                //    HttpPostedFileBase hpf = hfc[i];
-                //    if (hpf.ContentLength > 0)
-                //    {
-                //        //Pega o nome do arquivo
-                //        string nome = System.IO.Path.GetFileName(hpf.FileName);
-                //        //Pega a extensão do arquivo
-                //        string extensao = Path.GetExtension(hpf.FileName);
-                //        //Gera nome novo do Arquivo numericamente
-                //        string filename = string.Format("{0:00000000000000}", GerarID());
-                //        //Caminho a onde será salvo
-                //        hpf.SaveAs(Server.MapPath("~/Imagens/") + filename + i
-                //        + extensao);
-
-                //        //pega o arquivo já carregado
-                //        string pth = Server.MapPath("~/Imagens/")
-                //        + filename + i + extensao;
-
-                //string imgName = Path.GetFileName(cliente.Imagem);
-                //string imgTxt = Path.GetExtension(imgName);
-                //if (imgTxt == ".jpg" || imgTxt == ".png" || imgTxt == ".jpeg")
-                //{
-                //    string imgPath = Path.Combine(Server.MapPath("Imagens"), imgName);
-                //    cliente.Imagecli.SaveAs(imgPath);
-                //}
-
-                //var allowedExtensions = new[] { ".Jpg", ".png", ".jpg", "jpeg" };
-                //var fileName = Path.GetFileName(cliente.Imagem);
-                //var ext = Path.GetExtension(cliente.Imagem);
-                //if (allowedExtensions.Contains(ext))
-                //{
-                //    string name = Path.GetFileNameWithoutExtension(fileName);
-                //    var path = Path.Combine(Server.MapPath("~/Imagens"), cliente.Imagem);
                 objCli.InsertCliente(cliente);
                 return RedirectToAction("List");
             }
@@ -198,5 +194,47 @@ namespace TCC.Controllers
         //    return Json(end, JsonRequestBehavior.AllowGet);
 
         //}
+
+
+        //var img = cliente.Imagem.Split(',')[1];
+        //var img = cliente.Imagem.ToString().Split(',')[1];
+
+        //HttpFileCollectionBase hfc = Request.Files;
+        //for (int i = 0; i < hfc.Count; i++)
+        //{
+        //    HttpPostedFileBase hpf = hfc[i];
+        //    if (hpf.ContentLength > 0)
+        //    {
+        //        //Pega o nome do arquivo
+        //        string nome = System.IO.Path.GetFileName(hpf.FileName);
+        //        //Pega a extensão do arquivo
+        //        string extensao = Path.GetExtension(hpf.FileName);
+        //        //Gera nome novo do Arquivo numericamente
+        //        string filename = string.Format("{0:00000000000000}", GerarID());
+        //        //Caminho a onde será salvo
+        //        hpf.SaveAs(Server.MapPath("~/Imagens/") + filename + i
+        //        + extensao);
+
+        //        //pega o arquivo já carregado
+        //        string pth = Server.MapPath("~/Imagens/")
+        //        + filename + i + extensao;
+
+        //string imgName = Path.GetFileName(cliente.Imagem);
+        //string imgTxt = Path.GetExtension(imgName);
+        //if (imgTxt == ".jpg" || imgTxt == ".png" || imgTxt == ".jpeg")
+        //{
+        //    string imgPath = Path.Combine(Server.MapPath("Imagens"), imgName);
+        //    cliente.Imagecli.SaveAs(imgPath);
+        //}
+
+        //var allowedExtensions = new[] { ".Jpg", ".png", ".jpg", "jpeg" };
+        //var fileName = Path.GetFileName(cliente.Imagem);
+        //var ext = Path.GetExtension(cliente.Imagem);
+        //if (allowedExtensions.Contains(ext))
+        //{
+        //    string name = Path.GetFileNameWithoutExtension(fileName);
+        //    var path = Path.Combine(Server.MapPath("~/Imagens"), cliente.Imagem);
+
+
     }
 }

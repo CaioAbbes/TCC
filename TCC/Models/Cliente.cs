@@ -4,6 +4,7 @@ using Renci.SshNet.Messages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -66,8 +67,14 @@ namespace TCC.Models
         [Display(Name = "Quantidade de pontos")]
         public float QtdPontos { get; set; }
 
-        public string Imagem { get; set; }
-        public HttpPostedFile Imagecli { get; set; } //ou string
+         public string Imagem { get; set; }
+
+        //public byte[] Imagem { get; set; }
+
+        //[Required]
+        //[DataType(DataType.Upload)]
+        //[Display(Name = "Imagem")]
+        //public HttpPostedFileBase ImageUpload { get; set; } //ou string
 
 
 
@@ -114,7 +121,7 @@ namespace TCC.Models
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
                         QtdPontos = float.Parse(registros["QtdPontos"].ToString()),
                         User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
-                        Imagem = registros["imagecli"].ToString()
+                        Imagem =  registros["imagecli"].ToString()
                 };
 
 

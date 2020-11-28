@@ -12,10 +12,8 @@
         <table class="table table-hover">
             <tr class="colorTable">
                 <th scope="col">
-                    <p>
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
-            <tr class="colorTable">
+                    @Html.DisplayNameFor(model => model.IdCli)
+                </th>
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.CPF)
                 </th>
@@ -46,45 +44,50 @@
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.Imagem)
                 </th>
+                <th scope="col">Editar</th>
                 <th scope="col">Excluir</th>
+                <th scope="col">Cartão</th>
             </tr>
 
             @foreach (var item in Model)
             {
         <tr>
             <td scope="row">
-                >
+                @Html.DisplayFor(modelItem => item.IdCli)
+            </td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.CPF)
             </td>
             <td scope="row">
-                >
                 @Html.DisplayFor(modelItem => item.Endereco)
             </td>
             <td scope="row">
                 @Html.DisplayFor(modelItem => item.NomeCli)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailCli)
             <td scope="row">
-            <td>
+                @Html.DisplayFor(modelItem => item.EmailCli)
+            </td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.CelCli)
             </td>
             <td scope="row">
                 @Html.DisplayFor(modelItem => item.Comp)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumEdif)
             <td scope="row">
-            <td>
+                @Html.DisplayFor(modelItem => item.NumEdif)
+            </td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.User)
+            </td>
             <td scope="row">
                 @Html.DisplayFor(modelItem => item.QtdPontos)
             </td>
-            @* <td>
+            @*<td>
             @Html.DisplayFor(modelItem => item.Imagem)
         </td>*@
 
-        <td scope="row">
+
+            <td scope="row">
             @if (!string.IsNullOrEmpty(item.Imagem))
             {
                 @*<img src="~/Imagens/logo.jpeg"   alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
@@ -94,6 +97,17 @@
 
             }
         </td>
+
+            @*@if (item.Imagem != null)
+            {
+                <td>
+                    @{
+                        var base64 = Convert.ToBase64String(item.Imagem);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    }
+                    <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                </td>
+            }*@
 
 
             @*  @if (item.Imagem != null)
@@ -107,15 +121,20 @@
             </td>
         } *@
 
-            <td>
+            <td scope="row">
                 @Html.ActionLink("Edit", "Edit", new { IdCli = item.IdCli }) |
+
+            </td>
+            <td scope="row">
                 @Html.ActionLink("Details", "Details", new { IdCli = item.IdCli }) |
+
+            </td>
+            <td scope="row">
                 @Html.ActionLink("Cadastrar Cartao", "Create", "Cartao", new { idCli = item.IdCli }, null)
 
             </td>
         </tr>
             }
-
         </table>
     </div>
 </section>

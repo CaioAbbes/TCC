@@ -200,15 +200,48 @@ a {
 
 /*Settings*/
 .settings {
-    background: red;
-    width: 50px;
-    height: 30px;
-    position: absolute;
-    top: 15%;
-    left: 90%;
-    z-index-: 100;
+    background: white;
+    position: fixed;
+    top: 11%;
+    right: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    padding: 10px 0;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
+    .settings h3 {
+        text-align: center;
+    }
+
+    .settings .settingsItems {
+        display: flex;
+        flex-direction: row;
+        width: 200px;
+        align-items: stretch;
+        justify-content: space-between;
+        background: white;
+        border-top: 2px solid grey;
+    }
+
+
+
+        .settings .settingsItems a {
+            padding: 10px;
+        }
+
+            .settings .settingsItems a .title {
+                text-align: center;
+                color: red;
+                padding-left: 5px;
+            }
+
+            .settings .settingsItems a .icon, .settings .settingsItems a .title {
+                color: black;
+            }
 /*Sidebar*/
 .navigation {
     position: fixed;
@@ -221,7 +254,7 @@ a {
     transition: 1s;
     overflow: hidden;
     overflow-y: auto;
-    z-index: 3;
+    z-index: 2;
 }
 
     .navigation::-webkit-scrollbar, .navigation::-webkit-scrollbar-thumb {
@@ -244,11 +277,13 @@ a {
     .navigation .sube_Menu {
         padding-left: 15px;
         transition: 1s;
+        z-index: 2;
     }
 
 .hide {
     display: none;
-    transition: 2s;
+    transition-duration: 2s;
+    transition-property: all;
 }
 
 .toggle_SubMenu::after {

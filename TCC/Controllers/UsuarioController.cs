@@ -45,8 +45,9 @@ namespace TCC.Controllers
 
             else
             {
-                TempData["ErroLogin"] = "Senha ou Usuario inválido";
-                ModelState.AddModelError(string.Empty, TempData["ErroLogin"].ToString());
+                //TempData["ErroLogin"] = "Senha ou Usuario inválido";
+                //ModelState.AddModelError(string.Empty, TempData["ErroLogin"].ToString());
+                TempData["msg"] = "<script>alert('Usuario ou senha inválida');</script>";
                 return View();
             }
 
