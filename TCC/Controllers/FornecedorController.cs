@@ -27,6 +27,10 @@ namespace TCC.Controllers
 
         public ActionResult List(Fornecedor fornecedor)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var fornecedorList = fornecedor.SelecionaFornecedor();
             return View(fornecedorList);
         }
@@ -34,6 +38,10 @@ namespace TCC.Controllers
         // GET: Fornecedor/Create
         public ActionResult Create()
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             return View();
         }
 
@@ -41,7 +49,7 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Create(Fornecedor fornecedor)
         {
-            
+
             if (ModelState.IsValid)
             {
                 var objFornecedor = new Fornecedor();
@@ -54,6 +62,10 @@ namespace TCC.Controllers
         // GET: Fornecedor/Edit/5
         public ActionResult Edit(int IdForn)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var fornecedor = new Fornecedor();
             var objFornecedor = new Fornecedor();
             fornecedor = objFornecedor.SelecionaComIdForn(IdForn);

@@ -13,8 +13,8 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Codigo de barras é requerido.")]
         [Display(Name = "Codigo de barras")]
-        [Range(0, double.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public decimal CodigoBarras { get; set; }
+        [StringLength(13,ErrorMessage = "A quantidade de caracteres do CodigoBarras é invalido.",MinimumLength = 13)]
+        public string CodigoBarras { get; set; }
 
         [Required(ErrorMessage = "O campo Nome é requerido.")]
         [Display(Name = "Nome")]
@@ -45,10 +45,10 @@ namespace TCC.Models
         [StringLength(20, ErrorMessage = "A quantidade de caracteres do Tempo de duração é invalido.")]
         public string TempDura { get; set; }
 
+        [DataType(DataType.Date)]
         [Display(Name = "Data de validade")]
-        [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
-        [DataType(DataType.DateTime)]
-        public DateTime DataValidade { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? DataValidade { get; set; }
 
         [Display(Name = "Marca")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
@@ -58,14 +58,43 @@ namespace TCC.Models
 
         public void InsertIngrediente(Ingrediente ingrediente)
         {
-            string strQuery = string.Format("call sp_InsEstoque('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}');",ingrediente.CodigoBarras,ingrediente.Nome,ingrediente.UniMedi,ingrediente.PrecoUnit.ToString().Replace(",", "."), ingrediente.QtdAtual,ingrediente.Marca,ingrediente.DataValidade.ToString("yyyy-MM-dd HH:mm"),ingrediente.TempDura);
-
+            string strQuery = string.Format("call sp_InsEstoque('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}');", ingrediente.CodigoBarras, ingrediente.Nome, ingrediente.UniMedi, ingrediente.PrecoUnit.ToString().Replace(",", "."), ingrediente.QtdAtual, ingrediente.Marca, ingrediente.DataValidade);
             using (db = new ConexaoDB())
             {
                 db.ExecutaComando(strQuery);
             }
 
         }
+
+        public List<Ingrediente> SelecionaIngrediente()
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("SELECT * FROM tbingrediente;");
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                var ingredienteList = new List<Ingrediente>();
+                while (registros.Read())
+                {
+                    string date = registros["DataValidade"].ToString();
+
+                    var IngredienteTemporario = new Ingrediente
+                    {
+                        CodigoBarras = registros["CodigoBarras"].ToString(),
+                        Nome = registros["Nome"].ToString(),
+                        UniMedi = registros["UniMedi"].ToString(),
+                        PrecoUnit = float.Parse(registros["PrecoUnit"].ToString()),
+                        QtdAtual = int.Parse(registros["QtdAtual"].ToString()),
+                        TempDura = registros["TempDura"].ToString(),
+                        DataValidade = date.Equals("") ? (DateTime?) null : DateTime.Parse(registros["DataValidade"].ToString()),
+                        Marca = registros["Marca"].ToString()
+                    };
+                    ingredienteList.Add(IngredienteTemporario);
+                }
+                return ingredienteList;
+            }
+        }
+
+
 
 
         public string SelecionaCodigoBarras(string CodigoBarras)
@@ -79,7 +108,7 @@ namespace TCC.Models
                 {
                     ingredientesListando = new Ingrediente
                     {
-                        CodigoBarras = decimal.Parse(registros["CodigoBarras"].ToString())
+                        CodigoBarras = registros["CodigoBarras"].ToString()
                     };
                 }
 

@@ -107,6 +107,42 @@ namespace TCC.Models
 
         }
 
+        //public Cliente SelecionaClienteUser(string User)
+        //{
+        //    using (db = new ConexaoDB())
+        //    {
+        //        string StrQuery = string.Format("select * from tbcliente where IdUsuario = (select IdUsuario from tbusuario where Usuario = '{0}');", User);
+        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+        //        Cliente clienteListando = null;
+        //        while (registros.Read())
+        //        {
+        //            string idcli = registros["IdCli"].ToString();
+        //            string celcli = registros["CelCli"].ToString();
+        //            string numedif = registros["NumEdif"].ToString();
+        //            string qtdpontos = registros["QtdPontos"].ToString();
+        //            string cepString = registros["CEP"].ToString();
+        //            decimal cep = cepString.Equals("") ? 0m : decimal.Parse(cepString);
+        //            clienteListando = new Cliente
+        //            {
+        //                IdCli = idcli.Equals("") ? 0 : int.Parse(idcli),
+        //                NomeCli = registros["NomeCli"].ToString(),
+        //                CPF = registros["CPF"].ToString(),
+        //                EmailCli = registros["EmailCli"].ToString(),
+        //                Endereco = new Endereco().RetornaPorCEP(cep),
+        //                CelCli = celcli.Equals("") ? 0 : Convert.ToInt64(celcli),
+        //                Comp = registros["Comp"].ToString(),
+        //                NumEdif = numedif.Equals("") ? 0 : int.Parse(numedif),
+        //                QtdPontos = qtdpontos.Equals("") ? 0f : float.Parse(qtdpontos),
+        //                User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
+        //                Imagem = registros["imagecli"].ToString()
+
+        //            };
+        //        }
+        //        return clienteListando;
+
+        //    }
+        //}
+
 
     }
 }

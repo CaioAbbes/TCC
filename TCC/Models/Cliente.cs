@@ -108,23 +108,26 @@ namespace TCC.Models
                 var clienteList = new List<Cliente>();
                 while (registros.Read())
                 {
-
+                    string idcli = registros["IdCli"].ToString();
+                    string celcli = registros["CelCli"].ToString();
+                    string numedif = registros["NumEdif"].ToString();
+                    string qtdpontos = registros["QtdPontos"].ToString();
+                    string cepString = registros["CEP"].ToString();
+                    decimal cep = cepString.Equals("") ? 0m : decimal.Parse(cepString);
                     var ClienteTemporario = new Cliente
                     {
-                        IdCli = int.Parse(registros["IdCli"].ToString()),
+                        IdCli = idcli.Equals("") ? 0 : int.Parse(idcli),
                         NomeCli = registros["NomeCli"].ToString(),
                         CPF = registros["CPF"].ToString(),
                         EmailCli = registros["EmailCli"].ToString(),
-                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
-                        CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
+                        Endereco = new Endereco().RetornaPorCEP(cep),
+                        CelCli = celcli.Equals("") ? 0 : Convert.ToInt64(celcli),
                         Comp = registros["Comp"].ToString(),
-                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
-                        QtdPontos = float.Parse(registros["QtdPontos"].ToString()),
+                        NumEdif = numedif.Equals("") ? 0 : int.Parse(numedif),
+                        QtdPontos = qtdpontos.Equals("") ? 0f : float.Parse(qtdpontos),
                         User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
-                        Imagem =  registros["imagecli"].ToString()
-                };
-
-
+                        Imagem = registros["imagecli"].ToString()
+                    };
 
                     clienteList.Add(ClienteTemporario);
                 }
@@ -205,6 +208,8 @@ namespace TCC.Models
 
         }
 
+       
+
         //public static string UparImagem(HttpPostedFile file)
         //{
         //    string path = string.Empty;
@@ -226,12 +231,12 @@ namespace TCC.Models
         //}
 
 
-        public Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
+        //public Image byteArrayToImage(byte[] byteArrayIn)
+        //{
+        //    MemoryStream ms = new MemoryStream(byteArrayIn);
+        //    Image returnImage = Image.FromStream(ms);
+        //    return returnImage;
+        //}
 
     }
 }

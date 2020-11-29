@@ -21,9 +21,26 @@ namespace TCC.Controllers
             return View();
         }
 
+
+        public ActionResult List(Ingrediente ingrediente)
+        {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 4 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
+
+            var listIngre = ingrediente.SelecionaIngrediente();
+            return View(listIngre);
+        }
+
+
         // GET: Ingrediente/Create
         public ActionResult Create()
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 4 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             return View();
         }
 
@@ -31,6 +48,8 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Create(Ingrediente ingrediente)
         {
+
+
             if (ModelState.IsValid)
             {
                 var objIngrediente = new Ingrediente();

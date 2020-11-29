@@ -26,6 +26,10 @@ namespace TCC.Controllers
 
         public ActionResult List(Cupom cupom)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var cupomList = cupom.SelecionaCupom();
             return View(cupomList);
         }
@@ -33,6 +37,10 @@ namespace TCC.Controllers
         // GET: Cupom/Create
         public ActionResult Create()
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             return View();
         }
 
@@ -51,6 +59,10 @@ namespace TCC.Controllers
 
         public ActionResult Edit(string CodCupom)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var cupom = new Cupom();
             var objCupom = new Cupom();
             cupom = objCupom.SelecionaComIdCupom(CodCupom);

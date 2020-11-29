@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Autorizacoes;
 using TCC.Models;
 
 namespace TCC.Controllers
@@ -16,6 +17,7 @@ namespace TCC.Controllers
         }
 
         // GET: Cartao/Details/5
+        [Autenticacao]
         public ActionResult Details(decimal Numcartao)
         {
             var cartao = new Cartao();
@@ -26,6 +28,10 @@ namespace TCC.Controllers
 
         public ActionResult List(Cartao cartao)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) == 1 && int.Parse(Session["NivelAcesso"].ToString()) == 2 && int.Parse(Session["NivelAcesso"].ToString()) != 3 && int.Parse(Session["NivelAcesso"].ToString()) == 4 && int.Parse(Session["NivelAcesso"].ToString()) == 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var cartaoList = cartao.SelecionaCartao();
             return View(cartaoList);
         }

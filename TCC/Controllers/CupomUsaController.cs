@@ -26,6 +26,10 @@ namespace TCC.Controllers
 
         public ActionResult List(CupomUsa cupomusa)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var clicupomList = cupomusa.SelecionaCupomUsa();
             return View(clicupomList);
         }

@@ -26,6 +26,10 @@ namespace TCC.Controllers
 
         public ActionResult List(Mesa mesa)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 5 && int.Parse(Session["NivelAcesso"].ToString()) != 2)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }                            
             var mesaList = mesa.SelecionaMesa();
             return View(mesaList);
         }
@@ -33,6 +37,10 @@ namespace TCC.Controllers
         // GET: Mesa/Create
         public ActionResult Create()
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             return View();
         }
 
@@ -53,6 +61,10 @@ namespace TCC.Controllers
         // GET: Mesa/Edit/5
         public ActionResult Edit(int IdMesa)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 2)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var mesa = new Mesa();
             var objMesa = new Mesa();
             mesa = objMesa.SelecionaIdMesa(IdMesa);

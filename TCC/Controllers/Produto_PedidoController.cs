@@ -33,6 +33,10 @@ namespace TCC.Controllers
         // GET: Produto_Pedido/Create
         public ActionResult Create()
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 2)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             return View();
         }
 

@@ -26,6 +26,10 @@ namespace TCC.Controllers
 
         public ActionResult List(Notafiscal notafiscal)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var notafiscalList = notafiscal.SelecionaNotafiscal();
             return View(notafiscalList);
         }

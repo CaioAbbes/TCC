@@ -61,7 +61,7 @@ namespace TCC.Controllers
 
         }
 
-        public ActionResult Teste()
+        public ActionResult ErroAutenticação()
         {
             return View();
         }

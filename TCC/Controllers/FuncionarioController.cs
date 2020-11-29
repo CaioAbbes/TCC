@@ -17,6 +17,10 @@ namespace TCC.Controllers
 
         public ActionResult List(Funcionario funcionario)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var funcionarioList = funcionario.SelecionaFuncionario();
             return View(funcionarioList);
 
@@ -42,6 +46,10 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Create(Funcionario funcionario)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             if (ModelState.IsValid)
             {
                 var objFunc = new Funcionario();
@@ -64,6 +72,10 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Edit(Funcionario funcionario)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var objFunc = new Funcionario();
             objFunc.UpdateFuncionario(funcionario);
             return RedirectToAction("List");

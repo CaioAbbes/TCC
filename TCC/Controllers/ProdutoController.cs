@@ -27,6 +27,10 @@ namespace TCC.Controllers
 
         public ActionResult List(Produto produto)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var produtoList = produto.SelecionaProduto();
             return View(produtoList);
         }
@@ -34,6 +38,10 @@ namespace TCC.Controllers
         // GET: Produto/Create
         public ActionResult Create()
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             return View();
         }
 
@@ -44,6 +52,7 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Create(Produto produto)
         {
+
             if (ModelState.IsValid)
             {
                 var objProduto = new Produto();
@@ -57,6 +66,10 @@ namespace TCC.Controllers
         // GET: Produto/Edit/5
         public ActionResult Edit(int IdProd)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var produto = new Produto();
             var objProduto = new Produto();
             produto = objProduto.SelecionaIdProd(IdProd);

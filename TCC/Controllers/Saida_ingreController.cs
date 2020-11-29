@@ -26,6 +26,10 @@ namespace TCC.Controllers
 
         public ActionResult List(Saida_ingre saida)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 4 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var saidaList = saida.SelecionaSaida();
             return View(saidaList);
         }
@@ -33,6 +37,10 @@ namespace TCC.Controllers
         // GET: Saida_ingre/Create
         public ActionResult Create()
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 4 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             return View();
         }
 

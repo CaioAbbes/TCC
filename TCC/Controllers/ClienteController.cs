@@ -28,6 +28,10 @@ namespace TCC.Controllers
 
         public ActionResult List(Cliente cliente)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var clienteList = cliente.SelecionaCliente();
             return View(clienteList);
         }
@@ -44,9 +48,13 @@ namespace TCC.Controllers
         }
 
         // GET: Cliente/Create
-        //[Autenticacao]
+        [Autenticacao]
         public ActionResult Create()
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 1)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
 
             return View();
         }
@@ -106,6 +114,11 @@ namespace TCC.Controllers
         //[AuthCliente]
         public ActionResult Edit(int IdCli)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
+
             var cliente = new Cliente();
             var objCliente = new Cliente();
             cliente = objCliente.SelecionaComIdCli(IdCli);
