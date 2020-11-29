@@ -102,9 +102,8 @@ namespace TCC.Controllers
                 var objCli = new Cliente();
                 //using (var binaryReader = new BinaryReader(cliente.ImageUpload.InputStream))
                 //    cliente.Imagem = binaryReader.ReadBytes(cliente.ImageUpload.ContentLength);
-
                 objCli.InsertCliente(cliente);
-                return RedirectToAction("List");
+                return RedirectToAction("Index","Home");
             }
             return View();
 
@@ -132,7 +131,7 @@ namespace TCC.Controllers
         {
             var objCli = new Cliente();
             objCli.UpdateCliente(cliente);
-            return RedirectToAction("List");
+            return RedirectToAction("Details", new {IdCli = cliente.IdCli });
         }
 
 
