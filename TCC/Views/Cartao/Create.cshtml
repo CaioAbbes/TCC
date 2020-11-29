@@ -57,33 +57,25 @@
 
     </div>
 </div>
-<script>
-    let input = document.querySelectorAll(".input-Data");
-    input.forEach(inputform => {
-        console.log(input)
-        console.log(inputform)
-        let label = inputform.querySelector("label");
-        console.log(label)
-        inputform.addEventListener("click", () => {
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script> 
+    <script src="~/Scripts/Myscript.js"></script>
 
-            label.classList.add("translate");
+}
+@*<script>
+        let input = document.querySelectorAll(".input-Data");
+        input.forEach(inputform => {
+            console.log(input)
+            console.log(inputform)
+            let label = inputform.querySelector("label");
+            console.log(label)
+            inputform.addEventListener("click", () => {
+
+                label.classList.add("translate");
 
 
 
+            });
         });
-    });
-            //input.onclick = function () {
-            //    input.value
-            //    label.classList.toggle("translate");
-            //    console.log(input.value)
-            //    //if (document.getElementsByClassName("name") != " ") {
 
-            //    //    console.log("add")
-            //    //} else {
-            //    //    label.classList.romove("translate");
-            //    //    console.log("remove")
-            //    //}
-            //}
-
-
-</script>
+    </script>*@

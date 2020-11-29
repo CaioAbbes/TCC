@@ -28,7 +28,7 @@ namespace TCC.Controllers
 
         public ActionResult List(Cartao cartao)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) == 1 && int.Parse(Session["NivelAcesso"].ToString()) == 2 && int.Parse(Session["NivelAcesso"].ToString()) != 3 && int.Parse(Session["NivelAcesso"].ToString()) == 4 && int.Parse(Session["NivelAcesso"].ToString()) == 5)
+            if (int.Parse(Session["NivelAcesso"].ToString()) == 1 && int.Parse(Session["NivelAcesso"].ToString()) == 2 && int.Parse(Session["NivelAcesso"].ToString()) == 3 && int.Parse(Session["NivelAcesso"].ToString()) == 4 && int.Parse(Session["NivelAcesso"].ToString()) == 5)
             {
                 return RedirectToAction("ErroAutenticação", "Usuario");
             }

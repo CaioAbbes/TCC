@@ -522,6 +522,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="CSS\card.css" />
+    <Content Include="CSS\error.css" />
     <Content Include="CSS\form.css" />
     <Content Include="CSS\List.css" />
     <Content Include="CSS\Login.css" />
@@ -531,6 +532,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagens\401_preto.png" />
+    <Content Include="Imagens\404_preto.png" />
     <Content Include="Imagens\logo.jpeg" />
     <Content Include="Imagens\logo_writer.png" />
     <Content Include="Imagens\logo_writer_black.png" />
@@ -555,6 +558,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\MyScript.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -564,7 +568,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -645,6 +648,9 @@
     <Content Include="Views\Usuario\Logout.cshtml" />
     <Content Include="Views\Usuario\ErroAutenticação.cshtml" />
     <Content Include="Views\Ingrediente\List.cshtml" />
+    <Content Include="Views\Shared\_Error401.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Error404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

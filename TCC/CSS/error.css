@@ -1,0 +1,57 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap%27); @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap%27); *
+
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.errorBody {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    padding-top: 40px;
+}
+
+.container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .container img {
+        text-align: center;
+    }
+
+    .container .errorTetle {
+        font-family: 'Poppins', sans-serif;
+        font-size: 40px;
+        text-transform: uppercase;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .container .errorDescription {
+        text-align: center;
+    }
+
+        .container .errorDescription p {
+            padding-bottom: 40px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 15px;
+        }
+
+        .container .errorDescription a {
+            padding-bottom: 20px;
+            padding: 10px 60px;
+            text-decoration: none;
+            background: linear-gradient(90deg, rgba(251,164,0,1) 30%, rgba(247,176,6,1) 54%, rgba(244,109,30,1) 99%);
+            border-radius: 20px;
+            font-size: 15px;
+            color: #fff;
+        }

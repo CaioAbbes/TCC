@@ -50,7 +50,6 @@ namespace TCC.Controllers
                 TempData["msg"] = "<script>alert('Usuario ou senha inválida');</script>";
                 return View();
             }
-
         }
 
         public ActionResult Logout()

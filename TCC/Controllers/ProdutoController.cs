@@ -27,10 +27,6 @@ namespace TCC.Controllers
 
         public ActionResult List(Produto produto)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
-            {
-                return RedirectToAction("ErroAutenticação", "Usuario");
-            }
             var produtoList = produto.SelecionaProduto();
             return View(produtoList);
         }
