@@ -85,7 +85,7 @@ namespace TCC.Models
 
         public void InsertFuncionario(Funcionario funcionario)
         {
-            string strQuery = string.Format("CALL sp_InsFuncEndUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}');", funcionario.User.UsuarioText, funcionario.User.Senha, funcionario.Endereco.Cidade, funcionario.Endereco.CEP, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Comp, funcionario.NumEdif, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc, funcionario.EmailFunc, funcionario.RgFunc, funcionario.CPFfunc, funcionario.User.TipoAcesso);
+            string strQuery = string.Format("CALL sp_InsFuncEndUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}');", funcionario.User.UsuarioText, funcionario.User.Senha, funcionario.Endereco.Cidade, funcionario.Endereco.CEP, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Comp, funcionario.NumEdif, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty), funcionario.EmailFunc, funcionario.RgFunc, funcionario.CPFfunc, funcionario.User.TipoAcesso);
 
             using (db = new ConexaoDB())
             {
@@ -95,7 +95,7 @@ namespace TCC.Models
 
         public void UpdateFuncionario(Funcionario funcionario)
         {
-            string strQuery = string.Format("CALL sp_AtuaFunc('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}');", funcionario.IdFunc, funcionario.CPFfunc, funcionario.Endereco.CEP, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc, funcionario.EmailFunc, funcionario.RgFunc, funcionario.Comp, funcionario.NumEdif, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Endereco.Cidade, funcionario.User.UsuarioText, funcionario.User.Senha);
+            string strQuery = string.Format("CALL sp_AtuaFunc('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}');", funcionario.IdFunc, funcionario.CPFfunc, funcionario.Endereco.CEP, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty), funcionario.EmailFunc, funcionario.RgFunc, funcionario.Comp, funcionario.NumEdif, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Endereco.Cidade, funcionario.User.UsuarioText, funcionario.User.Senha);
 
 
             using (db = new ConexaoDB())

@@ -26,6 +26,7 @@ namespace TCC.Controllers
             return View();
         }
 
+        [Autenticacao]
         public ActionResult List(Cliente cliente)
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
@@ -111,7 +112,7 @@ namespace TCC.Controllers
 
 
         // GET: Cliente/Edit/5
-        //[AuthCliente]
+        [Autenticacao]
         public ActionResult Edit(int IdCli)
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 5)

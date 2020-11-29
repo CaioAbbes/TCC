@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Autorizacoes;
 using TCC.Models;
 
 namespace TCC.Controllers
@@ -31,6 +32,7 @@ namespace TCC.Controllers
         }
 
         // GET: Produto_Pedido/Create
+        [Autenticacao]
         public ActionResult Create()
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 2)

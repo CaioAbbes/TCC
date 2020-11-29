@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Autorizacoes;
 using TCC.Models;
 
 namespace TCC.Controllers
@@ -32,6 +33,7 @@ namespace TCC.Controllers
         }
 
         // GET: Produto/Create
+        [Autenticacao]
         public ActionResult Create()
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
@@ -60,6 +62,7 @@ namespace TCC.Controllers
         }
 
         // GET: Produto/Edit/5
+        [Autenticacao]
         public ActionResult Edit(int IdProd)
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 5)

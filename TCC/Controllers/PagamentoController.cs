@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Autorizacoes;
 using TCC.Models;
 
 namespace TCC.Controllers
@@ -31,8 +32,13 @@ namespace TCC.Controllers
         }
 
         // GET: Pagamento/Create
+        [Autenticacao]
         public ActionResult Create()
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 3 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             return View();
         }
 
@@ -40,10 +46,7 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Create(int IdMesa, string CPFfunc, string FormPag, string CodCupom, float QtdPontos, string CPF)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 3 && int.Parse(Session["NivelAcesso"].ToString()) != 5 )
-            {
-                return RedirectToAction("ErroAutenticação", "Usuario");
-            }
+
             if (ModelState.IsValid)
             {
                 var objPagamento = new Pagamento();

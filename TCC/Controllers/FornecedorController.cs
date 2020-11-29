@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Autorizacoes;
 using TCC.Models;
 
 namespace TCC.Controllers
@@ -25,6 +26,8 @@ namespace TCC.Controllers
             return View(fornecedor);
         }
 
+
+        [Autenticacao]
         public ActionResult List(Fornecedor fornecedor)
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
@@ -35,7 +38,9 @@ namespace TCC.Controllers
             return View(fornecedorList);
         }
 
+
         // GET: Fornecedor/Create
+        [Autenticacao]
         public ActionResult Create()
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
@@ -60,6 +65,7 @@ namespace TCC.Controllers
         }
 
         // GET: Fornecedor/Edit/5
+        [Autenticacao]
         public ActionResult Edit(int IdForn)
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 5)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Autorizacoes;
 using TCC.Models;
 
 namespace TCC.Controllers
@@ -15,6 +16,7 @@ namespace TCC.Controllers
             return View();
         }
 
+        [Autenticacao]
         public ActionResult List(Funcionario funcionario)
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
@@ -37,8 +39,13 @@ namespace TCC.Controllers
         }
 
         // GET: Funcionario/Create
+        [Autenticacao]
         public ActionResult Create()
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             return View();
         }
 
@@ -46,10 +53,7 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Create(Funcionario funcionario)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
-            {
-                return RedirectToAction("ErroAutenticação", "Usuario");
-            }
+
             if (ModelState.IsValid)
             {
                 var objFunc = new Funcionario();
@@ -60,8 +64,13 @@ namespace TCC.Controllers
         }
 
         // GET: Funcionario/Edit/5
+        [Autenticacao]
         public ActionResult Edit(int IdFunc)
         {
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            {
+                return RedirectToAction("ErroAutenticação", "Usuario");
+            }
             var funcionario = new Funcionario();
             var objFunc = new Funcionario();
             funcionario = objFunc.SelecionaComIdFunc(IdFunc);
@@ -72,10 +81,7 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Edit(Funcionario funcionario)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
-            {
-                return RedirectToAction("ErroAutenticação", "Usuario");
-            }
+
             var objFunc = new Funcionario();
             objFunc.UpdateFuncionario(funcionario);
             return RedirectToAction("List");

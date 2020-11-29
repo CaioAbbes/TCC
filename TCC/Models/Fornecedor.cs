@@ -67,7 +67,7 @@ namespace TCC.Models
 
         public void InsertFornecedor(Fornecedor fornecedor)
         {
-            string strQuery = string.Format("CALL sp_InsForne('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}');",fornecedor.RazaoSocial,fornecedor.NomeForn,fornecedor.Cnpj,fornecedor.Tel,fornecedor.EmailForn, fornecedor.Endereco.Cidade,fornecedor.Endereco.CEP,fornecedor.Endereco.Logra,fornecedor.Endereco.Bairro,fornecedor.Comp,fornecedor.NumEdif);
+            string strQuery = string.Format("CALL sp_InsForne('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}');",fornecedor.RazaoSocial,fornecedor.NomeForn,fornecedor.Cnpj.Replace(".",string.Empty).Replace("/",string.Empty).Replace("-",string.Empty),fornecedor.Tel.ToString().Replace("(",string.Empty).Replace(")",string.Empty).Replace(" ",string.Empty),fornecedor.EmailForn, fornecedor.Endereco.Cidade,fornecedor.Endereco.CEP,fornecedor.Endereco.Logra,fornecedor.Endereco.Bairro,fornecedor.Comp,fornecedor.NumEdif);
 
             using (db = new ConexaoDB())
             {
@@ -79,7 +79,7 @@ namespace TCC.Models
         {
             using (db = new ConexaoDB())
             {
-                string strQuery = string.Format("CALL sp_AtuaForn('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}');",fornecedor.IdForn, fornecedor.RazaoSocial,fornecedor.NomeForn,fornecedor.Cnpj,fornecedor.Endereco.CEP,fornecedor.Tel,fornecedor.EmailForn,fornecedor.Comp,fornecedor.NumEdif,fornecedor.Endereco.Logra,fornecedor.Endereco.Bairro,fornecedor.Endereco.Cidade);
+                string strQuery = string.Format("CALL sp_AtuaForn('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}');",fornecedor.IdForn, fornecedor.RazaoSocial,fornecedor.NomeForn,fornecedor.Cnpj.Replace(".", string.Empty).Replace("/", string.Empty).Replace("-", string.Empty), fornecedor.Endereco.CEP,fornecedor.Tel.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty), fornecedor.EmailForn,fornecedor.Comp,fornecedor.NumEdif,fornecedor.Endereco.Logra,fornecedor.Endereco.Bairro,fornecedor.Endereco.Cidade);
 
                 db.ExecutaComando(strQuery);
             }

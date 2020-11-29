@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Autorizacoes;
 using TCC.Models;
 
 namespace TCC.Controllers
@@ -24,6 +25,8 @@ namespace TCC.Controllers
             return View(saida);
         }
 
+
+        [Autenticacao]
         public ActionResult List(Saida_ingre saida)
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 4 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
@@ -35,6 +38,7 @@ namespace TCC.Controllers
         }
 
         // GET: Saida_ingre/Create
+        [Autenticacao]
         public ActionResult Create()
         {
             if (int.Parse(Session["NivelAcesso"].ToString()) != 4 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
