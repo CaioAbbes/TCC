@@ -107,11 +107,62 @@ namespace TCC.Models
 
         }
 
-        //public Cliente SelecionaClienteUser(string User)
+        public int PegaIdCli()
+        {
+
+            using (db = new ConexaoDB())
+            {
+                string strQuery = string.Format("CALL sp_BuscaIdC('{0}');", UsuarioText);
+                MySqlDataReader registros = db.RetornaRegistro(strQuery);
+                Cliente clienteListando = new Cliente();
+                while (registros.Read())
+                {
+                  
+                    clienteListando = new Cliente
+                    {
+                        IdCli = int.Parse(registros["IdCli"].ToString())
+                    };
+
+                }
+                if (clienteListando.IdCli == 0)
+                {
+                    return 0;
+                }
+                return clienteListando.IdCli;
+
+            }
+        }
+
+        public int PegaIdFunc()
+        {
+
+            using (db = new ConexaoDB())
+            {
+                string strQuery = string.Format("CALL sp_BuscaIdF('{0}');", UsuarioText);
+                MySqlDataReader registros = db.RetornaRegistro(strQuery);
+                Funcionario funcionarioListando = new Funcionario();
+                while (registros.Read())
+                {
+                    funcionarioListando = new Funcionario
+                    {
+                        IdFunc = int.Parse(registros["IdFunc"].ToString())
+                    };
+
+                }
+                if (funcionarioListando.IdFunc == 0)
+                {
+                    return 0;
+                }
+                return funcionarioListando.IdFunc;
+
+            }
+        }
+
+        //public Cliente SelecionaClienteUser()
         //{
         //    using (db = new ConexaoDB())
         //    {
-        //        string StrQuery = string.Format("select * from tbcliente where IdUsuario = (select IdUsuario from tbusuario where Usuario = '{0}');", User);
+        //        string StrQuery = string.Format("select * from tbcliente where IdUsuario = (select IdUsuario from tbusuario where Usuario = '{0}');", UsuarioText);
         //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
         //        Cliente clienteListando = null;
         //        while (registros.Read())

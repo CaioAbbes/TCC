@@ -34,6 +34,7 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Login(Usuario usuario)
         {
+
             try
             {
                 bool logado = usuario.ValidaLogin();
@@ -42,6 +43,20 @@ namespace TCC.Controllers
                 {
                     Session["nomeUsuarioLogado"] = usuario.UsuarioText;
                     Session["NivelAcesso"] = usuario.RetornaTipoAcesso();
+
+                    Session["IdCli"] = usuario.PegaIdCli();
+                    Session["IdFunc"] = usuario.PegaIdFunc();
+
+                    if (Session["IdCli"] == null)
+                    {
+                        Session["IdFunc"] = usuario.PegaIdFunc();
+                    }
+
+                    else if (Session["IdFunc"] == null)
+                    {
+                        Session["IdCli"] = usuario.PegaIdCli();
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
 

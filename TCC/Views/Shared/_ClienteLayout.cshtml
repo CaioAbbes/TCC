@@ -1,0 +1,133 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
+    <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
+    <link rel="Shortcut Icon" href="~/favicon.ico" type="image / x-icon" />
+    <title>Tacos & Natchos</title>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <section class="logoWriter">
+                <img src="~/Imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer">
+            </section>
+
+            <nav class="menu-itens">
+                <li><a href="~/Home/About.cshtml">Cardápio</a></li>
+                <li><a href="#">Reserva</a></li>
+                <li><a href="login.html">Delivery</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-search" onclick="showSearch()"></i></a></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-user" onclick="showOnOffSettings()"></i></a></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="settings hide">
+            <h3>Configurações</h3>
+            <section class="settingsItems">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-user-alt"></i></span>
+                    <span class="title">Meus dados</span>
+                </a>
+            </section>
+            <section class="settingsItems">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                    <span class="title">Últimos Pedidos</span>
+                </a>
+            </section>
+            <section class="settingsItems">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <span class="title">Cupons</span>
+                </a>
+            </section>
+            <section class="settingsItems">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                    <span class="title">Sair</span>
+                </a>
+            </section>
+        </div>
+        <div class="cartBar hide">
+            <section class="cartTitle"><h1>Meus Pedidos</h1></section>
+            @RenderSection("cart", required: false)
+        </div>
+
+        <div class="flootSearch">
+
+        </div>
+
+        <div class="toggle" onclick="toggleMenu()"></div>
+
+        <div class="content">
+            @RenderBody()
+
+        </div>
+
+    </main>
+
+    <footer></footer>
+
+    <script>
+        function toggleMenu() {
+            let navigation = document.querySelector(".navigation");
+            let toggle = document.querySelector(".toggle");
+            navigation.classList.toggle("active");
+            toggle.classList.toggle("active");
+        }
+
+        function showSearch() {
+            let search = document.getElementById("body");
+            search.classList.add("blur");
+        }
+
+        function showOnOffSettings() {
+            let user = document.querySelector(".fa-user");
+            let settings = document.querySelector(".settings");
+            settings.classList.toggle("hide");
+        }
+
+
+        let subeMenu = document.querySelectorAll(".collapse");
+        subeMenu.forEach(subeMenur => {
+            console.log(subeMenur);
+            let collapse = subeMenur.querySelector(".collapseSubMenu");
+            console.log(collapse);
+            subeMenur.addEventListener("click", () => {
+
+                collapse.classList.toggle("hide");
+
+            });
+        });
+
+        //function toggleSubMenu() {
+        //    let navigation = document.querySelector(".collapseSubeMenu");
+        //    let arrowOpen = document.querySelector(".toggle_SubMenu");
+        //    navigation.classList.toggle("hide");
+        //    arrowOpen.classList.toggle("arrowOpen");
+        //}
+
+        function toggleCart() {
+            let Cart = document.querySelector(".cart");
+            let showCart = document.querySelector(".cartBar");
+            showCart.classList.toggle("hide");
+
+        }
+
+    </script>
+    @*@Scripts.Render("~/bundles/inputmask")*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -208,8 +208,6 @@ namespace TCC.Models
 
         }
 
-
-
         //public static string UparImagem(HttpPostedFile file)
         //{
         //    string path = string.Empty;

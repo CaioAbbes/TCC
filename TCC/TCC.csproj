@@ -527,6 +527,7 @@
     <Content Include="CSS\List.css" />
     <Content Include="CSS\Login.css" />
     <Content Include="CSS\parallax.css" />
+    <Content Include="CSS\perfil.css" />
     <Content Include="CSS\Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -653,6 +654,7 @@
     <Content Include="Views\Shared\_Error401.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Error404.cshtml" />
+    <Content Include="Views\Shared\_ClienteLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

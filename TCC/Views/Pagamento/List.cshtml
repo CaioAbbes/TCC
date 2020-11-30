@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Comanda.IdComanda)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.FormPag)
         </th>
         <th>
@@ -29,9 +26,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comanda.IdComanda)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FormPag)
             </td>

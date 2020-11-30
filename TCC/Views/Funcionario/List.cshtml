@@ -45,7 +45,7 @@
             @Html.DisplayNameFor(model => model.NumEdif)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User)
+            @Html.DisplayNameFor(model => model.User.TipoAcesso)
         </th>
         <th></th>
     </tr>
@@ -87,7 +87,7 @@
                 @Html.DisplayFor(modelItem => item.NumEdif)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User)
+                @Html.DisplayFor(modelItem => item.User.TipoAcesso)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { IdFunc = item.IdFunc }) |

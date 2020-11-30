@@ -158,11 +158,12 @@ namespace TCC.Models
                 Funcionario FuncListando = null;
                 while (registros.Read())
                 {
+                    string user = registros["IdUsuario"].ToString();
                     FuncListando = new Funcionario
                     {
                         IdFunc = int.Parse(registros["IdFunc"].ToString()),
                         Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
-                        User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
+                        User = user.Equals("") ? new Usuario() : new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
                         NomeFunc = registros["NomeFunc"].ToString(),
                         CPFfunc = registros["CPFfunc"].ToString(),
                         DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
