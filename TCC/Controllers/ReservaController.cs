@@ -19,16 +19,33 @@ namespace TCC.Controllers
         // GET: Reserva/Details/5
         public ActionResult Details(int IdReserva)
         {
-            var Reserva = new Reserva();
-            var objReserva = new Reserva();
-            Reserva = objReserva.SelecionaIdReserva(IdReserva);
-            return View(Reserva);
+            try
+            {
+                var Reserva = new Reserva();
+                var objReserva = new Reserva();
+                Reserva = objReserva.SelecionaIdReserva(IdReserva);
+                return View(Reserva);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar a reserva');</script>";
+                return View();
+            }
         }
 
         public ActionResult List(Reserva reserva)
         {
-            var reservaList = reserva.SelecionaReserva();
-            return View(reservaList);
+            try
+            {
+                var reservaList = reserva.SelecionaReserva();
+                return View(reservaList);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar as reservas');</script>";
+                return View();
+            }
+
         }
 
         // GET: Reserva/Create
@@ -52,7 +69,7 @@ namespace TCC.Controllers
                 objReserva.InsertReserva(reserva);
                 return RedirectToAction("List");
             }
-
+            TempData["msg"] = "<script>alert('Erro ao criar uma reservas');</script>";
             return View();
         }
        

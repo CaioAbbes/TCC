@@ -19,23 +19,38 @@ namespace TCC.Controllers
         [Autenticacao]
         public ActionResult List(Funcionario funcionario)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            try
             {
-                return RedirectToAction("ErroAutenticação", "Usuario");
+                if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+                {
+                    return RedirectToAction("ErroAutenticação", "Usuario");
+                }
+                var funcionarioList = funcionario.SelecionaFuncionario();
+                return View(funcionarioList);
             }
-            var funcionarioList = funcionario.SelecionaFuncionario();
-            return View(funcionarioList);
-
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar os funcionarios');</script>";
+                return View();
+            }
         }
 
 
         // GET: Funcionario/Details/5
         public ActionResult Details(int IdFunc)
         {
-            var funcionario = new Funcionario();
-            var objFunc = new Funcionario();
-            funcionario = objFunc.SelecionaComIdFunc(IdFunc);
-            return View(funcionario);
+            try
+            {
+                var funcionario = new Funcionario();
+                var objFunc = new Funcionario();
+                funcionario = objFunc.SelecionaComIdFunc(IdFunc);
+                return View(funcionario);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar o funcionario');</script>";
+                return View();
+            }
         }
 
         // GET: Funcionario/Create
@@ -60,6 +75,7 @@ namespace TCC.Controllers
                 objFunc.InsertFuncionario(funcionario);
                 return RedirectToAction("List");
             }
+            TempData["msg"] = "<script>alert('Erro ao criar o funcionario');</script>";
             return View();
         }
 
@@ -81,10 +97,17 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Edit(Funcionario funcionario)
         {
-
-            var objFunc = new Funcionario();
-            objFunc.UpdateFuncionario(funcionario);
-            return RedirectToAction("List");
+            try
+            {
+                var objFunc = new Funcionario();
+                objFunc.UpdateFuncionario(funcionario);
+                return RedirectToAction("List");
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao editar o funcionario');</script>";
+                return View();
+            }
         }
 
     }

@@ -19,16 +19,32 @@ namespace TCC.Controllers
         // GET: Pagamento/Details/5
         public ActionResult Details(int IdPag)
         {
-            var pagamento = new Pagamento();
-            var objPagamento = new Pagamento();
-            pagamento = pagamento.SelecionaComIdPag(IdPag);
-            return View(pagamento);
+            try
+            {
+                var pagamento = new Pagamento();
+                var objPagamento = new Pagamento();
+                pagamento = pagamento.SelecionaComIdPag(IdPag);
+                return View(pagamento);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar o pagamento');</script>";
+                return View();
+            }
         }
 
         public ActionResult List(Pagamento pagamento)
         {
-            var pagamentoList = pagamento.SelecionaPagamento();
-            return View(pagamentoList);
+            try
+            {
+                var pagamentoList = pagamento.SelecionaPagamento();
+                return View(pagamentoList);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar os pagamentos');</script>";
+                return View();
+            }
         }
 
         // GET: Pagamento/Create
@@ -53,7 +69,7 @@ namespace TCC.Controllers
                 objPagamento.InsertPagamento(IdMesa, 0, CPFfunc, FormPag, null, 0, CPF);
                 return RedirectToAction("List");
             }
-
+            TempData["msg"] = "<script>alert('Erro ao criar o pagamento');</script>";
             return View();
         }
 

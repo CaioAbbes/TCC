@@ -40,39 +40,39 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodCupom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desconto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalDispo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataTerm)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descri)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorMin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumUtiliza)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CodCupom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Desconto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalDispo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DataInicio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DataTerm)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Descri)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ValorMin)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NumUtiliza)
+    </td>
 
-
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { CodCupom = item.CodCupom }) |
-                @Html.ActionLink("Details", "Details", new { CodCupom = item.CodCupom }) |
-                @Html.ActionLink("Delete", "Delete", new { CodCupom = item.CodCupom })
-            </td>
-        </tr>
+    @Html.Raw(TempData["msg"])
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { CodCupom = item.CodCupom }) |
+        @Html.ActionLink("Details", "Details", new { CodCupom = item.CodCupom }) |
+        @Html.ActionLink("Delete", "Delete", new { CodCupom = item.CodCupom })
+    </td>
+</tr>
     }
 
 </table>

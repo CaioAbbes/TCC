@@ -26,26 +26,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdMesa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Numlugares)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Disponi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoLugar)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { IdMesa = item.IdMesa }) |
-            @Html.ActionLink("Details", "Details", new { IdMesa = item.IdMesa }) |
-            @Html.ActionLink("Delete", "Delete", new { IdMesa = item.IdMesa })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numlugares)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoLugar)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { IdMesa = item.IdMesa }) |
+                @Html.ActionLink("Details", "Details", new { IdMesa = item.IdMesa }) |
+                @Html.ActionLink("Delete", "Delete", new { IdMesa = item.IdMesa })
+            </td>
+        </tr>
+    }
+    @Html.Raw(TempData["msg"])
 </table>

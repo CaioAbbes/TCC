@@ -19,15 +19,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Liberado)
+            @Html.DisplayNameFor(model => model.Cliente)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Liberado)
+            @Html.DisplayFor(model => model.Cliente)
         </dd>
 
     </dl>
 </div>
+@Html.Raw(TempData["msg"])
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")

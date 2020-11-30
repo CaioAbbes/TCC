@@ -88,7 +88,8 @@
 
     </dl>
 </div>
+@Html.Raw(TempData["msg"])
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdCli  }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCli }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

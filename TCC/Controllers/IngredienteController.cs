@@ -25,13 +25,21 @@ namespace TCC.Controllers
         [Autenticacao]
         public ActionResult List(Ingrediente ingrediente)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 4 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            try
             {
-                return RedirectToAction("ErroAutenticação", "Usuario");
-            }
+                if (int.Parse(Session["NivelAcesso"].ToString()) != 4 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
+                {
+                    return RedirectToAction("ErroAutenticação", "Usuario");
+                }
 
-            var listIngre = ingrediente.SelecionaIngrediente();
-            return View(listIngre);
+                var listIngre = ingrediente.SelecionaIngrediente();
+                return View(listIngre);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar os ingredientes');</script>";
+                return View();
+            }
         }
 
 
@@ -58,7 +66,7 @@ namespace TCC.Controllers
                 objIngrediente.InsertIngrediente(ingrediente);
                 return RedirectToAction("List");
             }
-
+            TempData["msg"] = "<script>alert('Erro ao criar o ingrediente');</script>";
             return View();
 
         }

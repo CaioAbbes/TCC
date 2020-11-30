@@ -50,50 +50,51 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CPFfunc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeFunc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DatNascFunc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CargoFunc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SexoFunc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CelFunc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailFunc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RgFunc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumEdif)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { IdFunc = item.IdFunc }) |
-            @Html.ActionLink("Details", "Details", new { IdFunc = item.IdFunc }) |
-            @Html.ActionLink("Delete", "Delete", new { IdFunc = item.IdFunc })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPFfunc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeFunc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatNascFunc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CargoFunc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SexoFunc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CelFunc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailFunc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RgFunc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumEdif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { IdFunc = item.IdFunc }) |
+                @Html.ActionLink("Details", "Details", new { IdFunc = item.IdFunc }) |
+                @Html.ActionLink("Delete", "Delete", new { IdFunc = item.IdFunc })
+            </td>
+        </tr>
+    }
+    @Html.Raw(TempData["msg"])
 </table>

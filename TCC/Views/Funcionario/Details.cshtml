@@ -19,51 +19,35 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CEP)
+            @Html.DisplayNameFor(model => model.Endereco.CEP)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CEP)
+            @Html.DisplayFor(model => model.Endereco.CEP)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Logra)
+            @Html.DisplayNameFor(model => model.Endereco.Logra)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Logra)
+            @Html.DisplayFor(model => model.Endereco.Logra)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Bairro)
+            @Html.DisplayNameFor(model => model.Endereco.Bairro)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Bairro)
+            @Html.DisplayFor(model => model.Endereco.Bairro)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cidade)
+            @Html.DisplayNameFor(model => model.Endereco.Cidade)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cidade)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UF)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UF)
+            @Html.DisplayFor(model => model.Endereco.Cidade)
         </dd>
 
         <dt>
@@ -138,40 +122,34 @@
             @Html.DisplayFor(model => model.NumEdif)
         </dd>
 
+
         <dt>
-            @Html.DisplayNameFor(model => model.IdUsuario)
+            @Html.DisplayNameFor(model => model.User.UsuarioText)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IdUsuario)
+            @Html.DisplayFor(model => model.User.UsuarioText)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UsuarioText)
+            @Html.DisplayNameFor(model => model.User.Senha)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UsuarioText)
+            @Html.DisplayFor(model => model.User.Senha)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Senha)
+            @Html.DisplayNameFor(model => model.User.TipoAcesso)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Senha)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TipoAcesso)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TipoAcesso)
+            @Html.DisplayFor(model => model.User.TipoAcesso)
         </dd>
 
     </dl>
 </div>
+@Html.Raw(TempData["msg"])
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.IdFunc }) |
     @Html.ActionLink("Back to List", "Index")

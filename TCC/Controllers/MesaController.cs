@@ -19,21 +19,37 @@ namespace TCC.Controllers
         // GET: Mesa/Details/5
         public ActionResult Details(int IdMesa)
         {
-            var mesa = new Mesa();
-            var objMesa = new Mesa();
-            mesa = objMesa.SelecionaIdMesa(IdMesa);
-            return View(mesa);
+            try
+            {
+                var mesa = new Mesa();
+                var objMesa = new Mesa();
+                mesa = objMesa.SelecionaIdMesa(IdMesa);
+                return View(mesa);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar a mesa');</script>";
+                return View();
+            }
         }
 
         [Autenticacao]
         public ActionResult List(Mesa mesa)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 5 && int.Parse(Session["NivelAcesso"].ToString()) != 2)
+            try
             {
-                return RedirectToAction("ErroAutenticação", "Usuario");
-            }                            
-            var mesaList = mesa.SelecionaMesa();
-            return View(mesaList);
+                if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 5 && int.Parse(Session["NivelAcesso"].ToString()) != 2)
+                {
+                    return RedirectToAction("ErroAutenticação", "Usuario");
+                }
+                var mesaList = mesa.SelecionaMesa();
+                return View(mesaList);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar as mesas');</script>";
+                return View();
+            }
         }
 
         // GET: Mesa/Create
@@ -57,7 +73,7 @@ namespace TCC.Controllers
                 objMesa.InsertMesa(mesa);
                 return RedirectToAction("List");
             }
-
+            TempData["msg"] = "<script>alert('Erro ao criar a mesa');</script>";
             return View();
         }
 
@@ -79,9 +95,17 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Edit(Mesa mesa)
         {
-            var objMesa = new Mesa();
-            objMesa.UpdateMesa(mesa);
-            return RedirectToAction("List");
+            try
+            {
+                var objMesa = new Mesa();
+                objMesa.UpdateMesa(mesa);
+                return RedirectToAction("List");
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao editar a mesa');</script>";
+                return View();
+            }
         }
 
        

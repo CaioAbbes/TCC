@@ -18,16 +18,32 @@ namespace TCC.Controllers
         // GET: Compra/Details/5
         public ActionResult Details(int NumCompra)
         {
-            var compra = new Compra();
-            var objCompra = new Compra();
-            compra = objCompra.SelecionaNumCompra(NumCompra);
-            return View(compra);
+            try
+            {
+                var compra = new Compra();
+                var objCompra = new Compra();
+                compra = objCompra.SelecionaNumCompra(NumCompra);
+                return View(compra);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar a compra');</script>";
+                return View();
+            }
         }
 
         public ActionResult List(Compra compra)
         {
-            var compraList = compra.SelecionaCompra();
-            return View(compraList);
+            try
+            {
+                var compraList = compra.SelecionaCompra();
+                return View(compraList);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar a compra');</script>";
+                return View();
+            }
         }
 
 
@@ -47,6 +63,7 @@ namespace TCC.Controllers
                 objCompra.InsertCompra(CodigoBarras, NomeForn, QtdEntraIngre, DataHoraChegada);
                 return RedirectToAction("List");
             }
+            TempData["msg"] = "<script>alert('Erro ao criar a compra');</script>";
             return View();
         }
 

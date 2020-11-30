@@ -29,29 +29,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumCompra)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodigoBarras)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeForn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QtdEntraIngre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataHoraChegada)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { NumCompra = item.NumCompra }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoBarras)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeForn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdEntraIngre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHoraChegada)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { NumCompra = item.NumCompra }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    @Html.Raw(TempData["msg"])
 </table>

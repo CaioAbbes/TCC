@@ -20,22 +20,38 @@ namespace TCC.Controllers
         // GET: Fornecedor/Details/5
         public ActionResult Details(int IdForn)
         {
-            var fornecedor = new Fornecedor();
-            var objFornecedor = new Fornecedor();
-            fornecedor = objFornecedor.SelecionaComIdForn(IdForn);
-            return View(fornecedor);
+            try
+            {
+                var fornecedor = new Fornecedor();
+                var objFornecedor = new Fornecedor();
+                fornecedor = objFornecedor.SelecionaComIdForn(IdForn);
+                return View(fornecedor);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar o fornecedor');</script>";
+                return View();
+            }
         }
 
 
         [Autenticacao]
         public ActionResult List(Fornecedor fornecedor)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            try
             {
-                return RedirectToAction("ErroAutenticação", "Usuario");
+                if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+                {
+                    return RedirectToAction("ErroAutenticação", "Usuario");
+                }
+                var fornecedorList = fornecedor.SelecionaFornecedor();
+                return View(fornecedorList);
             }
-            var fornecedorList = fornecedor.SelecionaFornecedor();
-            return View(fornecedorList);
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar os fornecedores');</script>";
+                return View();
+            }
         }
 
 
@@ -61,6 +77,7 @@ namespace TCC.Controllers
                 objFornecedor.InsertFornecedor(fornecedor);
                 return RedirectToAction("List");
             }
+            TempData["msg"] = "<script>alert('Erro ao criar o fornecedor');</script>";
             return View();
         }
 
@@ -91,10 +108,10 @@ namespace TCC.Controllers
             }
             catch
             {
-
-                Response.Write("<script>alert('Erro ao atualizar o Fornecedor!!!')</script>");
+                Response.Write("<script>alert('Erro ao editar o fornecedor')</script>");
+                return View();
             }
-            return View();
+
         }
 
         

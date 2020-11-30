@@ -19,17 +19,33 @@ namespace TCC.Controllers
         // GET: Produto/Details/5
         public ActionResult Details(int IdProd)
         {
-            var produto = new Produto();
-            var objProduto = new Produto();
-            produto = objProduto.SelecionaIdProd(IdProd);
-            return View(produto);
+            try
+            {
+                var produto = new Produto();
+                var objProduto = new Produto();
+                produto = objProduto.SelecionaIdProd(IdProd);
+                return View(produto);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar o produto');</script>";
+                return View();
+            }
         }
 
 
         public ActionResult List(Produto produto)
         {
-            var produtoList = produto.SelecionaProduto();
-            return View(produtoList);
+            try
+            {
+                var produtoList = produto.SelecionaProduto();
+                return View(produtoList);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar os produtos');</script>";
+                return View();
+            }
         }
 
         // GET: Produto/Create
@@ -57,7 +73,7 @@ namespace TCC.Controllers
                 objProduto.InsertProduto(produto);
                 return RedirectToAction("List");
             }
-
+            TempData["msg"] = "<script>alert('Erro ao criar o produto');</script>";
             return View();
         }
 
@@ -79,9 +95,17 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Edit(Produto produto)
         {
-            var objProduto = new Produto();
-            objProduto.UpdateProduto(produto);
-            return RedirectToAction("List");
+            try
+            {
+                var objProduto = new Produto();
+                objProduto.UpdateProduto(produto);
+                return RedirectToAction("List");
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao editar o produto');</script>";
+                return View();
+            }
         
         }
     }

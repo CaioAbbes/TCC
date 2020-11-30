@@ -34,20 +34,28 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Login(Usuario usuario)
         {
-            bool logado = usuario.ValidaLogin();
-
-            if (logado)
+            try
             {
-                Session["nomeUsuarioLogado"] = usuario.UsuarioText;
-                Session["NivelAcesso"] = usuario.RetornaTipoAcesso();
-                return RedirectToAction("Index", "Home");
+                bool logado = usuario.ValidaLogin();
+
+                if (logado)
+                {
+                    Session["nomeUsuarioLogado"] = usuario.UsuarioText;
+                    Session["NivelAcesso"] = usuario.RetornaTipoAcesso();
+                    return RedirectToAction("Index", "Home");
+                }
+
+                else
+                {
+                    //TempData["ErroLogin"] = "Senha ou Usuario inválido";
+                    //ModelState.AddModelError(string.Empty, TempData["ErroLogin"].ToString());
+                    TempData["msg"] = "<script>alert('Usuario ou senha inválida');</script>";
+                    return View();
+                }
             }
-
-            else
+            catch
             {
-                //TempData["ErroLogin"] = "Senha ou Usuario inválido";
-                //ModelState.AddModelError(string.Empty, TempData["ErroLogin"].ToString());
-                TempData["msg"] = "<script>alert('Usuario ou senha inválida');</script>";
+                TempData["erro"] = "<script>alert('Erro ao fazer o login');</script>";
                 return View();
             }
         }

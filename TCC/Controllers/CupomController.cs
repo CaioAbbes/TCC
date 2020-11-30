@@ -19,21 +19,37 @@ namespace TCC.Controllers
         // GET: Cupom/Details/5
         public ActionResult Details(string CodCupom)
         {
-            var cupom = new Cupom();
-            var objCupom = new Cupom();
-            cupom = objCupom.SelecionaComIdCupom(CodCupom);
-            return View(cupom);
+            try
+            {
+                var cupom = new Cupom();
+                var objCupom = new Cupom();
+                cupom = objCupom.SelecionaComIdCupom(CodCupom);
+                return View(cupom);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar o cupom');</script>";
+                return View();
+            }
         }
 
         [Autenticacao]
         public ActionResult List(Cupom cupom)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            try
             {
-                return RedirectToAction("ErroAutenticação", "Usuario");
+                if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+                {
+                    return RedirectToAction("ErroAutenticação", "Usuario");
+                }
+                var cupomList = cupom.SelecionaCupom();
+                return View(cupomList);
             }
-            var cupomList = cupom.SelecionaCupom();
-            return View(cupomList);
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar o cupom');</script>";
+                return View();
+            }
         }
 
         [Autenticacao]
@@ -57,6 +73,7 @@ namespace TCC.Controllers
                 objCupom.InsertCupom(cupom);
                 return RedirectToAction("List");
             }
+            TempData["msg"] = "<script>alert('Erro ao criar o cupom');</script>";
             return View();
         }
 
@@ -76,9 +93,17 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Edit(Cupom cupom)
         {
-            var objCupom = new Cupom();
-            objCupom.UpdateCupom(cupom);
-            return RedirectToAction("List");
+            try
+            {
+                var objCupom = new Cupom();
+                objCupom.UpdateCupom(cupom);
+                return RedirectToAction("List");
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao editar o clientes');</script>";
+                return View();
+            }
         }
 
 

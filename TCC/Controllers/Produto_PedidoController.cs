@@ -19,16 +19,32 @@ namespace TCC.Controllers
         // GET: Produto_Pedido/Details/5
         public ActionResult Details(int IdProdPed)
         {
-            var produtoPed = new Produto_pedido ();
-            var objProdutoPed = new Produto_pedido();
-            produtoPed = objProdutoPed.SelecionaComIdProdPed(IdProdPed);
-            return View(produtoPed);
+            try
+            {
+                var produtoPed = new Produto_pedido();
+                var objProdutoPed = new Produto_pedido();
+                produtoPed = objProdutoPed.SelecionaComIdProdPed(IdProdPed);
+                return View(produtoPed);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar o produto pedido');</script>";
+                return View();
+            }
         }
 
         public ActionResult List(Produto_pedido ProdPed)
         {
-            var prodPedList = ProdPed.SelecionaProdPed();
-            return View(prodPedList);
+            try
+            {
+                var prodPedList = ProdPed.SelecionaProdPed();
+                return View(prodPedList);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar os produtos pedidos');</script>";
+                return View();
+            }
         }
 
         // GET: Produto_Pedido/Create
@@ -52,6 +68,7 @@ namespace TCC.Controllers
                 objProdPed.InsertProdPed(produtoPed);
                 return RedirectToAction("List");
             }
+            TempData["msg"] = "<script>alert('Erro ao criar o produto pedido');</script>";
             return View();
         }
 

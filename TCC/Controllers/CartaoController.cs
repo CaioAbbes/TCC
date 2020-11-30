@@ -19,25 +19,41 @@ namespace TCC.Controllers
         // GET: Cartao/Details/5
         public ActionResult Details(decimal Numcartao)
         {
-            var cartao = new Cartao();
-            var objCartao = new Cartao();
-            cartao = objCartao.SelecionaComNumCartao(Numcartao);
-            return View(cartao);
+            try
+            {
+                var cartao = new Cartao();
+                var objCartao = new Cartao();
+                cartao = objCartao.SelecionaComNumCartao(Numcartao);
+                return View(cartao);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar o cartão');</script>";
+                return View();
+            }
         }
 
         [Autenticacao]
         public ActionResult List(Cartao cartao)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) == 1 || int.Parse(Session["NivelAcesso"].ToString()) == 2 || int.Parse(Session["NivelAcesso"].ToString()) == 3 || int.Parse(Session["NivelAcesso"].ToString()) == 4 || int.Parse(Session["NivelAcesso"].ToString()) == 5)
+            try
             {
-                return RedirectToAction("ErroAutenticação", "Usuario");
+                if (int.Parse(Session["NivelAcesso"].ToString()) == 1 || int.Parse(Session["NivelAcesso"].ToString()) == 2 || int.Parse(Session["NivelAcesso"].ToString()) == 3 || int.Parse(Session["NivelAcesso"].ToString()) == 4 || int.Parse(Session["NivelAcesso"].ToString()) == 5)
+                {
+                    return RedirectToAction("ErroAutenticação", "Usuario");
+                }
+                var cartaoList = cartao.SelecionaCartao();
+                return View(cartaoList);
             }
-            var cartaoList = cartao.SelecionaCartao();
-            return View(cartaoList);
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar o cartão');</script>";
+                return View();
+            }
         }
 
         // GET: Cartao/Create
-        public ActionResult Create(int idCli )
+        public ActionResult Create(int idCli)
         {
             var cartao = new Cartao();
             var objCartao = new Cartao();
@@ -55,9 +71,8 @@ namespace TCC.Controllers
                 objCartao.InsertCartao(cartao);
                 return RedirectToAction("List");
             }
-
+            TempData["msg"] = "<script>alert('Erro ao criar o cartão');</script>";
             return View();
-
         }
 
         // GET: Cartao/Edit/5
@@ -95,12 +110,17 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Delete(Cartao cartao)
         {
-            var objCartao = new Cartao();
-            objCartao.DeleteCartao(cartao);
-            return RedirectToAction("List");
+            try
+            {
+                var objCartao = new Cartao();
+                objCartao.DeleteCartao(cartao);
+                return RedirectToAction("List");
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao deletar o cartão');</script>";
+                return View();
+            }
         }
-
-
-
     }
 }

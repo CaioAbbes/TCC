@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Ingrediente</h4>
         <hr />
@@ -86,7 +86,7 @@
         </div>
     </div>
 }
-
+@Html.Raw(TempData["msg"])
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

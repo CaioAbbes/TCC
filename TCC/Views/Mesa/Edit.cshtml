@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Mesa</h4>
         <hr />
@@ -29,7 +29,7 @@
         </div>
     </div>
 }
-
+@Html.Raw(TempData["msg"])
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

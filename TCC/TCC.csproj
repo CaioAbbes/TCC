@@ -541,6 +541,7 @@
     <Content Include="Imagens\logo_writer_bone.png" />
     <Content Include="Imagens\TesteMaycao.png" />
     <Content Include="Imagens\testePizza.png" />
+    <Content Include="Imagens\teste_img.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\Settings.settings">

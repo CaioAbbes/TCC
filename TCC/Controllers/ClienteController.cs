@@ -29,12 +29,20 @@ namespace TCC.Controllers
         [Autenticacao]
         public ActionResult List(Cliente cliente)
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            try
             {
-                return RedirectToAction("ErroAutenticação", "Usuario");
+                if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+                {
+                    return RedirectToAction("ErroAutenticação", "Usuario");
+                }
+                var clienteList = cliente.SelecionaCliente();
+                return View(clienteList);
             }
-            var clienteList = cliente.SelecionaCliente();
-            return View(clienteList);
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao listar os clientes');</script>";
+                return View();
+            }
         }
 
 
@@ -42,17 +50,25 @@ namespace TCC.Controllers
         // GET: Cliente/Details/5
         public ActionResult Details(int IdCli)
         {
-            var cliente = new Cliente();
-            var objCliente = new Cliente();
-            cliente = objCliente.SelecionaComIdCli(IdCli);
-            return View(cliente);
+            try
+            {
+                var cliente = new Cliente();
+                var objCliente = new Cliente();
+                cliente = objCliente.SelecionaComIdCli(IdCli);
+                return View(cliente);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao detalhar o clientes');</script>";
+                return View();
+            }
         }
 
         // GET: Cliente/Create
         [Autenticacao]
         public ActionResult Create()
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 1)
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
             {
                 return RedirectToAction("ErroAutenticação", "Usuario");
             }
@@ -66,21 +82,6 @@ namespace TCC.Controllers
         //[AuthCliente]
         public ActionResult Create(Cliente cliente)
         {
-
-            var imageTypes = new string[]{
-                    "image/gif",
-                    "image/jpeg",
-                    "image/pjpeg",
-                    "image/png"
-                };
-            //if (cliente.ImageUpload == null || cliente.ImageUpload.ContentLength == 0)
-            //{
-            //    ModelState.AddModelError("ImageUpload", "Este campo é obrigatório");
-            //}
-            //else if (!imageTypes.Contains(cliente.ImageUpload.ContentType))
-            //{
-            //    ModelState.AddModelError("ImageUpload", "Escolha uma iamgem GIF, JPG ou PNG.");
-            //}
 
             //if (cliente.Imagecli != null && cliente.Imagecli.ContentLength > 0)
             //{
@@ -100,11 +101,12 @@ namespace TCC.Controllers
 
 
                 var objCli = new Cliente();
-                //using (var binaryReader = new BinaryReader(cliente.ImageUpload.InputStream))
-                //    cliente.Imagem = binaryReader.ReadBytes(cliente.ImageUpload.ContentLength);
+
                 objCli.InsertCliente(cliente);
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
+
             }
+            TempData["msg"] = "<script>alert('Erro ao criar o cliente');</script>";
             return View();
 
         }
@@ -129,9 +131,17 @@ namespace TCC.Controllers
         [HttpPost]
         public ActionResult Edit(Cliente cliente)
         {
-            var objCli = new Cliente();
-            objCli.UpdateCliente(cliente);
-            return RedirectToAction("Details", new {IdCli = cliente.IdCli });
+            try
+            {
+                var objCli = new Cliente();
+                objCli.UpdateCliente(cliente);
+                return RedirectToAction("Details", new { IdCli = cliente.IdCli });
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Erro ao editar o clientes');</script>";
+                return View();
+            }
         }
 
 

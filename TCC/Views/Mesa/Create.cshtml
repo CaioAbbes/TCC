@@ -6,10 +6,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Mesa</h4>
         <hr />
@@ -24,14 +24,14 @@
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.Disponi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Disponi)
-                    @Html.ValidationMessageFor(model => model.Disponi, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Disponi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Disponi)
+                        @Html.ValidationMessageFor(model => model.Disponi, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.TipoLugar, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -48,7 +48,7 @@
         </div>
     </div>
 }
-
+@Html.Raw(TempData["msg"])
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

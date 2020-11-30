@@ -38,38 +38,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.RazaoSocial)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NomeForn)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Cnpj)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Tel)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.EmailForn)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Comp)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NumEdif)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Endereco)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { IdForn = item.IdForn }) |
-        @Html.ActionLink("Details", "Details", new { IdForn = item.IdForn }) |
-        @Html.ActionLink("Delete", "Delete", new { IdForn = item.IdForn })
-    </td>
-</tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RazaoSocial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeForn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cnpj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailForn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumEdif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { IdForn = item.IdForn }) |
+                @Html.ActionLink("Details", "Details", new { IdForn = item.IdForn }) |
+                @Html.ActionLink("Delete", "Delete", new { IdForn = item.IdForn })
+            </td>
+        </tr>
+    }
+    @Html.Raw(TempData["msg"])
 </table>
