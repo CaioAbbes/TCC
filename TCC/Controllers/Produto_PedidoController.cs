@@ -54,5 +54,30 @@ namespace TCC.Controllers
             }
             return View();
         }
+
+
+        public ActionResult AdicionaCarrinho(Produto_pedido ped)
+        {
+            var temprod = ped.SelecionaProdPed();
+            Produto_pedido carrinho = Session["Carrinho"] != null ? (Produto_pedido)Session["Carrinho"] : new Produto_pedido();
+
+            if (temprod.Count > 0)
+            {
+                temprod.FirstOrDefault(x => x.IdProdPed == ped.IdProdPed).QtdProd += 1;
+            }
+            else
+            {
+                temprod.Add(carrinho);
+            }
+            return View();
+        }
+
+        public ActionResult Carrinho()
+        {
+            Produto_pedido carrinho = Session["Carrinho"] != null ? (Produto_pedido)Session["Carrinho"] : new Produto_pedido();
+
+            return View(carrinho);
+        }
+
     }
 }

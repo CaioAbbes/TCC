@@ -1,4 +1,6 @@
-﻿* {
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+* {
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
@@ -12,15 +14,26 @@ body {
     background-color: #f8f8f8;
 }
 
+
+main {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
 .contentLogin {
     background: white;
     padding: 20px;
     border-radius: 10px;
-    width: 30%;
+    /* width: 30%; */
     position: relative;
     margin-top: 10%;
-    margin-left: 35%;
+    /* margin-left: 35%; */
     box-shadow: 1px 1px 6px 1px #343a40;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    animation: fade 500ms;
 }
 
 .titleLogin {
@@ -29,99 +42,108 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/*FORMULARIO*/
-form {
-    position: relative;
-    width: 100%;
-    /*display: grid;*/
-    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+.button {
+    margin-top: 20px;
+    background-color: #ff661a;
+    height: auto;
+    border-radius: 10px;
+    transition: 0.5s;
+    text-align: center;
+    display: flex;
+    justify-content: stretch;
+    flex-flow: column;
 }
 
-    form .itens {
-        position: relative;
-        width: 100%;
-        padding: 0 10px;
-        margin: 30px 0 10px;
+.button input {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+    .button:hover {
+        background-color: #ffa500;
+        border-radius: 90px;
         transition: 0.5s;
     }
 
-        form .itens .inputBox {
-            position: relative;
-            height: 50px;
-            width: 100%;
-            color: black;
-        }
-
-            form .itens .inputBox input {
-                width: 100%;
-                height: 100%;
-                color: black;
-                padding-top: 20px;
-                border: none;
-                outline: none;
-                border-bottom: 1px solid black;
-            }
-
-            form .itens .inputBox .label {
-                position: absolute;
-                bottom: 0px;
-                left: 1px;
-                height: 100%;
-                width: 100%;
-                pointer-events: none;
-                overflow: hidden;
-            }
-
-                form .itens .inputBox .label::before {
-                    content: "";
-                    position: absolute;
-                    bottom: 0px;
-                    left: -1px;
-                    height: 100%;
-                    width: 100%;
-                    border-bottom: 3px solid var(--first-color);
-                    transform: translateX(-100%);
-                    transition: all 0.5s ease;
-                }
-
-        form .itens .label .content-nome {
-            position: absolute;
-            bottom: 3px;
-            left: 0px;
-            transition: all 0.5s ease;
-        }
-
-        form .itens .inputBox input:focus + .label .content-nome, main form .itens .inputBox input:valid + .label .content-nome {
-            transform: translateY(-150%);
-            font-size: 14px;
-            color: var(--first-color);
-        }
-
-        form .itens .inputBox input:focus + .label::before, main form .itens .inputBox input:valid + .label::before {
-            transform: translate(0);
-        }
-
-.button {
-    margin-left: 42%;
-    margin-top: 20px;
-    background-color: #ff661a;
-    width: 80px;
-    height: auto;
-    border-radius: 5px;
-    transition: 0.8s;
+.contentLogin .wrapper .input-Data {
+    animation: move 500ms;
+    animation-delay: 300ms;
+    animation-fill-mode: backwards;
 }
 
-    .button a {
-        font-size: 20px;
-        text-decoration: none;
-        color: black;
-        display: block;
-        padding: 10px;
-        text-align: center;
+.button {
+    animation: move 500ms;
+    animation-delay: 450ms;
+    animation-fill-mode: backwards;
+}
+
+.container-hide {
+    /*cubic bezier*/
+    animation: container-hide-move 700ms forwards;
+    animation-timing-function: ease-in-out; /*entrada da animation ou saida (ease) devagar*/
+}
+
+.contentLogin .validate-error {
+    animation: nono 500ms;
+}
+
+/* Animações CSS saida do ponto A ao ponto B*/
+
+/* form aparição */
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
     }
 
-        .button a:hover {
-            background-color: #ffa500;
-            border-radius: 5px;
-            transition: 0.5s;
-        }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes move {
+    from {
+        opacity: 0;
+        transform: translateX(-30%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes container-hide-move {
+    from { /*0%*/
+        transform: translateY(0);
+    }
+
+    to { /*100%*/
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes nono {
+    0% {
+        transform: translateX(0);
+    }
+
+    35% {
+        transform: translateX(-15%);
+    }
+
+    70% {
+        transform: translateX(15%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
