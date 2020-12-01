@@ -30,10 +30,11 @@
         <div class="settings hide">
             <h3>Configurações</h3>
             <section class="settingsItems">
-                <a href="/Cliente/Edit">
-                    <span class="icon"><i class="fas fa-user-alt"></i></span>
-                    <span class="title">Meus dados</span>
-                </a>
+                <a href="@Url.Action("Edit", "Funcionario", new {IdFunc = Session["IdFunc"].ToString()})">
+                @*@Html.ActionLink("Edit", "Funcionario", new { IdFunc = Session["IdFunc"].ToString() });*@
+                <span class="icon"><i class="fas fa-user-alt"></i></span>
+                <span class="title">Meus dados</span>
+                    </a>
             </section>
             <section class="settingsItems">
                 <a href="#">

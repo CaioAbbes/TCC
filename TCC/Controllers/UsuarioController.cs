@@ -58,6 +58,7 @@ namespace TCC.Controllers
                     }
 
                     return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Edit", "Funcionario", new { IdFunc = Session["IdFunc"].ToString() });
                 }
 
                 else
