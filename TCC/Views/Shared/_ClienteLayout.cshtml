@@ -9,18 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
     <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
-    <link rel="Shortcut Icon" href="~/favicon.ico" type="image / x-icon" />
-    <title>Tacos & Natchos</title>
+    <link rel="Shortcut Icon" href="~/chapeuu.ico" type="image / x-icon" />
+    <title>Tacos & Natchos | Site Oficial</title>
 </head>
 <body>
     <header>
         <div class="menu">
             <section class="logoWriter">
-                <img src="~/Imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer">
+                <a href="Home/Index"> <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer"></a>
             </section>
 
             <nav class="menu-itens">
-                <li><a href="~/Home/About.cshtml">Cardápio</a></li>
+                <li><a href="/Produto/List">Cardápio</a></li>
                 <li><a href="#">Reserva</a></li>
                 <li><a href="login.html">Delivery</a></li>
                 <li><a href="login.html">Login</a></li>
@@ -63,15 +63,16 @@
             @RenderSection("cart", required: false)
         </div>
 
-        <div class="flootSearch">
-
+        <div class="imagenContainer">
+            <section class="titleImg">
+                @*<img src="~/Imagens/cardapio.jpg" alt="Cardapio" />*@
+            </section>
         </div>
 
         <div class="toggle" onclick="toggleMenu()"></div>
 
-        <div class="content">
+        <div class="contentCart">
             @RenderBody()
-
         </div>
 
     </main>

@@ -2,13 +2,8 @@
 
 @{
     ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_ClienteLayout.cshtml";
 }
-
-<h2>List</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
 <link rel="stylesheet" type="text/css" href="~/CSS/card.css">
 <div class="cards">
@@ -19,12 +14,12 @@
                 <img src="https://picsum.photos/536/354" alt="FOTO">
                 <section class="contentCard">
                     <h4 class="cardTitle">@Html.DisplayFor(modelItem => item.NomeProd)</h4>
-                    <p class="nomeProduct"> @Html.DisplayFor(modelItem => item.DescProd)</p>
-                    <p class="valorProduct">  @Html.DisplayFor(modelItem => item.ValorProd)</p>
-                    <button class="searchProduct" onclick="@Url.Action("Details", "Details", new { IdProd = item.IdProd })">Detales</button>
+                    <p class="nomeproduct"> @Html.DisplayFor(modelItem => item.DescProd)</p>
+                    <p class="valorproduct">  @Html.DisplayFor(modelItem => item.ValorProd)</p>
+                    <button class="searchProduct" onclick="@Url.Action("Details", "Produto", new { IdProd = item.IdProd })">Detalhes</button>
                 </section>
             </article>
         }
     </section>
-    @Html.Raw(TempData["msg"])
 </div>
+@Html.Raw(TempData["msg"])

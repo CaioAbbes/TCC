@@ -1,4 +1,95 @@
-﻿:root {
+﻿/*.card {
+    margin: 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+    align-items: center;
+}
+
+    .card article {
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 20px;
+        text-align: center;
+        transition: ease-in-out;
+        max-height: 400px;
+    }*/
+
+/*        .card article:hover {
+            border-radius: 20px;
+            transition: ease-in-out;
+            
+        }*/
+/*.card article:hover {
+            background-color: #ccc;
+            transition: ease-in-out;
+            transition: transform .1s ease-in-out;
+            transform: rotateY(500px);
+        }
+        .card article img {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            width: 100%;
+            transition: ease-in-out;
+        }
+
+.contentCard {
+    padding: 0 20px 20px;
+    max-height: 250px;
+}
+
+    .contentCard .cardTitle {
+        margin-top: 5px;
+        text-transform: uppercase;
+    }
+
+    .contentCard .nomeProduct {
+        margin-top: 5px;
+        text-align: justify;
+        min-height: 10px;
+        max-height: 10px;
+    }
+
+    .contentCard .searchProduct {
+        background: linear-gradient(90deg, rgba(255,66,66,1) 4%, rgba(193,0,0,1) 56%, rgba(145,0,0,1) 98%);
+        border-radius: 3px;
+        border: none;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        font-weight: 600;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        text-transform: uppercase;
+    }
+
+@media (min-width: 700px) {
+    .card {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 900px){
+    .card {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .card {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+        .card article {
+            text-align: justify;
+        }
+
+    .contentCard {
+        padding: 0 20px 20px;
+        max-height: 700px;
+    }
+}*/
+
+:root {
     --lh: 1.4rem;
 }
 
@@ -72,6 +163,14 @@
         text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
         text-transform: uppercase;
     }
+
+@keyframes amplied {
+    from {
+    }
+
+    to {
+    }
+}
 
 @media (max-width: 786px) {
     .card {

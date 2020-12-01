@@ -1,0 +1,175 @@
+﻿ac
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
+    <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
+    <link rel="Shortcut Icon" href="~/favicon.ico" type="image / x-icon" />
+    <title>Tacos & Natchos | Site Oficial</title>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <section class="logoWriter">
+                <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer">
+            </section>
+
+            <nav class="menu-itens">
+                <li><a href="/Produto/List">Cardápio</a></li>
+                <li><a href="#">Reserva</a></li>
+                <li><a href="login.html">Delivery</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li> <input type="search" class="search-text" placeholder="Digite alguma coiosa"></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-search" onclick="showSearch()"></i></a></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-user" onclick="showOnOffSettings()"></i></a></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="slideContainer">
+            <div class="slideItens">
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+
+                <section class="slide frist">
+                    <img src="https://conteudo.imguol.com.br/c/noticias/1c/2016/10/28/comida-mexicana-taco-de-carne-com-legumes-e-cebola-roxa-1477667262572_1920x1275.jpg" alt="img1">
+                </section>
+                <section class="slide second">
+                    <img src="https://sobre.peixeurbano.com.br/wp-content/uploads/2017/08/enchilada.jpg" alt="img2">
+                </section>
+                <section class="slide third">
+                    <img src="https://cdn.cheapism.com/images/Budget_Friendly_Mexican_Dishes.2e16d0ba.fill-1440x605.jpg" alt="img3">
+                </section>
+                <section class="slide fourth">
+                    <img src="https://clube-static.clubegazetadopovo.com.br/portal/wp-content/uploads/2020/04/materiasrepositorio3634-1558959887.jpeg" alt="img4">
+                </section>
+
+                <div class="navigationAuto">
+                    <section class="auto-btn0"></section>
+                    <section class="auto-btn1"></section>
+                    <section class="auto-btn2"></section>
+                    <section class="auto-btn3"></section>
+                </div>
+
+            </div>
+
+            <div class="navigationManual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+        </div>
+    </main>
+
+    <div class="settings hide">
+        <h3>Configurações</h3>
+        <section class="settingsItems">
+            <a href="#">
+                <span class="icon"><i class="fas fa-user-alt"></i></span>
+                <span class="title">Meus dados</span>
+            </a>
+        </section>
+        <section class="settingsItems">
+            <a href="#">
+                <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                <span class="title">Últimos Pedidos</span>
+            </a>
+        </section>
+        <section class="settingsItems">
+            <a href="#">
+                <span class="icon"><i class="fas fa-users"></i></span>
+                <span class="title">Cupons</span>
+            </a>
+        </section>
+        <section class="settingsItems">
+            <a href="#">
+                <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span class="title">Sair</span>
+            </a>
+        </section>
+    </div>
+    <div class="cartBar hide">
+        <section class="cartTitle"><h1>Meus Pedidos</h1></section>
+        @RenderSection("cart", required: false)
+    </div>
+
+    <div class="flootSearch">
+
+    </div>
+
+    <div class="toggle" onclick="toggleMenu()"></div>
+
+    <div class="content">
+        @RenderBody()
+
+    </div>
+
+    <script>
+        function toggleMenu() {
+            let navigation = document.querySelector(".navigation");
+            let toggle = document.querySelector(".toggle");
+            navigation.classList.toggle("active");
+            toggle.classList.toggle("active");
+        }
+
+        function showSearch() {
+            let search = document.getElementById("body");
+            search.classList.add("blur");
+        }
+
+        function showOnOffSettings() {
+            let user = document.querySelector(".fa-user");
+            let settings = document.querySelector(".settings");
+            settings.classList.toggle("hide");
+        }
+
+
+        let subeMenu = document.querySelectorAll(".collapse");
+        subeMenu.forEach(subeMenur => {
+            console.log(subeMenur);
+            let collapse = subeMenur.querySelector(".collapseSubMenu");
+            console.log(collapse);
+            subeMenur.addEventListener("click", () => {
+
+                collapse.classList.toggle("hide");
+
+            });
+        });
+
+        //function toggleSubMenu() {
+        //    let navigation = document.querySelector(".collapseSubeMenu");
+        //    let arrowOpen = document.querySelector(".toggle_SubMenu");
+        //    navigation.classList.toggle("hide");
+        //    arrowOpen.classList.toggle("arrowOpen");
+        //}
+
+        function toggleCart() {
+            let Cart = document.querySelector(".cart");
+            let showCart = document.querySelector(".cartBar");
+            showCart.classList.toggle("hide");
+
+        }
+
+        let couonter = 1;
+        setInterval(() => {
+            document.getElementById("radio" + couonter).checked = true;
+            couonter++;
+            if (couonter > 4) {
+                couonter = 1;
+            }
+        }, 3000);
+    </script>
+        
+</body>
+</html>
