@@ -655,6 +655,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Error404.cshtml" />
     <Content Include="Views\Shared\_ClienteLayout.cshtml" />
+    <Content Include="Views\Produto_Pedido\UltimosPedidosCli.cshtml" />
+    <Content Include="Views\Produto\BuscaProd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

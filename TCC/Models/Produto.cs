@@ -139,6 +139,30 @@ namespace TCC.Models
 
         }
 
+        public List<Produto> BuscaProduto(string busca)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("CALL sp_Like('{0}');",busca);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                var produtoList = new List<Produto>();
+                while (registros.Read())
+                {
+                    var ProdutoTemporaria = new Produto
+                    {
+                        NomeProd = registros["NomeProd"].ToString(),
+                        DescProd = registros["DescProd"].ToString(),
+                        ValorProd = float.Parse(registros["ValorProd"].ToString()),
+                        Observacao = registros["Observacao"].ToString(),
+                        TipoProd = registros["TipoProd"].ToString(),
+                        CategoriaProd = registros["CategoriaProd"].ToString()
+                    };
+                    produtoList.Add(ProdutoTemporaria);
+                }
+                return produtoList;
+            }
+        }
+
 
 
 

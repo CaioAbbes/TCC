@@ -37,7 +37,8 @@
                     </a>
             </section>
             <section class="settingsItems">
-                <a href="#">
+                
+                <a href="@Url.Action("UltimosPedidosCli", "Produto_Pedido", new {IdCli = Session["IdCli"].ToString()})">
                     <span class="icon"><i class="fas fa-ticket-alt"></i></span>
                     <span class="title">Últimos Pedidos</span>
                 </a>

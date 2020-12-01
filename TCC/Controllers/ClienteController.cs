@@ -98,10 +98,7 @@ namespace TCC.Controllers
             //}
             if (ModelState.IsValid)
             {
-
-
                 var objCli = new Cliente();
-
                 objCli.InsertCliente(cliente);
                 return RedirectToAction("Index", "Home");
 
@@ -135,7 +132,8 @@ namespace TCC.Controllers
             {
                 var objCli = new Cliente();
                 objCli.UpdateCliente(cliente);
-                return RedirectToAction("Details", new { IdCli = cliente.IdCli });
+                //return RedirectToAction("Details", new { IdCli = cliente.IdCli });
+                return RedirectToAction("Details");
             }
             catch
             {

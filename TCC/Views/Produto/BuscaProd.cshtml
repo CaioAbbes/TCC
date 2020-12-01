@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TCC.Models.Produto>
+
+@{
+    ViewBag.Title = "BuscaProd";
+}
+
+<h2>BuscaProd</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @using (Html.BeginForm("BuscaProd", "Produto", FormMethod.Get))
+    {
+        @Html.TextBox("busca")<input type="submit" value="Seach" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoriaProd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriaProd)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

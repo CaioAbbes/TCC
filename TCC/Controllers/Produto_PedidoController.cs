@@ -72,6 +72,12 @@ namespace TCC.Controllers
             return View();
         }
 
+        public ActionResult UltimosPedidosCli(Cliente cliente)
+        {
+            var pedCli = cliente.UltimosPedidos(cliente);
+            return View(pedCli);
+        }
+
 
         public ActionResult AdicionaCarrinho(Produto_pedido ped)
         {

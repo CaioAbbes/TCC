@@ -208,6 +208,32 @@ namespace TCC.Models
 
         }
 
+        public List<Produto_pedido> UltimosPedidos(Cliente cliente)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("CALL sp_SelUltPedidos('{0}');", cliente.IdCli);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                var prodPedList = new List<Produto_pedido>();
+                while (registros.Read())
+                {
+                    var prodPedTemp = new Produto_pedido
+                    {
+                        NomeProd = registros["NomeProd"].ToString(),
+                        QtdProd = int.Parse(registros["QtdProd"].ToString()),
+                        ValorUnitProd = float.Parse(registros["ValorUnitProd"].ToString()),
+                        DataHProdPed = DateTime.Parse(registros["DataHProdPed"].ToString()),
+                        DescPedido = registros["DescPedido"].ToString(),
+                        StagioProd = registros["StagioProd"].ToString()
+                    };
+
+                    prodPedList.Add(prodPedTemp);
+                }
+
+                return prodPedList;
+            }
+        }
+
         //public static string UparImagem(HttpPostedFile file)
         //{
         //    string path = string.Empty;

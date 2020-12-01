@@ -39,6 +39,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo Data de nascimento do funcionário é requerido.")]
         [Display(Name = "Data de nascimento do funcionário")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DatNascFunc { get; set; }
 
         [Required(ErrorMessage = "O campo Cargo do funcionário é requerido.")]

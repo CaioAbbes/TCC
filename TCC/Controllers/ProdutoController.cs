@@ -108,5 +108,13 @@ namespace TCC.Controllers
             }
         
         }
+
+
+
+        public ActionResult BuscaProd(Produto produto, string busca)
+        {
+            var prodBusca = produto.BuscaProduto(busca);
+            return View(prodBusca);
+        }
     }
 }
