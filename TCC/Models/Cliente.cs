@@ -71,10 +71,9 @@ namespace TCC.Models
 
         //public byte[] Imagem { get; set; }
 
-        //[Required]
-        //[DataType(DataType.Upload)]
-        //[Display(Name = "Imagem")]
-        //public HttpPostedFileBase ImageUpload { get; set; } //ou string
+       // [Required]
+       // [DataType(DataType.Upload)]
+        public HttpPostedFileBase ImageUpload { get; set; } //ou string
 
 
 

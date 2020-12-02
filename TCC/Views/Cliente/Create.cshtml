@@ -5,162 +5,168 @@
 }
 <link rel="stylesheet" type="text/css" href="~/CSS/form.css">
 <h2>Create</h2>
-@using (Html.BeginForm("Create","Cliente", FormMethod.Post))
+@using (Html.BeginForm("Create","Cliente", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Cliente</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
-            </div>
+<div class="form-horizontal">
+    <h4>Cliente</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
         </div>
+    </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Endereco.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco.CEP, new { htmlAttributes = new { @class = "form-control", id = "Cep", name = "Cep" } })
-                @Html.ValidationMessageFor(model => model.Endereco.CEP, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Endereco.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Endereco.CEP, new { htmlAttributes = new { @class = "form-control", id = "Cep", name = "Cep" } })
+            @Html.ValidationMessageFor(model => model.Endereco.CEP, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Endereco.Logra, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco.Logra, new { htmlAttributes = new { @class = "form-control", id = "Logra", name = "Logra" } })
-                @Html.ValidationMessageFor(model => model.Endereco.Logra, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Endereco.Logra, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Endereco.Logra, new { htmlAttributes = new { @class = "form-control", id = "Logra", name = "Logra" } })
+            @Html.ValidationMessageFor(model => model.Endereco.Logra, "", new { @class = "text-danger" })
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Endereco.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control", id = "Bairro", name = "Bairro" } })
-                @Html.ValidationMessageFor(model => model.Endereco.Bairro, "", new { @class = "text-danger" })
-            </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Endereco.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control", id = "Bairro", name = "Bairro" } })
+            @Html.ValidationMessageFor(model => model.Endereco.Bairro, "", new { @class = "text-danger" })
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Endereco.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control", id = "Cidade", name = "Cidade" } })
-                @Html.ValidationMessageFor(model => model.Endereco.Cidade, "", new { @class = "text-danger" })
-            </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Endereco.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control", id = "Cidade", name = "Cidade" } })
+            @Html.ValidationMessageFor(model => model.Endereco.Cidade, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NomeCli, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NomeCli, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NomeCli, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NomeCli, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NomeCli, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NomeCli, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmailCli, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EmailCli, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmailCli, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmailCli, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmailCli, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EmailCli, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CelCli, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CelCli, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CelCli, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CelCli, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CelCli, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CelCli, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comp, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comp, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Comp, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comp, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Comp, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Comp, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumEdif, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumEdif, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumEdif, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NumEdif, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NumEdif, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NumEdif, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.User.UsuarioText, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.User.UsuarioText, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.User.UsuarioText, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.User.UsuarioText, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.User.UsuarioText, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.User.UsuarioText, "", new { @class = "text-danger" })
         </div>
+    </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.User.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.User.Senha, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.User.Senha, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.User.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.User.Senha, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.User.Senha, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.User.ConfirmaSenha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.User.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.User.ConfirmaSenha, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.User.ConfirmaSenha, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.User.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.User.ConfirmaSenha, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        @*<div class="form-group">
+    @*<div class="form-group">
             @Html.LabelFor(model => model.QtdPontos, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.QtdPontos, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.QtdPontos, "", new { @class = "text-danger" })
             </div>
         </div>*@
-        @*<div class="form-group">
-                <input type="file" title="search image" id="file" name="file" onchange="show(this)" />
-            </div>*@
-        @*<div class="form-group">
-                @Html.LabelFor(m => m.Imagem, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <input type="file" title="search image" id="file" name="file" onchange="show(this)" >
-                </div>
-            </div>*@
-        <div class="form-group">
+    @*<div class="form-group">
+            <input type="file" title="search image" id="file" name="file" onchange="show(this)" />
+        </div>*@
+    @*<div class="form-group">
+            @Html.LabelFor(m => m.Imagem, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" title="search image" id="file" name="file" onchange="show(this)" >
+            </div>
+        </div>*@
+    @*<div class="form-group">
             @Html.LabelFor(m => m.Imagem, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.Imagem, new { type = "file", @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Imagem, "", new { @class = "text-danger" })
             </div>
-        </div>
-
-
-
-        @*<div class="form-group">
-                @Html.LabelFor(m => m.Imagecli, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Imagecli, new { htmlAttributes = new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Imagecli, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-        @*<div class="form-group">
-                <input type="file" name="file" />
-            </div>*@
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+        </div>*@
+    <div class="form-group">
+        @Html.LabelFor(m => m.Imagem, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="ImageUpload" required />
+            @*@Html.ValidationMessageFor(m => m.Imagem, "", new { @class = "text-danger" })*@
         </div>
     </div>
+
+
+    @*<div class="form-group">
+            @Html.LabelFor(m => m.Imagecli, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Imagecli, new { htmlAttributes = new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Imagecli, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    @*<div class="form-group">
+            <input type="file" name="file" />
+        </div>*@
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 @Html.Raw(TempData["msg"])
 <div>
@@ -173,50 +179,50 @@
 
 
     <script>
-        const input = document.getElementById('Imagem')
-        input.addEventListener('change', () => {
-            let binaryData = "";
-            function readBlob() {
-                var files = input.files;
-                if (!files.length) {
-                    alert('Please select a file!');
-                    return;
-                }
-                var file = files[0];
-                var reader = new FileReader();
-                var blob = file.slice(0, file.size);
-                reader.readAsDataURL(blob);
-                reader.onloadend = function (evt) {
-                    if (evt.target.readyState == FileReader.DONE) {
-                        binaryData = evt.target.result;
-                        console.log(binaryData);
-                    }
-                };
-            }
-        });
-        async function requestSender(method, url, data, info) {
-            await activeLoader(info.Loader);
-            const request = await new Promise((resolve, reject) => {
-                const xhr = new XMLHttpRequest();
-                xhr.open(method, url, true);
-                xhr.responseType = "json";
-                if (data) if (info & !info.formRequest) {
-                    if (typeof (data) === "object") data = JSON.stringify(data);
-                    xhr.setRequestHeader("Content-Type", "application/json");
-                }
-                xhr.onload = () => {
-                    if (xhr.status > 400) {
-                        desactiveLoader(info.Loader);
-                        reject({ failure: "Alguma coisa deu errado!" });
-                    }
-                    resolve(xhr.response)
-                };
-                xhr.onerror = () => { desactiveLoader(info.Loader); reject({ failure: "Tente Novamente!" }); };
-                xhr.send(data);
-            });
-            await desactiveLoader(info.Loader);
-            return request;
-        }
+        //const input = document.getElementById('Imagem')
+        //input.addEventListener('change', () => {
+        //    let binaryData = "";
+        //    function readBlob() {
+        //        var files = input.files;
+        //        if (!files.length) {
+        //            alert('Please select a file!');
+        //            return;
+        //        }
+        //        var file = files[0];
+        //        var reader = new FileReader();
+        //        var blob = file.slice(0, file.size);
+        //        reader.readAsDataURL(blob);
+        //        reader.onloadend = function (evt) {
+        //            if (evt.target.readyState == FileReader.DONE) {
+        //                binaryData = evt.target.result;
+        //                console.log(binaryData);
+        //            }
+        //        };
+        //    }
+        //});
+        //async function requestSender(method, url, data, info) {
+        //    await activeLoader(info.Loader);
+        //    const request = await new Promise((resolve, reject) => {
+        //        const xhr = new XMLHttpRequest();
+        //        xhr.open(method, url, true);
+        //        xhr.responseType = "json";
+        //        if (data) if (info & !info.formRequest) {
+        //            if (typeof (data) === "object") data = JSON.stringify(data);
+        //            xhr.setRequestHeader("Content-Type", "application/json");
+        //        }
+        //        xhr.onload = () => {
+        //            if (xhr.status > 400) {
+        //                desactiveLoader(info.Loader);
+        //                reject({ failure: "Alguma coisa deu errado!" });
+        //            }
+        //            resolve(xhr.response)
+        //        };
+        //        xhr.onerror = () => { desactiveLoader(info.Loader); reject({ failure: "Tente Novamente!" }); };
+        //        xhr.send(data);
+        //    });
+        //    await desactiveLoader(info.Loader);
+        //    return request;
+        //}
         $(document).ready(function () {
             function limpa_formulário_cep() {
                 // Limpa valores do formulário de cep.

@@ -99,6 +99,12 @@ namespace TCC.Controllers
             if (ModelState.IsValid)
             {
                 var objCli = new Cliente();
+                string filename = Path.GetFileNameWithoutExtension(cliente.ImageUpload.FileName);
+                string extesion = Path.GetExtension(cliente.ImageUpload.FileName);
+                filename = filename + DateTime.Now.ToString("yymmssfff") + extesion;
+                cliente.Imagem = "~/Imagens/" + filename;
+                filename = Path.Combine(Server.MapPath("~/Imagens/"), filename);
+                cliente.ImageUpload.SaveAs(filename);
                 objCli.InsertCliente(cliente);
                 return RedirectToAction("Index", "Home");
 

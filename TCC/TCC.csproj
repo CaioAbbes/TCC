@@ -661,6 +661,7 @@
     <Content Include="Views\Produto\BuscaProd.cshtml" />
     <Content Include="Views\Shared\_Index.cshtml" />
     <Content Include="Views\Shared\_Cliente.cshtml" />
+    <Content Include="Views\Shared\_AdicionaCarrinho.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
