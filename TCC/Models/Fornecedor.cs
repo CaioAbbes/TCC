@@ -95,17 +95,20 @@ namespace TCC.Models
                 var FornecedorList = new List<Fornecedor>();
                 while (registros.Read())
                 {
+                    string email = registros["EmailForn"].ToString();
+                    string comp = registros["Comp"].ToString();
+                    string numedif = registros["NumEdif"].ToString();
                     var FornecedorTemporario = new Fornecedor
                     {
                         IdForn = int.Parse(registros["IdForn"].ToString()),
                         RazaoSocial = registros["RazaoSocial"].ToString(),
                         NomeForn = registros["NomeForn"].ToString(),
                         Cnpj = registros["Cnpj"].ToString(),
-                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
+                        Endereco = new Endereco().RetornaPorCEP(registros["CEP"].ToString()),
                         Tel = int.Parse(registros["Tel"].ToString()),
-                        EmailForn = registros["EmailForn"].ToString(),
-                        Comp = registros["Comp"].ToString(),
-                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
+                        EmailForn = email.Equals("") ? "Não há E-mail" : registros["EmailForn"].ToString(),
+                        Comp = comp.Equals("") ? "Sem complemento" : registros["Comp"].ToString(),
+                        NumEdif = numedif.Equals("") ? 0 : int.Parse(registros["NumEdif"].ToString()),
                     };
                     FornecedorList.Add(FornecedorTemporario);
                 }
@@ -122,17 +125,20 @@ namespace TCC.Models
                 Fornecedor FornListando = null;
                 while (registros.Read())
                 {
+                    string email = registros["EmailForn"].ToString();
+                    string comp = registros["Comp"].ToString();
+                    string numedif = registros["NumEdif"].ToString();
                     FornListando = new Fornecedor
                     {
                         IdForn = int.Parse(registros["IdForn"].ToString()),
                         RazaoSocial = registros["RazaoSocial"].ToString(),
                         NomeForn = registros["NomeForn"].ToString(),
                         Cnpj = registros["Cnpj"].ToString(),
-                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
+                        Endereco = new Endereco().RetornaPorCEP(registros["CEP"].ToString()),
                         Tel = int.Parse(registros["Tel"].ToString()),
-                        EmailForn = registros["EmailForn"].ToString(),
-                        Comp = registros["Comp"].ToString(),
-                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
+                        EmailForn = email.Equals("") ? "Não há E-mail" : registros["EmailForn"].ToString(),
+                        Comp = comp.Equals("") ? "Sem complemento" : registros["Comp"].ToString(),
+                        NumEdif = numedif.Equals("") ? 0 : int.Parse(registros["NumEdif"].ToString()),
                     };
                 }
 

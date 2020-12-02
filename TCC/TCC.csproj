@@ -655,10 +655,11 @@
     <Content Include="Views\Shared\_Error401.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Error404.cshtml" />
-    <Content Include="Views\Shared\_ClienteLayout.cshtml" />
+    <Content Include="Views\Shared\_Cardapio.cshtml" />
     <Content Include="Views\Produto_Pedido\UltimosPedidosCli.cshtml" />
     <Content Include="Views\Produto\BuscaProd.cshtml" />
     <Content Include="Views\Shared\_Index.cshtml" />
+    <Content Include="Views\Shared\_Cliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

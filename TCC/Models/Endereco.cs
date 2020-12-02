@@ -90,7 +90,7 @@ namespace TCC.Models
         //}
 
 
-        public Endereco RetornaPorCEP(decimal CEP)
+        public Endereco RetornaPorCEP(string CEP)
         {
             using (db = new ConexaoDB())
             {

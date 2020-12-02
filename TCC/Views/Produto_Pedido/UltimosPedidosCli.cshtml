@@ -1,63 +1,37 @@
 ﻿@model IEnumerable<TCC.Models.Produto_pedido>
 
 @{
-    ViewBag.Title = "UltimosPedidosCli";
+    Layout = "/Views/Shared/_Cliente.cshtml";
 }
 
-<h2>UltimosPedidosCli</h2>
+<div class="lastOrders">
+    <h1>ULTIMOS PEDIDOS</h1>
+    @foreach (var item in Model)
+    {
+        <section class="lastOrderItensRow">
+            <section class="lastOrderItensColun name">
+                <p> @Html.DisplayFor(modelItem => item.NomeProd) </p>
+                <p> Quantidade: @Html.DisplayFor(modelItem => item.QtdProd)  </p>
+            </section>
+            <section class="lastOrderItensColun datahora">
+                <p>  @Html.DisplayFor(modelItem => item.DataHProdPed) </p>
+                <p> @Html.DisplayFor(modelItem => item.DescPedido) </p>
+                <p> @Html.DisplayFor(modelItem => item.StagioProd)</p>
+            </section>
+            <section class="lastOrderItensColun preco">
+                <p> @Html.DisplayFor(modelItem => item.ValorUnitProd) </p>
+            </section>
+        </section>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QtdProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorUnitProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StagioProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataHProdPed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescPedido)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QtdProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorUnitProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StagioProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataHProdPed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescPedido)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+
+    }
+</div>
+@section scripts{
+    <script>
+                                            //window.onload = initPage;
+                                            //function initPage() {
+                                            //    let
+                                            //}
+    </script>
 }
-
-</table>

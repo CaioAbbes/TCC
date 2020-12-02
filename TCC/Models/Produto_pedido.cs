@@ -98,6 +98,7 @@ namespace TCC.Models
                 var prodPedList = new List<Produto_pedido>();
                 while (registros.Read())
                 {
+                    string desc = registros["DescPedido"].ToString();
                     var ProdPedTemporario = new Produto_pedido
                     {
                         IdProdPed = int.Parse(registros["IdProdPed"].ToString()),
@@ -108,7 +109,7 @@ namespace TCC.Models
                         ValorUnitProd = float.Parse(registros["ValorUnitProd"].ToString()),
                         StagioProd = registros["StagioProd"].ToString(),
                         DataHProdPed = DateTime.Parse(registros["DataHProdPed"].ToString()),
-                        DescPedido = registros["DescPedido"].ToString()
+                        DescPedido = desc.Equals("") ? "Sem descrição" : registros["DescPedido"].ToString()
                     };
 
 
@@ -128,6 +129,7 @@ namespace TCC.Models
                 Produto_pedido prodPedListando = null;
                 while (registros.Read())
                 {
+                    string desc = registros["DescPedido"].ToString();
                     prodPedListando = new Produto_pedido
                     {
                         IdProdPed = int.Parse(registros["IdProdPed"].ToString()),
@@ -138,7 +140,7 @@ namespace TCC.Models
                         ValorUnitProd = float.Parse(registros["ValorUnitProd"].ToString()),
                         StagioProd = registros["StagioProd"].ToString(),
                         DataHProdPed = DateTime.Parse(registros["DataHProdPed"].ToString()),
-                        DescPedido = registros["DescPedido"].ToString()
+                        DescPedido = desc.Equals("") ? "Sem descrição" : registros["DescPedido"].ToString()
                     };
                 }
 

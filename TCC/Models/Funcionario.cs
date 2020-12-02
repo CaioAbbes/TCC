@@ -124,20 +124,24 @@ namespace TCC.Models
                 while (registros.Read())
                 {
                     string idUser = registros["IdUsuario"].ToString();
+                    string cpf = registros["CPFfunc"].ToString();
+                    string comp = registros["Comp"].ToString();
+                    string numedif = registros["NumEdif"].ToString();
+
                     var FuncionarioTemporario = new Funcionario
                     {
                         IdFunc = int.Parse(registros["IdFunc"].ToString()),
-                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
+                        Endereco = new Endereco().RetornaPorCEP(registros["CEP"].ToString()),
                         NomeFunc = registros["NomeFunc"].ToString(),
-                        CPFfunc = registros["CPFfunc"].ToString(),
+                        CPFfunc = cpf.Equals("") ? "Não há CPF" : registros["CPFfunc"].ToString(),
                         DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
                         CargoFunc = registros["CargoFunc"].ToString(),
                         SexoFunc = registros["SexoFunc"].ToString(),
                         CelFunc = Convert.ToInt64(registros["CelFunc"].ToString()),
                         EmailFunc = registros["EmailFunc"].ToString(),
                         RgFunc = registros["RgFunc"].ToString(),
-                        Comp = registros["Comp"].ToString(),
-                        NumEdif = int.Parse(registros["NumEdif"].ToString()),
+                        Comp = comp.Equals("") ? "Sem complemento" : registros["Comp"].ToString(),
+                        NumEdif = numedif.Equals("") ? 0 : int.Parse(registros["NumEdif"].ToString()),
                         User = idUser != "" ? new Usuario().RetornaPorIdUsuario(int.Parse(idUser)) : usuTemp
                     };
 
@@ -160,21 +164,24 @@ namespace TCC.Models
                 while (registros.Read())
                 {
                     string user = registros["IdUsuario"].ToString();
+                    string cpf = registros["CPFfunc"].ToString();
+                    string comp = registros["Comp"].ToString();
+                    string numedif = registros["NumEdif"].ToString();
                     FuncListando = new Funcionario
                     {
                         IdFunc = int.Parse(registros["IdFunc"].ToString()),
-                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
+                        Endereco = new Endereco().RetornaPorCEP(registros["CEP"].ToString()),
                         User = user.Equals("") ? new Usuario() : new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),
                         NomeFunc = registros["NomeFunc"].ToString(),
-                        CPFfunc = registros["CPFfunc"].ToString(),
+                        CPFfunc = cpf.Equals("") ? "Não há CPF" : registros["CPFfunc"].ToString(),
                         DatNascFunc = DateTime.Parse(registros["DatNascFunc"].ToString()),
                         CargoFunc = registros["CargoFunc"].ToString(),
                         SexoFunc = registros["SexoFunc"].ToString(),
                         CelFunc = Convert.ToInt64(registros["CelFunc"].ToString()),
                         EmailFunc = registros["EmailFunc"].ToString(),
                         RgFunc = registros["RgFunc"].ToString(),
-                        Comp = registros["Comp"].ToString(),
-                        NumEdif = int.Parse(registros["NumEdif"].ToString())
+                        Comp = comp.Equals("") ? "Sem complemento" : registros["Comp"].ToString(),
+                        NumEdif = numedif.Equals("") ? 0 : int.Parse(registros["NumEdif"].ToString()),
                     };
                 }
 

@@ -576,6 +576,41 @@ a {
         margin-top: 20px;
     }
 
+/*lastOrders*/
+.lastOrders {
+    margin-top: 10%;
+}
+
+    .lastOrders h1 {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        padding-top: 20px;
+    }
+
+    .lastOrders .lastOrderItensRow {
+        background: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 30px;
+    }
+
+        .lastOrders .lastOrderItensRow .lastOrderItensColun {
+            margin: 0 10px;
+        }
+
+            .lastOrders .lastOrderItensRow .lastOrderItensColun p {
+                align-items: center;
+                margin: 0 10px;
+                font-family: 'Work Sans', sans-serif;
+                font-size: 20px;
+            }
+
+
 @media (max-width: 760px) {
     .navigation {
         left: -60px;

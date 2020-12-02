@@ -76,7 +76,8 @@ namespace TCC.Models
                 while (registros.Read())
                 {
                     string date = registros["DataValidade"].ToString();
-
+                    string tempdura = registros["TempDura"].ToString();
+                    string marca = registros["Marca"].ToString();
                     var IngredienteTemporario = new Ingrediente
                     {
                         CodigoBarras = registros["CodigoBarras"].ToString(),
@@ -84,9 +85,9 @@ namespace TCC.Models
                         UniMedi = registros["UniMedi"].ToString(),
                         PrecoUnit = float.Parse(registros["PrecoUnit"].ToString()),
                         QtdAtual = int.Parse(registros["QtdAtual"].ToString()),
-                        TempDura = registros["TempDura"].ToString(),
+                        TempDura =  tempdura.Equals("") ? "Não há tempo de duração" : registros["TempDura"].ToString(),
                         DataValidade = date.Equals("") ? (DateTime?) null : DateTime.Parse(registros["DataValidade"].ToString()),
-                        Marca = registros["Marca"].ToString()
+                        Marca = marca.Equals("") ? "Não há marca" : registros["Marca"].ToString()
                     };
                     ingredienteList.Add(IngredienteTemporario);
                 }

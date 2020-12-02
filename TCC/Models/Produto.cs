@@ -77,13 +77,14 @@ namespace TCC.Models
                 var produtoList = new List<Produto>();
                 while (registros.Read())
                 {
+                    string obs = registros["Observacao"].ToString();
                     var ProdutoTemporaria = new Produto
                     {
                         IdProd = int.Parse(registros["IdProd"].ToString()),
                         NomeProd = registros["NomeProd"].ToString(),
                         DescProd = registros["DescProd"].ToString(),
                         ValorProd = float.Parse(registros["ValorProd"].ToString()),
-                        Observacao = registros["Observacao"].ToString(),
+                        Observacao = obs.Equals("") ? "Sem observação" : registros["Observacao"].ToString(),
                         TipoProd = registros["TipoProd"].ToString(),
                         CategoriaProd = registros["CategoriaProd"].ToString()
                     };
@@ -102,13 +103,14 @@ namespace TCC.Models
                 Produto ProdutoListando = null;
                 while (registros.Read())
                 {
+                    string obs = registros["Observacao"].ToString();
                     ProdutoListando = new Produto
                     {
                         IdProd = int.Parse(registros["IdProd"].ToString()),
                         NomeProd = registros["NomeProd"].ToString(),
                         DescProd = registros["DescProd"].ToString(),
                         ValorProd = float.Parse(registros["ValorProd"].ToString()),
-                        Observacao = registros["Observacao"].ToString(),
+                        Observacao = obs.Equals("") ? "Sem observação" : registros["Observacao"].ToString(),
                         TipoProd = registros["TipoProd"].ToString(),
                         CategoriaProd = registros["CategoriaProd"].ToString()
                     };

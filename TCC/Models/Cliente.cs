@@ -113,14 +113,15 @@ namespace TCC.Models
                     string numedif = registros["NumEdif"].ToString();
                     string qtdpontos = registros["QtdPontos"].ToString();
                     string cepString = registros["CEP"].ToString();
-                    decimal cep = cepString.Equals("") ? 0m : decimal.Parse(cepString);
+                    //decimal cep = cepString.Equals("") ? 0m : decimal.Parse(cepString);
+                    string cpf = registros["CPF"].ToString();
                     var ClienteTemporario = new Cliente
                     {
                         IdCli = idcli.Equals("") ? 0 : int.Parse(idcli),
                         NomeCli = registros["NomeCli"].ToString(),
-                        CPF = registros["CPF"].ToString(),
+                        CPF = cpf.Equals("") ? "Não há CPF" : registros["CPF"].ToString(),
                         EmailCli = registros["EmailCli"].ToString(),
-                        Endereco = new Endereco().RetornaPorCEP(cep),
+                        Endereco = new Endereco().RetornaPorCEP(cepString),
                         CelCli = celcli.Equals("") ? 0 : Convert.ToInt64(celcli),
                         Comp = registros["Comp"].ToString(),
                         NumEdif = numedif.Equals("") ? 0 : int.Parse(numedif),
@@ -151,7 +152,7 @@ namespace TCC.Models
                         NomeCli = registros["NomeCli"].ToString(),
                         CPF = registros["CPF"].ToString(),
                         EmailCli = registros["EmailCli"].ToString(),
-                        Endereco = new Endereco().RetornaPorCEP(decimal.Parse(registros["CEP"].ToString())),
+                        Endereco = new Endereco().RetornaPorCEP(registros["CEP"].ToString()),
                         CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
                         Comp = registros["Comp"].ToString(),
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
