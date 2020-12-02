@@ -47,54 +47,67 @@
         <th>
             @Html.DisplayNameFor(model => model.User.TipoAcesso)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagem)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CPFfunc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeFunc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatNascFunc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CargoFunc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SexoFunc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CelFunc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailFunc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RgFunc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumEdif)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.TipoAcesso)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { IdFunc = item.IdFunc }) |
-                @Html.ActionLink("Details", "Details", new { IdFunc = item.IdFunc }) |
-                @Html.ActionLink("Delete", "Delete", new { IdFunc = item.IdFunc })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CPFfunc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Endereco)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NomeFunc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DatNascFunc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CargoFunc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SexoFunc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CelFunc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmailFunc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RgFunc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Comp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NumEdif)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.User.TipoAcesso)
+    </td>
+    <td>
+        @if (!string.IsNullOrEmpty(item.Imagem))
+        {
+            @*<img src="~/Imagens/logo.jpeg"   alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+            <img src=@string.Format($"/Imagens/{item.Imagem}") alt="Sem imagem" style="width:200px;height:200px;max-width:100%;height:auto" />
+            @*<img src="@Url.Action(item.Imagem,"Imagens")" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+            @*<img src="@Url.Content(item.Imagem)" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+
+        }
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { IdFunc = item.IdFunc }) |
+        @Html.ActionLink("Details", "Details", new { IdFunc = item.IdFunc }) |
+        @Html.ActionLink("Delete", "Delete", new { IdFunc = item.IdFunc })
+    </td>
+</tr>
     }
     @Html.Raw(TempData["msg"])
 </table>

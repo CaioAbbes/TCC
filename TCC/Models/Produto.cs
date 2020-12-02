@@ -48,9 +48,11 @@ namespace TCC.Models
         [StringLength(50, ErrorMessage = "A quantidade de caracteres da Categoria do produto é invalido.")]
         public string CategoriaProd { get; set; }
 
+        public string Imagem { get; set; }
+
         public void InsertProduto(Produto produto)
         {
-            string strQuery = string.Format("CALL sp_InsProd('{0}','{1}','{2}','{3}','{4}','{5}');", produto.NomeProd, produto.DescProd, produto.Observacao, produto.ValorProd.ToString().Replace(",", "."), produto.TipoProd, produto.CategoriaProd);
+            string strQuery = string.Format("CALL sp_InsProd('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", produto.Imagem,produto.NomeProd, produto.DescProd, produto.Observacao, produto.ValorProd.ToString().Replace(",", "."), produto.TipoProd, produto.CategoriaProd);
 
             using (db = new ConexaoDB())
             {
@@ -86,7 +88,8 @@ namespace TCC.Models
                         ValorProd = float.Parse(registros["ValorProd"].ToString()),
                         Observacao = obs.Equals("") ? "Sem observação" : registros["Observacao"].ToString(),
                         TipoProd = registros["TipoProd"].ToString(),
-                        CategoriaProd = registros["CategoriaProd"].ToString()
+                        CategoriaProd = registros["CategoriaProd"].ToString(),
+                        Imagem = registros["imageprod"].ToString()
                     };
                     produtoList.Add(ProdutoTemporaria);
                 }
@@ -112,7 +115,8 @@ namespace TCC.Models
                         ValorProd = float.Parse(registros["ValorProd"].ToString()),
                         Observacao = obs.Equals("") ? "Sem observação" : registros["Observacao"].ToString(),
                         TipoProd = registros["TipoProd"].ToString(),
-                        CategoriaProd = registros["CategoriaProd"].ToString()
+                        CategoriaProd = registros["CategoriaProd"].ToString(),
+                        Imagem = registros["imageprod"].ToString()
                     };
                 }
 
@@ -157,7 +161,8 @@ namespace TCC.Models
                         ValorProd = float.Parse(registros["ValorProd"].ToString()),
                         Observacao = registros["Observacao"].ToString(),
                         TipoProd = registros["TipoProd"].ToString(),
-                        CategoriaProd = registros["CategoriaProd"].ToString()
+                        CategoriaProd = registros["CategoriaProd"].ToString(),
+                        Imagem = registros["imageprod"].ToString()
                     };
                     produtoList.Add(ProdutoTemporaria);
                 }

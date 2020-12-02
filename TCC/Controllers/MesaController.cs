@@ -78,35 +78,35 @@ namespace TCC.Controllers
         }
 
         // GET: Mesa/Edit/5
-        [Autenticacao]
-        public ActionResult Edit(int IdMesa)
-        {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 2)
-            {
-                return RedirectToAction("ErroAutenticação", "Usuario");
-            }
-            var mesa = new Mesa();
-            var objMesa = new Mesa();
-            mesa = objMesa.SelecionaIdMesa(IdMesa);
-            return View(mesa);
-        }
+        //[Autenticacao]
+        //public ActionResult Edit(int IdMesa)
+        //{
+        //    if (int.Parse(Session["NivelAcesso"].ToString()) != 2)
+        //    {
+        //        return RedirectToAction("ErroAutenticação", "Usuario");
+        //    }
+        //    var mesa = new Mesa();
+        //    var objMesa = new Mesa();
+        //    mesa = objMesa.SelecionaIdMesa(IdMesa);
+        //    return View(mesa);
+        //}
 
-        // POST: Mesa/Edit/5
-        [HttpPost]
-        public ActionResult Edit(Mesa mesa)
-        {
-            try
-            {
-                var objMesa = new Mesa();
-                objMesa.UpdateMesa(mesa);
-                return RedirectToAction("List");
-            }
-            catch
-            {
-                TempData["msg"] = "<script>alert('Erro ao editar a mesa');</script>";
-                return View();
-            }
-        }
+        //// POST: Mesa/Edit/5
+        //[HttpPost]
+        //public ActionResult Edit(Mesa mesa)
+        //{
+        //    try
+        //    {
+        //        var objMesa = new Mesa();
+        //        objMesa.UpdateMesa(mesa);
+        //        return RedirectToAction("List");
+        //    }
+        //    catch
+        //    {
+        //        TempData["msg"] = "<script>alert('Erro ao editar a mesa');</script>";
+        //        return View();
+        //    }
+        //}
 
        
     }

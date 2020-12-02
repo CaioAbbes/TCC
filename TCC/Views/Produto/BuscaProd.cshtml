@@ -35,6 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.CategoriaProd)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagem)
+        </th>
         <th></th>
     </tr>
 
@@ -57,6 +60,16 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CategoriaProd)
+        </td>
+        <td>
+            @if (!string.IsNullOrEmpty(item.Imagem))
+            {
+                @*<img src="~/Imagens/logo.jpeg"   alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+                <img src=@string.Format($"/Imagens/{item.Imagem}") alt="Sem imagem" style="width:200px;height:200px;max-width:100%;height:auto" />
+                @*<img src="@Url.Action(item.Imagem,"Imagens")" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+                @*<img src="@Url.Content(item.Imagem)" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

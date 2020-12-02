@@ -28,6 +28,11 @@ namespace TCC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(
+               new ScriptBundle("~/bundles/validations_pt-br")
+                   .Include(
+                       "~/Scripts/jquery.validate.custom.pt-br*"));
         }
     }
 }

@@ -60,9 +60,9 @@ namespace TCC.Models
         public long CelFunc { get; set; }
 
         [Required(ErrorMessage = "O campo Email do funcionário é requerido.")]
-        [RegularExpression(@"^[-a-zA-Z0-9][-.a-zA-Z0-9]@[-.a-zA-Z0-9]+(\.[-.a-zA-Z0-9]+)\.(com|edu|info|gov|int|mil|net|org|biz|name|museum|coop|aero|pro|tv|[a-zA-Z]{2})$", ErrorMessage = "O Email do funcionário está incorreto.")]
+        [RegularExpression(@"^[-a-zA-Z0-9][-.a-zA-Z0-9]*@[-.a-zA-Z0-9]+(\.[-.a-zA-Z0-9]+)*\.(com|edu|info|gov|int|mil|net|org|biz|name|museum|coop|aero|pro|tv|[a-zA-Z]{2})$", ErrorMessage = "O Email do funcionario está incorreto.")]
         [Display(Name = "Email do funcionário")]
-        [StringLength(60, ErrorMessage = "A quantidade de caracteres do Email do funcionário é invalido.")]
+        [StringLength(100, ErrorMessage = "A quantidade de caracteres do Email do funcionário é invalido.")]
         public string EmailFunc { get; set; }
 
         [Required(ErrorMessage = "O campo RG do funcionário é requerido.")]
@@ -77,16 +77,18 @@ namespace TCC.Models
         public string Comp { get; set; }
 
         [Required(ErrorMessage = "O campo Número do edifício é requerido.")]
-        [Display(Name = "Nuúmero do edifício")]
+        [Display(Name = "Número do edifício")]
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         public int NumEdif { get; set; }
 
         public Usuario User { get; set; }
+        
+        public string Imagem { get; set; }
 
 
         public void InsertFuncionario(Funcionario funcionario)
         {
-            string strQuery = string.Format("CALL sp_InsFuncEndUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}');", funcionario.User.UsuarioText, funcionario.User.Senha, funcionario.Endereco.Cidade, funcionario.Endereco.CEP, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Comp, funcionario.NumEdif, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty), funcionario.EmailFunc, funcionario.RgFunc, funcionario.CPFfunc, funcionario.User.TipoAcesso);
+            string strQuery = string.Format("CALL sp_InsFuncEndUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}');", funcionario.Imagem,funcionario.User.UsuarioText, funcionario.User.Senha, funcionario.Endereco.Cidade, funcionario.Endereco.CEP, funcionario.Endereco.Logra, funcionario.Endereco.Bairro, funcionario.Comp, funcionario.NumEdif, funcionario.NomeFunc, funcionario.DatNascFunc.ToString("yyyy-MM-dd"), funcionario.CargoFunc, funcionario.SexoFunc, funcionario.CelFunc.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty), funcionario.EmailFunc, funcionario.RgFunc, funcionario.CPFfunc, funcionario.User.TipoAcesso);
 
             using (db = new ConexaoDB())
             {
@@ -142,6 +144,7 @@ namespace TCC.Models
                         RgFunc = registros["RgFunc"].ToString(),
                         Comp = comp.Equals("") ? "Sem complemento" : registros["Comp"].ToString(),
                         NumEdif = numedif.Equals("") ? 0 : int.Parse(registros["NumEdif"].ToString()),
+                        Imagem = registros["imagefunc"].ToString(),
                         User = idUser != "" ? new Usuario().RetornaPorIdUsuario(int.Parse(idUser)) : usuTemp
                     };
 
@@ -181,6 +184,7 @@ namespace TCC.Models
                         EmailFunc = registros["EmailFunc"].ToString(),
                         RgFunc = registros["RgFunc"].ToString(),
                         Comp = comp.Equals("") ? "Sem complemento" : registros["Comp"].ToString(),
+                        Imagem = registros["imagefunc"].ToString(),
                         NumEdif = numedif.Equals("") ? 0 : int.Parse(registros["NumEdif"].ToString()),
                     };
                 }

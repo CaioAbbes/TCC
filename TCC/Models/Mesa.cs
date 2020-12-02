@@ -34,19 +34,11 @@ namespace TCC.Models
         [StringLength(50, ErrorMessage = "A quantidade de caracteres do Tipo de lugar é invalido.")]
         public string TipoLugar { get; set; }
 
+        public string Imagem { get; set; }
+
         public void InsertMesa(Mesa mesa)
         {
-            string strQuery = string.Format("call sp_InsMesa('{0}','{1}');",mesa.Numlugares,mesa.TipoLugar);
-
-            using (db = new ConexaoDB())
-            {
-                db.ExecutaComando(strQuery);
-            }
-        }
-
-        public void UpdateMesa(Mesa mesa)
-        {
-            string strQuery = string.Format("call sp_AtuaaMesa('{0}');", mesa.IdMesa);
+            string strQuery = string.Format("call sp_InsMesa('{0}','{1}','{2}');",mesa.Imagem,mesa.Numlugares,mesa.TipoLugar);
 
             using (db = new ConexaoDB())
             {
@@ -68,7 +60,8 @@ namespace TCC.Models
                         IdMesa = int.Parse(registros["IdMesa"].ToString()),
                         Numlugares = int.Parse(registros["Numlugares"].ToString()),
                         Disponi = bool.Parse(registros["Disponi"].ToString()),
-                        TipoLugar = registros["TipoLugar"].ToString()
+                        TipoLugar = registros["TipoLugar"].ToString(),
+                        Imagem =  registros["imagemesa"].ToString()
                     };
                     mesaList.Add(MesaTemporaria);
                 }
@@ -90,7 +83,8 @@ namespace TCC.Models
                         IdMesa = int.Parse(registros["IdMesa"].ToString()),
                         Numlugares = int.Parse(registros["Numlugares"].ToString()),
                         Disponi = bool.Parse(registros["Disponi"].ToString()),
-                        TipoLugar = registros["TipoLugar"].ToString()
+                        TipoLugar = registros["TipoLugar"].ToString(),
+                        Imagem = registros["imagemesa"].ToString()
                     };
                 }
 
