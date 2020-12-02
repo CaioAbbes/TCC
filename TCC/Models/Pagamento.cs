@@ -40,7 +40,7 @@ namespace TCC.Models
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         public float Total { get; set; }
 
-        [Display(Name = "Id da Mesa")]
+        [Display(Name = "Número da Mesa")]
         public int IdMesa { get; set; }
 
 
@@ -61,7 +61,7 @@ namespace TCC.Models
         [Display(Name = "Quantidade de pontos")]
         public float QtdPontos { get; set; }
 
-        [Display(Name = "CPF do cliente.")]
+        [Display(Name = "CPF do cliente")]
         [StringLength(11, ErrorMessage = "A quantidade de caracteres CPF é invalido.", MinimumLength = 11)]
         public string CPF { get; set; }
 
@@ -81,9 +81,9 @@ namespace TCC.Models
 
         public Pagamento() { }
 
-        public void InsertPagamento(int IdMesa, int IdCli, string CPFfunc, string FormPag, string CodCupom, float QtdPontos, string CPF)
+        public void InsertPagamento(int IdCli,string FormPag, string CodCupom, float QtdPontos, string CPF)
         {
-            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", IdMesa, 0, CPFfunc, FormPag, null, 0, CPF);
+            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}');", IdCli, FormPag, CodCupom, QtdPontos, CPF); //a qtdPontos é 0 pois tem uma trigger que atua nela
 
             using (db = new ConexaoDB())
             {

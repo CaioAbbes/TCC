@@ -64,8 +64,10 @@ namespace TCC.Controllers
         {
             if (ModelState.IsValid)
             {
+                Cliente cliente = new Cliente();
                 var objProdPed = new Produto_pedido();
-                objProdPed.InsertProdPed(produtoPed);
+                 int IdCli = int.Parse(Session["IdCli"].ToString());
+                objProdPed.InsertProdPed(produtoPed, IdCli);
                 return RedirectToAction("List");
             }
             TempData["msg"] = "<script>alert('Erro ao criar o produto pedido');</script>";

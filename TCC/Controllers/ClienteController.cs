@@ -133,7 +133,7 @@ namespace TCC.Controllers
                 var objCli = new Cliente();
                 objCli.UpdateCliente(cliente);
                 //return RedirectToAction("Details", new { IdCli = cliente.IdCli });
-                return RedirectToAction("Details");
+                return RedirectToAction("Index","Home");
             }
             catch
             {

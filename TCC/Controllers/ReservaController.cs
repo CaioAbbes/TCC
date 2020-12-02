@@ -66,7 +66,8 @@ namespace TCC.Controllers
             if (ModelState.IsValid)
             {
                 var objReserva = new Reserva();
-                objReserva.InsertReserva(reserva);
+                int IdCli = int.Parse(Session["IdCli"].ToString());
+                objReserva.InsertReserva(reserva, IdCli);
                 return RedirectToAction("List");
             }
             TempData["msg"] = "<script>alert('Erro ao criar uma reservas');</script>";

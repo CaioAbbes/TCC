@@ -68,9 +68,9 @@ namespace TCC.Models
         public string DescPedido { get; set; }
 
 
-        public void InsertProdPed(Produto_pedido produtoPed)
+        public void InsertProdPed(Produto_pedido produtoPed,int IdCli)
         {
-            string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", produtoPed.Mesa.IdMesa,0,produtoPed.NomeProd,produtoPed.QtdProd, produtoPed.DescPedido);
+           string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", produtoPed.Mesa.IdMesa,IdCli, produtoPed.NomeProd, produtoPed.QtdProd, produtoPed.DescPedido);
 
             using (db = new ConexaoDB())
             {

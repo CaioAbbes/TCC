@@ -51,7 +51,7 @@ namespace TCC.Controllers
         [Autenticacao]
         public ActionResult Create()
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 3 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
             {
                 return RedirectToAction("ErroAutenticação", "Usuario");
             }
@@ -60,13 +60,14 @@ namespace TCC.Controllers
 
         // POST: Pagamento/Create
         [HttpPost]
-        public ActionResult Create(int IdMesa, string CPFfunc, string FormPag, string CodCupom, float QtdPontos, string CPF)
+        public ActionResult Create(string FormPag, string CodCupom, float QtdPontos, string CPF)
         {
 
             if (ModelState.IsValid)
             {
                 var objPagamento = new Pagamento();
-                objPagamento.InsertPagamento(IdMesa, 0, CPFfunc, FormPag, null, 0, CPF);
+                int IdCli = int.Parse(Session["IdCli"].ToString());
+                objPagamento.InsertPagamento( IdCli, FormPag, CodCupom, QtdPontos, CPF); //a qtdPontos é 0 pois tem uma trigger que atua nela
                 return RedirectToAction("List");
             }
             TempData["msg"] = "<script>alert('Erro ao criar o pagamento');</script>";

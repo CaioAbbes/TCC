@@ -43,6 +43,8 @@
                 <th scope="col">Cartão</th>
             </tr>
 
+            @Html.Raw(TempData["msg"])
+
             @foreach (var item in Model)
             {
                 <tr>
@@ -71,43 +73,43 @@
                         @Html.DisplayFor(modelItem => item.QtdPontos)
                     </td>
                     @*<td>
-                            @Html.DisplayFor(modelItem => item.Imagem)
-                        </td>*@
+                    @Html.DisplayFor(modelItem => item.Imagem)
+                </td>*@
 
 
                     <td scope="row">
-                            @if (!string.IsNullOrEmpty(item.Imagem))
-                            {
-                                @*<img src="~/Imagens/logo.jpeg"   alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
-                                <img src=@string.Format($"/Imagens/{item.Imagem}") alt="Image" style="width:200px;height:200px;max-width:100%;height:auto" />
-                                @*<img src="@Url.Action(item.Imagem,"Imagens")" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
-                                @*<img src="@Url.Content(item.Imagem)" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+                        @if (!string.IsNullOrEmpty(item.Imagem))
+                        {
+                            @*<img src="~/Imagens/logo.jpeg"   alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+                            <img src=@string.Format($"/Imagens/{item.Imagem}") alt="Image" style="width:200px;height:200px;max-width:100%;height:auto" />
+                            @*<img src="@Url.Action(item.Imagem,"Imagens")" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
+                            @*<img src="@Url.Content(item.Imagem)" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
 
-                            }
-                        </td>
+                        }
+                    </td>
 
                     @*@if (item.Imagem != null)
-                    {
-                        <td scope="row">
-                            @{
-                                var base64 = Convert.ToBase64String(item.Imagem);
-                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                            }
-                            <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
-                        </td>
-                    }*@
+                {
+                    <td scope="row">
+                        @{
+                            var base64 = Convert.ToBase64String(item.Imagem);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        }
+                        <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                    </td>
+                }*@
 
 
                     @*  @if (item.Imagem != null)
-                        {
-                            <td>
-                                @{
-                                    string value = System.Text.Encoding.UTF8.GetString(item.Imagem);
-                                    var imgSrc = String.Format("data:image/png;base64,{0}", value);
-                                }
-                                <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
-                            </td>
-                        } *@
+                {
+                    <td>
+                        @{
+                            string value = System.Text.Encoding.UTF8.GetString(item.Imagem);
+                            var imgSrc = String.Format("data:image/png;base64,{0}", value);
+                        }
+                        <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                    </td>
+                } *@
 
                     <td scope="row">
                         @Html.ActionLink("Edit", "Edit", new { IdCli = item.IdCli }) |
@@ -125,7 +127,7 @@
             }
         </table>
     </div>
-    @Html.Raw(TempData["msg"])
+
 </section>
 @section Scripts {
     <script>

@@ -25,7 +25,7 @@ namespace TCC.Models
         [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         [Key]
-        public int IdCli { get; set; }
+        public  int IdCli { get; set; }
 
         [Required(ErrorMessage = "O campo CPF do cliente é requerido.")]
         [Display(Name = "CPF do cliente.")]
@@ -41,7 +41,7 @@ namespace TCC.Models
         public string NomeCli { get; set; }
 
         [Required(ErrorMessage = "O campo Email do cliente é requerido.")]
-        [RegularExpression(@"^[-a-zA-Z0-9][-.a-zA-Z0-9]*@[-.a-zA-Z0-9]+(\.[-.a-zA-Z0-9]+)*\.(com|edu|info|gov|int|mil|net|org|biz|name|museum|coop|aero|pro|tv|[a-zA-Z]{2})$", ErrorMessage = "O Email do fornecedor está incorreto.")]
+        [RegularExpression(@"^[-a-zA-Z0-9][-.a-zA-Z0-9]*@[-.a-zA-Z0-9]+(\.[-.a-zA-Z0-9]+)*\.(com|edu|info|gov|int|mil|net|org|biz|name|museum|coop|aero|pro|tv|[a-zA-Z]{2})$", ErrorMessage = "O Email do cliente está incorreto.")]
         [Display(Name = "Email do cliente")]
         [StringLength(100, ErrorMessage = "A quantidade de caracteres do Email do cliente é invalido.")]
         public string EmailCli { get; set; }
@@ -50,7 +50,7 @@ namespace TCC.Models
         [Display(Name = "Celular do cliente")]
         public long CelCli { get; set; }
 
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Digite somente letras.")]
+        //[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Digite somente letras.")]
         [Display(Name = "Complemento")]
         [StringLength(50, ErrorMessage = "A quantidade de caracteres do Complemento é invalido.")]
         public string Comp { get; set; }

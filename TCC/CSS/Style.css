@@ -423,11 +423,13 @@ a {
 }
 
 .contentCart {
-    position: absolute;
-    top: 60%;
-    margin-left: 9%;
-    margin-right: 9%;
+    /* position: absolute; */
+    /* top: 80%; */
+    /* margin-left: 9%; */
+    display: flex;
+    justify-content: space-around;
 }
+
 /*Slide*/
 .main {
     height: auto;

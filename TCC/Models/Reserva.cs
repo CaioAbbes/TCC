@@ -31,6 +31,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo Data e hora da reserva é requerido.")]
         [Display(Name = "Data e hora da reserva")]
         [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime DataHoraReserva { get; set; }
 
         //[Required(ErrorMessage = "O campo Data e hora que quero come é requerido.")]
@@ -38,9 +39,9 @@ namespace TCC.Models
         //[DataType(DataType.DateTime)]
         //public DateTime HoraQueroComer { get; set; }
 
-        public void InsertReserva(Reserva reserva)
+        public void InsertReserva(Reserva reserva,int idCli)
         {
-            string strQuery = string.Format("call sp_InsReserva('{0}','{1}','{2}','{3}');", 1,reserva.DataHoraReserva.ToString("yyyy-MM-dd"),reserva.Mesa.Numlugares,reserva.Mesa.TipoLugar);
+            string strQuery = string.Format("call sp_InsReserva('{0}','{1}','{2}','{3}');", idCli, reserva.DataHoraReserva.ToString("yyyy-MM-dd HH:mm"),reserva.Mesa.Numlugares,reserva.Mesa.TipoLugar);
 
             using (db = new ConexaoDB())
             {
