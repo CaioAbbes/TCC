@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -70,6 +71,12 @@ namespace TCC.Controllers
             if (ModelState.IsValid)
             {
                 var objMesa = new Mesa();
+                string filename = Path.GetFileNameWithoutExtension(mesa.ImageUpload.FileName);
+                string extesion = Path.GetExtension(mesa.ImageUpload.FileName);
+                filename = filename + DateTime.Now.ToString("yymmssfff") + extesion;
+                mesa.Imagem = "~/Imagens/" + filename;
+                filename = Path.Combine(Server.MapPath("~/Imagens/"), filename);
+                mesa.ImageUpload.SaveAs(filename);
                 objMesa.InsertMesa(mesa);
                 return RedirectToAction("List");
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -70,6 +71,12 @@ namespace TCC.Controllers
             if (ModelState.IsValid)
             {
                 var objProduto = new Produto();
+                string filename = Path.GetFileNameWithoutExtension(produto.ImageUpload.FileName);
+                string extesion = Path.GetExtension(produto.ImageUpload.FileName);
+                filename = filename + DateTime.Now.ToString("yymmssfff") + extesion;
+                produto.Imagem = "~/Imagens/" + filename;
+                filename = Path.Combine(Server.MapPath("~/Imagens/"), filename);
+                produto.ImageUpload.SaveAs(filename);
                 objProduto.InsertProduto(produto);
                 return RedirectToAction("List");
             }

@@ -34,7 +34,10 @@ namespace TCC.Models
         [StringLength(50, ErrorMessage = "A quantidade de caracteres do Tipo de lugar é invalido.")]
         public string TipoLugar { get; set; }
 
+
         public string Imagem { get; set; }
+
+        public HttpPostedFileBase ImageUpload { get; set; }
 
         public void InsertMesa(Mesa mesa)
         {

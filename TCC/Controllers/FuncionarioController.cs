@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -72,6 +73,12 @@ namespace TCC.Controllers
             if (ModelState.IsValid)
             {
                 var objFunc = new Funcionario();
+                string filename = Path.GetFileNameWithoutExtension(funcionario.ImageUpload.FileName);
+                string extesion = Path.GetExtension(funcionario.ImageUpload.FileName);
+                filename = filename + DateTime.Now.ToString("yymmssfff") + extesion;
+                funcionario.Imagem = "~/Imagens/" + filename;
+                filename = Path.Combine(Server.MapPath("~/Imagens/"), filename);
+                funcionario.ImageUpload.SaveAs(filename);
                 objFunc.InsertFuncionario(funcionario);
                 return RedirectToAction("List");
             }

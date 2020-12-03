@@ -73,7 +73,7 @@ namespace TCC.Models
 
        // [Required]
        // [DataType(DataType.Upload)]
-        public HttpPostedFileBase ImageUpload { get; set; } //ou string
+        public HttpPostedFileBase ImageUpload { get; set; }
 
 
 

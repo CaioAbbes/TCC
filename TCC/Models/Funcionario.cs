@@ -82,8 +82,11 @@ namespace TCC.Models
         public int NumEdif { get; set; }
 
         public Usuario User { get; set; }
-        
+
         public string Imagem { get; set; }
+
+        public HttpPostedFileBase ImageUpload { get; set; }
+
 
 
         public void InsertFuncionario(Funcionario funcionario)

@@ -50,6 +50,8 @@ namespace TCC.Models
 
         public string Imagem { get; set; }
 
+        public HttpPostedFileBase ImageUpload { get; set; }
+
         public void InsertProduto(Produto produto)
         {
             string strQuery = string.Format("CALL sp_InsProd('{0}','{1}','{2}','{3}','{4}','{5}','{6}');", produto.Imagem,produto.NomeProd, produto.DescProd, produto.Observacao, produto.ValorProd.ToString().Replace(",", "."), produto.TipoProd, produto.CategoriaProd);
