@@ -4,7 +4,12 @@
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Cardapio.cshtml";
 }
-
+<p>
+    @using (Html.BeginForm("List", "Produto", FormMethod.Get))
+    {
+        @Html.TextBox("busca")<input type="submit" value="Seach" />
+    }
+</p>
 <link rel="stylesheet" type="text/css" href="~/CSS/card.css">
 <div class="cards">
     <section class="card">
@@ -20,7 +25,7 @@
                 </section>
             </article>
 
-            using (Html.BeginForm("AdicionaCarrinho", "Produto_pedido", new { prodId = item.IdProd, valor = item.ValorProd, nome = item.NomeProd}, FormMethod.Post))
+            using (Html.BeginForm("AdicionaCarrinho", "Produto_pedido", new { prodId = item.IdProd, valor = item.ValorProd, nome = item.NomeProd }, FormMethod.Post))
             {
                 <button type="submit" class="pull-right"><i class="fa fa-shopping-cart"></i></button>
             }
@@ -29,3 +34,6 @@
     </section>
 </div>
 @Html.Raw(TempData["msg"])
+@Html.Raw(TempData["msgSemDado"])
+
+

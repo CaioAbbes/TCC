@@ -35,12 +35,17 @@ namespace TCC.Controllers
         }
 
 
-        public ActionResult List(Produto produto)
+        public ActionResult List(Produto produto,string busca)
         {
             try
             {
-                var produtoList = produto.SelecionaProduto();
-                return View(produtoList);
+                var prodBusca = produto.BuscaProduto(busca);
+                if(prodBusca.Count == 0) 
+                { 
+                    TempData["msgSemDado"] = "<script>alert('Nenhum produto encontrado');</script>"; 
+                    return View(prodBusca);
+                };
+                return View(prodBusca);
             }
             catch
             {
@@ -114,14 +119,6 @@ namespace TCC.Controllers
                 return View();
             }
         
-        }
-
-
-
-        public ActionResult BuscaProd(Produto produto, string busca)
-        {
-            var prodBusca = produto.BuscaProduto(busca);
-            return View(prodBusca);
         }
     }
 }

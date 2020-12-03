@@ -1,11 +1,11 @@
-﻿@model List<TCC.Models.Produto>
+﻿@*@model IEnumerable<TCC.Models.Produto>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.)
         </th>
         <th>
@@ -13,7 +13,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Imagem)
-        </th>*@
+        </th>
         <th></th>
     </tr>
      
@@ -29,14 +29,14 @@
     <td>
         @Html.DisplayFor(modelItem => item.Imagem)
     </td>
-     @*<td>
+     <td>
         @Html.DisplayFor(modelItem => item)
-    </td>*@
-    @*<td>
+    </td>
+    <td>
             @Html.DisplayFor(modelItem => item.)
-        </td>*@
+        </td>
 
-    @*@foreach(var item in (Session["Carrinho"] as List<TCC.Models.Produto>)){
+    @foreach(var item in (Session["Carrinho"] as List<TCC.Models.Produto>)){
 
         <tr>
             <td>
@@ -44,14 +44,14 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ValorProd)
-            </td>*@
+            </td>
 
-    @*<td>
+    <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>*@
+        </td>
 </tr>
     }
 
-</table>
+</table>*@

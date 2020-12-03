@@ -535,12 +535,15 @@
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\401_preto.png" />
     <Content Include="Imagens\404_preto.png" />
+    <Content Include="Imagens\Cardapio.jpeg" />
     <Content Include="Imagens\cardapio_title.png" />
+    <Content Include="Imagens\Delivery.jpeg" />
     <Content Include="Imagens\logo.jpeg" />
     <Content Include="Imagens\logo_writer.png" />
     <Content Include="Imagens\logo_writer_black.png" />
     <Content Include="Imagens\logo_writer_black_bone.png" />
     <Content Include="Imagens\logo_writer_bone.png" />
+    <Content Include="Imagens\Reserva.jpeg" />
     <Content Include="Imagens\TesteMaycao.png" />
     <Content Include="Imagens\testePizza.png" />
     <Content Include="Imagens\teste_img.jpg" />
@@ -658,7 +661,6 @@
     <Content Include="Views\Shared\_Error404.cshtml" />
     <Content Include="Views\Shared\_Cardapio.cshtml" />
     <Content Include="Views\Produto_Pedido\UltimosPedidosCli.cshtml" />
-    <Content Include="Views\Produto\BuscaProd.cshtml" />
     <Content Include="Views\Shared\_Index.cshtml" />
     <Content Include="Views\Shared\_Cliente.cshtml" />
     <Content Include="Views\Shared\_AdicionaCarrinho.cshtml" />

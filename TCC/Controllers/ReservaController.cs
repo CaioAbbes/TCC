@@ -56,7 +56,17 @@ namespace TCC.Controllers
             {
                 return RedirectToAction("ErroAutenticação", "Usuario");
             }
-            return View();
+
+            var objReserva = new Reserva();
+            int[] NumLugar = new int[] { 1, 2, 3, 4, 5 }; //5, pois é o maximo de cadeiras que uma mesa pode ter
+            SelectList Lista = new SelectList(NumLugar);
+            ViewBag.Lista = Lista;
+
+            string[] TipoLugar = new string[] {"Coberto", "Arejado" }; //5, pois é o maximo de cadeiras que uma mesa pode ter
+            SelectList ListaTipoLugar = new SelectList(TipoLugar);
+            ViewBag.ListaTipoLugar = ListaTipoLugar;
+
+            return View(objReserva);
         }
 
         // POST: Reserva/Create

@@ -55,7 +55,18 @@ namespace TCC.Controllers
             {
                 return RedirectToAction("ErroAutenticação", "Usuario");
             }
-            return View();
+
+            var objPagamento = new Pagamento();
+            string[] TiposdePag = new string[] { "Cartão de crédito", "Cartão de débito", "Dinheiro"}; 
+            SelectList Lista = new SelectList(TiposdePag);
+            ViewBag.Lista = Lista;
+
+            var cupom = new Cupom();
+            var ListaCupom = cupom.SelecionaCupom();
+            SelectList ListaDeCupom = new SelectList(ListaCupom, "CodCupom", "CodCupom");
+            ViewBag.ListaCupom = ListaDeCupom;
+                                           
+            return View(objPagamento);
         }
 
         // POST: Pagamento/Create

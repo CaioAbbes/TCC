@@ -9,8 +9,10 @@ using TCC.Models;
 
 namespace TCC.Controllers
 {
+
     public class MesaController : Controller
     {
+
         // GET: Mesa
         public ActionResult Index()
         {
@@ -57,11 +59,18 @@ namespace TCC.Controllers
         [Autenticacao]
         public ActionResult Create()
         {
+
             if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
             {
                 return RedirectToAction("ErroAutenticação", "Usuario");
             }
-            return View();
+
+            var objMesa = new Mesa();
+            int[] NumLugar = new int[] { 1, 2, 3, 4, 5 }; //5, pois é o maximo de cadeiras que uma mesa pode ter
+            SelectList Lista = new SelectList(NumLugar);
+            ViewBag.Lista = Lista;
+
+            return View(objMesa);
         }
 
         // POST: Mesa/Create

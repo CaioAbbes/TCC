@@ -1,4 +1,4 @@
-﻿ac
+﻿
 @{
     Layout = null;
 }
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
     <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
-    <link rel="Shortcut Icon" href="~/favicon.ico" type="image / x-icon" />
+    <link rel="Shortcut Icon" href="~/chapeuu.ico" type="image / x-icon" />
     <title>Tacos & Natchos | Site Oficial</title>
 </head>
 <body>
@@ -25,8 +25,7 @@
                 <li><a href="#">Reserva</a></li>
                 <li><a href="login.html">Delivery</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li> <input type="search" class="search-text" placeholder="Digite alguma coiosa"></li>
-                <li class="iconBar"><a href="#"><i class="fas fa-search" onclick="showSearch()"></i></a></li>
+
                 <li class="iconBar"><a href="#"><i class="fas fa-user" onclick="showOnOffSettings()"></i></a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
             </nav>
@@ -72,6 +71,40 @@
         </div>
     </main>
 
+    <div class="indexContent">
+        <section class="indexContentLineRow">
+            <section class="about Us">
+                <h3>Bem Vindo(a)</h3>
+                <p>Hola, seja bem-vindo(a) ao Site do mejor restaurante de São Paulo. Sí, isso mesmo, o melhor hahaha. ¿No cree? Pois bem, a Tacos&amp;Nachos mostrará algo nuevo, desejado por muitos restaurantes, porém é conquistado por poucos, ou no caso, por nós. Siga em frente e mostraremos nuestro serviço!</p>
+            </section>
+        </section>
+        <section class="indexContentLineColuns">
+            <section class="about Delively">
+                <h3 class="titleIndexContainer">Delivery</h3>
+                @*<i class="fas fa-truck"></i>*@
+                <p>Sabe quando bate aquela preguiça ou então aquela famosa frase: sem tempo irmão? Não se preocupe, acá você poderá pedir a sua comida e receber onde estiver. ¡su casa és mi casa!</p>
+                <section class="indexContentLineColunsButton">
+                    <a>Acesse</a>
+                </section>
+            </section>
+            <section class="about Reserva">
+                <h3>Reserva</h3>
+                <p>Nesta opção, você poderá agendar sua vinda e já escolher o prato que deseja comer, com isso, não perderá tempo na fila de espera aguardando algum lugar, uma maneira pratica de fazer sua reserva e ainda fazer seu pedido.</p>
+                <section class="indexContentLineColunsButton">
+                    <a>Acesse</a>
+                </section>
+            </section>
+            <section class="about Cardapio">
+                <h3>Cardápio</h3>
+                <p>Está aqui? Ótimo, nesta área você poderá de forma rápida fazer seu pedido e em alguns minutos se deliciar com ele sem precisar pedir ao garçom! Prático, não acha?</p>
+                <section class="indexContentLineColunsButton">
+                    <a>Acesse</a>
+                </section>
+            </section>
+        </section>
+
+    </div>
+
     <div class="settings hide">
         <h3>Configurações</h3>
         <section class="settingsItems">
@@ -114,7 +147,33 @@
         @RenderBody()
 
     </div>
+    <footer>
+        <section class="footerContent">
+            <section class="footerContentTop">
+                <section class="Contato">
+                    <h2>Contato</h2>
+                    @*<p><i class="fas fa-phone-volume"></i> (11) 9456-789</p>
+                        <p><i class="fas fa-envelope"></i> tacosynatchos@tacosynatchos.com.br</p>*@
+                    <p>Telefone: (11) 9456-789</p>
+                    <p>E-mail: tacosynatchos@tacosynatchos.com.br</p>
+                </section>
+                <section class="End">
+                    <h2>Endereço</h2>
+                    <p>Rua das Dores, 123 Vila formosa São Paulo Brasil</p>
+                </section>
+                <section class="Social">
+                    <h2>Social</h2>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
 
+                </section>
+            </section>
+            <section class="foooterContentBottom">
+                <p>All Right reserved dy Tacos & Natchos</p>
+            </section>
+        </section>
+    </footer>
     <script>
         function toggleMenu() {
             let navigation = document.querySelector(".navigation");
@@ -124,8 +183,12 @@
         }
 
         function showSearch() {
-            let search = document.getElementById("body");
-            search.classList.add("blur");
+            let search = document.querySelector(".fa-search");
+            let inputSearch = document.querySelector(".search-text");
+            let searchConteiner = document.querySelector(".searchConteiner");
+            inputSearch.classList.remove("hide");
+            searchConteiner.style.background = "white";
+            search.style.color = "black";
         }
 
         function showOnOffSettings() {
@@ -170,6 +233,5 @@
             }
         }, 3000);
     </script>
-        
 </body>
 </html>

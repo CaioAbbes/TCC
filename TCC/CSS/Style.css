@@ -58,7 +58,7 @@ a {
     text-transform: uppercase;
 }
 
-.fa-user, .fa-shopping-cart {
+.fa-user, .fa-shopping-cart, .fa-search {
     font-family: tahoma;
     font-size: 20px;
     color: white;
@@ -107,11 +107,28 @@ a {
 .search-text {
     outline: none;
     height: 20px;
-    padding-left: 2px;
-    padding-right: 2px;
     border: none;
     border-radius: 5px;
+    padding: 10px;
+    border-style: none;
 }
+
+.searchConteiner {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.fa-search {
+    padding-left: 10px;
+}
+
+    .fa-search:active {
+        color: black;
+    }
+
+    .fa-search:before {
+        content: "f002";
+    }
 
 /*Cart*/
 .cartBar {
@@ -267,6 +284,115 @@ a {
             .settings .settingsItems a .icon, .settings .settingsItems a .title {
                 color: black;
             }
+
+/*IndexContet*/
+
+.indexContent {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1%;
+}
+
+    .indexContent .indexContentLineColuns {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding-top: 50px;
+    }
+
+.indexContentLineColuns .Delively, .indexContentLineColuns .Reserva, .indexContentLineColuns .Cardapio {
+    margin: 10px;
+    padding: 20px;
+    background-size: cover;
+    /*background-attachment:fixed;*/
+    background-position: center;
+}
+
+.indexContentLineColuns .Delively {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Imagens/Delivery.jpeg");
+}
+
+.indexContentLineColuns .Reserva {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Imagens/Reserva.jpeg");
+}
+
+.indexContentLineColuns .Cardapio {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Imagens/Cardapio.jpeg");
+}
+
+    .indexContentLineColuns .Delively p, .indexContentLineColuns .Reserva p, .indexContentLineColuns .Cardapio p {
+        text-align: justify;
+        font-family: 'Work Sans', sans-serif;
+        font: 20px;
+        color: azure;
+        padding-bottom: 20px;
+        max-width: 350px;
+        min-height: 200px;
+    }
+
+.indexContentLineColunsButton {
+    display: flex;
+    flex-flow: row;
+    background: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0.5px solid white;
+    border-radius: 6px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+    .indexContentLineColunsButton:hover {
+        border: 0.5px solid #c20101;
+        background: #c20101;
+    }
+
+.indexContentLineColuns .Delively a, .indexContentLineColuns .Reserva a, .indexContentLineColuns .Cardapio a {
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    left: 40%;
+    right: 40%;
+}
+
+.about {
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Delively h3, .Reserva h3, .Cardapio h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: white;
+}
+
+.Us h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.indexContentLineRow .Us p {
+    text-align: justify;
+    font-family: 'Work Sans', sans-serif;
+    font: 20px;
+    font-weight: 500;
+    padding-bottom: 20px;
+    min-width: 20px;
+}
+
 /*Sidebar*/
 .navigation {
     position: fixed;
@@ -610,6 +736,152 @@ a {
                 font-size: 20px;
             }
 
+/*Details*/
+.contentDetails {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 10%;
+}
+
+    .contentDetails .infoDetailsProd, .contentDetails .imgDetailsProd {
+        padding: 10px;
+        margin: 10px;
+    }
+
+        .contentDetails .infoDetailsProd .infoDetailsProdP {
+            max-width: 450px;
+            text-align: justify;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .contentDetails .infoDetailsProd p {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding-bottom: 20px;
+        }
+
+        .contentDetails .infoDetailsProd h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+.detailsFooter {
+    display: flex;
+    flex-flow: row;
+    background: none;
+    justify-content: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0.5px solid red;
+    border-radius: 6px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.detailsFooter {
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
+
+.indexContentLineColunsButton:hover {
+    border: 0.5px solid #c20101;
+    background: #c20101;
+}
+
+/*Footer*/
+footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    border-top: 1px solid grey;
+}
+
+.footerContent {
+    display: flex;
+    flex-flow: column;
+}
+
+    .footerContent .foooterContentBottom {
+        background: #a9a9a9;
+        padding: 20px;
+    }
+
+        .footerContent .foooterContentBottom p {
+            text-align: center;
+        }
+
+.footerContentTop {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-content: center;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+    .footerContentTop Contato, .footerContentTop End, .footerContentTop Social {
+        padding: 20px;
+    }
+
+    .footerContentTop .Contato p, .footerContentTop .End p, .footerContentTop .Social p {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .footerContentTop .Social a .fab {
+        border: 1px solid black;
+        width: 45px;
+        height: 35px;
+        padding: 5px;
+        margin-right: 5px;
+        text-align: center;
+        display: inline-block;
+        font-size: 1.3em;
+        border-radius: 5px;
+        transition: 1s;
+        color: black;
+        font-size: 20px;
+    }
+
+        .footerContentTop .Social a .fab:hover {
+            border: 1px solid white;
+        }
+
+    .footerContentTop .Social a .fa-instagram:hover {
+        background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+        transition: 0.5s;
+        color: white;
+    }
+
+    .footerContentTop .Social a .fa-facebook-f:hover {
+        background: #3b5998;
+        transition: 0.5s;
+        color: white;
+    }
+
+    .footerContentTop .Social a .fa-whatsapp:hover {
+        background: #34af23;
+        transition: 0.5s;
+        color: white;
+    }
+
+    .footerContentTop h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 30px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
 
 @media (max-width: 760px) {
     .navigation {
