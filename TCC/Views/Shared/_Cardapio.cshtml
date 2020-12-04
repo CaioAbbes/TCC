@@ -1,7 +1,6 @@
 ﻿
 @{
     Layout = null;
-
 }
 
 <html lang="pt-br">
@@ -10,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
     <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
-    <link rel="Shortcut Icon" href="~/chapeuu.ico" type="image / x-icon" />
+    <link rel="Shortcut Icon" href="~/favicon.ico" type="image / x-icon" />
     <title>Tacos & Natchos | Site Oficial</title>
 </head>
 <body>
@@ -22,10 +21,9 @@
 
             <nav class="menu-itens">
                 <li><a href="/Produto/List">Cardápio</a></li>
-                <li><a href="#">Reserva</a></li>
+                <li><a href="/Reserva/Create">Reserva</a></li>
                 <li><a href="login.html">Delivery</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li class="iconBar"><a href="#"><i class="fas fa-search" onclick="showSearch()"></i></a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-user" onclick="showOnOffSettings()"></i></a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
             </nav>
@@ -60,15 +58,12 @@
             </section>
         </div>
         <div class="cartBar hide">
-            <section class="cartTitle"><h1>Meus Pedidos</h1>@*@Html.Partial("_AdicionaCarrinho")*@</section>
+            <section class="cartTitle"><h1>Meus Pedidos</h1>@Html.Partial("_AdicionaCarrinho")</section>
             @RenderSection("cart", required: false)
         </div>
 
-
         <div class="imagenContainer">
-            <section class="titleImg">
-                @*<img src="~/Imagens/cardapio.jpg" alt="Cardapio" />*@
-            </section>
+            <section class="titleImg"></section>
         </div>
 
         <div class="toggle" onclick="toggleMenu()"></div>
@@ -85,7 +80,7 @@
                 <section class="Contato">
                     <h2>Contato</h2>
                     @*<p><i class="fas fa-phone-volume"></i> (11) 9456-789</p>
-                    <p><i class="fas fa-envelope"></i> tacosynatchos@tacosynatchos.com.br</p>*@
+                        <p><i class="fas fa-envelope"></i> tacosynatchos@tacosynatchos.com.br</p>*@
                     <p>Telefone: (11) 9456-789</p>
                     <p>E-mail: tacosynatchos@tacosynatchos.com.br</p>
                 </section>

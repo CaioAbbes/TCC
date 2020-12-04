@@ -83,7 +83,7 @@ namespace TCC.Models
 
         public void InsertPagamento(int IdCli,string FormPag, string CodCupom, float QtdPontos, string CPF)
         {
-            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}');", IdCli, FormPag, CodCupom, QtdPontos, CPF); //a qtdPontos é 0 pois tem uma trigger que atua nela
+            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}');", IdCli, FormPag, CodCupom, QtdPontos, CPF); 
 
             using (db = new ConexaoDB())
             {

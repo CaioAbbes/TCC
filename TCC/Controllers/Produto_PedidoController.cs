@@ -81,6 +81,12 @@ namespace TCC.Controllers
         }
 
 
+        public ActionResult AdicionaCarrinho()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult AdicionaCarrinho(int prodId,float valor,string nome)
         {
             var carrinho = new List<Produto_pedido>();
@@ -92,6 +98,16 @@ namespace TCC.Controllers
                 ValorUnitProd = valor,
             });
             Session["Carrinho"] = carrinho;
+            var cart = Session["Carrinho"] as List<Produto_pedido>;
+            if(cart != null)
+            {
+                foreach(var item in cart)
+                {
+                    item.IdProdPed = prodId;
+                    item.ValorUnitProd = valor;
+                    item.NomeProd = nome;
+                }
+            }
             return RedirectToAction("List","Produto");
            // return View(carrinho.ToList());
         }

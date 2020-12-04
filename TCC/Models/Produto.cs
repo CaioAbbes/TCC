@@ -159,6 +159,7 @@ namespace TCC.Models
                     string obs = registros["Observacao"].ToString();
                     var ProdutoTemporaria = new Produto
                     {
+                        IdProd = int.Parse(registros["IdProd"].ToString()),
                         NomeProd = registros["NomeProd"].ToString(),
                         DescProd = registros["DescProd"].ToString(),
                         ValorProd = float.Parse(registros["ValorProd"].ToString()),

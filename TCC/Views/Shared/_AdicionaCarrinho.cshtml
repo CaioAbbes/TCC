@@ -1,12 +1,11 @@
-﻿@*@model IEnumerable<TCC.Models.Produto>
-
+﻿@model IEnumerable<TCC.Models.Produto>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.)
+            @Html.DisplayNameFor(model => model.NomeProd)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ValorProd)
@@ -16,28 +15,9 @@
         </th>
         <th></th>
     </tr>
-     
+
     @foreach (var item in Model)
     {
- <tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.NomeProd)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ValorProd)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Imagem)
-    </td>
-     <td>
-        @Html.DisplayFor(modelItem => item)
-    </td>
-    <td>
-            @Html.DisplayFor(modelItem => item.)
-        </td>
-
-    @foreach(var item in (Session["Carrinho"] as List<TCC.Models.Produto>)){
-
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.NomeProd)
@@ -45,13 +25,32 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ValorProd)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imagem)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.)
+                    </td>*@
 
-    <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-</tr>
+            @*@foreach(var item in (Session["Carrinho"] as List<TCC.Models.Produto>)){
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeProd)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ValorProd)
+                        </td>
+
+                <td>*@
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            @*</td>*@
+        </tr>
     }
 
-</table>*@
+</table>

@@ -16,15 +16,14 @@
     <header>
         <div class="menu">
             <section class="logoWriter">
-                <a href="Home/Index"> <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer"></a>
+                <a href=""> <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer"></a>
             </section>
 
             <nav class="menu-itens">
                 <li><a href="/Produto/List">Cardápio</a></li>
-                <li><a href="#">Reserva</a></li>
+                <li><a href="/Reserva/Create">Reserva</a></li>
                 <li><a href="login.html">Delivery</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li class="iconBar"><a href="#"><i class="fas fa-search" onclick="showSearch()"></i></a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-user" onclick="showOnOffSettings()"></i></a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
             </nav>
@@ -47,7 +46,13 @@
             </section>
             <section class="settingsItems">
                 <a href="#">
-                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                    <span class="title">Reserva</span>
+                </a>
+            </section>
+            <section class="settingsItems">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-ticket-alt"></i></span>
                     <span class="title">Cupons</span>
                 </a>
             </section>
@@ -64,14 +69,38 @@
         </div>
 
         <div class="toggle" onclick="toggleMenu()"></div>
-
-        <div class="contentCart">
+        <div class="contentGeral">
             @RenderBody()
         </div>
-
     </main>
 
-    <footer></footer>
+    <footer>
+        <section class="footerContent">
+            <section class="footerContentTop">
+                <section class="Contato">
+                    <h2>Contato</h2>
+                    @*<p><i class="fas fa-phone-volume"></i> (11) 9456-789</p>
+                        <p><i class="fas fa-envelope"></i> tacosynatchos@tacosynatchos.com.br</p>*@
+                    <p>Telefone: (11) 9456-789</p>
+                    <p>E-mail: tacosynatchos@tacosynatchos.com.br</p>
+                </section>
+                <section class="End">
+                    <h2>Endereço</h2>
+                    <p>Rua das Dores, 123 Vila formosa São Paulo Brasil</p>
+                </section>
+                <section class="Social">
+                    <h2>Social</h2>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+
+                </section>
+            </section>
+            <section class="foooterContentBottom">
+                <p>All Right reserved dy Tacos & Natchos</p>
+            </section>
+        </section>
+    </footer>
 
     <script>
         function toggleMenu() {
