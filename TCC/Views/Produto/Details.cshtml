@@ -20,6 +20,7 @@
             @using (Html.BeginForm("AdicionaCarrinho", "Produto_pedido", new { prodId = item.IdProd, valor = item.ValorProd, nome = item.NomeProd }, FormMethod.Post))
             {
                 <button type="submit">Adicionar ao Carrinho</button>
+                @Html.Raw(TempData["msg"])
             }
         </section>
     </section>

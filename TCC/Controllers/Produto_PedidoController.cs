@@ -81,24 +81,39 @@ namespace TCC.Controllers
         }
 
 
-        public ActionResult AdicionaCarrinho()
-        {
-            return View();
-        }
+        //public ActionResult AdicionaCarrinho()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult AdicionaCarrinho(int prodId,float valor,string nome)
+        //  [HttpPost]
+        public ActionResult AdicionaCarrinho(int prodId, float valor, string nome)
         {
-            var carrinho = new List<Produto_pedido>();
-            carrinho.Add(new Produto_pedido()
+            //var car = new List<Produto_pedido>();
+            //car.Add(new Produto_pedido()
+            //{
+            //    IdProdPed = prodId,
+            //    QtdProd = 1,
+            //    NomeProd = nome,
+            //    ValorUnitProd = valor,
+            //});
+            //car = Session["Carrinho"].ToString(); 
+            var cart = new List<Produto>();
+            if (Session["Carrinho"] != null)
             {
-                IdProdPed = prodId,
-                QtdProd = 1,
+                cart = (List<Produto>)Session["Carrinho"];
+            }
+
+
+            cart.Add(new Produto()
+            {
+                IdProd = prodId,
+                //qtd = 1,
                 NomeProd = nome,
-                ValorUnitProd = valor,
+                ValorProd = valor,
             });
-            Session["Carrinho"] = carrinho; 
-             var cart = Session["Carrinho"] as List<Produto_pedido>;
+            //Session["Carrinho"] = cart;
+            Session.Add("Carrinho", cart);
             //if(cart != null)
             //{
             //    foreach(var item in cart)
@@ -108,8 +123,9 @@ namespace TCC.Controllers
             //        item.NomeProd = nome;
             //    }
             //}
-           return RedirectToAction("List","Produto");
-           // return View(carrinho.ToList());
+            TempData["msg"] = "<script>alert('Item adicionado ao carrinho');</script>";
+            return RedirectToAction("List", "Produto");
+            // return View(carrinho.ToList());
         }
 
         //public ActionResult AdicionaCarrinho(Produto_pedido ped)
