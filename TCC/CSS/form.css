@@ -114,3 +114,8 @@
     cursor: text;
     outline: none;
 }
+
+.imgOptionForm {
+    transform: translateY(-30px);
+    background: none;
+}

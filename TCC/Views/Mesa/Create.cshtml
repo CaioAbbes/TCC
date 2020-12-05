@@ -1,18 +1,84 @@
-﻿@model TCC.Models.Mesa
+﻿@*@model TCC.Models.Mesa
+
+    @{
+        ViewBag.Title = "Create";
+    }
+
+    <h2>Create</h2>
+
+    @using (Html.BeginForm("Create", "Mesa", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Mesa</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+                @Html.LabelFor(model => model.Numlugares, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Numlugares, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Numlugares, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Numlugares, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Numlugares, ViewBag.Lista as SelectList, "Selecione o número de cadeiras", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+                @Html.LabelFor(model => model.Disponi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Disponi)
+                        @Html.ValidationMessageFor(model => model.Disponi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TipoLugar, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TipoLugar, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TipoLugar, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Imagem, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ImageUpload" required />
+                @Html.ValidationMessageFor(m => m.Imagem, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+    @Html.Raw(TempData["msg"])
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+
+@model TCC.Models.Mesa
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Cliente.cshtml";
 }
-
-<h2>Create</h2>
-
+<link rel="stylesheet" type="text/css" href="~/CSS/form.css">
+<h1 class="formTitle">Pagamento</h1>
 @using (Html.BeginForm("Create", "Mesa", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>Mesa</h4>
-    <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @*<div class="form-group">
             @Html.LabelFor(model => model.Numlugares, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -22,11 +88,12 @@
             </div>
         </div>*@
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Numlugares, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Numlugares, ViewBag.Lista as SelectList, "Selecione o número de cadeiras", htmlAttributes: new { @class = "form-control" })
-        </div>
+    <div class="wrapper">
+        <section class="dropDown-Data">
+            @Html.DropDownListFor(model => model.Numlugares, ViewBag.Lista as SelectList, "Selecione o número de cadeiras", new { @class = "dropdown" })
+            <section class="line"></section>
+        </section>
+        @Html.ValidationMessageFor(model => model.Numlugares, "", new { @class = "text-danger" })
     </div>
 
     @*<div class="form-group">
@@ -39,30 +106,24 @@
             </div>
         </div>*@
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.TipoLugar, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TipoLugar, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TipoLugar, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Imagem, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="file" name="ImageUpload" required />
-            @*@Html.ValidationMessageFor(m => m.Imagem, "", new { @class = "text-danger" })*@
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
+<div class="wrapper">
+    <section class="dropDown-Data">
+        @Html.DropDownListFor(model => model.TipoLugar, ViewBag.ListaTipoLugar as SelectList, "Selecione um tipo de lugar", new { @class = "dropdown" })
+        <section class="line"></section>
+    </section>
+    @Html.ValidationMessageFor(model => model.TipoLugar, "", new { @class = "text-danger" })
 </div>
+
+    <div class="wrapper">
+        <section class="input-Data">
+            @Html.LabelFor(m => m.Imagem, new { @class = "imgOptionForm" })
+            <div class="col-md-10">
+                <input type="file" name="ImageUpload" required />
+                @*@Html.ValidationMessageFor(m => m.Imagem, "", new { @class = "text-danger" })*@
+            </div>
+        </section>
+    </div>
+
+    <button type="submit">Criar mesa</button>
 }
 @Html.Raw(TempData["msg"])
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

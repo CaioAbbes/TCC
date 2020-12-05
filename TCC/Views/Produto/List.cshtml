@@ -17,15 +17,15 @@
             <section class="card">
                 @foreach (var item in Model)
                 {
-                    <article>
-                        <img src="https://picsum.photos/536/354" alt="FOTO">
-                        <section class="contentCard">
-                            <h4 class="cardTitle">@Html.DisplayFor(modelItem => item.NomeProd)</h4>
-                            <p class="nomeproduct"> @Html.DisplayFor(modelItem => item.DescProd)</p>
-                            <p class="valorproduct">  @Html.DisplayFor(modelItem => item.ValorProd)</p>
-                            <button class="searchProduct"> @Html.ActionLink("Detalhes", "Details", new { IdProd = item.IdProd })</button>
-                        </section>
-                    </article>
+                <article>
+                    <img src="@Url.Content(item.Imagem)" alt="Sem imagem" style="width:100px;height:100px;max-width:100%;height:auto" />
+                    <section class="contentCard">
+                        <h4 class="cardTitle">@Html.DisplayFor(modelItem => item.NomeProd)</h4>
+                        <p class="nomeproduct"> @Html.DisplayFor(modelItem => item.DescProd)</p>
+                        <p class="valorproduct">  @Html.DisplayFor(modelItem => item.ValorProd)</p>
+                        <button class="searchProduct"> @Html.ActionLink("Detalhes", "Details", new { IdProd = item.IdProd })</button>
+                    </section>
+                </article>
                 }
             </section>
         </div>

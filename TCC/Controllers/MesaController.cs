@@ -70,6 +70,10 @@ namespace TCC.Controllers
             SelectList Lista = new SelectList(NumLugar);
             ViewBag.Lista = Lista;
 
+            string[] TipoLugar = new string[] { "Coberto", "Arejado" };
+            SelectList ListaTipoLugar = new SelectList(TipoLugar);
+            ViewBag.ListaTipoLugar = ListaTipoLugar;
+
             return View(objMesa);
         }
 
