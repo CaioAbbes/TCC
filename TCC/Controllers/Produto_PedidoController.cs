@@ -118,7 +118,15 @@ namespace TCC.Controllers
             return RedirectToAction("List", "Produto");
         }
 
-        private int isExist(int id)
+        public ActionResult RemoveTodosCarrinho()
+        {
+            List<Produto> cart = (List<Produto>)Session["Carrinho"];
+            cart.Clear();
+            Session.Add("Carrinho", cart);
+            return RedirectToAction("List", "Produto");
+        }
+
+            private int isExist(int id)
         {
             List<Produto> cart = (List<Produto>)Session["Carrinho"];
             for (int i = 0; i < cart.Count; i++)
