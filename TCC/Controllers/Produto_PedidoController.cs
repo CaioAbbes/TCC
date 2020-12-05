@@ -97,18 +97,18 @@ namespace TCC.Controllers
                 NomeProd = nome,
                 ValorUnitProd = valor,
             });
-            Session["Carrinho"] = carrinho;
-            var cart = Session["Carrinho"] as List<Produto_pedido>;
-            if(cart != null)
-            {
-                foreach(var item in cart)
-                {
-                    item.IdProdPed = prodId;
-                    item.ValorUnitProd = valor;
-                    item.NomeProd = nome;
-                }
-            }
-            return RedirectToAction("List","Produto");
+            Session["Carrinho"] = carrinho; 
+             var cart = Session["Carrinho"] as List<Produto_pedido>;
+            //if(cart != null)
+            //{
+            //    foreach(var item in cart)
+            //    {
+            //        item.IdProdPed = prodId;
+            //        item.ValorUnitProd = valor;
+            //        item.NomeProd = nome;
+            //    }
+            //}
+           return RedirectToAction("List","Produto");
            // return View(carrinho.ToList());
         }
 

@@ -130,7 +130,7 @@ namespace TCC.Models
                 while (registros.Read())
                 {
                     string desc = registros["DescPedido"].ToString();
-                    prodPedListando = new Produto_pedido
+                     prodPedListando = new Produto_pedido
                     {
                         IdProdPed = int.Parse(registros["IdProdPed"].ToString()),
                         Produto = new Produto().SelecionaComIdProd(int.Parse(registros["IdProd"].ToString())),

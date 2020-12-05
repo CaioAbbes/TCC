@@ -1,24 +1,27 @@
-﻿@model TCC.Models.Produto
+﻿@model IEnumerable<TCC.Models.Produto>
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Cliente.cshtml";
 }
 
+@foreach (var item in Model)
+{
 <div class="contentDetails">
     <section class="imgDetailsProd">
 
-        <img src="@Url.Content(Model.Imagem)" alt="FOTO">
+        <img src="@Url.Content(item.Imagem)" alt="FOTO">
     </section>
     <section class="infoDetailsProd">
-        <h1> @Html.DisplayFor(model => model.NomeProd)</h1>
-        <p class="infoDetailsProdP"> @Html.DisplayFor(model => model.DescProd)</p>
-        <p>@Html.DisplayFor(model => model.ValorProd)</p>
+        <h1> @Html.DisplayFor(model => item.NomeProd)</h1>
+        <p class="infoDetailsProdP"> @Html.DisplayFor(model => item.DescProd)</p>
+        <p>@Html.DisplayFor(model => item.ValorProd)</p>
         <section class="detailsFooter">
-            @using (Html.BeginForm("AdicionaCarrinho", "Produto_pedido", new { prodId = Model.IdProd, valor = Model.ValorProd, nome = Model.NomeProd }, FormMethod.Post))
+            @using (Html.BeginForm("AdicionaCarrinho", "Produto_pedido", new { prodId = item.IdProd, valor = item.ValorProd, nome = item.NomeProd }, FormMethod.Post))
             {
-            <button type="submit">Adicionar ao Carrinho</button>
+                <button type="submit">Adicionar ao Carrinho</button>
             }
         </section>
     </section>
 </div>
+}

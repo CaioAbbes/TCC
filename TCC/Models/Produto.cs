@@ -109,7 +109,7 @@ namespace TCC.Models
                 while (registros.Read())
                 {
                     string obs = registros["Observacao"].ToString();
-                    ProdutoListando = new Produto
+                     ProdutoListando = new Produto
                     {
                         IdProd = int.Parse(registros["IdProd"].ToString()),
                         NomeProd = registros["NomeProd"].ToString(),
@@ -123,6 +123,35 @@ namespace TCC.Models
                 }
 
                 return ProdutoListando;
+            }
+
+        }
+
+        public List<Produto> SelecionaIdProdCart(int IdProd)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbproduto where IdProd = '{0}';", IdProd);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                var produtoList = new List<Produto>();
+                while (registros.Read())
+                {
+                    string obs = registros["Observacao"].ToString();
+                    Produto ProdutoListando = new Produto
+                    {
+                        IdProd = int.Parse(registros["IdProd"].ToString()),
+                        NomeProd = registros["NomeProd"].ToString(),
+                        DescProd = registros["DescProd"].ToString(),
+                        ValorProd = float.Parse(registros["ValorProd"].ToString()),
+                        Observacao = obs.Equals("") ? "Sem observação" : registros["Observacao"].ToString(),
+                        TipoProd = registros["TipoProd"].ToString(),
+                        CategoriaProd = registros["CategoriaProd"].ToString(),
+                        Imagem = registros["imageprod"].ToString()
+                    };
+                    produtoList.Add(ProdutoListando);
+                }
+
+                return produtoList;
             }
 
         }

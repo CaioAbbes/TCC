@@ -22,9 +22,9 @@ namespace TCC.Controllers
         {
             try
             {
-                var produto = new Produto();
+                var produto = new List<Produto>();
                 var objProduto = new Produto();
-                produto = objProduto.SelecionaIdProd(IdProd);
+                produto = objProduto.SelecionaIdProdCart(IdProd);
                 return View(produto);
             }
             catch
