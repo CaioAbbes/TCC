@@ -73,8 +73,8 @@
                         @Html.DisplayFor(modelItem => item.QtdPontos)
                     </td>
                     @*<td>
-                    @Html.DisplayFor(modelItem => item.Imagem)
-                </td>*@
+                            @Html.DisplayFor(modelItem => item.Imagem)
+                        </td>*@
 
 
                     <td scope="row">
@@ -89,27 +89,27 @@
                     </td>
 
                     @*@if (item.Imagem != null)
-                {
-                    <td scope="row">
-                        @{
-                            var base64 = Convert.ToBase64String(item.Imagem);
-                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                        }
-                        <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
-                    </td>
-                }*@
+                        {
+                            <td scope="row">
+                                @{
+                                    var base64 = Convert.ToBase64String(item.Imagem);
+                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                }
+                                <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                            </td>
+                        }*@
 
 
                     @*  @if (item.Imagem != null)
-                {
-                    <td>
-                        @{
-                            string value = System.Text.Encoding.UTF8.GetString(item.Imagem);
-                            var imgSrc = String.Format("data:image/png;base64,{0}", value);
-                        }
-                        <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
-                    </td>
-                } *@
+                        {
+                            <td>
+                                @{
+                                    string value = System.Text.Encoding.UTF8.GetString(item.Imagem);
+                                    var imgSrc = String.Format("data:image/png;base64,{0}", value);
+                                }
+                                <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                            </td>
+                        } *@
 
                     <td scope="row">
                         @Html.ActionLink("Edit", "Edit", new { IdCli = item.IdCli }) |
@@ -129,17 +129,3 @@
     </div>
 
 </section>
-@section Scripts {
-    <script>
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                console.log(xhr);
-            }
-        }
-
-        xhr.open("GET", "https://localhost:44360/Cliente/List");
-        xhr.send();
-    </script>
-
-}

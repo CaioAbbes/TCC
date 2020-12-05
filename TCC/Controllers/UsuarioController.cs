@@ -47,15 +47,23 @@ namespace TCC.Controllers
                     Session["IdCli"] = usuario.PegaIdCli();
                     Session["IdFunc"] = usuario.PegaIdFunc();
 
-                    if (Session["IdCli"] == null)
-                    {
-                        Session["IdFunc"] = usuario.PegaIdFunc();
-                    }
+                    //if (int.Parse(Session["IdCli"].ToString()) == 0 || Session["IdCli"].ToString() == null)
+                    //{
+                    //    Session["IdCli"] = "Visitante";
+                    //}
 
-                    else if (Session["IdFunc"] == null)
-                    {
-                        Session["IdCli"] = usuario.PegaIdCli();
-                    }
+
+
+
+                    //if (Session["IdCli"] == null)
+                    //{
+                    //    Session["IdFunc"] = usuario.PegaIdFunc();
+                    //}
+
+                    //else if (Session["IdFunc"] == null)
+                    //{
+                    //    Session["IdCli"] = usuario.PegaIdCli();
+                    //}
 
                     return RedirectToAction("Index", "Home");
                     //return RedirectToAction("Edit", "Funcionario", new { IdFunc = Session["IdFunc"].ToString() });

@@ -7,29 +7,28 @@
     justify-content: center;
     align-items: center;
 }
-/
-/.mainForm {
+*/
+/*.mainForm {
     width: 80%;
     padding: 25px;
 }*/
 
-     .formTitle {
-        width: 100%;
-        font-size: 35px;
-        text-align: center;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        }
+.formTitle {
+    width: 100%;
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
 
 .wrapper {
     min-width: 400px;
-/*    /background: white;/
-*/    padding: 30px;
-/*    /box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);*/
-
+    /*background: white;*/
+    padding: 30px;
+    /*box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);*/
 }
 
-    .wrapper .input-Data {
+    .wrapper .input-Data, .wrapper .dropDown-Data {
         height: 40px;
         width: 100%;
         position: relative;
@@ -53,7 +52,7 @@
     outline: 0;
 }
 
-/*/.input-Data input:focus ~ label, input:valid ~ label {
+/*.input-Data input:focus ~ label, input:valid ~ label {
     transform: translateY(-30px);
     background: none;
 }*/
@@ -95,6 +94,23 @@
 }
 
 .bottomForm {
-    margin: 10% auto;
     text-align: center;
+}
+
+.dropDown-Data .dropdown:hover ~ .line::before {
+    transform: scaleX(1);
+}
+
+.dropdown {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 17px;
+    background: none;
+    border-bottom: 2px solid silver;
+    -webkit-appearance: none;
+    border-radius: 0;
+    padding: 0;
+    cursor: text;
+    outline: none;
 }

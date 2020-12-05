@@ -1,80 +1,123 @@
-﻿@model TCC.Models.Pagamento
+﻿@*@model TCC.Models.Pagamento
+
+    @{
+        ViewBag.Title = "Create";
+    }
+
+    <h2>Create</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Pagamento</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FormPag, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.FormPag, ViewBag.Lista as SelectList, "Selecione uma forma de pagamento", htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CodCupom, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.CodCupom, ViewBag.ListaCupom as SelectList, "Selecione um cupom", htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.QtdPontos, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.QtdPontos, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.QtdPontos, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    @Html.Raw(TempData["msg"])
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+
+@model TCC.Models.Pagamento
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Cliente.cshtml";
 }
-
-<h2>Create</h2>
-
-
+<link rel="stylesheet" type="text/css" href="~/CSS/form.css">
+<h1 class="formTitle">Pagamento</h1>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>Pagamento</h4>
-    <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.FormPag, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FormPag, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FormPag, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.FormPag, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.FormPag, ViewBag.Lista as SelectList, "Selecione uma forma de pagamento", htmlAttributes: new { @class = "form-control" })
-        </div>
+    <div class="wrapper">
+        <section class="dropDown-Data">
+            @Html.DropDownListFor(model => model.FormPag, ViewBag.Lista as SelectList, "Selecione uma forma de pagamento", new { @class = "dropdown" })
+            <section class="line"></section>
+        </section>
+        @Html.ValidationMessageFor(model => model.FormPag, "", new { @class = "text-danger" })
+    </div>
+    <div class="wrapper">
+        <section class="dropDown-Data">
+            @Html.DropDownListFor(model => model.CodCupom, ViewBag.ListaCupom as SelectList, "Selecione um cupom", new { @class = "dropdown" })
+            <section class="line"></section>
+        </section>
+        @Html.ValidationMessageFor(model => model.CodCupom, "", new { @class = "text-danger" })
+    </div>
+    <div class="wrapper">
+        <section class="input-Data">
+            @Html.EditorFor(model => model.QtdPontos)
+            <section class="line"></section>
+            @Html.LabelFor(model => model.QtdPontos)
+        </section>
+        @Html.ValidationMessageFor(model => model.QtdPontos, "", new { @class = "text-danger" })
+    </div>
+    <div class="wrapper">
+        <section class="input-Data">
+            @Html.EditorFor(model => model.CPF)
+            <section class="line"></section>
+            @Html.LabelFor(model => model.CPF)
+        </section>
+        @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
     </div>
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.CodCupom, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CodCupom, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CodCupom, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+    @*<section class="detailsFooter">
+            <button type="submit">Adicionar ao Carrinho</button>
+        </section>*@
+    <button type="submit">Pagar</button>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.CodCupom, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.CodCupom, ViewBag.ListaCupom as SelectList, "Selecione um cupom", htmlAttributes: new { @class = "form-control" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.QtdPontos, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.QtdPontos, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.QtdPontos, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
-@Html.Raw(TempData["msg"])
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script src="~/Scripts/Myscript.js"></script>
 }

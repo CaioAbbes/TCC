@@ -25,7 +25,7 @@
                 <li><a href="login.html">Delivery</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-user" onclick="showOnOffSettings()"></i></a></li>
-                <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
+                <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart" onclick="toggleCart()"></i></a></li>
             </nav>
         </div>
     </header>
@@ -33,13 +33,13 @@
         <div class="settings hide">
             <h3>Configurações</h3>
             <section class="settingsItems">
-                <a href="#">
+                <a href="@Url.Action("Edit", "Cliente", new {IdCli = Session["IdCli"].ToString()})">
                     <span class="icon"><i class="fas fa-user-alt"></i></span>
                     <span class="title">Meus dados</span>
                 </a>
             </section>
             <section class="settingsItems">
-                <a href="#">
+                <a href="@Url.Action("UltimosPedidosCli", "Produto_Pedido", new {IdCli = Session["IdCli"].ToString()})">
                     <span class="icon"><i class="fas fa-ticket-alt"></i></span>
                     <span class="title">Últimos Pedidos</span>
                 </a>
@@ -51,7 +51,7 @@
                 </a>
             </section>
             <section class="settingsItems">
-                <a href="#">
+                <a href="@Url.Action("Logout","Usuario")">
                     <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
                     <span class="title">Sair</span>
                 </a>

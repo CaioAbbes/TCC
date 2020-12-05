@@ -6,14 +6,33 @@
 }
 
 @*@<h1 style="text-align:center">Detalhes</h1>*@
+@*<div class="contentDetails">
+        <section class="imgDetailsProd">
+            <img src="https://picsum.photos/536/354" alt="FOTO">
+        </section>
+        <section class="infoDetailsProd">
+            <h1>Produto Titulo</h1>
+            <p class="infoDetailsProdP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit eaque illo sint incidunt tempora nemo dicta facilis, dolores officia asperiores iste commodi fuga dolorem odio explicabo ipsam id quia rerum.</p>
+            <p>R$:</p>
+            <section class="detailsFooter">
+                <button type="submit">Adicionar ao Carrinho</button>
+            </section>
+        </section>
+    </div>*@
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Cliente.cshtml";
+}
+@*<h1 style="text-align:center">Detalhes</h1>*@
 <div class="contentDetails">
     <section class="imgDetailsProd">
         <img src="https://picsum.photos/536/354" alt="FOTO">
     </section>
     <section class="infoDetailsProd">
-        <h1>Produto Titulo</h1>
-        <p class="infoDetailsProdP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit eaque illo sint incidunt tempora nemo dicta facilis, dolores officia asperiores iste commodi fuga dolorem odio explicabo ipsam id quia rerum.</p>
-        <p>R$:</p>
+        <h1> @Html.DisplayFor(model => model.NomeProd)</h1>
+        <p class="infoDetailsProdP"> @Html.DisplayFor(model => model.DescProd)</p>
+        <p>@Html.DisplayFor(model => model.ValorProd)</p>
         <section class="detailsFooter">
             <button type="submit">Adicionar ao Carrinho</button>
         </section>
