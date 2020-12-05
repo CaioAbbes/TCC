@@ -1,5 +1,6 @@
-﻿@model IEnumerable<TCC.Models.Produto>
-@using TCC.Models; 
+﻿@using TCC.Models;
+@model IEnumerable<TCC.Models.Produto>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -17,40 +18,46 @@
         <th></th>
     </tr>
 
-        @if (Session["Carrinho"] != null)
+
+    @if (Session["Carrinho"] != null)
+    {
+        List<Produto> lista = (List<Produto>)Session["Carrinho"];
+        foreach (Produto produto in lista)
         {
-            List<Produto> lista = (List<Produto>)Session["Carrinho"];
-            foreach (Produto produto in lista)
-            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => produto.NomeProd)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => produto.ValorProd)
+    </td>
+    <td>
+        <img src="@Url.Content(produto.Imagem)" alt="Sem imagem" style="width:100px;height:100px;max-width:100%;height:auto" />
+    </td>
+    <td>
+
+            <a href="@Url.Action("RemoveCarrinho", "Produto_Pedido", new { id = produto.IdProd })">Remove</a>
+        
+        </td>
+
+
+    @*@foreach(var item in (Session["Carrinho"] as List<TCC.Models.Produto>)){
+
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.NomeProd)
+                    @Html.DisplayFor(modelItem => item.NomeProd)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.ValorProd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => produto.Imagem)
+                    @Html.DisplayFor(modelItem => item.ValorProd)
                 </td>
 
-
-                @*@foreach(var item in (Session["Carrinho"] as List<TCC.Models.Produto>)){
-
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NomeProd)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ValorProd)
-                            </td>
-
-                    <td>*@
-                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-                @*</td>*@
-            </tr>
+        <td>*@
+    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+    @*</td>*@
+</tr>
         }
-        }
+    }
 </table>
 

@@ -17,7 +17,7 @@
         <p class="infoDetailsProdP"> @Html.DisplayFor(model => item.DescProd)</p>
         <p>@Html.DisplayFor(model => item.ValorProd)</p>
         <section class="detailsFooter">
-            @using (Html.BeginForm("AdicionaCarrinho", "Produto_pedido", new { prodId = item.IdProd, valor = item.ValorProd, nome = item.NomeProd }, FormMethod.Post))
+            @using (Html.BeginForm("AdicionaCarrinho", "Produto_pedido", new { prodId = item.IdProd, valor = item.ValorProd, nome = item.NomeProd, imagem = item.Imagem }, FormMethod.Post))
             {
                 <button type="submit">Adicionar ao Carrinho</button>
                 @Html.Raw(TempData["msg"])

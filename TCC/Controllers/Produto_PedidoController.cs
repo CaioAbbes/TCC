@@ -87,17 +87,8 @@ namespace TCC.Controllers
         //}
 
         //  [HttpPost]
-        public ActionResult AdicionaCarrinho(int prodId, float valor, string nome)
+        public ActionResult AdicionaCarrinho(int prodId, float valor, string nome,string imagem)
         {
-            //var car = new List<Produto_pedido>();
-            //car.Add(new Produto_pedido()
-            //{
-            //    IdProdPed = prodId,
-            //    QtdProd = 1,
-            //    NomeProd = nome,
-            //    ValorUnitProd = valor,
-            //});
-            //car = Session["Carrinho"].ToString(); 
             var cart = new List<Produto>();
             if (Session["Carrinho"] != null)
             {
@@ -111,45 +102,32 @@ namespace TCC.Controllers
                 //qtd = 1,
                 NomeProd = nome,
                 ValorProd = valor,
+                Imagem = imagem
             });
             //Session["Carrinho"] = cart;
             Session.Add("Carrinho", cart);
-            //if(cart != null)
-            //{
-            //    foreach(var item in cart)
-            //    {
-            //        item.IdProdPed = prodId;
-            //        item.ValorUnitProd = valor;
-            //        item.NomeProd = nome;
-            //    }
-            //}
             TempData["msg"] = "<script>alert('Item adicionado ao carrinho');</script>";
             return RedirectToAction("List", "Produto");
-            // return View(carrinho.ToList());
         }
 
-        //public ActionResult AdicionaCarrinho(Produto_pedido ped)
-        //{
-        //    var temprod = ped.SelecionaProdPed();
-        //    Produto_pedido carrinho = Session["Carrinho"] != null ? (Produto_pedido)Session["Carrinho"] : new Produto_pedido();
+        public ActionResult RemoveCarrinho(int id)
+        {
+            List<Produto> cart = (List<Produto>)Session["Carrinho"];
+            cart.RemoveAt(isExist(id));
+            Session.Add("Carrinho", cart);
+            return RedirectToAction("List", "Produto");
+        }
 
-        //    if (temprod.Count > 0)
-        //    {
-        //        temprod.FirstOrDefault(x => x.IdProdPed == ped.IdProdPed).QtdProd += 1;
-        //    }
-        //    else
-        //    {
-        //        temprod.Add(carrinho);
-        //    }
-        //    return View();
-        //}
+        private int isExist(int id)
+        {
+            List<Produto> cart = (List<Produto>)Session["Carrinho"];
+            for (int i = 0; i < cart.Count; i++)
+                if (cart[i].IdProd.Equals(id))
+                    return i;
+            return -1;
+        }
 
-        //public ActionResult Carrinho()
-        //{
-        //    Produto_pedido carrinho = Session["Carrinho"] != null ? (Produto_pedido)Session["Carrinho"] : new Produto_pedido();
 
-        //    return View(carrinho);
-        //}
 
     }
 }

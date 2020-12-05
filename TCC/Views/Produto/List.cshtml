@@ -15,8 +15,10 @@
 
         <div class="cards">
             <section class="card">
-                @foreach (var item in Model)
+                @if (Model != null)
                 {
+                    foreach (var item in Model)
+                    {
                 <article>
                     <img src="@Url.Content(item.Imagem)" alt="Sem imagem" style="width:100px;height:100px;max-width:100%;height:auto" />
                     <section class="contentCard">
@@ -26,8 +28,10 @@
                         <button class="searchProduct"> @Html.ActionLink("Detalhes", "Details", new { IdProd = item.IdProd })</button>
                     </section>
                 </article>
+                    }
                 }
             </section>
         </div>
         @Html.Raw(TempData["msg"])
         @Html.Raw(TempData["msgSemDado"])
+
