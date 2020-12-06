@@ -18,6 +18,7 @@ namespace TCC.Controllers
         }
 
         // GET: Produto/Details/5
+        [Autenticacao]
         public ActionResult Details(int IdProd)
         {
             try
@@ -34,7 +35,7 @@ namespace TCC.Controllers
             }
         }
 
-
+        [Autenticacao]
         public ActionResult List(Produto produto,string busca)
         {
             try

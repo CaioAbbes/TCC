@@ -1,11 +1,15 @@
 ﻿
+@{
+    Layout = null;
+}
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
     <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
-    <link rel="Shortcut Icon" href="~/favicon.ico" type="image / x-icon" />
+    <link rel="Shortcut Icon" href="~/chapeuu.ico" type="image / x-icon" />
     <title>Tacos & Natchos | Site Oficial</title>
 </head>
 <body>
@@ -15,7 +19,7 @@
                 <a href=""> <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer"></a>
             </section>
 
-            <nav class="menu-itens">
+            <nav class="menuItens">
                 <li><a href="/Produto/List">Cardápio</a></li>
                 <li><a href="/Reserva/Create">Reserva</a></li>
                 <li><a href="login.html">Delivery</a></li>
@@ -59,10 +63,10 @@
                 </a>
             </section>
         </div>
-        <div class="cartBar hide">
+        @*<div class="cartBar hide">
             <section class="cartTitle"><h1>Meus Pedidos</h1>@Html.Partial("_AdicionaCarrinho")</section>
             @RenderSection("cart", required: false)
-        </div>
+        </div>*@
 
         <div class="toggle" onclick="toggleMenu()"></div>
         <div class="contentGeral">

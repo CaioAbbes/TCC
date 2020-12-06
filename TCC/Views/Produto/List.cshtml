@@ -20,7 +20,7 @@
                     foreach (var item in Model)
                     {
                 <article>
-                    <img src="@Url.Content(item.Imagem)" alt="Sem imagem" style="width:100px;height:100px;max-width:100%;height:auto" />
+                    <img src="@Url.Content(item.Imagem)" alt="Sem imagem" />
                     <section class="contentCard">
                         <h4 class="cardTitle">@Html.DisplayFor(modelItem => item.NomeProd)</h4>
                         <p class="nomeproduct"> @Html.DisplayFor(modelItem => item.DescProd)</p>

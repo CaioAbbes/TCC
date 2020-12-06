@@ -8,8 +8,9 @@
     box-sizing: border-box;
 }
 
+
 body {
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     background: #f8f8f8;
 }
 
@@ -22,6 +23,10 @@ body {
         background: #b40000;
         border-radius: 3px;
     }
+
+/*main {
+    height: 100%;
+}*/
 
 .blur {
     filter: blur(20px);
@@ -45,18 +50,18 @@ body {
     background: linear-gradient(90deg, rgba(255,66,66,1) 4%, rgba(193,0,0,1) 56%, rgba(145,0,0,1) 98%);
 }
 
-nav {
+.menuItens {
     list-style: none;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    font-family: tahoma;
-    font-size: 12px;
-    color: white;
-    text-transform: uppercase;
-}
+    .menuItens a {
+        text-decoration: none;
+        color: inherit;
+        font-family: tahoma;
+        font-size: 12px;
+        color: white;
+        text-transform: uppercase;
+    }
 
 .fa-user, .fa-shopping-cart, .fa-search {
     font-family: tahoma;
@@ -64,11 +69,11 @@ a {
     color: white;
 }
 
-.menu nav {
+.menu .menuItens {
     display: flex;
 }
 
-    .menu nav li {
+    .menu .menuItens li {
         margin: 0px 15px;
         padding: 10px;
     }
@@ -84,11 +89,11 @@ a {
         margin: 0 10px;
     }
 
-.menu nav li:first-child {
+.menu .menuItens li:first-child {
     margin-left: 0;
 }
 
-.menu nav li:last-child {
+.menu .menuItens li:last-child {
     margin-right: 0;
 }
 
@@ -121,7 +126,7 @@ a {
     margin-top: 3%;
     margin-right: 75px;
     margin-left: 75px;
-    padding: 10px;
+    padding: 5px;
     background: white;
     display: flex;
     flex-flow: row;
@@ -156,7 +161,7 @@ a {
     position: fixed;
     top: 10%;
     right: 0;
-    width: 32%;
+    /* width: 32%;*/
     height: 90vh;
     background: #ccc;
     transition: 0.5s;
@@ -185,6 +190,10 @@ a {
     padding-bottom: 20px;
 }
 
+.cartTitle fa-times {
+    float: right;
+}
+
 .contetCart {
     display: flex;
     flex-direction: column;
@@ -196,47 +205,52 @@ a {
 
 .itenCart {
     display: flex;
-    flex-direction: row;
-    justify-content: stretch;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center;
     background-color: #fff;
     margin-bottom: 20px;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     text-align: center;
 }
 
-.imgProd {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-evenly;
-}
-
-    .imgProd img {
-        width: 200px;
-        height: 100px;
+    .itenCart a .fa-times {
+        margin-top: 1px;
     }
+
+.imgProd img {
+    margin-left: 10px;
+    max-width: 200px;
+    max-height: 100px;
+    background-size: cover;
+}
 
 .infoProd {
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    width: 150px;
-    height: 40px;
-    background: blueviolet;
+    justify-content: center;
+    max-width: 210px;
+    max-height: 100px;
+    /* background: blueviolet;*/
+    margin-left: 10px;
+    padding: 5px;
 }
 
     .infoProd .nameProd {
         text-align: justify;
+        padding-bottom: 20px;
         overflow: hidden;
         display: -moz-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 20px;
+        font-weight: 300;
     }
 
 
 .cartFooter {
     position: relative;
-    bottom: 7%;
+    bottom: 0;
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
@@ -249,18 +263,38 @@ a {
 }
 
     .cartFooter p {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 300;
     }
 
-    .cartFooter button {
+.cartFoooterButtons {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+    .cartFoooterButtons .buttonCart {
         text-align: center;
         background: linear-gradient(90deg, rgba(255,66,66,1) 4%, rgba(193,0,0,1) 56%, rgba(145,0,0,1) 98%);
         border-radius: 5px;
+        margin-top: 20px;
         padding: 10px;
         outline: 0;
         border: none;
+        color: white;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 200;
     }
 
-
+        .cartFoooterButtons .cartFooterButtonClear {
+            background: linear-gradient(90deg, rgba(251,164,0,1) 30%, rgba(247,176,6,1) 54%, rgba(244,109,30,1) 99%);
+            margin-left: 25px;
+            text-decoration: none;
+        }
+/*  .cartFooter p {
+    }*/
 /*Settings*/
 .settings {
     background: white;
@@ -294,6 +328,7 @@ a {
 
         .settings .settingsItems a {
             padding: 10px;
+            text-decoration: none;
         }
 
             .settings .settingsItems a .title {
@@ -570,12 +605,7 @@ a {
 }
 
 .contentGeral {
-    /* position: absolute; */
-    /* top: 80%; */
-    /* margin-left: 9%; */
-    /* display: flex;
-    justify-content: space-around;*/
-    margin-top: 12%;
+    margin-top: 8%;
 }
 
 /*Slide*/
@@ -768,6 +798,11 @@ a {
             }
 
 /*Details*/
+.conteinerDetails {
+    display: flex;
+    flex-flow: column;
+}
+
 .contentDetails {
     display: flex;
     flex-flow: row;
@@ -808,12 +843,9 @@ a {
     flex-flow: row;
     background: none;
     justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
     border: 0.5px solid #c20101;
     border-radius: 6px;
-    margin-left: 30px;
-    margin-right: 30px;
+    transition: 0.5s ease-in-out;
 }
 
     .detailsFooter button {
@@ -826,19 +858,96 @@ a {
         border: none;
         color: black;
         cursor: pointer;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 100%;
+        height: 100%;
+        transition: 0.5s ease-in-out;
     }
 
-        .detailsFooter:hover, .detailsFooter button:hover {
-            background: #c20101;
-            color: white;
-        }
+    .detailsFooter:hover {
+        background: #c20101;
+        transition: 0.5s ease-in-out;
+    }
+
+    .detailsFooter button:hover {
+        color: white;
+        transition: 0.5s ease-in-out;
+    }
+/*Cupoms*/
+.cumpomContent {
+    display: flex;
+    justify-content: center;
+    flex-flow: row;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+.cumpomsContent h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cumpomContent .cupoms {
+    background: white;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://static.vecteezy.com/system/resources/previews/000/434/855/non_2x/mexican-food-illustration-vector.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+    .cumpomContent .cupoms p {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: white;
+    }
+
+    .cumpomContent .cupoms h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        text-align: center;
+        color: white;
+    }
+
+    .cumpomContent .cupoms button {
+        margin: 20px;
+        position: relative;
+        right: 40%;
+        left: 40%;
+    }
+
+.cumpomContent .theCupom {
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+}
+
+.theCupom:hover {
+    transform: rotateY(180deg);
+}
+
+.cupomsFront {
+    backface-visibility: hidden;
+}
+
+.cupomsBack {
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
 
 /*Footer*/
 footer {
     position: relative;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    bottom: 0px;
     width: 100%;
     border-top: 1px solid grey;
 }
@@ -936,5 +1045,9 @@ footer {
 
     .toggle {
         display: block;
+    }
+
+    .resposiveMenuTab hide {
+        transition: 0.5s ease-in-out;
     }
 }

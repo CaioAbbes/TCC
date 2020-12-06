@@ -156,21 +156,17 @@
         background: linear-gradient(90deg, rgba(255,66,66,1) 4%, rgba(193,0,0,1) 56%, rgba(145,0,0,1) 98%);
         border-radius: 3px;
         border: none;
-        color: white;
         padding: 10px;
         width: 100%;
-        font-weight: 600;
         text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-        text-transform: uppercase;
     }
 
-@keyframes amplied {
-    from {
-    }
-
-    to {
-    }
-}
+        .contentCard .searchProduct a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
 
 @media (max-width: 786px) {
     .card {

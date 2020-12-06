@@ -1,62 +1,122 @@
-﻿@using TCC.Models;
-@model IEnumerable<TCC.Models.Produto>
+﻿@*@using TCC.Models;
+    @model IEnumerable<TCC.Models.Produto>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagem)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeProd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorProd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagem)
+            </th>
+            <th></th>
+        </tr>
 
 
-    @if (Session["Carrinho"] != null)
-    {
-        List<Produto> lista = (List<Produto>)Session["Carrinho"];
-        foreach (Produto produto in lista)
+        @if (Session["Carrinho"] != null)
         {
+            List<Produto> lista = (List<Produto>)Session["Carrinho"];
+            foreach (Produto produto in lista)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => produto.NomeProd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => produto.ValorProd)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(produto.Imagem)" alt="Sem imagem" style="width:100px;height:100px;max-width:100%;height:auto" />
+                    </td>
+                    <td>
+                        <a href="@Url.Action("RemoveCarrinho", "Produto_Pedido", new { id = produto.IdProd })">Remover</a>
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("Create", "Produto_pedido", new { nomeProd = produto.NomeProd }, FormMethod.Post))
+                        {
+                            <button type="submit">Pagar</button>
+                        }
+                    </td>
+                </tr>
+            }
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.NomeProd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => produto.ValorProd)
-                </td>
-                <td>
-                    <img src="@Url.Content(produto.Imagem)" alt="Sem imagem" style="width:100px;height:100px;max-width:100%;height:auto" />
-                </td>
-                <td>
-                    <a href="@Url.Action("RemoveCarrinho", "Produto_Pedido", new { id = produto.IdProd })">Remover</a>
+                    Soma
+                    @{
+                        List<Produto> cart = (List<Produto>)Session["Carrinho"];
+                        var total = cart.Sum(item => item.ValorProd);
+                    }
+                    @total
                 </td>
             </tr>
+
+            <tr>
+                <td>
+                    <a href="@Url.Action("RemoveTodosCarrinho", "Produto_Pedido")">Remover todos</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <a href="@Url.Action("Create", "Produto_Pedido", new { IdProdPed = Produto })">Criar prod</a>
+                </td>
+            </tr>
+
         }
-        <tr>
-            <td>
-                Soma
-                @{
-                    List<Produto> cart = (List<Produto>)Session["Carrinho"];
-                    var total = cart.Sum(item => item.ValorProd);
+
+    </table>*@
+
+@using TCC.Models;
+@model IEnumerable<TCC.Models.Produto>
+
+
+@if (Session["Carrinho"] != null)
+{
+    <section class="cartTitle"></section>
+    List<Produto> lista = (List<Produto>)Session["Carrinho"];
+    foreach (Produto produto in lista)
+    {
+        <div class="contetCart">
+            <section class="itenCart">
+                <a href="@Url.Action("RemoveCarrinho", "Produto_Pedido", new { id = produto.IdProd })"> <i class="fas fa-times"></i></a>
+
+                <secton class="imgProd">
+                    <img src="@Url.Content(produto.Imagem)" alt="Sem imagem" />
+                </secton>
+                <secton class="infoProd">
+                    <p class="nameProd"> @Html.DisplayFor(modelItem => produto.NomeProd)</p>
+                    <p>@Html.DisplayFor(modelItem => produto.ValorProd)</p>
+                </secton>
+                @using (Html.BeginForm("Create", "Produto_pedido", new { nomeProd =  produto.NomeProd, qtd = produto.Qtd, decPedido = produto.DescProd}, FormMethod.Post))
+                {
+                    <button class="buttonCart" type="submit">Pagar</button>
                 }
-                @total
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <a href="@Url.Action("RemoveTodosCarrinho", "Produto_Pedido")">Remover todos</a>
-            </td>
-        </tr>
-
+            </section>
+        </div>
     }
 
-</table>
+    <section class="cartFooter">
+        <p>
+            Saldo:
+            @{
+                List<Produto> cart = (List<Produto>)Session["Carrinho"];
+                var total = cart.Sum(item => item.ValorProd);
+            }
+            @total
+        </p>
 
+        <section class="cartFoooterButtons">        
+            @*@using (Html.BeginForm("Create", "Produto_pedido", new { nomeProd =  }, FormMethod.Post))
+            {
+                <button class="buttonCart" type="submit">Pagar</button>
+            }*@
+            <a class=" buttonCart cartFooterButtonClear" href="@Url.Action("RemoveTodosCarrinho", "Produto_Pedido")">Remover todos</a>
+        </section>
+    </section>
+}

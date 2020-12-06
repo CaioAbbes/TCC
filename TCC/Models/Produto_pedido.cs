@@ -21,7 +21,8 @@ namespace TCC.Models
         //[Display(Name = "Id do produto")]
         // [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         // [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        public Produto Produto { get; set; }
+       // public List<Produto> Produto { get; set; }
+       public Produto Produto { get; set; }
 
         //[Display(Name = "Id da comanda")]
         //[RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
@@ -68,15 +69,27 @@ namespace TCC.Models
         public string DescPedido { get; set; }
 
 
-        public void InsertProdPed(Produto_pedido produtoPed,int IdCli)
+        public void InsertProdPed(string NomeProd,string DescPedido, int IdCli)
         {
-           string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", produtoPed.Mesa.IdMesa,IdCli, produtoPed.NomeProd, produtoPed.QtdProd, produtoPed.DescPedido);
+            string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", 0, IdCli, NomeProd, 1, DescPedido); //0, pois eh delivery, qtd sempre vai ser 1
 
             using (db = new ConexaoDB())
             {
                 db.ExecutaComando(strQuery);
             }
         }
+
+        //public void InsertProdPed(Produto_pedido produtoPed, int IdCli) 
+        //{ 
+        //    foreach (var prod in produtoPed.Produto)
+        //    { 
+        //        string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", produtoPed.Mesa.IdMesa, IdCli, prod.NomeProd, prod.QtdProd, prod.DescPedido); 
+        //        using (db = new ConexaoDB())
+        //        { 
+        //            db.ExecutaComando(strQuery); 
+        //        }
+        //    } 
+        //}
 
         //public void UpdateProdPed(Produto_pedido produtoPed)
         //{

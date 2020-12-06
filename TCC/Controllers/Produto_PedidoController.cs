@@ -51,7 +51,7 @@ namespace TCC.Controllers
         [Autenticacao]
         public ActionResult Create()
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 2)
+            if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 2 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
             {
                 return RedirectToAction("ErroAutenticação", "Usuario");
             }
@@ -60,14 +60,14 @@ namespace TCC.Controllers
 
         // POST: Produto_Pedido/Create
         [HttpPost]
-        public ActionResult Create(Produto_pedido produtoPed)
+        public ActionResult Create(string nomeProd, string decPedido)
         {
             if (ModelState.IsValid)
             {
                 Cliente cliente = new Cliente();
                 var objProdPed = new Produto_pedido();
                 int IdCli = int.Parse(Session["IdCli"].ToString());
-                objProdPed.InsertProdPed(produtoPed, IdCli);
+                objProdPed.InsertProdPed(nomeProd, decPedido, IdCli);
                 return RedirectToAction("List");
             }
             TempData["msg"] = "<script>alert('Erro ao criar o produto pedido');</script>";

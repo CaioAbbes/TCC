@@ -2,77 +2,113 @@
 
 @{
     ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Cliente.cshtml";
 }
 
-<h2>List</h2>
+<div class="cumpomsContent">
+    <h2>Cupoms</h2>
+    <section class="cumpomContent">
+        @foreach (var item in Model)
+        {
+            <section class="cupoms">
+                <h3>@Html.DisplayFor(modelItem => item.CodCupom)</h3>
+                <p>Data Inicio: @Html.DisplayFor(modelItem => item.DataInicio)</p>
+                <p>Data Fim: @Html.DisplayFor(modelItem => item.DataTerm)</p>
+                <p>Descrição: @Html.DisplayFor(modelItem => item.Descri)</p>
+                <p>Valor Minimo: @Html.DisplayNameFor(model => model.ValorMin)</p>
+                <p>@Html.DisplayFor(modelItem => item.TotalDispo)</p>
+                <p>@Html.DisplayFor(modelItem => item.NumUtiliza)</p>
+                <p>Desconto: @Html.DisplayFor(modelItem => item.Desconto)</p>
+                <button type="submit">Usar</button>
+            </section>
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CodCupom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Desconto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalDispo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataInicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataTerm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descri)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorMin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumUtiliza)
-        </th>
-        <th></th>
-    </tr>
+    </section>
+</div>
+@*<section class="theCupom">
+        <section class="cupomsFront">
+            <h3>@Html.DisplayFor(modelItem => item.CodCupom)</h3>
+        </section>
+        <section class="cupomsBack">
+            <p>Data Inicio: @Html.DisplayFor(modelItem => item.DataInicio)</p>
+            <p>Data Fim: @Html.DisplayFor(modelItem => item.DataTerm)</p>
+            <p>Descrição: @Html.DisplayFor(modelItem => item.Descri)</p>
+            <p>Valor Minimo: @Html.DisplayNameFor(model => model.ValorMin)</p>
+            <p>@Html.DisplayFor(modelItem => item.TotalDispo)</p>
+            <p>@Html.DisplayFor(modelItem => item.NumUtiliza)</p>
+            <p>Desconto: @Html.DisplayFor(modelItem => item.Desconto)</p>
+            <button type="submit">Usar</button>
+        </section>
+    </section>*@
+@*<h2>List</h2>
 
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.CodCupom)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Desconto)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TotalDispo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DataInicio)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DataTerm)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Descri)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ValorMin)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NumUtiliza)
-    </td>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodCupom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desconto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalDispo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataTerm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumUtiliza)
+            </th>
+            <th></th>
+        </tr>
 
-    @Html.Raw(TempData["msg"])
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { CodCupom = item.CodCupom }) |
-        @Html.ActionLink("Details", "Details", new { CodCupom = item.CodCupom }) |
-        @Html.ActionLink("Delete", "Delete", new { CodCupom = item.CodCupom })
-    </td>
-</tr>
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodCupom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desconto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalDispo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataTerm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorMin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumUtiliza)
+                </td>
 
-</table>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { CodCupom = item.CodCupom }) |
+                    @Html.ActionLink("Details", "Details", new { CodCupom = item.CodCupom }) |
+                    @Html.ActionLink("Delete", "Delete", new { CodCupom = item.CodCupom })
+                </td>
+            </tr>
+        }
+
+    </table>*@

@@ -48,7 +48,9 @@ namespace TCC.Models
         [StringLength(50, ErrorMessage = "A quantidade de caracteres da Categoria do produto é invalido.")]
         public string CategoriaProd { get; set; }
 
-        //public int Qtd { get; set; }
+        public int Qtd { get; set; }
+
+
 
         public string Imagem { get; set; }
 
