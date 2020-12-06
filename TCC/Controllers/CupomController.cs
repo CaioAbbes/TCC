@@ -38,10 +38,10 @@ namespace TCC.Controllers
         {
             try
             {
-                if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
-                {
-                    return RedirectToAction("ErroAutenticação", "Usuario");
-                }
+                //if (int.Parse(Session["NivelAcesso"].ToString()) != 5)
+                //{
+                //    return RedirectToAction("ErroAutenticação", "Usuario");
+                //}
                 var cupomList = cupom.SelecionaCupom();
                 return View(cupomList);
             }

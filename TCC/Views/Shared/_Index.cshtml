@@ -14,18 +14,21 @@
     <title>Tacos & Natchos | Site Oficial</title>
 </head>
 <body>
+
+
     <header>
-        <div class="menu">
+        <div class="menu responsiveMenu">
             <section class="logoWriter">
                 <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer">
             </section>
 
             <nav class="menuItens">
-                <li><a href="/Produto/List">Cardápio</a></li>
-                <li><a href="/Reserva/Create">Reserva</a></li>
-                <li><a href="login.html">Delivery</a></li>
-                <li class="iconBar"><a href="@Url.Action("Login","Usuario")"><i class="fas fa-user"></i></a></li>
-                <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
+                <li><a class="resposiveMenuTab" href="@Url.Action("List","Produto")">Cardápio</a></li>
+                <li><a class="resposiveMenuTab" href="@Url.Action("Create","Reserva")">Reserva</a></li>
+                <li><a class="resposiveMenuTab" href="@Url.Action("List","Produto")">Delivery</a></li>
+                <li class="iconBar "><a href="@Url.Action("Login","Usuario")"><i class="fas fa-user"></i></a></li>
+                <li class="iconBar "><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
+                @*<li class="toggle" onclick="toggleMenu()"></li>*@
             </nav>
         </div>
     </header>
@@ -68,6 +71,34 @@
             </div>
         </div>
     </main>
+
+    <div class="navigation background hide">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-map"></i></span>
+                    <span class="title">Cardápio</span>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                    <span class="title">Reserva</span>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-truck"></i></span>
+                    <span class="title">Delivery</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
 
     <div class="indexContent">
         <section class="indexContentLineRow">
@@ -196,6 +227,7 @@
             let toggle = document.querySelector(".toggle");
             navigation.classList.toggle("active");
             toggle.classList.toggle("active");
+            navigation.classList.toggle("hide");
         }
 
         function showSearch() {

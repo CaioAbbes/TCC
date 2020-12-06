@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
     <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
-    <link rel="Shortcut Icon" href="~/chapeuu.ico" type="image / x-icon" />
+    <link rel="Shortcut Icon" href="~/favicon.ico" type="image / x-icon" />
     <title>Tacos & Natchos | Site Oficial</title>
 </head>
 <body>
@@ -27,13 +27,13 @@
     <main>
         <div class="settings hide">
             <h3>Configurações</h3>
-            <section class="settingsItems">
+            @*<section class="settingsItems">
                 <a href="@Url.Action("Edit", "Funcionario", new {IdFunc = Session["IdFunc"].ToString()})">
-                    @*@Html.ActionLink("Edit", "Funcionario", new { IdFunc = Session["IdFunc"].ToString() });*@
+                    @Html.ActionLink("Edit", "Funcionario", new { IdFunc = Session["IdFunc"].ToString() });
                     <span class="icon"><i class="fas fa-user-alt"></i></span>
                     <span class="title">Meus dados</span>
                 </a>
-            </section>
+            </section>*@
             <section class="settingsItems">
                 <a href="#">
                     <span class="icon"><i class="fas fa-sign-out-alt"></i></span>

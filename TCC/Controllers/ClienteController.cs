@@ -65,14 +65,8 @@ namespace TCC.Controllers
         }
 
         // GET: Cliente/Create
-        [Autenticacao]
         public ActionResult Create()
         {
-            if (int.Parse(Session["NivelAcesso"].ToString()) != 1 && int.Parse(Session["NivelAcesso"].ToString()) != 5)
-            {
-                return RedirectToAction("ErroAutenticação", "Usuario");
-            }
-
             return View();
         }
 
@@ -106,7 +100,7 @@ namespace TCC.Controllers
                 filename = Path.Combine(Server.MapPath("~/Imagens/"), filename);
                 cliente.ImageUpload.SaveAs(filename);
                 objCli.InsertCliente(cliente);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Usuario");
 
             }
             TempData["msg"] = "<script>alert('Erro ao criar o cliente');</script>";
