@@ -74,6 +74,26 @@ namespace TCC.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult FazCompra()
+        {
+            var ListaProds = (List<Produto>)Session["Carrinho"];
+            foreach(var item in ListaProds)
+            {
+                Produto produto = new Produto();
+                produto.NomeProd = item.NomeProd;
+                produto.Qtd = item.Qtd;
+                produto.DescProd = item.DescProd;
+                var objProdPed = new Produto_pedido();
+                int IdCli = int.Parse(Session["IdCli"].ToString());
+                objProdPed.InsertProdPedCart(produto,IdCli);
+            }
+
+            return RedirectToAction("List");
+        }
+
+
+
         public ActionResult UltimosPedidosCli(Cliente cliente)
         {
             var pedCli = cliente.UltimosPedidos(cliente);

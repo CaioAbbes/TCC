@@ -93,10 +93,10 @@
                     <p class="nameProd"> @Html.DisplayFor(modelItem => produto.NomeProd)</p>
                     <p>@Html.DisplayFor(modelItem => produto.ValorProd)</p>
                 </secton>
-                @using (Html.BeginForm("Create", "Produto_pedido", new { nomeProd =  produto.NomeProd, qtd = produto.Qtd, decPedido = produto.DescProd}, FormMethod.Post))
+                @*@using (Html.BeginForm("Create", "Produto_pedido", new { nomeProd = produto.NomeProd, qtd = produto.Qtd, decPedido = produto.DescProd }, FormMethod.Post))
                 {
                     <button class="buttonCart" type="submit">Pagar</button>
-                }
+                }*@
             </section>
         </div>
     }
@@ -108,14 +108,26 @@
                 List<Produto> cart = (List<Produto>)Session["Carrinho"];
                 var total = cart.Sum(item => item.ValorProd);
             }
-            @total
+            R$: @total
         </p>
 
-        <section class="cartFoooterButtons">        
+        <section class="cartFoooterButtons">
             @*@using (Html.BeginForm("Create", "Produto_pedido", new { nomeProd =  }, FormMethod.Post))
+        {
+            <button class="buttonCart" type="submit">Pagar</button>
+        }*@
+            @using (Html.BeginForm("FazCompra", "Produto_pedido", FormMethod.Post))
+            {
+            <button class="buttonCart" type="submit">Pagar</button>
+            }
+
+            @*@{
+            Produto prod = (Produto)Session["Carrinho"];
+            using (Html.BeginForm("FazCompra", "Produto_pedido", new { nomeProd = prod.NomeProd, qtd = prod.Qtd, decPedido = prod.DescProd}, FormMethod.Post))
             {
                 <button class="buttonCart" type="submit">Pagar</button>
-            }*@
+            }
+        }*@
             <a class=" buttonCart cartFooterButtonClear" href="@Url.Action("RemoveTodosCarrinho", "Produto_Pedido")">Remover todos</a>
         </section>
     </section>

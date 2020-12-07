@@ -79,6 +79,16 @@ namespace TCC.Models
             }
         }
 
+        public void InsertProdPedCart(Produto produto, int IdCli)
+        {
+            string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", 0, IdCli, produto.NomeProd, 1, produto.DescProd); //0, pois eh delivery, qtd sempre vai ser 1
+
+            using (db = new ConexaoDB())
+            {
+                db.ExecutaComando(strQuery);
+            }
+        }
+
         //public void InsertProdPed(Produto_pedido produtoPed, int IdCli) 
         //{ 
         //    foreach (var prod in produtoPed.Produto)
