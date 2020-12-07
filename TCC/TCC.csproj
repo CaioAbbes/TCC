@@ -665,6 +665,7 @@
     <Content Include="Views\Shared\_Cliente.cshtml" />
     <Content Include="Views\Shared\_AdicionaCarrinho.cshtml" />
     <Content Include="Views\Shared\_Cadastrar.cshtml" />
+    <Content Include="Views\Reserva\MostraReservaCli.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

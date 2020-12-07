@@ -79,7 +79,7 @@ namespace TCC.Controllers
                 var objPagamento = new Pagamento();
                 int IdCli = int.Parse(Session["IdCli"].ToString());
                 objPagamento.InsertPagamento( IdCli, FormPag, CodCupom, QtdPontos, CPF);
-                return RedirectToAction("List");
+                return RedirectToAction("UltimosPedidosCli","Produto_Pedido", new { IdCli = Session["IdCli"].ToString()});
             }
             TempData["msg"] = "<script>alert('Erro ao criar o pagamento');</script>";
             return View();

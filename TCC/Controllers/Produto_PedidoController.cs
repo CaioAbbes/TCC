@@ -89,8 +89,16 @@ namespace TCC.Controllers
                 objProdPed.InsertProdPedCart(produto,IdCli);
             }
 
-            return RedirectToAction("List");
+            return RedirectToAction("Create","Pagamento");
         }
+
+        //[Autenticacao]
+        //public ActionResult SelecionaDadosCliProdPed(Produto_pedido ProdPed)
+        //{
+        //    int IdCli = int.Parse(Session["IdCli"].ToString());
+        //    var prodPedList = ProdPed.SelecionaDadosCliProdPed(IdCli);
+        //    return View(prodPedList);
+        //}
 
 
         [Autenticacao]

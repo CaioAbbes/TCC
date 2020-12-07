@@ -78,11 +78,20 @@ namespace TCC.Controllers
                 var objReserva = new Reserva();
                 int IdCli = int.Parse(Session["IdCli"].ToString());
                 objReserva.InsertReserva(reserva, IdCli);
-                return RedirectToAction("List");
+                return RedirectToAction("MostraReservaCli");
             }
             TempData["msg"] = "<script>alert('Erro ao criar uma reservas');</script>";
             return View();
         }
-       
+
+        [Autenticacao]
+        public ActionResult MostraReservaCli(Reserva reserva)
+        {
+            int IdCli = int.Parse(Session["IdCli"].ToString());
+            var reservaList = reserva.MostraReservaCli(IdCli);
+            return View(reservaList);
+        }
+
+
     }
 }

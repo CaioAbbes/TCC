@@ -1,0 +1,68 @@
+﻿@model TCC.Models.Reserva
+
+@{
+    ViewBag.Title = "MostraReservaCli";
+    Layout = "~/Views/Shared/_Cliente.cshtml";
+}
+
+<h2>MostraReservaCli</h2>
+
+<div>
+    <h4>Reserva</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoLugar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoLugar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumLugar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumLugar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataHoraReserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataHoraReserva)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

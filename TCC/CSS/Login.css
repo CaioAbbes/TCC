@@ -54,16 +54,16 @@ main {
     flex-flow: column;
 }
 
-.button input {
-    font-size: 20px;
-    text-decoration: none;
-    color: black;
-    display: block;
-    padding: 10px;
-    outline: none;
-    border: none;
-    background: none;
-}
+    .button input {
+        font-size: 20px;
+        text-decoration: none;
+        color: black;
+        display: block;
+        padding: 10px;
+        outline: none;
+        border: none;
+        background: none;
+    }
 
     .button:hover {
         background-color: #ffa500;
@@ -80,6 +80,21 @@ main {
 .button {
     animation: move 500ms;
     animation-delay: 450ms;
+    animation-fill-mode: backwards;
+}
+
+.irCadastro a {
+    display: flex;
+    justify-content: center;
+}
+
+.irCadastro a {
+    text-align: center;
+    text-decoration: none;
+    padding-top: 10px;
+    color: #A20000;
+    animation: move 500ms;
+    animation-delay: 300ms;
     animation-fill-mode: backwards;
 }
 

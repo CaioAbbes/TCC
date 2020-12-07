@@ -28,6 +28,13 @@ namespace TCC.Models
 
         public Cliente Cliente { get; set; }
 
+        public string NomeCompleto { get; set; }
+        public string CPF { get; set; }
+        public string Celular { get; set; }
+        public string TipoLugar { get; set; }
+        public int NumLugar { get; set; }
+
+
         [Required(ErrorMessage = "O campo Data e hora da reserva é requerido.")]
         [Display(Name = "Data e hora da reserva")]
         [DataType(DataType.DateTime)]
@@ -46,6 +53,30 @@ namespace TCC.Models
             using (db = new ConexaoDB())
             {
                 db.ExecutaComando(strQuery);
+            }
+        }
+
+        public Reserva MostraReservaCli(int idCli)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("SELECT* FROM  vw_MostraReservaCli where IDDOCLIENTE = '{0}';", idCli);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                Reserva reservaListando = null;
+                while (registros.Read())
+                {
+                    reservaListando = new Reserva
+                    {
+                        NomeCompleto = registros["NOME COMPLETO"].ToString(),
+                        CPF = registros["CPF"].ToString(),
+                        DataHoraReserva = DateTime.Parse(registros["DATA E HORA DA RESERVA"].ToString()),
+                        Celular = registros["CELULAR"].ToString(),
+                        TipoLugar = registros["TIPO DE LUGAR"].ToString(),
+                        NumLugar = int.Parse(registros["NÚMERO DE LUGARES"].ToString())
+                    };
+                }
+
+                return reservaListando;
             }
         }
 

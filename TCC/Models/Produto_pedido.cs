@@ -31,7 +31,16 @@ namespace TCC.Models
 
         public virtual Mesa Mesa { get; set; }
 
-        public virtual Cliente Cliente { get; set; }
+        //public virtual Cliente Cliente { get; set; }
+
+        //public string NomeCompleto { get; set; }
+        //public string CPF { get; set; }
+        //public string CEP { get; set; }
+        //public string Logra { get; set; }
+        //public string Bairro { get; set; }
+        //public string Cidade { get; set; }
+        //public string Comp { get; set; }
+        //public int NumEdif { get; set; }
 
 
         [Required(ErrorMessage = "O campo Nome do produto é requerido.")]
@@ -108,6 +117,39 @@ namespace TCC.Models
         //    using (db = new ConexaoDB())
         //    {
         //        db.ExecutaComando(strQuery);
+        //    }
+        //}
+
+        //public List<Produto_pedido> SelecionaDadosCliProdPed(int idCli)
+        //{
+        //    using (db = new ConexaoDB())
+        //    {
+        //        string StrQuery = string.Format("SELECT * FROM vw_MostraDProdPed where IDDOCLIENTE = '{0}';",idCli);
+        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+        //        var prodPedList = new List<Produto_pedido>();
+        //        while (registros.Read())
+        //        {
+        //            var ProdPedTemporario = new Produto_pedido
+        //            {
+        //                NomeCompleto = registros["NOME COMPLETO"].ToString(),
+        //                CPF = registros["CPF"].ToString(),
+        //                NomeProd = registros["NOME DO PRODUTO"].ToString(),
+        //                QtdProd = int.Parse(registros["QUANTIDADE"].ToString()),
+        //                ValorUnitProd = float.Parse(registros["VALOR UNITÁRIO"].ToString()),
+        //                DescPedido = registros["DESCRIÇÃO"].ToString(),
+        //                StagioProd = registros["STATUS DO PRODUTO"].ToString(),
+        //                DataHProdPed = DateTime.Parse(registros["DATA E HORA DO PEDIDO"].ToString()),
+        //                CEP = registros["CEP DO CLIENTE"].ToString(),
+        //                Logra = registros["LOGRADOURO"].ToString(),
+        //                Bairro = registros["BAIRRO"].ToString(),
+        //                Cidade = registros["CIDADE"].ToString(),
+        //                Comp = registros["COMPLEMENTO"].ToString(),
+        //                NumEdif = int.Parse(registros["NUMERO DO EDIFÍCIO"].ToString())
+        //            };
+
+        //            prodPedList.Add(ProdPedTemporario);
+        //        }
+        //        return prodPedList;
         //    }
         //}
 
