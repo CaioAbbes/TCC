@@ -6,20 +6,22 @@
 }
 
 <div class="cumpomsContent">
-    <h2>Cupoms</h2>
+    <h2>Meus Cupoms</h2>
     <section class="cumpomContent">
         @foreach (var item in Model)
         {
             <section class="cupoms">
                 <h3>@Html.DisplayFor(modelItem => item.CodCupom)</h3>
-                <p>Data Inicio: @Html.DisplayFor(modelItem => item.DataInicio)</p>
-                <p>Data Fim: @Html.DisplayFor(modelItem => item.DataTerm)</p>
+                <p class="valIni">Data Inicio: @Html.DisplayFor(modelItem => item.DataInicio)</p>
+                <p class="valFim">Data Fim: @Html.DisplayFor(modelItem => item.DataTerm)</p>
                 <p>Descrição: @Html.DisplayFor(modelItem => item.Descri)</p>
-                <p>Valor Minimo: @Html.DisplayNameFor(model => model.ValorMin)</p>
-                <p>@Html.DisplayFor(modelItem => item.TotalDispo)</p>
-                <p>@Html.DisplayFor(modelItem => item.NumUtiliza)</p>
-                <p>Desconto: @Html.DisplayFor(modelItem => item.Desconto)</p>
-                <button type="submit">Usar</button>
+                <p> @Html.DisplayNameFor(model => model.ValorMin)</p>
+                <p>Disponivel: @Html.DisplayFor(modelItem => item.TotalDispo)</p>
+                <p>Utilizavel: @Html.DisplayFor(modelItem => item.NumUtiliza)</p>
+                <p class="desconto">@Html.DisplayFor(modelItem => item.Desconto)</p>
+                <section class="cumpomButton">
+                    <button type="submit">Usar</button>
+                </section>
             </section>
         }
 

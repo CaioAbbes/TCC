@@ -93,7 +93,7 @@ namespace TCC.Controllers
         }
 
 
-
+        [Autenticacao]
         public ActionResult UltimosPedidosCli(Cliente cliente)
         {
             var pedCli = cliente.UltimosPedidos(cliente);

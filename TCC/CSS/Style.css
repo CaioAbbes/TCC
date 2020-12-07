@@ -324,8 +324,6 @@ body {
         border-top: 2px solid grey;
     }
 
-
-
         .settings .settingsItems a {
             padding: 10px;
             text-decoration: none;
@@ -443,10 +441,12 @@ body {
 .indexContentLineRow .Us p {
     text-align: justify;
     font-family: 'Work Sans', sans-serif;
-    font: 20px;
+    font-size: 20px;
     font-weight: 500;
     padding-bottom: 20px;
     min-width: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /*Sidebar*/
@@ -757,13 +757,42 @@ body {
     }
 
 /*lastOrders*/
-.lastOrders {
+/*.lastOrders {
     display: flex;
+    justify-content: space-around;*/
+/* flex-flow: column;*/
+/*margin: 30px;
+}
+.lastOrdeClouns {
+    display: flex;
+    flex-flow: row;
     justify-content: space-around;
-    flex-flow: column;
+    padding: 20px;
 }
 
-    .lastOrders h1 {
+    .lastOrdeClouns p {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        padding-top: 20px;
+        font-weight: 500;
+    }*/
+
+/*  .lastOrdeClouns .lastOrdeClounsName, .lastOrdeClouns .lastOrdeClounsData, .lastOrdeClouns  .lastOrdeClounsPreco {
+        display: flex;
+        flex-flow: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px;
+    }
+
+        .lastOrdeClouns .lastOrdeClounsName p, .lastOrdeClouns .lastOrdeClounsData p, .lastOrdeClouns .lastOrdeClounsPreco p {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 300;
+        }*/
+/*.lastOrders h1 {
         text-align: center;
         font-family: 'Poppins', sans-serif;
         padding-top: 20px;
@@ -774,30 +803,92 @@ body {
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-flow: row;
-        flex-wrap: wrap;
+        flex-wrap: wrap; 
         justify-content: space-between;
         align-items: center;
-        padding: 20px;
+        padding: 40px;
         border-radius: 10px;
         margin: 30px;
-    }
+    }*/
+/* .lastOrders .lastOrderItensRow:hover {
+        background: linear-gradient(90deg, rgba(255,66,66,1) 4%, rgba(193,0,0,1) 56%, rgba(145,0,0,1) 98%);
+        transition: 0.5s;
+    }*/
 
-        .lastOrders .lastOrderItensRow:hover {
-            background: linear-gradient(90deg, rgba(255,66,66,1) 4%, rgba(193,0,0,1) 56%, rgba(145,0,0,1) 98%);
-            transition: 0.5s;
-        }
-
-        .lastOrders .lastOrderItensRow .lastOrderItensColun {
+/*.lastOrders .lastOrderItensRow .lastOrderItensColun {
             margin: 0 10px;
         }
 
-            .lastOrders .lastOrderItensRow .lastOrderItensColun p {
-                align-items: center;
-                margin: 0 10px;
-                font-family: 'Work Sans', sans-serif;
-                font-size: 20px;
-                font-weight: 300;
-            }
+        .lastOrders .lastOrderItensRow .preco {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 30px;
+            font-weight: 900;
+            color: #545454;
+            text-align: justify;
+        }
+
+    .lastOrders .lastOrderItensRow .name , .lastOrders .lastOrderItensRow .datahora  {
+        align-items: center;
+        margin: 0 10px;
+        text-align: justify;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+        .lastOrders .lastOrderItensRow .name p, .lastOrders .lastOrderItensRow .datahora p{
+            padding: 5px;
+        }*/
+
+
+/*-------------------------------------------New LastOrder*/
+
+.ultimoContent h1 {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 20px;
+}
+
+.ultimosContent {
+    display: flex;
+    justify-content: center;
+    flex-flow: row;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 20px;
+}
+
+    .ultimosContent .ultimosContentItems {
+        padding: 30px;
+        background: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin: 10px;
+        max-width: 250px;
+    }
+
+        .ultimosContent .ultimosContentItems p {
+            align-items: center;
+            margin: 0 10px;
+            text-align: left;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            padding-bottom: 10px;
+        }
+
+        .ultimosContent .ultimosContentItems .name {
+            color: #A20000;
+            font-weight: 900;
+        }
+
+        .ultimosContent .ultimosContentItems .preco {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 30px;
+            font-weight: 900;
+            color: #545454;
+            text-align: justify;
+        }
 
 /*Details*/
 .conteinerDetails {
@@ -894,58 +985,106 @@ body {
     text-align: center;
 }
 
-.cumpomContent .cupoms {
+.cupoms {
     background: white;
     padding: 30px;
     margin: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://static.vecteezy.com/system/resources/previews/000/434/855/non_2x/mexican-food-illustration-vector.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.pinimg.com/originals/9d/f2/bc/9df2bc1f067c3532a4f55ec4558b5344.png);
     background-position: center;
     background-size: cover;
+    transition: all 5s ease-in-out;
 }
 
-    .cumpomContent .cupoms p {
-        font-family: 'Work Sans', sans-serif;
-        font-size: 16px;
-        font-weight: 300;
-        color: white;
-    }
+.cumpomContent .cupoms p {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+}
 
-    .cumpomContent .cupoms h3 {
+.cumpomContent .cupoms .desconto {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
+
+.cumpomContent .cupoms .valFim {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+}
+
+.cumpomContent .cupoms h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    padding-bottom: 10px;
+    text-align: center;
+    color: white;
+}
+
+.cumpomButton {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+    .cumpomButton button {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        outline: none;
+        border: 2px solid yellow;
+        background: none;
         font-family: 'Poppins', sans-serif;
         font-size: 20px;
-        font-weight: 600;
+        font-weight: 500;
         padding-bottom: 10px;
         text-align: center;
         color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.5s ease-in-out;
     }
 
-    .cumpomContent .cupoms button {
-        margin: 20px;
-        position: relative;
-        right: 40%;
-        left: 40%;
-    }
+        .cumpomButton button:hover {
+            background: white;
+            color: black;
+            font-weight: 500;
+            border: none;
+            transition: all 0.5s ease-in-out;
+        }
 
-.cumpomContent .theCupom {
-    transform-style: preserve-3d;
-    transition: all 0.5s ease;
+.cupoms:hover {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.pinimg.com/originals/6b/df/02/6bdf021e1374daac6a78aad9040de3cc.jpg);
+    transition: all 5s ease-in-out;
 }
 
-.theCupom:hover {
-    transform: rotateY(180deg);
+
+/*Cadstro*/
+.cadastroContent {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://wallpaperaccess.com/full/1412206.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
 }
 
-.cupomsFront {
-    backface-visibility: hidden;
+.cadastroContentForm {
+    margin: 5%;
+    justify-content: center;
+    width: 500px;
+    height: auto;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
 }
-
-.cupomsBack {
-    backface-visibility: hidden;
-    transform: rotateY(180deg);
-}
-
 /*Footer*/
 footer {
     position: relative;

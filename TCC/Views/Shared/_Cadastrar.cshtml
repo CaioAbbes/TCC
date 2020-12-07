@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
+    <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
+    <link rel="Shortcut Icon" href="~/chapeuu.ico" type="image / x-icon" />
+    <title>Tacos & Natchos | Site Oficial</title>
+</head>
+<body>
+    <div class="cadastroContent">
+        @RenderBody()
+    </div>
+    @*@Scripts.Render("~/bundles/inputmask")*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

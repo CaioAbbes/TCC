@@ -4,34 +4,22 @@
     Layout = "/Views/Shared/_Cliente.cshtml";
 }
 
-<div class="lastOrders">
+<div class="ultimoContent">
     <h1>ULTIMOS PEDIDOS</h1>
-    @foreach (var item in Model)
-    {
-        <section class="lastOrderItensRow">
-            <section class="lastOrderItensColun name">
-                <p> @Html.DisplayFor(modelItem => item.NomeProd) </p>
-                <p> Quantidade: @Html.DisplayFor(modelItem => item.QtdProd)  </p>
-            </section>
-            <section class="lastOrderItensColun datahora">
+    <section class="ultimosContent">
+        @foreach (var item in Model)
+        {
+
+            <section class="ultimosContentItems">
+                <p class="name"> @Html.DisplayFor(modelItem => item.NomeProd) </p>
+                <p> Quantidade: @Html.DisplayFor(modelitem => item.QtdProd)  </p>
                 <p>  @Html.DisplayFor(modelItem => item.DataHProdPed) </p>
                 <p> @Html.DisplayFor(modelItem => item.DescPedido) </p>
                 <p> @Html.DisplayFor(modelItem => item.StagioProd)</p>
+                <p class="preco"> @Html.DisplayFor(modelItem => item.ValorUnitProd) </p>
             </section>
-            <section class="lastOrderItensColun preco">
-                <p> @Html.DisplayFor(modelItem => item.ValorUnitProd) </p>
-            </section>
-        </section>
 
 
-
-    }
+        }
+    </section>
 </div>
-@section scripts{
-    <script>
-                                            //window.onload = initPage;
-                                            //function initPage() {
-                                            //    let
-                                            //}
-    </script>
-}
