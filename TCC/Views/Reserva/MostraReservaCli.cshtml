@@ -1,68 +1,20 @@
 ﻿@model TCC.Models.Reserva
 
 @{
-    ViewBag.Title = "MostraReservaCli";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Cliente.cshtml";
 }
 
-<h2>MostraReservaCli</h2>
-
-<div>
-    <h4>Reserva</h4>
-    <hr />
-    <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeCompleto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NomeCompleto)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CPF)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CPF)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Celular)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Celular)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TipoLugar)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TipoLugar)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumLugar)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumLugar)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataHoraReserva)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataHoraReserva)
-        </dd>
-
-    </dl>
+<div class="detalhesReservaContent">
+    <section class="detalheMinhaReservaContent">
+        <h1>Sua Reserva</h1>
+        <p> Numero da Mesa: @Html.DisplayFor(model => model.IdMesa)</p>
+        <p> Numero da Reserva:  @Html.DisplayFor(model => model.IdReserva)</p>
+        <p> Nome: @Html.DisplayFor(model => model.NomeCompleto) </p>
+        <p> CPF: @Html.DisplayFor(model => model.CPF) </p>
+        <p> Celular: @Html.DisplayFor(model => model.Celular) </p>
+        <p> Tipo lugar: @Html.DisplayFor(model => model.TipoLugar) </p>
+        <p> Numero Lugares: @Html.DisplayFor(model => model.NumLugar) </p>
+        <p> Data e Hora Reserva: @Html.DisplayFor(model => model.DataHoraReserva) </p>
+    </section>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

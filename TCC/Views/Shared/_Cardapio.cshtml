@@ -20,10 +20,8 @@
             </section>
 
             <nav class="menuItens">
-                <li><a href="/Produto/List">Cardápio</a></li>
-                <li><a href="/Reserva/Create">Reserva</a></li>
-                <li><a href="login.html">Delivery</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="@Url.Action("List","Produto")">Cardápio</a></li>
+                <li><a href="@Url.Action("Create","Reserva")">Reserva</a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-user" onclick="showOnOffSettings()"></i></a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
             </nav>

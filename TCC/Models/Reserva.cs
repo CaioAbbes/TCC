@@ -33,7 +33,8 @@ namespace TCC.Models
         public string Celular { get; set; }
         public string TipoLugar { get; set; }
         public int NumLugar { get; set; }
-
+        [Display(Name = "Número da mesa")]
+        public int IdMesa { get; set; }
 
         [Required(ErrorMessage = "O campo Data e hora da reserva é requerido.")]
         [Display(Name = "Data e hora da reserva")]
@@ -72,7 +73,9 @@ namespace TCC.Models
                         DataHoraReserva = DateTime.Parse(registros["DATA E HORA DA RESERVA"].ToString()),
                         Celular = registros["CELULAR"].ToString(),
                         TipoLugar = registros["TIPO DE LUGAR"].ToString(),
-                        NumLugar = int.Parse(registros["NÚMERO DE LUGARES"].ToString())
+                        NumLugar = int.Parse(registros["NÚMERO DE LUGARES"].ToString()),
+                        IdMesa = int.Parse(registros["ID DA MESA"].ToString()),
+                        IdReserva = int.Parse(registros["ID DA RESERVA"].ToString())
                     };
                 }
 
