@@ -839,11 +839,12 @@ body {
     display: flex;
     flex-flow: row;
     justify-content: center;
+    text-decoration: none;
 }
 
     .meusCartoesButtons .Deletar {
         outline: none;
-        border: 2px solid;
+        border: 2px solid black;
         padding: 10px 20px;
         background: none;
         border-radius: 5px;
@@ -852,15 +853,38 @@ body {
         font-weight: 500;
         transition: all 0.5s;
         text-decoration: none;
+        color: black;
     }
 
         .meusCartoesButtons .Deletar:hover {
             background: linear-gradient(90deg, rgba(255,66,66,1) 4%, rgba(193,0,0,1) 56%, rgba(145,0,0,1) 98%);
             border: none;
             color: white;
-            transition: all 0.5s ease-out;
             text-decoration: none;
         }
+
+    .meusCartoesButtons .Cadastrar {
+        outline: none;
+        border: 2px solid black;
+        padding: 10px 20px;
+        background: none;
+        border-radius: 5px;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        transition: all 0.5s;
+        text-decoration: none;
+        color: black;
+        margin-bottom: 10px;
+    }
+
+        .meusCartoesButtons .Cadastrar:hover {
+            background: #008000;
+            border: none;
+            color: white;
+            text-decoration: none;
+        }
+
 /*Details*/
 .conteinerDetails {
     display: flex;
@@ -881,26 +905,32 @@ body {
         margin: 10px;
     }
 
-        .contentDetails .infoDetailsProd .infoDetailsProdP {
-            max-width: 450px;
-            text-align: justify;
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
+    .contentDetails .imgDetailsProd {
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 
-        .contentDetails .infoDetailsProd p {
-            font-family: 'Work Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            padding-bottom: 20px;
-        }
+    .contentDetails .infoDetailsProd .infoDetailsProdP {
+        max-width: 450px;
+        text-align: justify;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 
-        .contentDetails .infoDetailsProd h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 30px;
-            padding-bottom: 10px;
-            text-align: center;
-        }
+    .contentDetails .infoDetailsProd p {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        padding-bottom: 20px;
+    }
+
+    .contentDetails .infoDetailsProd h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 30px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
 
 .detailsFooter {
     display: flex;

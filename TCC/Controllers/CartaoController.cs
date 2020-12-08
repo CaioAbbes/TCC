@@ -100,7 +100,7 @@ namespace TCC.Controllers
                 var objCartao = new Cartao();
                 int IdCli = int.Parse(Session["IdCli"].ToString());
                 objCartao.DeleteCartao(cartao,IdCli);
-                return RedirectToAction("List","Produto");
+                return RedirectToAction("SelecionaComNumCartaoCli", new { idCli = IdCli });
             }
             catch
             {

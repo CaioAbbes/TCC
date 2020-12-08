@@ -16,12 +16,15 @@
                 <p> CVC: @Html.DisplayFor(modelItem => item.Cvc) </p>
                 <p> Valiado: @Html.DisplayFor(modelItem => item.Datavalid)</p>
                 <section class="meusCartoesButtons">
-                    <a href="@Url.Action("Delete","Cartao", new {Numcartao = item.Numcartao})" class="Deletar"> Deletar</a>
+                    @*<a href="@Url.Action("Delete","Cartao", new {Numcartao = item.Numcartao})" class="Deletar"> Deletar</a>*@
+                    @using (Html.BeginForm("Delete", "Cartao", new { Numcartao = item.Numcartao })){
+                        <button class="Deletar"> Deletar</button>
+                    }
                 </section>
             </section>
         }
     </section>
     <section class="meusCartoesButtons">
-        <a href="" class="Cadastrar"> Cadastrar Cartão</a>
+        <a href="@Url.Action("Create", "Cartao", new { idCli = int.Parse(Session["IdCli"].ToString()) })" class="Cadastrar"> Cadastrar Cartão</a>
     </section>
 </div>
