@@ -112,21 +112,21 @@
                 @*<i class="fas fa-truck"></i>*@
                 <p>Sabe quando bate aquela preguiça ou então aquela famosa frase: sem tempo irmão? Não se preocupe, acá você poderá pedir a sua comida e receber onde estiver. ¡su casa és mi casa!</p>
                 <section class="indexContentLineColunsButton">
-                    <a>Acesse</a>
+                    <a href="@Url.Action("List","Produto")">Acesse</a>
                 </section>
             </section>
             <section class="about Reserva">
                 <h3>Reserva</h3>
                 <p>Nesta opção, você poderá agendar sua vinda e já escolher o prato que deseja comer, com isso, não perderá tempo na fila de espera aguardando algum lugar, uma maneira pratica de fazer sua reserva e ainda fazer seu pedido.</p>
                 <section class="indexContentLineColunsButton">
-                    <a>Acesse</a>
+                    <a href="@Url.Action("Create","Reserva")">Acesse</a>
                 </section>
             </section>
             <section class="about Cardapio">
                 <h3>Cardápio</h3>
                 <p>Está aqui? Ótimo, nesta área você poderá de forma rápida fazer seu pedido e em alguns minutos se deliciar com ele sem precisar pedir ao garçom! Prático, não acha?</p>
                 <section class="indexContentLineColunsButton">
-                    <a>Acesse</a>
+                    <a href="@Url.Action("List","Produto")">Acesse</a>
                 </section>
             </section>
         </section>
@@ -189,10 +189,7 @@
 
     <div class="toggle" onclick="toggleMenu()"></div>
 
-    <div class="content">
-        @RenderBody()
-
-    </div>
+    @RenderBody()
     <footer>
         <section class="footerContent">
             <section class="footerContentTop">

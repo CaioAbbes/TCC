@@ -16,6 +16,7 @@
         border-radius: 20px;
         text-align: center;
         transition: ease-in-out;
+        color: black;
     }
 
         .card article:hover {
@@ -80,7 +81,7 @@
 
         .contentCard .searchProduct a {
             text-decoration: none;
-            color: white;
+            color: black;
             font-weight: 600;
             text-transform: uppercase;
         }

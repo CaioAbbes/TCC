@@ -20,7 +20,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo CPF do cliente é requerido.")]
         [Display(Name = "CPF do cliente.")]
-        [StringLength(11, ErrorMessage = "A quantidade de caracteres CPF é invalido.", MinimumLength = 11)]
+        [StringLength(14, ErrorMessage = "A quantidade de caracteres CPF é invalido.", MinimumLength = 14)]
         public string CPF { get; set; }
 
         public virtual Endereco Endereco { get; set; }
@@ -66,7 +66,7 @@ namespace TCC.Models
 
         public void InsertCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');", cliente.Imagem, cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.Cidade, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF, cliente.EmailCli, cliente.CelCli.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty));
+            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');", cliente.Imagem, cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.Cidade, cliente.Endereco.CEP.Replace("-",string.Empty), cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF.Replace("-",string.Empty).Replace(".",string.Empty), cliente.EmailCli, cliente.CelCli.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty));
 
             using (db = new ConexaoDB())
             {
@@ -76,7 +76,7 @@ namespace TCC.Models
 
         public void UpdateCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');", cliente.IdCli, cliente.CPF, cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Endereco.Cidade, cliente.User.UsuarioText, cliente.User.Senha, cliente.NumEdif, cliente.NomeCli, cliente.EmailCli, cliente.CelCli.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty), cliente.Comp);
+            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');", cliente.IdCli, cliente.CPF.Replace("-", string.Empty).Replace(".", string.Empty), cliente.Endereco.CEP, cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Endereco.Cidade, cliente.User.UsuarioText, cliente.User.Senha, cliente.NumEdif, cliente.NomeCli, cliente.EmailCli, cliente.CelCli.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty), cliente.Comp);
 
             using (db = new ConexaoDB())
             {

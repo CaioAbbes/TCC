@@ -17,9 +17,10 @@ input.forEach(inputform => {
 //Masks
 
 $(function () {
-    $("#Cnpj").mask("99.999.999/999-99");
+    $("#Cnpj").mask("99.999.999/9999-99");
     $("#Tel").mask("(99) 9999-9999");
-    //$("#Cep").mask("99.999-999");
-    $("#Datavalid").mask("99/9999");
-    //$("Numcartao").mask("9999 9999 9999 9999");
+    $("#Cep").mask("99999-999");
+    $("#Datavalid").mask("99/99");
+    $("#CPF").mask("999.999.999-99");
+   // $("Numcartao").mask("9999 9999 9999 9999");
 });

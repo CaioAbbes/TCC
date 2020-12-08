@@ -80,7 +80,7 @@ namespace TCC.Models
 
         public void InsertPagamento(int IdCli,string FormPag, string CodCupom, float QtdPontos, string CPF)
         {
-            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}');", IdCli, FormPag, CodCupom, QtdPontos, CPF); 
+            string strQuery = string.Format("call sp_InsPagaNF('{0}','{1}','{2}','{3}','{4}');", IdCli, FormPag, CodCupom, QtdPontos, CPF.Replace("-", string.Empty).Replace(".", string.Empty)); 
 
             using (db = new ConexaoDB())
             {

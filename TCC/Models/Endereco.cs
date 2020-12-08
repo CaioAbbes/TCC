@@ -11,7 +11,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo CEP é requerido.")]
         [Display(Name = "CEP")]
-        [StringLength(8, ErrorMessage = "A quantidade de caracteres do CEP é invalido.", MinimumLength = 8)]
+        [StringLength(9, ErrorMessage = "A quantidade de caracteres do CEP é invalido.", MinimumLength = 9)]
         public string CEP { get; set; }
 
         [Required(ErrorMessage = "O campo Logradouro é requerido.")]

@@ -421,6 +421,7 @@ body {
     position: relative;
     left: 40%;
     right: 40%;
+    text-decoration: none;
 }
 
 .about {
@@ -905,32 +906,38 @@ body {
         margin: 10px;
     }
 
-    .contentDetails .imgDetailsProd {
-        width: 100%;
+        /*    .contentDetails .imgDetailsProd {
+        width: 500px;
         object-fit: cover;
         object-position: center;
-    }
+    }*/
 
-    .contentDetails .infoDetailsProd .infoDetailsProdP {
-        max-width: 450px;
-        text-align: justify;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
+        .contentDetails .imgDetailsProd img {
+            width: 500px;
+            object-fit: cover;
+            object-position: center;
+        }
 
-    .contentDetails .infoDetailsProd p {
-        font-family: 'Work Sans', sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        padding-bottom: 20px;
-    }
+        .contentDetails .infoDetailsProd .infoDetailsProdP {
+            max-width: 450px;
+            text-align: justify;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
 
-    .contentDetails .infoDetailsProd h1 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 30px;
-        padding-bottom: 10px;
-        text-align: center;
-    }
+        .contentDetails .infoDetailsProd p {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding-bottom: 20px;
+        }
+
+        .contentDetails .infoDetailsProd h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
 
 .detailsFooter {
     display: flex;
@@ -1147,7 +1154,7 @@ body {
 
     .detalheMinhaReservaButton a {
         outline: none;
-        border: 2px solid;
+        border: 2px solid black;
         padding: 10px 20px;
         background: none;
         border-radius: 5px;
@@ -1155,6 +1162,8 @@ body {
         font-size: 20px;
         font-weight: 500;
         cursor: pointer;
+        text-decoration: none;
+        color: black;
     }
 
         .detalheMinhaReservaButton a:hover {
@@ -1162,6 +1171,7 @@ body {
             border: none;
             color: white;
             cursor: pointer;
+            text-decoration: none;
         }
 
 /*Footer*/
