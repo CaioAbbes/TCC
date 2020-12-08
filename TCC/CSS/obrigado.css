@@ -1,0 +1,35 @@
+﻿.obrigadoConteiner {
+    display: flex;
+    justify-content: space-around;
+}
+
+.obrigadoContente {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.obrigadoConteiner img {
+    object-fit: cover;
+    height: 500px;
+    width: 750px;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.obrigadoConteiner .obrigadoConteinerVoltar {
+    display: flex;
+    justify-content: center;
+}
+
+    .obrigadoConteiner .obrigadoConteinerVoltar a {
+        margin: 30px;
+        padding-bottom: 20px;
+        padding: 10px 60px;
+        text-decoration: none;
+        background: linear-gradient(90deg, rgba(251,164,0,1) 30%, rgba(247,176,6,1) 54%, rgba(244,109,30,1) 99%);
+        border-radius: 20px;
+        font-size: 15px;
+        color: #fff;
+    }

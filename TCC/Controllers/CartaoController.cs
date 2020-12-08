@@ -48,6 +48,15 @@ namespace TCC.Controllers
             }
         }
 
+        [Autenticacao]
+        public ActionResult SelecionaComNumCartaoCli(int idCli)
+        {
+            Cartao cartao = new Cartao();
+            var cartaoList = cartao.SelecionaComNumCartaoCli(idCli);
+            return View(cartaoList);
+        }
+
+
         // GET: Cartao/Create
         public ActionResult Create(int idCli)
         {
@@ -66,7 +75,7 @@ namespace TCC.Controllers
                 var objCartao = new Cartao();
                 int IdCli = int.Parse(Session["IdCli"].ToString());
                 objCartao.InsertCartao(cartao, IdCli);
-                return RedirectToAction("List","Produto");
+                return RedirectToAction("SelecionaComNumCartaoCli", new { idCli = IdCli });
             }
             TempData["msg"] = "<script>alert('Erro ao criar o cartão');</script>";
             return View();

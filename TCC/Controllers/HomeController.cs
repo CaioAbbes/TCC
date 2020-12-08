@@ -14,6 +14,10 @@ namespace TCC.Controllers
             return View();
         }
 
+        public ActionResult ObrigadoPorComprar()
+        {
+            return View();
+        }
 
 
     }

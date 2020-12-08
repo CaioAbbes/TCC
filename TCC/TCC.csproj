@@ -525,6 +525,7 @@
     <Content Include="CSS\form.css" />
     <Content Include="CSS\List.css" />
     <Content Include="CSS\Login.css" />
+    <Content Include="CSS\obrigado.css" />
     <Content Include="CSS\parallax.css" />
     <Content Include="CSS\perfil.css" />
     <Content Include="CSS\Style.css" />
@@ -542,6 +543,7 @@
     <Content Include="Imagens\logo_writer_black.png" />
     <Content Include="Imagens\logo_writer_black_bone.png" />
     <Content Include="Imagens\logo_writer_bone.png" />
+    <Content Include="Imagens\obrigado.png" />
     <Content Include="Imagens\Reserva.jpeg" />
     <Content Include="Imagens\TesteMaycao.png" />
     <Content Include="Imagens\testePizza.png" />
@@ -646,6 +648,8 @@
     <Content Include="Views\Shared\_Cadastrar.cshtml" />
     <Content Include="Views\Reserva\MostraReservaCli.cshtml" />
     <Content Include="Views\Home\BemvindoADM.cshtml" />
+    <Content Include="Views\Cartao\SelecionaComNumCartaoCli.cshtml" />
+    <Content Include="Views\Home\ObrigadoPorComprar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -38,7 +38,7 @@
             </section>
             <section class="settingsItems">
                 <a href="@Url.Action("UltimosPedidosCli", "Produto_Pedido", new {IdCli = Session["IdCli"].ToString()})">
-                    <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                    <span class="icon"><i class="fas fa-history"></i></span>
                     <span class="title">Últimos Pedidos</span>
                 </a>
             </section>
@@ -52,6 +52,12 @@
                 <a href="@Url.Action("List","Cupom")">
                     <span class="icon"><i class="fas fa-ticket-alt"></i></span>
                     <span class="title">Cupons</span>
+                </a>
+            </section>
+            <section class="settingsItems">
+                <a href="@Url.Action("Create","Cartao", new {IdCli = Session["IdCli"].ToString()})">
+                    <span class="icon"><i class="fas fa-credit-card"></i></span>
+                    <span class="title">Cadastrar Cartão</span>
                 </a>
             </section>
             <section class="settingsItems">

@@ -102,6 +102,31 @@ namespace TCC.Models
 
         }
 
+        public List<Cartao> SelecionaComNumCartaoCli(int idCli)
+        {
+            using (db = new ConexaoDB())
+            {
+                string StrQuery = string.Format("select * from tbcartao where IdCli = '{0}';", idCli);
+                MySqlDataReader registros = db.RetornaRegistro(StrQuery);
+                var cartaoList = new List<Cartao>();
+                while (registros.Read())
+                {
+                   var cartaoListando = new Cartao
+                    {
+                        Numcartao = registros["Numcartao"].ToString(),
+                        Cvc = int.Parse(registros["cvc"].ToString()),
+                        Titular = registros["titular"].ToString(),
+                        Datavalid = DateTime.Parse(registros["datavalid"].ToString()),
+                        Cliente = new Cliente().SelecionaIdCli(int.Parse(registros["IdCli"].ToString()))
+                    };
+                    cartaoList.Add(cartaoListando);
+                }
+
+                return cartaoList;
+            }
+
+        }
+
 
 
     }

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TCC.Models.Cartao>
+
+@{
+    ViewBag.Title = "SelecionaComNumCartaoCli";
+    Layout = "~/Views/Shared/_Cliente.cshtml";
+}
+
+<h2>SelecionaComNumCartaoCli</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Numcartao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cvc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datavalid)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numcartao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cvc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datavalid)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

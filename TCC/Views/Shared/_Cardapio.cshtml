@@ -38,13 +38,19 @@
             </section>
             <section class="settingsItems">
                 <a href="@Url.Action("UltimosPedidosCli", "Produto_Pedido", new {IdCli = Session["IdCli"].ToString()})">
-                    <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                    <span class="icon"><i class="fas fa-history"></i></span>
                     <span class="title">Últimos Pedidos</span>
                 </a>
             </section>
             <section class="settingsItems">
+                <a href="@Url.Action("MostraReservaCli", "Reserva", new {IdCli = Session["IdCli"].ToString()})">
+                    <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                    <span class="title">Reserva</span>
+                </a>
+            </section>
+            <section class="settingsItems">
                 <a href="@Url.Action("List","Cupom")">
-                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <span class="icon"><i class="fas fa-ticket-alt"></i></span>
                     <span class="title">Cupons</span>
                 </a>
             </section>
