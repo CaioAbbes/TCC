@@ -9,6 +9,11 @@ namespace TCC.Controllers
             return View();
         }
 
+        public ActionResult BemvindoADM()
+        {
+            return View();
+        }
+
 
 
     }

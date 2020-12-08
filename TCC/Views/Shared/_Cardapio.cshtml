@@ -49,6 +49,13 @@
                 </a>
             </section>
             <section class="settingsItems">
+                <a href="@Url.Action("Create","Cartao", new {IdCli = Session["IdCli"].ToString()})">
+                    <span class="icon"><i class="fas fa-credit-card"></i></span>
+                    <span class="title">Cadastrar Cartão</span>
+                </a>
+            </section>
+
+            <section class="settingsItems">
                 <a href="@Url.Action("Logout","Usuario")">
                     <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
                     <span class="title">Sair</span>

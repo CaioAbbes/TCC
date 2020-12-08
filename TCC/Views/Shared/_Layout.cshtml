@@ -10,28 +10,27 @@
 <body>
     <header>
         <div class="menu">
+            @*<div class="toggle" onclick="toggleMenu()"></div>*@
             <section class="logoWriter">
                 <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer">
             </section>
 
             <nav class="menuItens">
                 <li><a href="@Url.Action("List","Produto")">Cardápio</a></li>
-                <li><a href="@Url.Action("Create","Reserva")">Reseva</a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-user" onclick="showOnOffSettings()"></i></a></li>
-                <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
+                <li class="iconBar toggle" onclick="toggleMenu()"></li>
             </nav>
         </div>
     </header>
     <main>
         <div class="settings hide">
             <h3>Configurações</h3>
-            @*<section class="settingsItems">
-                <a href="@Url.Action("Edit", "Funcionario", new {IdFunc = Session["IdFunc"].ToString()})">
-                    @Html.ActionLink("Edit", "Funcionario", new { IdFunc = Session["IdFunc"].ToString() });
+            <section class="settingsItems">
+                <a href="#">
                     <span class="icon"><i class="fas fa-user-alt"></i></span>
                     <span class="title">Meus dados</span>
                 </a>
-            </section>*@
+            </section>
             <section class="settingsItems">
                 <a href="#">
                     <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
@@ -40,21 +39,43 @@
             </section>
         </div>
         <div class="navigation background">
-            <ul>
+            <ul class="collapse">
                 <li>
-                    <a href="#">
+                    <a class="toggle_SubMenu">
                         <span class="icon"><i class="fas fa-users"></i></span>
-                        <span class="title">Cliente</span>
+                        <span class="title">Clientes</span>
                     </a>
                 </li>
+                <section class="collapseSubMenu hide">
+                    <li class="sube_Menu">
+                        <a href="">
+                            <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                            <span class="title">Listar</span>
+                        </a>
+                    </li>
+                </section>
             </ul>
-            <ul>
+            <ul class="collapse">
                 <li>
-                    <a href="#">
+                    <a class="toggle_SubMenu">
                         <span class="icon"><i class="fas fa-id-card"></i></span>
                         <span class="title">Funcionário</span>
                     </a>
                 </li>
+                <section class="collapseSubMenu hide">
+                    <li class="sube_Menu">
+                        <a href="">
+                            <span class="icon"><i class="fas fa-plus-circle"></i></span>
+                            <span class="title">Cadastrar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="">
+                            <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                            <span class="title">Listar</span>
+                        </a>
+                    </li>
+                </section>
             </ul>
             <ul class="collapse">
                 <li>
@@ -72,25 +93,12 @@
                         </a>
                     </li>
                     <li class="sube_Menu">
-                        <a href="">
-                            <span class="icon"><i class="fas fa-sync"></i></span>
-                            <span class="title">Atualizar</span>
-                        </a>
-                    </li>
-                    <li class="sube_Menu">
-                        <a href="">
-                            <span class="icon"><i class="fas fa-minus"></i></span>
-                            <span class="title">Deletar</span>
-                        </a>
-                    </li>
-                    <li class="sube_Menu">
                         <a href="list.html">
                             <span class="icon"><i class="fas fa-clipboard-list"></i></span>
                             <span class="title">Listar</span>
                         </a>
                     </li>
                 </section>
-
             </ul>
             <ul class="collapse">
                 <li>
@@ -108,86 +116,25 @@
                     </li>
                     <li class="sube_Menu">
                         <a href="">
-                            <span class="icon"><i class="fas fa-sync"></i></span>
-                            <span class="title">Atualizar</span>
-                        </a>
-                    </li>
-                    <li class="sube_Menu">
-                        <a href="">
-                            <span class="icon"><i class="fas fa-minus"></i></span>
-                            <span class="title">Deletar</span>
-                        </a>
-                    </li>
-                    <li class="sube_Menu">
-                        <a href="">
                             <span class="icon"><i class="fas fa-clipboard-list"></i></span>
                             <span class="title">Listar</span>
                         </a>
                     </li>
                 </section>
             </ul>
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-ticket-alt"></i></span>
-                        <span class="title">Cupons</span>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-map"></i></span>
-                        <span class="title">Cardápio</span> <!-- span é um line container, so usado quando não há nada mais semantido encaixar -->
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-clipboard-list"></i></span>
-                        <span class="title">Reserva</span>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-truck"></i></span>
-                        <span class="title">Delivery</span>
-                    </a>
-                </li>
-            </ul>
 
-        </div>
-        <div class="cartBar hide">
-            <section class="cartTitle"><h1>Meus Pedidos</h1></section>
-            <div class="contetCart">
-                <section class="itenCart">
-                    <i class="fas fa-times"></i>
-                    <secton class="imgProd">
-                        <img src="https://picsum.photos/536/354" alt="FOTO">
-                    </secton>
-                    <secton class="infoProd">
-                        <p class="nameProd">Lorem ipsum dolor sit amet</p>
-                        <p>R$:</p>
-                    </secton>
-                </section>
-            </div>
-            <section class="cartFooter">
-                <p>Saldo: </p>
-                <section class="cartFoooterButtons">
-                    <button type="submit">Pagar</button>
-                    <button type="submit" class="cartFooterButtonClear">Limpar</button>
-                </section>
-            </section>
-        </div>
-
-        <div class="flootSearch">
+            @*<ul>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-map"></i></span>
+                            <span class="title">Cardápio</span>
+                        </a>
+                    </li>
+                </ul>*@
 
         </div>
 
-        <div class="toggle" onclick="toggleMenu()"></div>
+        @*<div class="toggle" onclick="toggleMenu()"></div>*@
 
         <div class="content">
             @RenderBody()
@@ -245,12 +192,13 @@
 
 
         let subeMenu = document.querySelectorAll(".collapse");
+        let arrowOpen = document.querySelector(".toggle_SubMenu");
         subeMenu.forEach(subeMenur => {
             console.log(subeMenur);
             let collapse = subeMenur.querySelector(".collapseSubMenu");
             console.log(collapse);
             subeMenur.addEventListener("click", () => {
-
+                arrowOpen.classList.toggle("arrowOpen");
                 collapse.classList.toggle("hide");
 
             });

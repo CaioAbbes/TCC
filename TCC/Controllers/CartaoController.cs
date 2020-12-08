@@ -66,7 +66,7 @@ namespace TCC.Controllers
                 var objCartao = new Cartao();
                 int IdCli = int.Parse(Session["IdCli"].ToString());
                 objCartao.InsertCartao(cartao, IdCli);
-                return RedirectToAction("List");
+                return RedirectToAction("List","Produto");
             }
             TempData["msg"] = "<script>alert('Erro ao criar o cartão');</script>";
             return View();

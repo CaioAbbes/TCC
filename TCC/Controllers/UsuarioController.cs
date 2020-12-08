@@ -44,6 +44,13 @@ namespace TCC.Controllers
                     Session["IdFunc"] = usuario.PegaIdFunc();
 
 
+                    if (int.Parse(Session["NivelAcesso"].ToString()) == 5)
+                    {
+                        return RedirectToAction("BemvindoADM", "Home");
+                    }
+
+
+
                     return RedirectToAction("Index", "Home");
                 }
 

@@ -576,27 +576,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\tbcupom.cshtml" />
-    <Content Include="Views\Home\tbproduto.cshtml" />
-    <Content Include="Views\Home\tbusuario.cshtml" />
-    <Content Include="Views\Home\tbendereco.cshtml" />
-    <Content Include="Views\Home\tbingrediente.cshtml" />
-    <Content Include="Views\Home\tbmesa.cshtml" />
-    <Content Include="Views\Home\tbfornecedor.cshtml" />
-    <Content Include="Views\Home\tbfuncionario.cshtml" />
-    <Content Include="Views\Home\tbcliente.cshtml" />
-    <Content Include="Views\Home\tbCOMANDA.cshtml" />
-    <Content Include="Views\Home\tbcartao.cshtml" />
-    <Content Include="Views\Home\tbpagamento.cshtml" />
-    <Content Include="Views\Home\tbnotafiscal.cshtml" />
-    <Content Include="Views\Home\tbproduto_pedido.cshtml" />
-    <Content Include="Views\Home\tbreserva.cshtml" />
-    <Content Include="Views\Home\tbclicupom.cshtml" />
-    <Content Include="Views\Home\tbsaida_ingre.cshtml" />
-    <Content Include="Views\Home\tbcompra.cshtml" />
     <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cliente\List.cshtml" />
@@ -665,6 +645,7 @@
     <Content Include="Views\Shared\_AdicionaCarrinho.cshtml" />
     <Content Include="Views\Shared\_Cadastrar.cshtml" />
     <Content Include="Views\Reserva\MostraReservaCli.cshtml" />
+    <Content Include="Views\Home\BemvindoADM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
