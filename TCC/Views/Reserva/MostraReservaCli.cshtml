@@ -8,13 +8,16 @@
 <div class="detalhesReservaContent">
     <section class="detalheMinhaReservaContent">
         <h1>Sua Reserva</h1>
-        <p> Numero da Mesa: @Html.DisplayFor(model => model.IdMesa)</p>
-        <p> Numero da Reserva:  @Html.DisplayFor(model => model.IdReserva)</p>
-        <p> Nome: @Html.DisplayFor(model => model.NomeCompleto) </p>
-        <p> CPF: @Html.DisplayFor(model => model.CPF) </p>
-        <p> Celular: @Html.DisplayFor(model => model.Celular) </p>
+        <p> nome @Html.DisplayFor(model => model.NomeCompleto) </p>
+        <p> cepf @Html.DisplayFor(model => model.CPF) </p>
+        <p>celular  @Html.DisplayFor(model => model.Celular) </p>
         <p> Tipo lugar: @Html.DisplayFor(model => model.TipoLugar) </p>
         <p> Numero Lugares: @Html.DisplayFor(model => model.NumLugar) </p>
         <p> Data e Hora Reserva: @Html.DisplayFor(model => model.DataHoraReserva) </p>
+        <p> Numero da Mesa: @Html.DisplayFor(model => model.IdMesa)</p>
+        <p> Numero da Reserva:  @Html.DisplayFor(model => model.IdReserva)</p>
+        <section class="detalheMinhaReservaButton">
+            <a href="@Url.Action("Index","Home")">Voltar</a>
+        </section>
     </section>
 </div>

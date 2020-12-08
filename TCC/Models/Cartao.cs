@@ -45,9 +45,9 @@ namespace TCC.Models
             }
         }
 
-        public void DeleteCartao(Cartao cartao)
+        public void DeleteCartao(Cartao cartao, int idCli)
         {
-            string strQuery = string.Format("call sp_DelCartao('{0}','{1}');", 2,cartao.Numcartao);
+            string strQuery = string.Format("call sp_DelCartao('{0}','{1}');", idCli, cartao.Numcartao);
 
             using (db = new ConexaoDB())
             {

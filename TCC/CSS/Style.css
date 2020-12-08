@@ -15,7 +15,7 @@ html {
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
     background: #f8f8f8;
 }
 
@@ -609,6 +609,9 @@ body {
     margin-top: 10%;
     z-index: 1;
     overflow: hidden;
+    display: flex;
+    flex-flow: column;
+    min-height: 80vh;
 }
 
 .contentGeral {
@@ -811,6 +814,53 @@ body {
             text-align: justify;
         }
 
+    /*Cartões*/
+
+    .ultimosContent .meusCartoesItems {
+        padding: 10px;
+        transition: all 0.5s ease-in-out;
+    }
+
+        .ultimosContent .meusCartoesItems .cartaoIcon {
+            padding: 5px;
+        }
+
+        .ultimosContent .meusCartoesItems p {
+            text-align: left;
+        }
+
+        .ultimosContent .meusCartoesItems:hover {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+            color: white;
+            transition: all 0.5s ease-in-out;
+        }
+
+.meusCartoesButtons {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+    .meusCartoesButtons .Deletar {
+        outline: none;
+        border: 2px solid;
+        padding: 10px 20px;
+        background: none;
+        border-radius: 5px;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        transition: all 0.5s;
+        text-decoration: none;
+    }
+
+        .meusCartoesButtons .Deletar:hover {
+            background: linear-gradient(90deg, rgba(255,66,66,1) 4%, rgba(193,0,0,1) 56%, rgba(145,0,0,1) 98%);
+            border: none;
+            color: white;
+            transition: all 0.5s ease-out;
+            text-decoration: none;
+        }
 /*Details*/
 .conteinerDetails {
     display: flex;
@@ -988,6 +1038,21 @@ body {
     transition: all 5s ease-in-out;
 }
 
+/*bemvindoContet*/
+
+.bemvindoContet {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+    .bemvindoContet h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 60px;
+        font-weight: 700;
+        padding-bottom: 10px;
+        text-align: center;
+    }
 
 /*Cadstro*/
 .cadastroContent {
@@ -1012,6 +1077,7 @@ body {
 .detalhesReservaContent {
     display: flex;
     justify-content: center;
+    flex-flow: row;
     margin: 40px;
 }
 
@@ -1020,7 +1086,6 @@ body {
         padding-left: 20px;
         padding-right: 20px;
         background: white;
-        /* background-image: url(https://i.pinimg.com/originals/97/12/a8/9712a8a9a33987f4477452b12b44fe68.png);*/
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         background-position: center;
         background-size: cover;
@@ -1045,12 +1110,33 @@ body {
             color: black;
         }
 
+.detalheMinhaReservaButton {
+    display: flex;
+    justify-content: center;
+}
+
+    .detalheMinhaReservaButton a {
+        outline: none;
+        border: 2px solid;
+        padding: 10px 20px;
+        background: none;
+        border-radius: 5px;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+        .detalheMinhaReservaButton a:hover {
+            background: linear-gradient(90deg, rgba(251,164,0,1) 30%, rgba(247,176,6,1) 54%, rgba(244,109,30,1) 99%);
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
 /*Footer*/
 footer {
-    /*position: relative;
-    bottom: 0px;*/
     margin-top: auto;
-    width: 100%;
     border-top: 1px solid grey;
 }
 
@@ -1133,17 +1219,6 @@ footer {
         font-size: 30px;
         padding-bottom: 10px;
         text-align: center;
-    }
-
-/*Obrigado*/
-.obrigadoConteiner {
-    display: flex;
-    justify-content: center;
-}
-
-    .obrigadoConteiner img {
-        object-fit: cover;
-        border-radius: 12px;
     }
 
 @media (max-width: 760px) {

@@ -2,51 +2,26 @@
 
 @{
     ViewBag.Title = "SelecionaComNumCartaoCli";
-    Layout = "~/Views/Shared/_Cliente.cshtml";
 }
 
-<h2>SelecionaComNumCartaoCli</h2>
+<div class="ultimoContent">
+    <h1>Meus Cartões</h1>
+    <section class="ultimosContent meusCartoes">
+        @foreach (var item in Model)
+        {
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Numcartao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cvc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Titular)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Datavalid)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Numcartao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cvc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titular)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Datavalid)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
-</table>
+            <section class="ultimosContentItems meusCartoesItems">
+                <p class="name"> <i class="fas fa-credit-card"></i> @Html.DisplayFor(modelItem => item.Titular) </p>
+                <p> Número: @Html.DisplayFor(modelItem => item.Numcartao) </p>
+                <p> CVC: @Html.DisplayFor(modelItem => item.Cvc) </p>
+                <p> Valiado: @Html.DisplayFor(modelItem => item.Datavalid)</p>
+                <section class="meusCartoesButtons">
+                    <a href="@Url.Action("Delete","Cartao", new {Numcartao = item.Numcartao})" class="Deletar"> Deletar</a>
+                </section>
+            </section>
+        }
+    </section>
+    <section class="meusCartoesButtons">
+        <a href="" class="Cadastrar"> Cadastrar Cartão</a>
+    </section>
+</div>

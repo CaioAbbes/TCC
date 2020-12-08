@@ -108,13 +108,15 @@
         @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
     </div>
 
-    @*<section class="detailsFooter">
-            <button type="submit">Adicionar ao Carrinho</button>
-        </section>*@
-    <button type="submit">Pagar</button>
+    <div class="bottomForm">
+        <section class="bottomFormBottom">
+            <button type="submit" id="submit">Pagar</button>
+        </section>
+    </div>
 
 }
 
+@Html.Raw(TempData["msg"])
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

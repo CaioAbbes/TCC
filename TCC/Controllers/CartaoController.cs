@@ -98,8 +98,9 @@ namespace TCC.Controllers
             try
             {
                 var objCartao = new Cartao();
-                objCartao.DeleteCartao(cartao);
-                return RedirectToAction("List");
+                int IdCli = int.Parse(Session["IdCli"].ToString());
+                objCartao.DeleteCartao(cartao,IdCli);
+                return RedirectToAction("List","Produto");
             }
             catch
             {

@@ -111,14 +111,11 @@ namespace TCC.Controllers
             cart.Add(new Produto()
             {
                 IdProd = prodId,
-                //qtd = 1,
                 NomeProd = nome,
                 ValorProd = valor,
                 Imagem = imagem
             });
-            //Session["Carrinho"] = cart;
             Session.Add("Carrinho", cart);
-            TempData["msg"] = "<script>alert('Item adicionado ao carrinho');</script>";
             return RedirectToAction("List", "Produto");
         }
 
