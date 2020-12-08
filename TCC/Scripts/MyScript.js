@@ -18,10 +18,11 @@ input.forEach(inputform => {
 
 $(function () {
     $("#Cnpj").mask("99.999.999/9999-99");
-    $("#Tel").mask("(99) 9999-9999");
+   // $("#Tel").mask("(99) 99999-9999");
     $("#Cep").mask("99999-999");
     $("#Datavalid").mask("99/99");
     $("#CPF").mask("999.999.999-99");
     $("#DataHoraReserva").mask("99/99/9999 99:99");
+    $("#DataHoraChegada").mask("99/99/9999 99:99");
    // $("Numcartao").mask("9999 9999 9999 9999");
 });

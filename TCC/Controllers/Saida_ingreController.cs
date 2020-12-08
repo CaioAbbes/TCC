@@ -58,6 +58,19 @@ namespace TCC.Controllers
             {
                 return RedirectToAction("ErroAutenticação", "Usuario");
             }
+
+            var objFunc = new Funcionario();
+            var ListaFunc = objFunc.SelecionaFuncionario();
+            SelectList ListaFuncionario = new SelectList(ListaFunc, "CPFfunc", "CPFfunc");
+            ViewBag.ListaFunc = ListaFuncionario;
+
+
+            var objIngre = new Ingrediente();
+            var ListaIngre = objIngre.SelecionaIngrediente();
+            SelectList Lista = new SelectList(ListaIngre, "Nome", "Nome");
+            ViewBag.Lista = Lista;
+
+
             return View();
         }
 

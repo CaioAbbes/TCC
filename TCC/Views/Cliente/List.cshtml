@@ -6,13 +6,10 @@
 
 <link rel="stylesheet" type="text/css" href="~/CSS/List.css">
 <section class="contenteTable">
-    <h2 class="tableTitle">Lista de Produtos Cadastrados</h2>
+    <h2 class="tableTitle">Lista de Clientes Cadastrados</h2>
     <div>
         <table class="table ">
             <tr class="colorTable">
-                <th>
-                    @Html.DisplayNameFor(model => model.IdCli)
-                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.CPF)
                 </th>
@@ -35,9 +32,6 @@
                     @Html.DisplayNameFor(model => model.NumEdif)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.User)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.QtdPontos)
                 </th>
                 <th>
@@ -45,78 +39,65 @@
                 </th>
                 <th>Editar</th>
                 <th>Excluir</th>
-                <th>Cartão</th>
             </tr>
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IdCli)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CPF)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Endereco)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NomeCli)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EmailCli)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CelCli)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Comp)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NumEdif)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.QtdPontos)
-                    </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.Imagem)
-                        </td>*@
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CelCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumEdif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdPontos)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Imagem)
+        </td>*@
 
-                    <td>
-                        @if (!string.IsNullOrEmpty(item.Imagem))
-                        {
-                            <img src="@Url.Content(item.Imagem)" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />
-                        }
-                    </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Imagem))
+                {
+                    <img src="@Url.Content(item.Imagem)" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />
+                }
+            </td>
 
 
-                    @*@if (item.Imagem != null)
-                        {
-                            <td>
-                                @{
-                                    var base64 = Convert.ToBase64String(item.Imagem);
-                                    var imgSrc = String.Format("data:image/gif;base64,{0}",base64);
-                                }
-                                <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
-                            </td>
-                        }*@
+            @*@if (item.Imagem != null)
+        {
+            <td>
+                @{
+                    var base64 = Convert.ToBase64String(item.Imagem);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}",base64);
+                }
+                <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+            </td>
+        }*@
 
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { IdCli = item.IdCli }) |
-
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details", "Details", new { IdCli = item.IdCli }) |
-
-                    </td>
-                    <td>
-                        @Html.ActionLink("Cadastrar Cartao", "Create", "Cartao", new { idCli = item.IdCli }, null)
-
-                    </td>
-                </tr>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { IdCli = item.IdCli }, new { @Class = "fas fa-sync" })
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Details", new { IdCli = item.IdCli }, new { @Class = "fas fa-eraser" })
+            </td>
+        </tr>
             }
         </table>
     </div>

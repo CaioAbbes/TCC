@@ -29,7 +29,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo CNPJ é requerido.")]
         [Display(Name = "CNPJ")]
-        [StringLength(17,ErrorMessage = "A quantidade de caracteres do CNPJ é invalido.",MinimumLength = 17)]
+        [StringLength(17,ErrorMessage = "A quantidade de caracteres do CNPJ é invalido.",MinimumLength = 14)]
         public string Cnpj { get; set; }
 
         [Required(ErrorMessage = "O campo Celular do Fornecedo é requerido.")]

@@ -13,6 +13,9 @@
     overflow-x: scroll;
     margin: 10px;
     box-shadow: 1px 1px 6px 1px #343a40;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
 }
 
     .contenteTable::-webkit-scrollbar {
@@ -60,6 +63,8 @@ table {
         background-color: #eeee;
     }
 
-    table td .iconTable .fas {
+    table td .fas {
         color: black;
+        text-decoration: none;
+        font-size: 20px;
     }

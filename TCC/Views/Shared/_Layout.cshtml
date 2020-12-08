@@ -123,14 +123,129 @@
                 </section>
             </ul>
 
-            @*<ul>
-                    <li>
-                        <a href="#">
-                            <span class="icon"><i class="fas fa-map"></i></span>
-                            <span class="title">Cardápio</span>
+            <ul class="collapse">
+                <li>
+                    <a class="toggle_SubMenu">
+                        <span class="icon"><i class="fas fa-shopping-bag"></i></span>
+                        <span class="title">Compra</span>
+                    </a>
+                </li>
+                <section class="collapseSubMenu hide">
+                    <li class="sube_Menu">
+                        <a href="@Url.Action("Create","Compra")">
+                            <span class="icon"><i class="fas fa-plus-circle"></i></span>
+                            <span class="title">Cadastrar</span>
                         </a>
                     </li>
-                </ul>*@
+                    <li class="sube_Menu">
+                        <a href="@Url.Action("List","Compra")">
+                            <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                            <span class="title">Listar</span>
+                        </a>
+                    </li>
+                </section>
+            </ul>
+
+            <ul class="collapse">
+                <li>
+                    <a class="toggle_SubMenu">
+                        <span class="icon"><i class="fas fa-truck"></i></span>
+                        <span class="title">Fornecedor</span>
+                    </a>
+                </li>
+                <section class="collapseSubMenu hide">
+                    <li class="sube_Menu">
+                        <a href="@Url.Action("Create","Fornecedor")">
+                            <span class="icon"><i class="fas fa-plus-circle"></i></span>
+                            <span class="title">Cadastrar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="@Url.Action("List","Fornecedor")">
+                            <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                            <span class="title">Listar</span>
+                        </a>
+                    </li>
+                </section>
+            </ul>
+
+            <ul class="collapse">
+                <li>
+                    <a class="toggle_SubMenu">
+                        <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                        <span class="title">Cupom</span>
+                    </a>
+                </li>
+                <section class="collapseSubMenu hide">
+                    <li class="sube_Menu">
+                        <a href="@Url.Action("Create","Cupom")">
+                            <span class="icon"><i class="fas fa-plus-circle"></i></span>
+                            <span class="title">Cadastrar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="@Url.Action("List","Cupom")">
+                            <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                            <span class="title">Listar</span>
+                        </a>
+                    </li>
+                </section>
+            </ul>
+
+            <ul class="collapse">
+                <li>
+                    <a class="toggle_SubMenu">
+                        <span class="icon"><i class="fas fa-chair"></i></span>
+                        <span class="title">Mesa</span>
+                    </a>
+                </li>
+                <section class="collapseSubMenu hide">
+                    <li class="sube_Menu">
+                        <a href="@Url.Action("Create","Mesa")">
+                            <span class="icon"><i class="fas fa-plus-circle"></i></span>
+                            <span class="title">Cadastrar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="@Url.Action("List","Mesa")">
+                            <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                            <span class="title">Listar</span>
+                        </a>
+                    </li>
+                </section>
+            </ul>
+
+            <ul class="collapse">
+                <li>
+                    <a class="toggle_SubMenu">
+                        <span class="icon"><i class="fas fa-box-open"></i></span>
+                        <span class="title">Baixa Estoque</span>
+                    </a>
+                </li>
+                <section class="collapseSubMenu hide">
+                    <li class="sube_Menu">
+                        <a href="@Url.Action("Create","Saida_ingre")">
+                            <span class="icon"><i class="fas fa-plus-circle"></i></span>
+                            <span class="title">Cadastrar</span>
+                        </a>
+                    </li>
+                    <li class="sube_Menu">
+                        <a href="@Url.Action("List","Saida_ingre")">
+                            <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                            <span class="title">Listar</span>
+                        </a>
+                    </li>
+                </section>
+            </ul>
+
+            @*<ul>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-map"></i></span>
+                    <span class="title">Cardápio</span>
+                </a>
+            </li>
+        </ul>*@
 
         </div>
 

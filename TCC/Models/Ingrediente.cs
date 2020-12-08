@@ -54,7 +54,8 @@ namespace TCC.Models
         public void InsertIngrediente(Ingrediente ingrediente)
         {
             
-            string strQuery = string.Format("call sp_InsEstoque('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}');", ingrediente.CodigoBarras, ingrediente.Nome, ingrediente.UniMedi, ingrediente.PrecoUnit.ToString().Replace(",", "."), ingrediente.QtdAtual, ingrediente.Marca, ingrediente.DataValidade, ingrediente.TempDura);
+            string strQuery = string.Format("call sp_InsEstoque('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}');", ingrediente.CodigoBarras, ingrediente.Nome, ingrediente.UniMedi, ingrediente.PrecoUnit.ToString().Replace(",", "."), ingrediente.QtdAtual, ingrediente.Marca, ingrediente.DataValidade?.ToString("yyyy-MM-dd"), ingrediente.TempDura);
+            
             using (db = new ConexaoDB())
             {
                 db.ExecutaComando(strQuery);
