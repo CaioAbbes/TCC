@@ -22,5 +22,6 @@ $(function () {
     $("#Cep").mask("99999-999");
     $("#Datavalid").mask("99/99");
     $("#CPF").mask("999.999.999-99");
+    $("#DataHoraReserva").mask("99/99/9999 99:99");
    // $("Numcartao").mask("9999 9999 9999 9999");
 });

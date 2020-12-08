@@ -36,7 +36,7 @@ namespace TCC.Models
 
         public void InsertReserva(Reserva reserva,int idCli)
         {
-            string strQuery = string.Format("call sp_InsReserva('{0}','{1}','{2}','{3}');", idCli, reserva.DataHoraReserva.ToString("yyyy-MM-dd HH:mm"),reserva.Mesa.Numlugares,reserva.Mesa.TipoLugar);
+            string strQuery = string.Format("call sp_InsReserva('{0}','{1}','{2}','{3}');", idCli, reserva.DataHoraReserva.ToString("yyyy-MM-dd HH:mm").Replace("/",string.Empty),reserva.Mesa.Numlugares,reserva.Mesa.TipoLugar);
 
             using (db = new ConexaoDB())
             {
