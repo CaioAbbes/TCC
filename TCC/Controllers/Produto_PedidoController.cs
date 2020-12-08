@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using TCC.Autorizacoes;
 using TCC.Models;
@@ -78,7 +75,7 @@ namespace TCC.Controllers
         public ActionResult FazCompra()
         {
             var ListaProds = (List<Produto>)Session["Carrinho"];
-            foreach(var item in ListaProds)
+            foreach (var item in ListaProds)
             {
                 Produto produto = new Produto();
                 produto.NomeProd = item.NomeProd;
@@ -86,19 +83,12 @@ namespace TCC.Controllers
                 produto.DescProd = item.DescProd;
                 var objProdPed = new Produto_pedido();
                 int IdCli = int.Parse(Session["IdCli"].ToString());
-                objProdPed.InsertProdPedCart(produto,IdCli);
+                objProdPed.InsertProdPedCart(produto, IdCli);
             }
 
-            return RedirectToAction("Create","Pagamento");
+            return RedirectToAction("Create", "Pagamento");
         }
 
-        //[Autenticacao]
-        //public ActionResult SelecionaDadosCliProdPed(Produto_pedido ProdPed)
-        //{
-        //    int IdCli = int.Parse(Session["IdCli"].ToString());
-        //    var prodPedList = ProdPed.SelecionaDadosCliProdPed(IdCli);
-        //    return View(prodPedList);
-        //}
 
 
         [Autenticacao]
@@ -109,13 +99,7 @@ namespace TCC.Controllers
         }
 
 
-        //public ActionResult AdicionaCarrinho()
-        //{
-        //    return View();
-        //}
-
-        //  [HttpPost]
-        public ActionResult AdicionaCarrinho(int prodId, float valor, string nome,string imagem)
+        public ActionResult AdicionaCarrinho(int prodId, float valor, string nome, string imagem)
         {
             var cart = new List<Produto>();
             if (Session["Carrinho"] != null)
@@ -154,7 +138,7 @@ namespace TCC.Controllers
             return RedirectToAction("List", "Produto");
         }
 
-            private int isExist(int id)
+        private int isExist(int id)
         {
             List<Produto> cart = (List<Produto>)Session["Carrinho"];
             for (int i = 0; i < cart.Count; i++)

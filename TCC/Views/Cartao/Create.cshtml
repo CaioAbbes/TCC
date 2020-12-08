@@ -48,10 +48,9 @@
             </div>
 
             <div class="bottomForm">
-                <div>
-                    <input type="submit" value="Create" class="btn btn-default" />
-                    @Html.ActionLink("Back to List", "Index")
-                </div>
+                <section class="bottomFormBottom">
+                    <button type="submit" id="submit">Cadastrar</button>
+                </section>
             </div>
         }
         @Html.Raw(TempData["msg"])

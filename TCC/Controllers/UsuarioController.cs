@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Security;
 using TCC.Models;
 
@@ -47,32 +43,12 @@ namespace TCC.Controllers
                     Session["IdCli"] = usuario.PegaIdCli();
                     Session["IdFunc"] = usuario.PegaIdFunc();
 
-                    //if (int.Parse(Session["IdCli"].ToString()) == 0 || Session["IdCli"].ToString() == null)
-                    //{
-                    //    Session["IdCli"] = "Visitante";
-                    //}
-
-
-
-
-                    //if (Session["IdCli"] == null)
-                    //{
-                    //    Session["IdFunc"] = usuario.PegaIdFunc();
-                    //}
-
-                    //else if (Session["IdFunc"] == null)
-                    //{
-                    //    Session["IdCli"] = usuario.PegaIdCli();
-                    //}
 
                     return RedirectToAction("Index", "Home");
-                    //return RedirectToAction("Edit", "Funcionario", new { IdFunc = Session["IdFunc"].ToString() });
                 }
 
                 else
                 {
-                    //TempData["ErroLogin"] = "Senha ou Usuario inválido";
-                    //ModelState.AddModelError(string.Empty, TempData["ErroLogin"].ToString());
                     TempData["msg"] = "<script>alert('Usuario ou senha inválida');</script>";
                     return View();
                 }
@@ -97,11 +73,6 @@ namespace TCC.Controllers
             return View();
         }
 
-
-        //public ActionResult VoltarPag()
-        //{
-        //    return Redirect(Request.UrlReferrer.ToString());
-        //}
 
 
     }

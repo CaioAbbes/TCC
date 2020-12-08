@@ -1,9 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Web;
 
 namespace TCC.Models
@@ -28,7 +25,6 @@ namespace TCC.Models
         [Display(Name = "Disponivel")]
         public bool Disponi { get; set; }
 
-        //[Required(ErrorMessage = "O campo Tipo de lugar é requerido.")]
         [Display(Name = "Tipo de lugar")]
         [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(50, ErrorMessage = "A quantidade de caracteres do Tipo de lugar é invalido.")]

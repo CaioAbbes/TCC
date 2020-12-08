@@ -463,7 +463,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Autorizacoes\AuthCliente.cs" />
     <Compile Include="Autorizacoes\Autenticacao.cs" />
     <Compile Include="Controllers\CartaoController.cs" />
     <Compile Include="Controllers\CompraController.cs" />

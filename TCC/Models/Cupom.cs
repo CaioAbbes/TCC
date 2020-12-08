@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace TCC.Models
 {
@@ -14,7 +12,6 @@ namespace TCC.Models
         [StringLength(6,ErrorMessage = "O numero de caracteres do Código do cupom é invalido ",MinimumLength = 6)]
         [Required(ErrorMessage = "O campo Código do cupom é requerido")]
         [Display(Name = "Código do cupom")]
-        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente números")]
         public string CodCupom { get; set; }
 
 

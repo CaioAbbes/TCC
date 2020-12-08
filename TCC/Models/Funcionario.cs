@@ -1,13 +1,8 @@
-﻿using Microsoft.Ajax.Utilities;
-using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Utilities;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Web;
-using Ubiety.Dns.Core;
 
 namespace TCC.Models
 {
@@ -56,7 +51,6 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Celular do funcionário é requerido.")]
         [Display(Name = "Celular do funcionário")]
-        //[RegularExpression(@"^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$", ErrorMessage = "Celular do Funcionário inválido")]
         public long CelFunc { get; set; }
 
         [Required(ErrorMessage = "O campo Email do funcionário é requerido.")]
@@ -216,24 +210,6 @@ namespace TCC.Models
             }
 
         }
-
-        //public int PegarIdFunc(int IdFunc)
-        //{
-        //    using (db = new ConexaoDB())
-        //    {
-        //        string StrQuery = string.Format("select IdFunc from tbfuncionario where IdFunc = '{0}';", IdFunc);
-        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-        //        while (registros.Read())
-        //        {
-        //            IdFunc = int.Parse(registros["IdFunc"].ToString());
-        //        }
-
-        //        return IdFunc;
-        //    }
-
-        //}
-
-
     }
 
 

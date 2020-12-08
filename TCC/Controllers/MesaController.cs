@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using TCC.Autorizacoes;
 using TCC.Models;
@@ -95,39 +92,6 @@ namespace TCC.Controllers
             }
             TempData["msg"] = "<script>alert('Erro ao criar a mesa');</script>";
             return View();
-        }
-
-        // GET: Mesa/Edit/5
-        //[Autenticacao]
-        //public ActionResult Edit(int IdMesa)
-        //{
-        //    if (int.Parse(Session["NivelAcesso"].ToString()) != 2)
-        //    {
-        //        return RedirectToAction("ErroAutenticação", "Usuario");
-        //    }
-        //    var mesa = new Mesa();
-        //    var objMesa = new Mesa();
-        //    mesa = objMesa.SelecionaIdMesa(IdMesa);
-        //    return View(mesa);
-        //}
-
-        //// POST: Mesa/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(Mesa mesa)
-        //{
-        //    try
-        //    {
-        //        var objMesa = new Mesa();
-        //        objMesa.UpdateMesa(mesa);
-        //        return RedirectToAction("List");
-        //    }
-        //    catch
-        //    {
-        //        TempData["msg"] = "<script>alert('Erro ao editar a mesa');</script>";
-        //        return View();
-        //    }
-        //}
-
-       
+        }     
     }
 }

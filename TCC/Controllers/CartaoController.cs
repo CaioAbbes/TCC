@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using TCC.Autorizacoes;
 using TCC.Models;
 
@@ -68,34 +64,14 @@ namespace TCC.Controllers
             if (ModelState.IsValid)
             {
                 var objCartao = new Cartao();
-                objCartao.InsertCartao(cartao);
+                int IdCli = int.Parse(Session["IdCli"].ToString());
+                objCartao.InsertCartao(cartao, IdCli);
                 return RedirectToAction("List");
             }
             TempData["msg"] = "<script>alert('Erro ao criar o cartão');</script>";
             return View();
         }
 
-        // GET: Cartao/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Cartao/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: Cartao/Delete/5
         public ActionResult Delete(decimal Numcartao)

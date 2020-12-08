@@ -1,11 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Drawing;
-using System.Linq;
-using System.Web;
 
 namespace TCC.Models
 {
@@ -37,14 +32,8 @@ namespace TCC.Models
         [StringLength(17,ErrorMessage = "A quantidade de caracteres do CNPJ é invalido.",MinimumLength = 17)]
         public string Cnpj { get; set; }
 
-        //[Required(ErrorMessage = "O campo CEP é requerido.")]
-        //[Display(Name = "CEP")]
-        //[RegularExpression(@"^[0-9]{5}-[\d]{3}|(\d{8})$", ErrorMessage = "CEP invalido.")]
-        //public decimal CEP { get; set; }
-
         [Required(ErrorMessage = "O campo Celular do Fornecedo é requerido.")]
         [Display(Name = "Celular do Fornecedor")]
-        //[RegularExpression(@"^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$", ErrorMessage = "Celular do Fornecedor inválido")]
         public int Tel { get; set; }
 
         [RegularExpression(@"^[-a-zA-Z0-9][-.a-zA-Z0-9]*@[-.a-zA-Z0-9]+(\.[-.a-zA-Z0-9]+)*\.(com|edu|info|gov|int|mil|net|org|biz|name|museum|coop|aero|pro|tv|[a-zA-Z]{2})$", ErrorMessage = "O Email do fornecedor está incorreto")]

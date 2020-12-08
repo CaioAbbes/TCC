@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace TCC.Models
 {
@@ -16,15 +14,7 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdReserva { get; set; }
 
-        //[Display(Name = "Id da mesa")]
-        //[Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-        //public int IdMesa { get; set; }
-
         public Mesa Mesa { get; set; }
-
-        //[Required(ErrorMessage = "O campo Id do Cliente é requerido.")]
-        //[Display(Name = "Id do Cliente")]
-        //public decimal IdCli { get; set; }
 
         public Cliente Cliente { get; set; }
 
@@ -33,6 +23,7 @@ namespace TCC.Models
         public string Celular { get; set; }
         public string TipoLugar { get; set; }
         public int NumLugar { get; set; }
+
         [Display(Name = "Número da mesa")]
         public int IdMesa { get; set; }
 
@@ -42,10 +33,6 @@ namespace TCC.Models
         [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime DataHoraReserva { get; set; }
 
-        //[Required(ErrorMessage = "O campo Data e hora que quero come é requerido.")]
-        //[Display(Name = "Data e hora que quero comer")]
-        //[DataType(DataType.DateTime)]
-        //public DateTime HoraQueroComer { get; set; }
 
         public void InsertReserva(Reserva reserva,int idCli)
         {

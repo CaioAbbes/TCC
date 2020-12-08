@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace TCC.Models
 {
@@ -19,10 +17,6 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdNF { get; set; }
 
-        //[Required(ErrorMessage = "O campo CPF é requerido.")]
-        //[Display(Name = "CPF")]
-        //public decimal CPF { get; set; }
-
         public Cliente Cliente { get; set; }
 
         [Display(Name = "Id do pagamento")]
@@ -32,7 +26,6 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Data e hora do pagamento é requerido.")]
         [Display(Name = "Data e hora do pagamento")]
-        //[DisplayFormat(DataFormatString = "mm/dd/yyyy")]
         [DataType(DataType.DateTime)]
         public DateTime DataHoraPag { get; set; }
 

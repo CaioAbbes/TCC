@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace TCC.Models
 {
@@ -17,14 +15,6 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int NumCompra { get; set; }
 
-        //[Required(ErrorMessage = "O campo Codigo de barras é requerido.")]
-        //[Display(Name = "Codigo de barras")]
-        //[StringLength(13,ErrorMessage = "Código de barras inválido")]
-        //public decimal CodigoBarras { get; set; }
-
-        // public Ingrediente Ingrediente { get; set; }
-
-        //public Fornecedor Fornecedor { get; set; }
         public string CodigoBarras { get; set; }
 
         public string NomeForn { get; set; }
@@ -52,7 +42,6 @@ namespace TCC.Models
 
         public void InsertCompra(string CodigoBarras, string NomeForn, int QtdEntraIngre, DateTime DataHoraChegada)
         {
-            //string strQuery = string.Format("call sp_InsCompraEstoque('{0}','{1}','{2}','{3}');", Ingrediente.CodigoBarras,Fornecedor.NomeForn,compra.QtdEntraIngre,compra.DataHoraChegada.ToString("yyyy-MM-dd HH:mm"));
             string strQuery = string.Format("call sp_InsCompraEstoque('{0}','{1}','{2}','{3}');", CodigoBarras, NomeForn, QtdEntraIngre, DataHoraChegada.ToString("yyyy-MM-dd HH:mm"));
             using (db = new ConexaoDB())
             {

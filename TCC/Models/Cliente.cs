@@ -1,17 +1,8 @@
-﻿using Correios.Net;
-using MySql.Data.MySqlClient;
-using Renci.SshNet.Messages;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Web;
-using System.Web.UI;
-using Ubiety.Dns.Core;
 
 namespace TCC.Models
 {
@@ -69,10 +60,6 @@ namespace TCC.Models
 
         public string Imagem { get; set; }
 
-        //public byte[] Imagem { get; set; }
-
-       // [Required]
-       // [DataType(DataType.Upload)]
         public HttpPostedFileBase ImageUpload { get; set; }
 
 
@@ -112,7 +99,6 @@ namespace TCC.Models
                     string numedif = registros["NumEdif"].ToString();
                     string qtdpontos = registros["QtdPontos"].ToString();
                     string cepString = registros["CEP"].ToString();
-                    //decimal cep = cepString.Equals("") ? 0m : decimal.Parse(cepString);
                     string cpf = registros["CPF"].ToString();
                     var ClienteTemporario = new Cliente
                     {
@@ -233,34 +219,5 @@ namespace TCC.Models
                 return prodPedList;
             }
         }
-
-        //public static string UparImagem(HttpPostedFile file)
-        //{
-        //    string path = string.Empty;
-        //    string pic = string.Empty;
-
-        //    if(file != null)
-        //    {
-        //        pic = Path.GetFileName(file.FileName);
-        //        path = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Photos"), pic);
-        //        file.SaveAs(path);
-        //        using(MemoryStream ms = new MemoryStream())
-        //        {
-        //            file.InputStream.CopyTo(ms);
-        //            byte[] array = ms.GetBuffer();
-        //        }
-        //    }
-
-        //    return pic;
-        //}
-
-
-        //public Image byteArrayToImage(byte[] byteArrayIn)
-        //{
-        //    MemoryStream ms = new MemoryStream(byteArrayIn);
-        //    Image returnImage = Image.FromStream(ms);
-        //    return returnImage;
-        //}
-
     }
 }

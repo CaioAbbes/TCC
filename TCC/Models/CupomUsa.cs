@@ -1,9 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 
 namespace TCC.Models
@@ -15,7 +12,6 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O Codigo cupom é requerido")]
         [Display(Name = "Codigo cupom")]
-        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(6, ErrorMessage = "A quantidade de caracteres do Codigo cupom é invalido.")]
         public string CodCupom { get; set; }
 

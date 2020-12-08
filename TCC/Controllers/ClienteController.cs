@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using System.Web.UI;
 using TCC.Models;
 using TCC.Autorizacoes;
-using System.Configuration;
 
 namespace TCC.Controllers
 {
@@ -73,7 +67,6 @@ namespace TCC.Controllers
 
         // POST: Cliente/Create
         [HttpPost]
-        //[AuthCliente]
         public ActionResult Create(Cliente cliente)
         {
 

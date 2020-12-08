@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Services.Description;
 
 namespace TCC.Models
 {
@@ -18,29 +15,11 @@ namespace TCC.Models
         [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public int IdProdPed { get; set; }
 
-        //[Display(Name = "Id do produto")]
-        // [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-        // [Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
-       // public List<Produto> Produto { get; set; }
        public Produto Produto { get; set; }
 
-        //[Display(Name = "Id da comanda")]
-        //[RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
-        //[Range(0, int.MaxValue, ErrorMessage = "Deve ser positivo")]
         public virtual Comanda Comanda { get; set; }
 
         public virtual Mesa Mesa { get; set; }
-
-        //public virtual Cliente Cliente { get; set; }
-
-        //public string NomeCompleto { get; set; }
-        //public string CPF { get; set; }
-        //public string CEP { get; set; }
-        //public string Logra { get; set; }
-        //public string Bairro { get; set; }
-        //public string Cidade { get; set; }
-        //public string Comp { get; set; }
-        //public int NumEdif { get; set; }
 
 
         [Required(ErrorMessage = "O campo Nome do produto é requerido.")]
@@ -97,62 +76,6 @@ namespace TCC.Models
                 db.ExecutaComando(strQuery);
             }
         }
-
-        //public void InsertProdPed(Produto_pedido produtoPed, int IdCli) 
-        //{ 
-        //    foreach (var prod in produtoPed.Produto)
-        //    { 
-        //        string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", produtoPed.Mesa.IdMesa, IdCli, prod.NomeProd, prod.QtdProd, prod.DescPedido); 
-        //        using (db = new ConexaoDB())
-        //        { 
-        //            db.ExecutaComando(strQuery); 
-        //        }
-        //    } 
-        //}
-
-        //public void UpdateProdPed(Produto_pedido produtoPed)
-        //{
-        //    string strQuery = string.Format("call sp_InsPedido('{0}','{1}','{2}','{3}','{4}');", produtoPed.Mesa.IdMesa, 0, produtoPed.NomeProd, produtoPed.QtdProd, produtoPed.DescPedido);
-
-        //    using (db = new ConexaoDB())
-        //    {
-        //        db.ExecutaComando(strQuery);
-        //    }
-        //}
-
-        //public List<Produto_pedido> SelecionaDadosCliProdPed(int idCli)
-        //{
-        //    using (db = new ConexaoDB())
-        //    {
-        //        string StrQuery = string.Format("SELECT * FROM vw_MostraDProdPed where IDDOCLIENTE = '{0}';",idCli);
-        //        MySqlDataReader registros = db.RetornaRegistro(StrQuery);
-        //        var prodPedList = new List<Produto_pedido>();
-        //        while (registros.Read())
-        //        {
-        //            var ProdPedTemporario = new Produto_pedido
-        //            {
-        //                NomeCompleto = registros["NOME COMPLETO"].ToString(),
-        //                CPF = registros["CPF"].ToString(),
-        //                NomeProd = registros["NOME DO PRODUTO"].ToString(),
-        //                QtdProd = int.Parse(registros["QUANTIDADE"].ToString()),
-        //                ValorUnitProd = float.Parse(registros["VALOR UNITÁRIO"].ToString()),
-        //                DescPedido = registros["DESCRIÇÃO"].ToString(),
-        //                StagioProd = registros["STATUS DO PRODUTO"].ToString(),
-        //                DataHProdPed = DateTime.Parse(registros["DATA E HORA DO PEDIDO"].ToString()),
-        //                CEP = registros["CEP DO CLIENTE"].ToString(),
-        //                Logra = registros["LOGRADOURO"].ToString(),
-        //                Bairro = registros["BAIRRO"].ToString(),
-        //                Cidade = registros["CIDADE"].ToString(),
-        //                Comp = registros["COMPLEMENTO"].ToString(),
-        //                NumEdif = int.Parse(registros["NUMERO DO EDIFÍCIO"].ToString())
-        //            };
-
-        //            prodPedList.Add(ProdPedTemporario);
-        //        }
-        //        return prodPedList;
-        //    }
-        //}
-
 
         public List<Produto_pedido> SelecionaProdPed()
         {

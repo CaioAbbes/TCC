@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace TCC.Models
 {
@@ -24,14 +22,12 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Unidade de medida é requerido.")]
         [Display(Name = "Unidade de medida")]
-        //[RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(200, ErrorMessage = "A quantidade de caracteres da Unidade de medida é invalido.")]
         public string UniMedi { get; set; }
 
         [Required(ErrorMessage = "O campo Preço unitário é requerido.")]
         [Display(Name = "Preço unitário")]
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
-        //[RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
         public float PrecoUnit { get; set; }
 
         [Required(ErrorMessage = "O campo Quantidade atual é requerido.")]
@@ -41,7 +37,6 @@ namespace TCC.Models
         public int QtdAtual { get; set; }
 
         [Display(Name = "Tempo de duração")]
-       // [RegularExpression(@"^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$", ErrorMessage = "Digite somente letras.")]
         [StringLength(20, ErrorMessage = "A quantidade de caracteres do Tempo de duração é invalido.")]
         public string TempDura { get; set; }
 

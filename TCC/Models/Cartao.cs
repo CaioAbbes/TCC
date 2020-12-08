@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace TCC.Models
 {
@@ -32,16 +29,15 @@ namespace TCC.Models
         [Display(Name = "Vencimento")]
         [DisplayFormat(DataFormatString = "{0:MM/yy}", ApplyFormatInEditMode = true)]
 
-        // [DataType(DataType.Date)]
         public DateTime Datavalid { get; set; }
         
        
         public virtual Cliente Cliente { get; set; } //nesse ele chumba com o id Do usuario cadastrado
 
 
-        public void InsertCartao(Cartao cartao)
+        public void InsertCartao(Cartao cartao, int idCli)
         {
-            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}','{4}');",2,cartao.Numcartao,cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-01").Replace("/",string.Empty));
+            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}','{4}');", idCli, cartao.Numcartao,cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-01").Replace("/",string.Empty));
 
             using (db = new ConexaoDB())
             {

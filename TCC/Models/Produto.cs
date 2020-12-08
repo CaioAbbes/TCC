@@ -1,8 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Web;
 
 namespace TCC.Models
@@ -26,7 +24,6 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo Valor do produto é requerido.")]
         [Display(Name = "Valor do produto")]
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
-        //[RegularExpression(@"^[0-9]*\.?[0-9]+$", ErrorMessage = "Digite somente números.")]
         public float ValorProd { get; set; }
 
         [Required(ErrorMessage = "O campo Descrição do produto é requerido.")]
