@@ -14,14 +14,14 @@
 </head>
 <body>
     <header>
-        <div class="menu">
+        <div class="menu responsiveMenu">
             <section class="logoWriter">
-                <a href="Home/Index"> <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer"></a>
+                <a href="@Url.Action("Index","Home")"> <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer"></a>
             </section>
 
             <nav class="menuItens">
-                <li><a href="@Url.Action("List","Produto")">Cardápio</a></li>
-                <li><a href="@Url.Action("Create","Reserva")">Reserva</a></li>
+                <li><a class="resposiveMenuTab" href="@Url.Action("List","Produto")">Cardápio</a></li>
+                <li><a class="resposiveMenuTab" href="@Url.Action("Create","Reserva")">Reserva</a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-user" onclick="showOnOffSettings()"></i></a></li>
                 <li class="iconBar"><a href="#"><i class="fas fa-shopping-cart " onclick="toggleCart()"></i></a></li>
             </nav>
@@ -90,20 +90,18 @@
             <section class="footerContentTop">
                 <section class="Contato">
                     <h2>Contato</h2>
-                    @*<p><i class="fas fa-phone-volume"></i> (11) 9456-789</p>
-                        <p><i class="fas fa-envelope"></i> tacosynatchos@tacosynatchos.com.br</p>*@
-                    <p>Telefone: (11) 9456-789</p>
+                    <p>Telefone: (11) 98276-8933</p>
                     <p>E-mail: tacosynatchos@tacosynatchos.com.br</p>
                 </section>
                 <section class="End">
                     <h2>Endereço</h2>
-                    <p>Rua das Dores, 123 Vila formosa São Paulo Brasil</p>
+                    <p>Rua Rui barbosa, Centro- Bela Vista/SP</p>
                 </section>
                 <section class="Social">
                     <h2>Social</h2>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a target="_blank" href="https://instagram.com/resttacos?igshid=dm0bu8elb41l"><i class="fab fa-instagram"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/tacos.mexicano.503/"><i class="fab fa-facebook-f"></i></a>
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone=55123456789"><i class="fab fa-whatsapp"></i></a>
 
                 </section>
             </section>
@@ -144,14 +142,6 @@
 
             });
         });
-
-        //function toggleSubMenu() {
-        //    let navigation = document.querySelector(".collapseSubeMenu");
-        //    let arrowOpen = document.querySelector(".toggle_SubMenu");
-        //    navigation.classList.toggle("hide");
-        //    arrowOpen.classList.toggle("arrowOpen");
-        //}
-
         function toggleCart() {
             let Cart = document.querySelector(".cart");
             let showCart = document.querySelector(".cartBar");

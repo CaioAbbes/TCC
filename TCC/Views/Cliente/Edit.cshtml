@@ -10,6 +10,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <section class="bigImage">
         <img src="https://cdn4.iconfinder.com/data/icons/standard-free-icons/139/Profile01-512.png" alt="foto produto">
     </section>
@@ -115,25 +116,25 @@
             @Html.ValidationMessageFor(model => model.NumEdif, "", new { @class = "text-danger" })
         </div>
         @*<div class="wrapper">
-                <div class="input-Data">
-                    @Html.EditorFor(model => model.User.ConfirmaSenha)
-                    <section class="line"></section>
-                    @Html.LabelFor(model => model.User.ConfirmaSenha)
-                </div>
-                @Html.ValidationMessageFor(model => model.NumEdif, "", new { @class = "text-danger" })
-            </div>*@
-        @*<div class="wrapper">
-                <div class="input-Data">
-                    @Html.EditorFor(model => model.QtdPontos)
-                    <section class="line"></section>
-                    @Html.LabelFor(model => model.QtdPontos)
-                </div>
-                @Html.ValidationMessageFor(model => model.QtdPontos, "", new { @class = "text-danger" })
-            </div>*@
-        <div class="bottomForm">
-            <div>
-                <input type="submit" value="Save" />
+            <div class="input-Data">
+                @Html.EditorFor(model => model.User.ConfirmaSenha)
+                <section class="line"></section>
+                @Html.LabelFor(model => model.User.ConfirmaSenha)
             </div>
+            @Html.ValidationMessageFor(model => model.NumEdif, "", new { @class = "text-danger" })
+        </div>*@
+        @*<div class="wrapper">
+            <div class="input-Data">
+                @Html.EditorFor(model => model.QtdPontos)
+                <section class="line"></section>
+                @Html.LabelFor(model => model.QtdPontos)
+            </div>
+            @Html.ValidationMessageFor(model => model.QtdPontos, "", new { @class = "text-danger" })
+        </div>*@
+        <div class="bottomForm">
+            <section class="bottomFormBottom">
+                <button type="submit" id="submit">Salvar</button>
+            </section>
         </div>
     </section>
 }

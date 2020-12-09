@@ -16,7 +16,6 @@ namespace TCC.Controllers
         {
             if (Session["nomeUsuarioLogado"] != null)
             {
-                //return RedirectToAction("List", "Cliente", new { username = Session["nomeUsuarioLogado"].ToString() });
                return RedirectToAction("Index", "Home");
             }
 

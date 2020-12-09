@@ -20,6 +20,30 @@
             </section>
             @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
         </div>
+        <div class="wrapper">
+            <section class="input-Data">
+                @Html.EditorFor(model => model.NomeCli)
+                <section class="line"></section>
+                @Html.LabelFor(model => model.NomeCli)
+            </section>
+            @Html.ValidationMessageFor(model => model.NomeCli, "", new { @class = "text-danger" })
+        </div>
+        <div class="wrapper">
+            <section class="input-Data">
+                @Html.EditorFor(model => model.EmailCli)
+                <section class="line"></section>
+                @Html.LabelFor(model => model.EmailCli)
+            </section>
+            @Html.ValidationMessageFor(model => model.EmailCli, "", new { @class = "text-danger" })
+        </div>
+        <div class="wrapper">
+            <section class="input-Data">
+                @Html.EditorFor(model => model.CelCli)
+                <section class="line"></section>
+                @Html.LabelFor(model => model.CelCli)
+            </section>
+            @Html.ValidationMessageFor(model => model.CelCli, "", new { @class = "text-danger" })
+        </div>
 
         <div class="wrapper">
             <section class="input-Data">
@@ -54,30 +78,6 @@
                 @Html.LabelFor(model => model.Endereco.Cidade)
             </section>
             @Html.ValidationMessageFor(model => model.Endereco.Cidade, "", new { @class = "text-danger" })
-        </div>
-        <div class="wrapper">
-            <section class="input-Data">
-                @Html.EditorFor(model => model.NomeCli)
-                <section class="line"></section>
-                @Html.LabelFor(model => model.NomeCli)
-            </section>
-            @Html.ValidationMessageFor(model => model.NomeCli, "", new { @class = "text-danger" })
-        </div>
-        <div class="wrapper">
-            <section class="input-Data">
-                @Html.EditorFor(model => model.EmailCli)
-                <section class="line"></section>
-                @Html.LabelFor(model => model.EmailCli)
-            </section>
-            @Html.ValidationMessageFor(model => model.EmailCli, "", new { @class = "text-danger" })
-        </div>
-        <div class="wrapper">
-            <section class="input-Data">
-                @Html.EditorFor(model => model.CelCli)
-                <section class="line"></section>
-                @Html.LabelFor(model => model.CelCli)
-            </section>
-            @Html.ValidationMessageFor(model => model.CelCli, "", new { @class = "text-danger" })
         </div>
         <div class="wrapper">
             <section class="input-Data">

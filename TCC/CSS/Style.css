@@ -510,6 +510,8 @@ body {
     margin-left: 40px;
     display: inline;
     transform: rotate(0);
+    position: absolute;
+    left: 70%;
 }
 
 .toggle_SubMenu.arrowOpen::after {
