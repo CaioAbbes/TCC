@@ -106,13 +106,13 @@
             </div>
         </div>*@
 
-<div class="wrapper">
-    <section class="dropDown-Data">
-        @Html.DropDownListFor(model => model.TipoLugar, ViewBag.ListaTipoLugar as SelectList, "Selecione um tipo de lugar", new { @class = "dropdown" })
-        <section class="line"></section>
-    </section>
-    @Html.ValidationMessageFor(model => model.TipoLugar, "", new { @class = "text-danger" })
-</div>
+    <div class="wrapper">
+        <section class="dropDown-Data">
+            @Html.DropDownListFor(model => model.TipoLugar, ViewBag.ListaTipoLugar as SelectList, "Selecione um tipo de lugar", new { @class = "dropdown" })
+            <section class="line"></section>
+        </section>
+        @Html.ValidationMessageFor(model => model.TipoLugar, "", new { @class = "text-danger" })
+    </div>
 
     <div class="wrapper">
         <section class="input-Data">
@@ -124,6 +124,10 @@
         </section>
     </div>
 
-    <button type="submit">Criar mesa</button>
+    <div class="bottomForm">
+        <section class="bottomFormBottom">
+            <button type="submit" id="submit">Criar Mesa</button>
+        </section>
+    </div>
 }
 @Html.Raw(TempData["msg"])

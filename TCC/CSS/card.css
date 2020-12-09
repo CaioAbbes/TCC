@@ -38,6 +38,7 @@
             object-fit: cover;
             object-position: center;
             transition: ease-in-out;
+            max-height: 220px;
         }
 
 .contentCard {

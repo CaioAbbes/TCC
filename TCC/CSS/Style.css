@@ -1301,4 +1301,10 @@ footer {
     .responsiveMenu .menuItens .iconBar .fa-user, .responsiveMenu .menuItens .iconBar .fa-shopping-cart {
         padding-right: 20px;
     }
+    .contentGeral {
+        margin-top: 15%;
+    }
+    .content {
+        margin-top: 15%;
+    }
 }
