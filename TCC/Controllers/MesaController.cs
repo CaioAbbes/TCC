@@ -88,7 +88,7 @@ namespace TCC.Controllers
                 filename = Path.Combine(Server.MapPath("~/Imagens/"), filename);
                 mesa.ImageUpload.SaveAs(filename);
                 objMesa.InsertMesa(mesa);
-                return RedirectToAction("List");
+                return RedirectToAction("BemvindoADM", "Home");
             }
             TempData["msg"] = "<script>alert('Erro ao criar a mesa');</script>";
             return View();

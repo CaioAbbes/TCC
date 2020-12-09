@@ -4,59 +4,57 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<link rel="stylesheet" type="text/css" href="~/CSS/List.css">
+<section class="contenteTable">
+    <h2 class="tableTitle">Lista de Clientes Cadastrados</h2>
+    <div>
+        <table class="table ">
+            <tr class="colorTable">
+                <th>
+                    @Html.DisplayNameFor(model => model.IdMesa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Numlugares)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Disponi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoLugar)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Imagem)
+                </th>
+                <th></th>
+            </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdMesa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Numlugares)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Disponi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoLugar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagem)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdMesa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Numlugares)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Disponi)
-            </td>
-            <td>
-                @if (!string.IsNullOrEmpty(item.Imagem))
-                {
-                    @*<img src="~/Imagens/logo.jpeg"   alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
-                    @*<img src=@string.Format($"/Imagens/{item.Imagem}") alt="Sem imagem" style="width:200px;height:200px;max-width:100%;height:auto" />*@
-                    @*<img src="@Url.Action(item.Imagem,"Imagens")" alt="Image" style="width:100px;height:100px;max-width:100%;height:auto" />*@
-                    <img src="@Url.Content(item.Imagem)" alt="Sem imagem" style="width:100px;height:100px;max-width:100%;height:auto" />
-
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { IdMesa = item.IdMesa }) |
-                @Html.ActionLink("Details", "Details", new { IdMesa = item.IdMesa }) |
-                @Html.ActionLink("Delete", "Delete", new { IdMesa = item.IdMesa })
-            </td>
-        </tr>
-    }
-    @Html.Raw(TempData["msg"])
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdMesa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Numlugares)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Disponi)
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.Imagem))
+                        {
+                            <img src="@Url.Content(item.Imagem)" alt="Sem imagem" style="width:100px;height:100px;max-width:100%;height:auto" />
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { IdMesa = item.IdMesa }, new { @Class = "fas fa-sync" })
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "Delete", new { IdMesa = item.IdMesa }, new { @Class = "fas fa-eraser" })
+                    </td>
+                </tr>
+            }
+            @Html.Raw(TempData["msg"])
+        </table>
+    </div>
+</section>

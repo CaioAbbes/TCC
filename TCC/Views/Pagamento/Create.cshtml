@@ -99,14 +99,16 @@
         </section>
         @Html.ValidationMessageFor(model => model.QtdPontos, "", new { @class = "text-danger" })
     </div>
+
+
     <div class="wrapper">
-        <section class="input-Data">
-            @Html.EditorFor(model => model.CPF)
-            <section class="line"></section>
-            @Html.LabelFor(model => model.CPF)
-        </section>
-        @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
-    </div>
+            <section class="input-Data">
+                @Html.EditorFor(model => model.CPF)
+                <section class="line"></section>
+                @Html.LabelFor(model => model.CPF)
+            </section>
+            @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+        </div>
 
     <div class="bottomForm">
         <section class="bottomFormBottom">

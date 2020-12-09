@@ -16,7 +16,7 @@ namespace TCC.Controllers
         {
             if (Session["nomeUsuarioLogado"] != null)
             {
-               return RedirectToAction("Index", "Home");
+               return RedirectToAction("UserLogado", "Home");
             }
 
             else
@@ -48,6 +48,10 @@ namespace TCC.Controllers
                         return RedirectToAction("BemvindoADM", "Home");
                     }
 
+                    if (int.Parse(Session["NivelAcesso"].ToString()) == 1)
+                    {
+                        return RedirectToAction("UserLogado", "Home");
+                    }
 
 
                     return RedirectToAction("Index", "Home");

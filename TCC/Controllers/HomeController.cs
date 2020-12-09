@@ -14,6 +14,12 @@ namespace TCC.Controllers
             return View();
         }
 
+        public ActionResult UserLogado()
+        {
+            return View();
+        }
+
+
         public ActionResult ObrigadoPorComprar()
         {
             Session.Remove("Carrinho");

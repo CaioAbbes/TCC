@@ -1,0 +1,266 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/Style.css">
+    <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
+    <link rel="Shortcut Icon" href="~/favicon.ico" type="image / x-icon" />
+    <title>Tacos & Natchos | Site Oficial</title>
+</head>
+<body>
+
+
+    <header>
+        <div class="menu responsiveMenu">
+            <section class="logoWriter">
+                <a href="@Url.Action("Index","Home")">  <img src="~/imagens/logo_writer_bone.png" alt="Tachos Y Natchos" class="writer"></a>
+            </section>
+
+            <nav class="menuItens">
+                <li><a class="resposiveMenuTab" href="@Url.Action("List","Produto")">Cardápio</a></li>
+                <li><a class="resposiveMenuTab" href="@Url.Action("Create","Reserva")">Reserva</a></li>
+                <li class="iconBar "><a href="#"><i class="fas fa-user" onclick="showOnOffSettings()"></i></a></li>
+                <li class="iconBar "><a href="#"><i class="fas fa-shopping-cart "></i></a></li>
+                @*<li class="toggle" onclick="toggleMenu()"></li>*@
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="slideContainer">
+            <div class="slideItens">
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+
+                <section class="slide frist">
+                    <img src="https://conteudo.imguol.com.br/c/noticias/1c/2016/10/28/comida-mexicana-taco-de-carne-com-legumes-e-cebola-roxa-1477667262572_1920x1275.jpg" alt="img1">
+                </section>
+                <section class="slide second">
+                    <img src="https://sobre.peixeurbano.com.br/wp-content/uploads/2017/08/enchilada.jpg" alt="img2">
+                </section>
+                <section class="slide third">
+                    <img src="https://cdn.cheapism.com/images/Budget_Friendly_Mexican_Dishes.2e16d0ba.fill-1440x605.jpg" alt="img3">
+                </section>
+                <section class="slide fourth">
+                    <img src="https://clube-static.clubegazetadopovo.com.br/portal/wp-content/uploads/2020/04/materiasrepositorio3634-1558959887.jpeg" alt="img4">
+                </section>
+
+                <div class="navigationAuto">
+                    <section class="auto-btn0"></section>
+                    <section class="auto-btn1"></section>
+                    <section class="auto-btn2"></section>
+                    <section class="auto-btn3"></section>
+                </div>
+
+            </div>
+
+            <div class="navigationManual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+        </div>
+    </main>
+
+    <div class="navigation background hide">
+        <ul>
+            <li>
+                <a href="@Url.Action("List","Produto")">
+                    <span class="icon"><i class="fas fa-map"></i></span>
+                    <span class="title">Cardápio</span>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="@Url.Action("Create","Reserva")">
+                    <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                    <span class="title">Reserva</span>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="@Url.Action("List","Produto")">
+                    <span class="icon"><i class="fas fa-truck"></i></span>
+                    <span class="title">Delivery</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="indexContent">
+        <section class="indexContentLineRow">
+            <section class="about Us">
+                <h3>Bem Vindo(a)</h3>
+                <p>Hola, seja bem-vindo(a) ao Site do mejor restaurante de São Paulo. Sí, isso mesmo, o melhor hahaha. ¿No cree? Pois bem, a Tacos&amp;Nachos mostrará algo nuevo, desejado por muitos restaurantes, porém é conquistado por poucos, ou no caso, por nós. Siga em frente e mostraremos nuestro serviço!</p>
+            </section>
+        </section>
+        <section class="indexContentLineColuns">
+            <section class="about Delively">
+                <h3 class="titleIndexContainer">Delivery</h3>
+                @*<i class="fas fa-truck"></i>*@
+                <p>Sabe quando bate aquela preguiça ou então aquela famosa frase: sem tempo irmão? Não se preocupe, acá você poderá pedir a sua comida e receber onde estiver. ¡su casa és mi casa!</p>
+                <section class="indexContentLineColunsButton">
+                    <a href="@Url.Action("List","Produto")">Acesse</a>
+                </section>
+            </section>
+            <section class="about Reserva">
+                <h3>Reserva</h3>
+                <p>Nesta opção, você poderá agendar sua vinda e já escolher o prato que deseja comer, com isso, não perderá tempo na fila de espera aguardando algum lugar, uma maneira pratica de fazer sua reserva e ainda fazer seu pedido.</p>
+                <section class="indexContentLineColunsButton">
+                    <a href="@Url.Action("Create","Reserva")">Acesse</a>
+                </section>
+            </section>
+            <section class="about Cardapio">
+                <h3>Cardápio</h3>
+                <p>Está aqui? Ótimo, nesta área você poderá de forma rápida fazer seu pedido e em alguns minutos se deliciar com ele sem precisar pedir ao garçom! Prático, não acha?</p>
+                <section class="indexContentLineColunsButton">
+                    <a href="@Url.Action("List","Produto")">Acesse</a>
+                </section>
+            </section>
+        </section>
+
+    </div>
+
+    <div class="settings hide">
+        <h3>Configurações</h3>
+        <section class="settingsItems">
+            <a href="@Url.Action("Edit", "Cliente", new {IdCli = Session["IdCli"].ToString()})">
+                <span class="icon"><i class="fas fa-user-alt"></i></span>
+                <span class="title">Meus dados</span>
+            </a>
+        </section>
+        <section class="settingsItems">
+            <a href="@Url.Action("UltimosPedidosCli", "Produto_Pedido", new {IdCli = Session["IdCli"].ToString()})">
+                <span class="icon"><i class="fas fa-history"></i></span>
+                <span class="title">Últimos Pedidos</span>
+            </a>
+        </section>
+        <section class="settingsItems">
+            <a href="@Url.Action("MostraReservaCli", "Reserva", new {IdCli = Session["IdCli"].ToString()})">
+                <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                <span class="title">Reserva</span>
+            </a>
+        </section>
+        <section class="settingsItems">
+            <a href="@Url.Action("List","Cupom")">
+                <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+                <span class="title">Cupons</span>
+            </a>
+        </section>
+        <section class="settingsItems">
+            <a href="@Url.Action("SelecionaComNumCartaoCli","Cartao", new {IdCli = Session["IdCli"].ToString()})">
+                <span class="icon"><i class="fas fa-credit-card"></i></span>
+                <span class="title">Cartão</span>
+            </a>
+        </section>
+
+        <section class="settingsItems">
+            <a href="@Url.Action("Logout","Usuario")">
+                <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span class="title">Sair</span>
+            </a>
+        </section>
+    </div>
+    <div class="cartBar hide">
+    </div>
+
+    <div class="flootSearch">
+
+    </div>
+
+    <div class="toggle" onclick="toggleMenu()"></div>
+
+    @RenderBody()
+    <footer>
+        <section class="footerContent">
+            <section class="footerContentTop">
+                <section class="Contato">
+                    <h2>Contato</h2>
+                    @*<p><i class="fas fa-phone-volume"></i> (11) 9456-789</p>
+                        <p><i class="fas fa-envelope"></i> tacosynatchos@tacosynatchos.com.br</p>*@
+                    <p>Telefone: (11) 98276-8933</p>
+                    <p>E-mail: tacosynatchos@tacosynatchos.com.br</p>
+                </section>
+                <section class="End">
+                    <h2>Endereço</h2>
+                    <p>Rua Rui barbosa, Centro- Bela Vista/SP</p>
+                </section>
+                <section class="Social">
+                    <h2>Social</h2>
+                    <a target="_blank" href="https://instagram.com/resttacos?igshid=dm0bu8elb41l"><i class="fab fa-instagram"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/tacos.mexicano.503/"><i class="fab fa-facebook-f"></i></a>
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone=55123456789"><i class="fab fa-whatsapp"></i></a>
+
+                </section>
+            </section>
+            <section class="foooterContentBottom">
+                <p>All Right reserved dy Tacos & Natchos</p>
+            </section>
+        </section>
+    </footer>
+    <script>
+        function toggleMenu() {
+            let navigation = document.querySelector(".navigation");
+            let toggle = document.querySelector(".toggle");
+            navigation.classList.toggle("active");
+            toggle.classList.toggle("active");
+            navigation.classList.toggle("hide");
+        }
+
+        function showSearch() {
+            let search = document.querySelector(".fa-search");
+            let inputSearch = document.querySelector(".search-text");
+            let searchConteiner = document.querySelector(".searchConteiner");
+            inputSearch.classList.remove("hide");
+            searchConteiner.style.background = "white";
+            search.style.color = "black";
+        }
+
+        function showOnOffSettings() {
+            let user = document.querySelector(".fa-user");
+            let settings = document.querySelector(".settings");
+            settings.classList.toggle("hide");
+        }
+
+
+        let subeMenu = document.querySelectorAll(".collapse");
+        subeMenu.forEach(subeMenur => {
+            console.log(subeMenur);
+            let collapse = subeMenur.querySelector(".collapseSubMenu");
+            console.log(collapse);
+            subeMenur.addEventListener("click", () => {
+
+                collapse.classList.toggle("hide");
+
+            });
+        });
+        function toggleCart() {
+            let Cart = document.querySelector(".cart");
+            let showCart = document.querySelector(".cartBar");
+            showCart.classList.toggle("hide");
+
+        }
+
+        let couonter = 1;
+        setInterval(() => {
+            document.getElementById("radio" + couonter).checked = true;
+            couonter++;
+            if (couonter > 4) {
+                couonter = 1;
+            }
+        }, 3000);
+    </script>
+</body>
+</html>

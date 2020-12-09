@@ -140,7 +140,6 @@ namespace TCC.Models
         }
 
 
-
         public int SelecionaIdPag(int IdPag)
         {
             using (db = new ConexaoDB())

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+using System.Web.Mvc;
 
 namespace TCC.Models
 {
@@ -21,6 +22,7 @@ namespace TCC.Models
         [Required(ErrorMessage = "O campo CPF do cliente é requerido.")]
         [Display(Name = "CPF do cliente.")]
         [StringLength(14, ErrorMessage = "A quantidade de caracteres CPF é invalido.", MinimumLength = 14)]
+        //[Remote("CpfBuscaCli", "Cliente", ErrorMessage = "CPF já cadastrado")]
         public string CPF { get; set; }
 
         public virtual Endereco Endereco { get; set; }
@@ -219,5 +221,15 @@ namespace TCC.Models
                 return prodPedList;
             }
         }
+
+
+
+        //public string BuscaCpfCliente(string cpf)
+        //{
+        //    string StrQuery = string.Format("select * from tbcliente where CPF = '{0}';", cpf.Replace(".", string.Empty).Replace("-", string.Empty).Replace("_", string.Empty));
+        //    string strCpf = db.ExecutaDado(StrQuery);
+        //    return strCpf;
+
+        //}
     }
 }

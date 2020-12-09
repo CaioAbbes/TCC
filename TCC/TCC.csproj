@@ -699,6 +699,8 @@
     <Content Include="Views\Home\BemvindoADM.cshtml" />
     <Content Include="Views\Cartao\SelecionaComNumCartaoCli.cshtml" />
     <Content Include="Views\Home\ObrigadoPorComprar.cshtml" />
+    <Content Include="Views\Shared\_IndexLogado.cshtml" />
+    <Content Include="Views\Home\UserLogado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

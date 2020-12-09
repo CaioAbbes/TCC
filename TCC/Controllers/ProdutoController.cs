@@ -82,7 +82,7 @@ namespace TCC.Controllers
                 filename = Path.Combine(Server.MapPath("/Imagens/"), filename);
                 produto.ImageUpload.SaveAs(filename);
                 objProduto.InsertProduto(produto);
-                return RedirectToAction("List");
+                return RedirectToAction("BemvindoADM", "Home");
             }
             TempData["msg"] = "<script>alert('Erro ao criar o produto');</script>";
             return View();
