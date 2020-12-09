@@ -39,7 +39,7 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Celular do cliente é requerido.")]
         [Display(Name = "Celular do cliente")]
-        public long CelCli { get; set; }
+        public string CelCli { get; set; }
 
         //[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Digite somente letras.")]
         [Display(Name = "Complemento")]
@@ -66,7 +66,7 @@ namespace TCC.Models
 
         public void InsertCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');", cliente.Imagem, cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.Cidade, cliente.Endereco.CEP.Replace("-",string.Empty), cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF.Replace("-",string.Empty).Replace(".",string.Empty), cliente.EmailCli, cliente.CelCli.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty));
+            string strQuery = string.Format("CALL sp_InsEnderecoCliUsu ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');", cliente.Imagem, cliente.User.UsuarioText, cliente.User.Senha, cliente.Endereco.Cidade, cliente.Endereco.CEP.Replace("-",string.Empty), cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Comp, cliente.NumEdif, cliente.NomeCli, cliente.CPF.Replace("-",string.Empty).Replace(".",string.Empty), cliente.EmailCli, cliente.CelCli.ToString().Replace("-", string.Empty));
 
             using (db = new ConexaoDB())
             {
@@ -76,7 +76,7 @@ namespace TCC.Models
 
         public void UpdateCliente(Cliente cliente)
         {
-            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');", cliente.IdCli, cliente.CPF.Replace("-", string.Empty).Replace(".", string.Empty), cliente.Endereco.CEP.Replace("-", string.Empty), cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Endereco.Cidade, cliente.User.UsuarioText, cliente.User.Senha, cliente.NumEdif, cliente.NomeCli, cliente.EmailCli, cliente.CelCli.ToString().Replace("(", string.Empty).Replace(")", string.Empty).Replace(" ", string.Empty), cliente.Comp);
+            string strQuery = string.Format("CALL sp_AtuaCliUsuEnd('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');", cliente.IdCli, cliente.CPF.Replace("-", string.Empty).Replace(".", string.Empty), cliente.Endereco.CEP.Replace("-", string.Empty), cliente.Endereco.Logra, cliente.Endereco.Bairro, cliente.Endereco.Cidade, cliente.User.UsuarioText, cliente.User.Senha, cliente.NumEdif, cliente.NomeCli, cliente.EmailCli, cliente.CelCli.ToString().Replace("-", string.Empty), cliente.Comp);
 
             using (db = new ConexaoDB())
             {
@@ -107,7 +107,7 @@ namespace TCC.Models
                         CPF = cpf.Equals("") ? "Não há CPF" : registros["CPF"].ToString(),
                         EmailCli = registros["EmailCli"].ToString(),
                         Endereco = new Endereco().RetornaPorCEP(cepString),
-                        CelCli = celcli.Equals("") ? 0 : Convert.ToInt64(celcli),
+                        CelCli = celcli.Equals("") ? "Não há telefone" : celcli,
                         Comp = registros["Comp"].ToString(),
                         NumEdif = numedif.Equals("") ? 0 : int.Parse(numedif),
                         QtdPontos = qtdpontos.Equals("") ? 0f : float.Parse(qtdpontos),
@@ -138,7 +138,7 @@ namespace TCC.Models
                         CPF = registros["CPF"].ToString(),
                         EmailCli = registros["EmailCli"].ToString(),
                         Endereco = new Endereco().RetornaPorCEP(registros["CEP"].ToString()),
-                        CelCli = Convert.ToInt64(registros["CelCli"].ToString()),
+                        CelCli = registros["CelCli"].ToString(),
                         Comp = registros["Comp"].ToString(),
                         NumEdif = int.Parse(registros["NumEdif"].ToString()),
                         User = new Usuario().RetornaPorIdUsuario(int.Parse(registros["IdUsuario"].ToString())),

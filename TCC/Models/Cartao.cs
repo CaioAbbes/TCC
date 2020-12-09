@@ -11,7 +11,6 @@ namespace TCC.Models
 
         [Required(ErrorMessage = "O campo Número do cartão é requerido.")]
         [Display(Name = "Número do cartão")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Digite somente números.")]
         public string Numcartao { get; set; }
 
         [Required(ErrorMessage = "O campo Código de Verificação de Cartão é requerido.")]
@@ -37,7 +36,7 @@ namespace TCC.Models
 
         public void InsertCartao(Cartao cartao, int idCli)
         {
-            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}','{4}');", idCli, cartao.Numcartao,cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-01").Replace("/",string.Empty));
+            string strQuery = string.Format("call sp_InsCartao('{0}','{1}','{2}','{3}','{4}');", idCli, cartao.Numcartao.Replace(" ", string.Empty),cartao.Cvc,cartao.Titular,cartao.Datavalid.ToString("yyyy-MM-01").Replace("/",string.Empty));
 
             using (db = new ConexaoDB())
             {

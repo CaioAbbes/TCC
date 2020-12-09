@@ -20,9 +20,11 @@ $(function () {
     $("#Cnpj").mask("99.999.999/9999-99");
    // $("#Tel").mask("(99) 99999-9999");
     $("#Cep").mask("99999-999");
-    $("#Datavalid").mask("99/99");
+    $("#Datavalid").mask("99/9999");
     $("#CPF").mask("999.999.999-99");
     $("#DataHoraReserva").mask("99/99/9999 99:99");
     $("#DataHoraChegada").mask("99/99/9999 99:99");
-   // $("Numcartao").mask("9999 9999 9999 9999");
+    $("#CelCli").mask("99999-9999");
+    $("#Numcartao").mask("9999 9999 9999 9999");
+    $("#Cvc").mask("999");
 });

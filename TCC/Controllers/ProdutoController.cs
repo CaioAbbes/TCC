@@ -78,8 +78,8 @@ namespace TCC.Controllers
                 string filename = Path.GetFileNameWithoutExtension(produto.ImageUpload.FileName);
                 string extesion = Path.GetExtension(produto.ImageUpload.FileName);
                 filename = filename + DateTime.Now.ToString("yymmssfff") + extesion;
-                produto.Imagem = "~/Imagens/" + filename;
-                filename = Path.Combine(Server.MapPath("~/Imagens/"), filename);
+                produto.Imagem = "/Imagens/" + filename;
+                filename = Path.Combine(Server.MapPath("/Imagens/"), filename);
                 produto.ImageUpload.SaveAs(filename);
                 objProduto.InsertProduto(produto);
                 return RedirectToAction("List");
